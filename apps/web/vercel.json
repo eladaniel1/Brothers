@@ -1,0 +1,5 @@
+{
+  "buildCommand": "node tools/generate-llms.js || true && vite build --outDir dist",
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
