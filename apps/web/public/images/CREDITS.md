@@ -37,3 +37,11 @@ Each file is a resized copy of `https://images.unsplash.com/photo-<id>`:
 | `whole-home.jpg` | `1570129477492-45c003edd2be` |
 | `service-windows.jpg` | `1600210491892-03d54c0aaf87` |
 | `service-drywall.jpg` | `1607400201889-565b1ee75f8e` |
+| `service-roof-repair.jpg` | `1592595896551-12b371d546d5` |
+| `service-ac-repair.jpg` | `1558618666-fcd25c85cd64` |
+| `service-garage-doors.jpg` | `1605276374104-dee2a0ed3cd6` |
+| `service-electrical.jpg` | `1621905251918-48416bd8575a` |
+| `service-epoxy-flooring.jpg` | `1504148455328-c376907d081c` |
+| `service-painting.jpg` | `1595814433015-e6f5ce69614e` |
+| `service-fencing.jpg` | `1600573472592-401b489a3cdc` |
+| `service-gutters.jpg` | `1605146769289-440113cc3d00` |

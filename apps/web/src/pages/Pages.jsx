@@ -1,4 +1,5 @@
 import React from 'react';
+import { lowerTitle } from '@/lib/format';
 import { Helmet } from 'react-helmet';
 import BrandsSection from '@/components/BrandsSection';
 import { brandSchemaFor } from '@/data/brands';
@@ -99,7 +100,7 @@ export const ServiceDetailPage = () => {
     if (!service) return <Navigate to="/services" replace />;
 
     const metaTitle = service.metaTitle || `${service.title} in the Tampa Bay & Sarasota Region | Brothers Remodelers`;
-    const metaDescription = service.metaDescription || `${service.summary} Licensed and insured ${service.title.toLowerCase()} contractors serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.`;
+    const metaDescription = service.metaDescription || `${service.summary} Licensed and insured ${lowerTitle(service.title)} contractors serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.`;
     const canonicalUrl = `https://brothersremodelers.com/services/${service.slug}/`;
     const enh = serviceEnhancements[service.slug];
     const webPageSchema = enh ? {
@@ -221,7 +222,7 @@ export const ServiceDetailPage = () => {
 
                         {service.processSteps && service.processSteps.length > 0 && (
                             <>
-                                <h3 className="font-display mt-12 text-2xl font-bold uppercase">Our {service.title.toLowerCase()} process</h3>
+                                <h3 className="font-display mt-12 text-2xl font-bold uppercase">Our {lowerTitle(service.title)} process</h3>
                                 <ol className="mt-6 grid gap-6 sm:grid-cols-2">
                                     {service.processSteps.map(([title, text], i) => {
                                         const StepIcon = enh ? processStepIcons[i % processStepIcons.length] : null;
@@ -250,7 +251,7 @@ export const ServiceDetailPage = () => {
                             <>
                                 <h3 className="font-display mt-12 text-2xl font-bold uppercase">Florida considerations</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                                    Building in the Tampa Bay and Sarasota region comes with conditions that affect scope, cost and permitting. These are the issues that most often affect {service.title.toLowerCase()} projects here.
+                                    Building in the Tampa Bay and Sarasota region comes with conditions that affect scope, cost and permitting. These are the issues that most often affect {lowerTitle(service.title)} projects here.
                                 </p>
                                 <div className="mt-6 grid gap-6 md:grid-cols-2">
                                     {service.floridaNotes.map(([title, text]) => (
@@ -265,7 +266,7 @@ export const ServiceDetailPage = () => {
 
                         {enh && (
                             <>
-                                <h3 className="font-display mt-12 text-2xl font-bold uppercase">What affects the cost of {service.title.toLowerCase()}</h3>
+                                <h3 className="font-display mt-12 text-2xl font-bold uppercase">What affects the cost of {lowerTitle(service.title)}</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                                     Every estimate is built from the same line items. Knowing what drives them helps you compare bids fairly and decide where to invest.
                                 </p>
@@ -293,7 +294,7 @@ export const ServiceDetailPage = () => {
                                     </p>
                                 </div>
 
-                                <h3 className="font-display mt-12 text-2xl font-bold uppercase">How to choose a {service.title.toLowerCase()} contractor</h3>
+                                <h3 className="font-display mt-12 text-2xl font-bold uppercase">How to choose a {lowerTitle(service.title)} contractor</h3>
                                 <div className="mt-4 space-y-4 leading-relaxed text-neutral-600">
                                     <p>
                                         The contractor you hire matters more than any single finish. Before signing, confirm the following:
@@ -334,7 +335,7 @@ export const ServiceDetailPage = () => {
 
                         <h3 className="font-display mt-12 text-2xl font-bold uppercase">Cities we serve</h3>
                         <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                            We provide {service.title.toLowerCase()} for homeowners and property owners across the Tampa Bay and Sarasota region. Select a county below to see the communities we serve, or browse the full{' '}
+                            We provide {lowerTitle(service.title)} for homeowners and property owners across the Tampa Bay and Sarasota region. Select a county below to see the communities we serve, or browse the full{' '}
                             <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Areas We Serve</Link> page.
                         </p>
                         <div className="mt-4 flex flex-wrap gap-2">
@@ -361,7 +362,7 @@ export const ServiceDetailPage = () => {
                         <h3 className="font-display mt-12 text-2xl font-bold uppercase">Questions we get asked</h3>
                         <div className="mt-4"><FaqList items={service.faqs} /></div>
 
-                        <h3 className="font-display mt-12 text-2xl font-bold uppercase">Plan your {service.title.toLowerCase()} project</h3>
+                        <h3 className="font-display mt-12 text-2xl font-bold uppercase">Plan your {lowerTitle(service.title)} project</h3>
                         <div className="mt-4 space-y-4 leading-relaxed text-neutral-600">
                             <p>
                                 Ready to move forward? The fastest path is a free site walkthrough — we measure, confirm scope and return a written line-item proposal within five business days.{' '}
@@ -374,7 +375,7 @@ export const ServiceDetailPage = () => {
                             <>
                                 <h3 className="font-display mt-12 text-2xl font-bold uppercase">Where we work</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                                    We provide {service.title.toLowerCase()} across the Tampa Bay and Sarasota region, including{' '}
+                                    We provide {lowerTitle(service.title)} across the Tampa Bay and Sarasota region, including{' '}
                                     <Link to="/areas-we-serve/hillsborough/tampa" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
                                     <Link to="/areas-we-serve/pinellas/st-petersburg" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
                                     <Link to="/areas-we-serve/pasco/wesley-chapel" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
@@ -388,11 +389,11 @@ export const ServiceDetailPage = () => {
                         )}
                     </div>
                     <div className="lg:sticky lg:top-32 lg:self-start">
-                        <GetEstimateCTA heading="Get an Estimate" text={`Request a free, no-obligation line-item proposal for your ${service.title.toLowerCase()} project within five business days.`} />
+                        <GetEstimateCTA heading="Get an Estimate" text={`Request a free, no-obligation line-item proposal for your ${lowerTitle(service.title)} project within five business days.`} />
                     </div>
                 </div>
             </Section>
-            <CtaBand heading={`Get a ${service.title.toLowerCase()} estimate`} />
+            <CtaBand heading={`Get a ${lowerTitle(service.title)} estimate`} />
             <CitiesWeServe />
         </SiteLayout>
     );

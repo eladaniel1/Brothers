@@ -29,3 +29,11 @@ export const slugify = (text) =>
 		.replace(/[^a-z0-9\s_-]/g, '')
 		.replace(/[\s_-]+/g, '-')
 		.replace(/^-+|-+$/g, '');
+
+// Lowercases a title for use mid-sentence but keeps acronyms such as AC, HVAC
+// and ADUs in capitals ("AC Repair" -> "AC repair").
+export const lowerTitle = (title = '') =>
+	title
+		.split(' ')
+		.map((word) => (/^\(?[A-Z]{2,}s?\)?$/.test(word) ? word : word.toLowerCase()))
+		.join(' ');

@@ -258,6 +258,89 @@ try {
         console.error(`robots.txt generation failed: ${err?.message || String(err)}`);
         process.exitCode = 1;
     }
+
+    // ---- llms.txt / llms-full.txt ----
+    // Plain-text summary of the business for AI assistants (llmstxt.org format),
+    // generated from the same data the pages render, so it never drifts from
+    // the site. llms.txt links every service and area; llms-full.txt adds each
+    // service's scope, brands and FAQs inline.
+    try {
+        const { company, services, areas, faqs } = await vite.ssrLoadModule('/src/data/site.js');
+        const { brandsFor } = await vite.ssrLoadModule('/src/data/brands.js');
+        const site = 'https://brothersremodelers.com';
+        const brandLine = (slug) => brandsFor(slug).map(([cat, names]) => `${cat}: ${names.join(', ')}`).join('; ');
+        const areaNames = areas.map((a) => a.city).join(', ');
+        const guides = [
+            ['FEMA 50% Rule Guide', '/guides/fema-50-percent-rule/', 'How the FEMA substantial improvement rule affects remodels in Florida flood zones.'],
+            ['Remodeling Permits in Tampa Bay & Sarasota', '/guides/remodeling-permits-tampa-bay-sarasota/', 'Which city or county issues your permit and what remodels need one.'],
+            ['Remodeling Cost Guide for Tampa Bay', '/guides/remodeling-cost-tampa-bay/', 'What drives remodeling cost in the Tampa Bay area.'],
+        ];
+
+        const header = [
+            `# ${company.name}`,
+            '',
+            `> ${company.name} is a licensed Florida general contractor (Certified General Contractor license ${company.licenseNumber}) providing home remodeling, roofing, windows and doors, HVAC, plumbing, electrical and outdoor construction for homeowners across the Tampa Bay and Sarasota region of Florida's Gulf Coast: ${areaNames}.`,
+            '',
+            `- Phone: ${company.phone}`,
+            `- Email: ${company.email}`,
+            `- Hours: ${company.hours}`,
+            `- License: Florida CGC ${company.licenseNumber}, licensed and insured`,
+            `- Founded: ${company.founded}`,
+            `- Service area: ${areaNames} (Tampa Bay and Sarasota region, Florida Gulf Coast)`,
+            `- Free estimates: ${site}/quote/`,
+            '',
+        ];
+
+        const llms = [
+            ...header,
+            '## Services',
+            '',
+            ...services.map((s) => `- [${s.title}](${site}/services/${s.slug}/): ${s.summary}`),
+            '',
+            '## Service areas',
+            '',
+            ...areas.map((a) => `- [${a.city}](${site}/areas-we-serve/${a.slug}/): ${a.blurb}`),
+            '',
+            '## Guides',
+            '',
+            ...guides.map(([t, u, d]) => `- [${t}](${site}${u}): ${d}`),
+            '',
+            '## Optional',
+            '',
+            `- [Full details for every service](${site}/llms-full.txt)`,
+            `- [About ${company.name}](${site}/about/)`,
+            `- [Frequently asked questions](${site}/faq/)`,
+            `- [Contact](${site}/contact/)`,
+            '',
+        ].join('\n');
+
+        const full = [
+            ...header,
+            '## Frequently asked questions',
+            '',
+            ...faqs.flatMap(([q, a]) => [`### ${q}`, '', a, '']),
+            '## Services',
+            '',
+            ...services.flatMap((s) => [
+                `### ${s.title}`,
+                '',
+                `URL: ${site}/services/${s.slug}/`,
+                '',
+                s.intro || s.summary,
+                '',
+                ...(s.scope?.length ? ['What is included:', ...s.scope.map((x) => `- ${x}`), ''] : []),
+                ...(brandsFor(s.slug).length ? [`Brands we install: ${brandLine(s.slug)}.`, ''] : []),
+                ...(s.faqs?.length ? s.faqs.flatMap(([q, a]) => [`Q: ${q}`, `A: ${a}`, '']) : []),
+            ]),
+        ].join('\n');
+
+        await fs.writeFile(path.join(outDir, 'llms.txt'), llms, 'utf-8');
+        await fs.writeFile(path.join(outDir, 'llms-full.txt'), full, 'utf-8');
+        console.log(`Generated llms.txt (${services.length} services) and llms-full.txt -> ${path.relative(root, outDir) || outDir}`);
+    } catch (err) {
+        console.error(`llms.txt generation failed: ${err?.message || String(err)}`);
+        process.exitCode = 1;
+    }
 } finally {
     await vite.close();
 }

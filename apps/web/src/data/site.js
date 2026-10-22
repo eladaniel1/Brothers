@@ -23,6 +23,7 @@ export const brownstoneImage = '/images/whole-home.jpg';
 export const officeImage = '/images/office.jpg';
 
 import { additionalServices } from './additionalServices';
+import { tradeServices } from './tradeServices';
 
 const coreServices = [
     {
@@ -135,7 +136,7 @@ const coreServices = [
     },
 ];
 
-export const services = [...coreServices, ...additionalServices];
+export const services = [...coreServices, ...additionalServices, ...tradeServices];
 
 export const areas = [
     {

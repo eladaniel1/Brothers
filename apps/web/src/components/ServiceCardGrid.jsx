@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AirVent, ArrowRight, Bath, BrickWall, Building2, Car, CookingPot, DoorOpen, Fence, Grid2x2, Hammer, HardHat, House, HousePlus, Layers, PaintRoller, Sun, Thermometer, Warehouse, Waves, Wrench } from 'lucide-react';
+import { AirVent, ArrowRight, Bath, BrickWall, Building2, Car, CloudRain, CookingPot, DoorOpen, Fence, Grid2x2, Hammer, HardHat, House, HousePlus, Layers, Paintbrush, PaintBucket, PaintRoller, Snowflake, SquareParking, Sun, Thermometer, TreePalm, Umbrella, Warehouse, Waves, Wrench, Zap } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 
 // Hover tooltips for the six original services.
@@ -30,12 +30,20 @@ const serviceIcons = {
     solar: Sun,
     'roof-insulation': Thermometer,
     pools: Waves,
-    pergolas: Fence,
+    pergolas: TreePalm,
     driveways: Car,
     'accessory-dwelling-units': Warehouse,
     flooring: Layers,
     stucco: PaintRoller,
     drywall: Hammer,
+    'roof-repair': Umbrella,
+    'ac-repair': Snowflake,
+    'garage-doors': SquareParking,
+    electrical: Zap,
+    'epoxy-flooring': PaintBucket,
+    painting: Paintbrush,
+    fencing: Fence,
+    gutters: CloudRain,
 };
 
 /**

@@ -103,6 +103,40 @@ export const serviceBrands = {
         ['Repair & waterproofing', ['Sika']],
         ['Anchors & connectors', ['Simpson Strong-Tie']],
     ],
+    'roof-repair': [
+        ['Shingles', ['GAF', 'Owens Corning', 'CertainTeed', 'TAMKO']],
+        ['Concrete & clay tile', ['Eagle Roofing', 'Westlake Royal Roofing']],
+        ['Underlayment & sealants', ['Polyglass', 'GAF']],
+    ],
+    'ac-repair': [
+        ['Systems we service', ['Carrier', 'Trane', 'Lennox', 'Rheem', 'Goodman', 'Daikin']],
+        ['Thermostats', ['ecobee', 'Honeywell Home']],
+    ],
+    'garage-doors': [
+        ['Garage doors', ['Clopay', 'Amarr', 'Wayne Dalton', 'C.H.I.']],
+        ['Openers', ['LiftMaster', 'Chamberlain', 'Genie']],
+    ],
+    electrical: [
+        ['Panels & breakers', ['Square D', 'Eaton', 'Siemens']],
+        ['Standby generators', ['Generac', 'Kohler']],
+        ['EV chargers', ['Tesla Wall Connector', 'ChargePoint']],
+    ],
+    'epoxy-flooring': [
+        ['Floor coating systems', ['Sherwin-Williams', 'Rust-Oleum', 'Sika']],
+    ],
+    painting: [
+        ['Paint', ['Sherwin-Williams', 'Benjamin Moore', 'PPG']],
+        ['Elastomeric coatings', ['Sherwin-Williams Loxon', 'Benjamin Moore']],
+    ],
+    fencing: [
+        ['Vinyl fencing', ['Bufftech', 'Lakeland Vinyl']],
+        ['Aluminum fencing', ['Jerith', 'Ameristar']],
+        ['Composite fencing', ['Trex']],
+    ],
+    gutters: [
+        ['Gutter guards', ['LeafFilter', 'Raindrop']],
+        ['Gutter coil', ['Englert', 'Alcoa']],
+    ],
 };
 
 export const brandsFor = (slug) => serviceBrands[slug] || [];
