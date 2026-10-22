@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AirVent, ArrowRight, Car, DoorOpen, Fence, Grid2x2, House, HousePlus, Layers, PaintRoller, Sun, Thermometer, Waves, Wrench } from 'lucide-react';
+import { AirVent, ArrowRight, Bath, BrickWall, Building2, Car, CookingPot, DoorOpen, Fence, Grid2x2, HardHat, House, HousePlus, Layers, PaintRoller, Sun, Thermometer, Warehouse, Waves, Wrench } from 'lucide-react';
 import Reveal from '@/components/Reveal';
-import ServiceOutlineIcon, { serviceOutlineSlugs } from '@/components/ServiceOutlineIcons';
 
-// Homepage "What We Build" service-card summaries for the six original services.
+// Hover tooltips for the six original services.
 // Added services fall back to their own `summary` field.
 const serviceSummaries = {
     'general-contracting': 'One licensed Florida contractor managing design, permits, inspections and every trade on whole-home remodels and renovations.',
@@ -15,8 +14,14 @@ const serviceSummaries = {
     'concrete-foundations': 'Footings, slabs, driveways and structural repair with tested mixes and documented pours.',
 };
 
-// Line icons for the added services; the six original services use ServiceOutlineIcon.
+// One line icon per service, all from the same set so they match in size and weight.
 const serviceIcons = {
+    'general-contracting': HardHat,
+    'kitchen-remodeling': CookingPot,
+    'bathroom-remodeling': Bath,
+    'home-additions': HousePlus,
+    'commercial-construction': Building2,
+    'concrete-foundations': BrickWall,
     roofing: House,
     windows: Grid2x2,
     doors: DoorOpen,
@@ -27,43 +32,34 @@ const serviceIcons = {
     pools: Waves,
     pergolas: Fence,
     driveways: Car,
-    'accessory-dwelling-units': HousePlus,
+    'accessory-dwelling-units': Warehouse,
     flooring: Layers,
     stucco: PaintRoller,
 };
 
 /**
  * Shared service-card grid used by the homepage "What We Build" section and the
- * Services page. Renders every service in `items` with the same card structure,
- * icon treatment, typography, spacing and responsive breakpoints.
+ * Services page. Renders every service in `items` as a compact icon-and-name tile,
+ * four per row on desktop and two on phones.
  *
  * @param {Array} items   - service records (slug, title, summary)
  * @param {string} className - optional extra classes for the grid wrapper
  */
 const ServiceCardGrid = ({ items, className = '' }) => (
-    <div className={`mt-10 grid grid-cols-3 gap-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 ${className}`}>
+    <div className={`mt-8 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4 ${className}`}>
         {items.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 0.05}>
-                <div className="group block h-full border border-neutral-200 transition-shadow hover:shadow-[0_24px_60px_-40px_rgba(15,23,42,0.55)]">
-                    <Link to={`/services/${s.slug}`} aria-label={`${s.title} service page`} className="flex h-24 items-center justify-center bg-white sm:h-44">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e3eefc] bg-[#eef4fc] p-2 shadow-[0_10px_22px_-14px_rgba(59,130,246,0.55),inset_0_1px_0_rgba(255,255,255,0.95)] sm:h-[7.5rem] sm:w-[7.5rem] sm:p-5">
-                            {serviceOutlineSlugs.has(s.slug) ? (
-                                <ServiceOutlineIcon slug={s.slug} className="h-full w-full" />
-                            ) : (
-                                React.createElement(serviceIcons[s.slug] || House, { className: 'h-full w-full text-[#0B2545]', strokeWidth: 1.5, 'aria-hidden': true })
-                            )}
-                        </div>
-                    </Link>
-                    <div className="p-2 sm:p-6">
-                        <h3 className="font-display text-xs font-bold uppercase leading-tight sm:text-xl">
-                            <Link to={`/services/${s.slug}`} className="transition-colors hover:text-[hsl(var(--brand))]">{s.title}</Link>
-                        </h3>
-                        <p className="mt-2 hidden text-xs leading-relaxed text-neutral-600 sm:block sm:text-sm">{serviceSummaries[s.slug] || s.summary}</p>
-                        <span className="mt-4 hidden items-center gap-2 text-xs font-bold uppercase tracking-widest text-[hsl(var(--ink))] sm:inline-flex">
-                            Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                        </span>
-                    </div>
-                </div>
+            <Reveal key={s.slug} delay={i * 0.03}>
+                <Link
+                    to={`/services/${s.slug}`}
+                    title={serviceSummaries[s.slug] || s.summary}
+                    className="group flex h-full items-center gap-3 border border-neutral-200 bg-white px-3 py-3 transition-colors hover:border-[hsl(var(--brand))] sm:px-4"
+                >
+                    {React.createElement(serviceIcons[s.slug] || House, { className: 'h-6 w-6 shrink-0 text-[#0B2545]', strokeWidth: 1.5, 'aria-hidden': true })}
+                    <h3 className="font-display flex-1 text-sm font-bold uppercase leading-tight transition-colors group-hover:text-[hsl(var(--brand))] sm:text-base">
+                        {s.title}
+                    </h3>
+                    <ArrowRight className="hidden h-4 w-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:text-[hsl(var(--brand))] sm:block" aria-hidden="true" />
+                </Link>
             </Reveal>
         ))}
     </div>
