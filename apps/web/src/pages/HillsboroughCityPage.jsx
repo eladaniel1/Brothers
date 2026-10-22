@@ -34,9 +34,9 @@ const process = [
 ];
 
 const cityWork = [
-    { ...projects[1], image: 'https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/a65298306d75ff40eaa5da91022f8411.png' },
-    { ...projects[3], image: 'https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/31fbc650a5536f92a24ab64b35aa893f.png' },
-    { ...projects[5], image: 'https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/f16aedb9e2f5cba906192dd436c482ca.png' },
+    { ...projects[1], image: '/images/project-kitchen-sink.jpg' },
+    { ...projects[3], image: '/images/project-bath.jpg' },
+    { ...projects[5], image: '/images/project-kitchen-island.jpg' },
 ];
 
 const HillsboroughCityPage = () => {

@@ -203,8 +203,8 @@ const homepageReviewRoles = [
     'Homeowner, Bradenton',
 ];
 const homepageProjectAlts = [
-    'Exterior photograph of a multi-story brownstone-style home.',
-    'Interior photograph of a remodeled kitchen with fitted cabinetry and countertop workspace.',
+    'Exterior photograph of a two-story white home with a wraparound porch.',
+    'Interior photograph of a remodeled white kitchen with an island and range hood.',
     'Interior photograph of a modern commercial office space.',
 ];
 const homepageProjectDimensions = [
@@ -226,7 +226,7 @@ const HomePage = () => <SiteLayout homepageImages>
 
         <section className="relative isolate min-h-[100dvh] overflow-hidden bg-[hsl(var(--ink))]">
             {/* eslint-disable-next-line react/no-unknown-property -- React 18 in this preview warns on fetchPriority; the DOM attribute must be lowercase */}
-            <img src={heroImage} alt="Brothers Remodelers crew framing a home remodeling project in Tampa Bay" width={homepageHeroDimensions.width} height={homepageHeroDimensions.height} fetchpriority="high" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+            <img src={heroImage} alt="Carpenter in a hard hat cutting lumber on a remodeling job site" width={homepageHeroDimensions.width} height={homepageHeroDimensions.height} fetchpriority="high" className="absolute inset-0 h-full w-full object-cover opacity-40" />
             <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--ink))] via-[hsl(var(--ink))]/85 to-transparent" />
             <div className="relative mx-auto grid max-w-[90rem] items-center gap-12 px-4 pb-16 pt-14 md:pt-20 lg:grid-cols-[1.05fr_0.95fr]">
                 <div>
@@ -375,7 +375,7 @@ const HomePage = () => <SiteLayout homepageImages>
         <Section className="bg-neutral-50">
             <div className="grid items-center gap-10 lg:grid-cols-2">
                 <div className="relative">
-                    <img src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/c1f6d4c76570029f14eb3d8f23ba3cb4.png" alt="Construction professional wearing a white hard hat at a home remodeling job site." width={homepageFounderDimensions.width} height={homepageFounderDimensions.height} loading="lazy" className="w-full object-cover" />
+                    <img src="/images/founder-hardhat.jpg" alt="Construction professional wearing a yellow hard hat on a job site." width={homepageFounderDimensions.width} height={homepageFounderDimensions.height} loading="lazy" className="w-full object-cover" />
                     <div className="absolute -bottom-5 -right-4 hidden bg-[hsl(var(--brand))] px-6 py-4 sm:block">
                         <p className="font-display text-3xl font-bold">{company.founded}</p>
                         <p className="text-xs font-bold uppercase tracking-widest">Family-run since day one</p>

@@ -7,7 +7,7 @@ import GetEstimateCTA from '@/components/GetEstimateCTA';
 import { CitiesWeServe } from '@/pages/Pages';
 import { company } from '@/data/site';
 
-const bathroomImage = 'https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/77f9e0beb55fc2728749ae1145ad113f.png';
+const bathroomImage = '/images/bathroom.jpg';
 
 const META_TITLE = 'Bathroom Remodeling in Tampa Bay & Sarasota | Brothers Remodelers';
 const META_DESC =

@@ -26,6 +26,8 @@ const Seo = ({ title, description, image, url, siteName, type = 'website' }) => 
     // match the sitemap entries exactly.
     const path = location.pathname === '/' ? '/' : `${location.pathname.replace(/\/+$/, '')}/`;
     const canonical = url || `${ORIGIN}${path}`;
+    // Social cards need an absolute image URL; site photos are served from /images.
+    const imageUrl = image?.startsWith('/') ? `${ORIGIN}${image}` : image;
 
     return (
         <Helmet>
@@ -35,11 +37,11 @@ const Seo = ({ title, description, image, url, siteName, type = 'website' }) => 
             {siteName && <meta property="og:site_name" content={siteName} />}
             {title && <meta property="og:title" content={title} />}
             {description && <meta property="og:description" content={description} />}
-            {image && <meta property="og:image" content={image} />}
-            <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+            {imageUrl && <meta property="og:image" content={imageUrl} />}
+            <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
             {title && <meta name="twitter:title" content={title} />}
             {description && <meta name="twitter:description" content={description} />}
-            {image && <meta name="twitter:image" content={image} />}
+            {imageUrl && <meta name="twitter:image" content={imageUrl} />}
         </Helmet>
     );
 }

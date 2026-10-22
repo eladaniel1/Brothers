@@ -15,12 +15,12 @@ export const company = {
 export const logoUrl =
     'https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/975588e2c561c9a0ccdfa00f7b57dfc1.jpg';
 
-export const heroImage = 'https://images.hostinger.com/97ac90d0-71c5-441c-bd36-ce8e27f6b16e.png';
-export const kitchenImage = 'https://images.hostinger.com/3e2b47a3-367e-48b2-8c4d-2df6740f8a8d.png';
-export const founderImage = 'https://images.hostinger.com/156eecd0-6937-4fef-8d97-4746c8bb1570.png';
-export const concreteImage = 'https://images.hostinger.com/37a8e4b3-9340-4889-aa13-dd54f1329ad7.png';
-export const brownstoneImage = 'https://images.hostinger.com/895b4deb-9551-4dbd-8978-09cd4e3c9112.png';
-export const officeImage = 'https://images.hostinger.com/6bf77f30-e053-4cbb-822c-319c6a90b765.png';
+export const heroImage = '/images/hero-carpenter.jpg';
+export const kitchenImage = '/images/kitchen.jpg';
+export const founderImage = '/images/about-plans.jpg';
+export const concreteImage = '/images/construction-site.jpg';
+export const brownstoneImage = '/images/whole-home.jpg';
+export const officeImage = '/images/office.jpg';
 
 import { additionalServices } from './additionalServices';
 
@@ -29,8 +29,7 @@ const coreServices = [
         slug: 'general-contracting',
         title: 'General Contracting',
         summary: 'Single-source management of design, permits, trades and closeout for full-home remodels and renovations.',
-        image: 'https://images.hostinger.com/2dfbb454-e809-4437-928b-0742c80b6996.png',
-        imageAlt: 'Illustration of a hard hat above crossed construction tools for general contracting',
+        image: '/images/service-general-contracting.jpg',
         intro: 'We act as the single point of accountability from pre-construction budgeting through final sign-off, coordinating designers, engineers, and every trade on your remodel.',
         scope: [
             'Pre-construction budgeting and constructability review',
@@ -48,8 +47,7 @@ const coreServices = [
         slug: 'kitchen-remodeling',
         title: 'Kitchen Remodeling',
         summary: 'Full kitchen rebuilds with relocated plumbing, custom millwork and stone fabrication managed end to end.',
-        image: 'https://images.hostinger.com/13bdbe8a-b6bd-4c43-aab3-813d63181a72.png',
-        imageAlt: 'Illustration of a kitchen oven, cooktop and cabinetry for kitchen remodeling',
+        image: '/images/service-kitchen.jpg',
         intro: 'Kitchens carry the most trades per square foot of any room. We sequence demolition, rough plumbing, electrical loads, cabinetry and stone so the room lands exactly on the drawings.',
         scope: [
             'Layout studies and appliance clearance verification',
@@ -67,8 +65,7 @@ const coreServices = [
         slug: 'bathroom-remodeling',
         title: 'Bathroom Remodeling',
         summary: 'Waterproofed, code-compliant bathrooms with tile setting, niches and rebuilt wet walls.',
-        image: 'https://images.hostinger.com/ba7e44d3-05a2-40d3-a465-288b46bd4451.png',
-        imageAlt: 'Illustration of a bathtub with a shower head for bathroom remodeling',
+        image: '/images/service-bathroom.jpg',
         intro: 'Every bathroom we build starts with the waterproofing assembly. Membranes, sloped shower pans and pressure-tested valves are inspected before a single tile is set.',
         scope: [
             'Full demolition to studs and blocking',
@@ -86,8 +83,7 @@ const coreServices = [
         slug: 'home-additions',
         title: 'Home Additions & Extensions',
         summary: 'Rear additions, second-story builds and room expansions from foundation to roof tie-in.',
-        image: 'https://images.hostinger.com/5caaa16b-4613-469c-bcb8-7084196dd145.png',
-        imageAlt: 'Illustration of a home with a connected addition',
+        image: '/images/service-additions.jpg',
         intro: 'Additions are structural work first and finishes second. We form and frame to the engineer’s drawings and Florida wind-load requirements, then blend the new envelope into the existing house.',
         scope: [
             'Footings, foundation walls and slab work',
@@ -105,8 +101,7 @@ const coreServices = [
         slug: 'commercial-construction',
         title: 'Commercial Build-Outs',
         summary: 'Office, retail and light commercial interiors delivered on landlord schedules and after-hours windows.',
-        image: 'https://images.hostinger.com/3069adac-0524-4fc0-92eb-4cd8153a9b2d.png',
-        imageAlt: 'Illustration of a commercial office building with a grid of windows',
+        image: '/images/service-commercial.jpg',
         intro: 'Commercial tenants are paying rent from day one. We plan build-outs around landlord rules, long-lead equipment and inspection sequencing so you open on the date you advertised.',
         scope: [
             'Tenant improvement and white-box build-outs',
@@ -124,8 +119,7 @@ const coreServices = [
         slug: 'concrete-foundations',
         title: 'Concrete & Foundations',
         summary: 'Footings, slabs, driveways and structural repair with tested mixes and documented pours.',
-        image: 'https://images.hostinger.com/cf5627e3-8103-499c-b10b-74960638c35b.png',
-        imageAlt: 'Illustration of concrete blocks with a mason trowel for concrete and foundation work',
+        image: '/images/service-concrete.jpg',
         intro: 'Concrete is unforgiving, so we document it: mix designs, slump and cylinder tests, rebar inspection photos and cure logs for every structural pour.',
         scope: [
             'Footings, foundation walls and grade beams',
