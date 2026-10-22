@@ -36,3 +36,4 @@ Each file is a resized copy of `https://images.unsplash.com/photo-<id>`:
 | `service-stucco.jpg` | `1574359411659-15573a27fd0c` |
 | `whole-home.jpg` | `1570129477492-45c003edd2be` |
 | `service-windows.jpg` | `1600210491892-03d54c0aaf87` |
+| `service-drywall.jpg` | `1607400201889-565b1ee75f8e` |

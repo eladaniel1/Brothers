@@ -31,7 +31,7 @@ const FaqList = ({ items }) => (
     </div>
 );
 
-// Verified shared city/community list for the 13 additional service pages.
+// Verified shared city/community list for the 14 additional service pages.
 // City and county names are plain text only — no anchors, links, or buttons.
 const serviceCities = [
     {

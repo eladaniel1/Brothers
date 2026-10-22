@@ -1,4 +1,4 @@
-// Enhancement data for the 13 additional service pages, used by ServiceDetailPage
+// Enhancement data for the 14 additional service pages, used by ServiceDetailPage
 // to match the content depth of the four dedicated optimized service pages
 // (Kitchen, Bathroom, General Contracting, Home Additions).
 //
@@ -222,6 +222,22 @@ export const serviceEnhancements = {
         whyIcon: Droplets,
         whyTitle: 'Moisture-managed',
         whyText: 'Water-resistive barrier and weep screeds behind the stucco, not just the finish coat.',
+    },
+    drywall: {
+        timeline: 'Small repairs take a day or two while each coat dries; full rooms take longer.',
+        permitTypes: 'Small repairs usually need no permit; larger replacement is often part of a building permit.',
+        costDrivers: 'Square footage, board type, water-damage removal, finish level, texture matching.',
+        costFactors: [
+            ['Square footage and ceiling height', 'Cost scales with the wall and ceiling area. High or vaulted ceilings need scaffolding or lifts, which adds labor.'],
+            ['Board type', 'Standard board costs least. Moisture- and mold-resistant and fire-rated board cost more and are required in some rooms.'],
+            ['Water-damage removal', 'Cutting out wet board and insulation, drying the cavity and fixing the leak are separate line items that come before new drywall.'],
+            ['Finish level', 'A smooth finish for rooms with strong side light takes more coats and sanding than a standard finish under texture.'],
+            ['Texture matching', 'Matching an existing knockdown or orange-peel texture is labor-intensive, especially on patches in the middle of a wall.'],
+            ['Permits and inspections', 'Small repairs usually do not need a permit. Larger replacement is often part of a remodel permit; fees vary by city and county and are part of the written estimate.'],
+        ],
+        whyIcon: Droplets,
+        whyTitle: 'Moisture first',
+        whyText: 'We find and fix the source of any water before new drywall goes up.',
     },
 };
 
