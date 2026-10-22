@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { AirVent, ArrowRight, Car, DoorOpen, Fence, Grid2x2, House, HousePlus, Layers, PaintRoller, Sun, Thermometer, Waves, Wrench } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import ServiceOutlineIcon, { serviceOutlineSlugs } from '@/components/ServiceOutlineIcons';
 
@@ -15,22 +15,21 @@ const serviceSummaries = {
     'concrete-foundations': 'Footings, slabs, driveways and structural repair with tested mixes and documented pours.',
 };
 
-const serviceImageDimensions = {
-    'general-contracting': { width: 1024, height: 1024 },
-    'kitchen-remodeling': { width: 1024, height: 1024 },
-    'bathroom-remodeling': { width: 1024, height: 1024 },
-    'home-additions': { width: 1024, height: 1024 },
-    'commercial-construction': { width: 1024, height: 1024 },
-    'concrete-foundations': { width: 1024, height: 1024 },
-};
-
-const serviceImageAlts = {
-    'general-contracting': 'Illustration of a hard hat above crossed construction tools.',
-    'kitchen-remodeling': 'Illustration of a kitchen range with an oven and stovetop.',
-    'bathroom-remodeling': 'Illustration of a bathtub with a shower head.',
-    'home-additions': 'Illustration of a house with an attached room addition.',
-    'commercial-construction': 'Illustration of a commercial office building with a grid of windows.',
-    'concrete-foundations': 'Illustration of concrete blocks with a mason trowel.',
+// Line icons for the added services; the six original services use ServiceOutlineIcon.
+const serviceIcons = {
+    roofing: House,
+    windows: Grid2x2,
+    doors: DoorOpen,
+    hvac: AirVent,
+    plumbing: Wrench,
+    solar: Sun,
+    'roof-insulation': Thermometer,
+    pools: Waves,
+    pergolas: Fence,
+    driveways: Car,
+    'accessory-dwelling-units': HousePlus,
+    flooring: Layers,
+    stucco: PaintRoller,
 };
 
 /**
@@ -38,7 +37,7 @@ const serviceImageAlts = {
  * Services page. Renders every service in `items` with the same card structure,
  * icon treatment, typography, spacing and responsive breakpoints.
  *
- * @param {Array} items   - service records (slug, title, summary, image, imageAlt)
+ * @param {Array} items   - service records (slug, title, summary)
  * @param {string} className - optional extra classes for the grid wrapper
  */
 const ServiceCardGrid = ({ items, className = '' }) => (
@@ -51,14 +50,7 @@ const ServiceCardGrid = ({ items, className = '' }) => (
                             {serviceOutlineSlugs.has(s.slug) ? (
                                 <ServiceOutlineIcon slug={s.slug} className="h-full w-full" />
                             ) : (
-                                <img
-                                    src={s.image}
-                                    alt={serviceImageAlts[s.slug] || s.imageAlt}
-                                    width={(serviceImageDimensions[s.slug] || { width: 1254, height: 1254 }).width}
-                                    height={(serviceImageDimensions[s.slug] || { width: 1254, height: 1254 }).height}
-                                    loading="lazy"
-                                    className="h-full w-full object-contain mix-blend-multiply"
-                                />
+                                React.createElement(serviceIcons[s.slug] || House, { className: 'h-full w-full text-[#0B2545]', strokeWidth: 1.5, 'aria-hidden': true })
                             )}
                         </div>
                     </Link>

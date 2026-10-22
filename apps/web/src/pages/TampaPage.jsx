@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { Check, Phone } from 'lucide-react';
+import { BadgeCheck, Calculator, CalendarClock, CalendarDays, Check, DraftingCompass, HardHat, Layers, MessagesSquare, Phone } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, Section } from '@/components/SiteLayout';
 import GetEstimateCTA from '@/components/GetEstimateCTA';
 import { company, kitchenImage, projects, stats } from '@/data/site';
@@ -53,6 +53,9 @@ const whyRemodel = [
     ['Improving the layout', 'Removing walls, opening kitchens to living areas and reworking circulation can change how a house feels without adding a single square foot.'],
     ['Combining projects into one renovation', 'Owners planning several updates — kitchen, baths, floors, impact windows — usually save time and money running them as one coordinated project instead of separate jobs.'],
 ];
+
+// Icons for the considerations list, in the same order.
+const considerationIcons = [DraftingCompass, CalendarDays, Layers, BadgeCheck, MessagesSquare, CalendarClock, Calculator, HardHat];
 
 const considerations = [
     ['Scope of work', 'Define what is included and, just as important, what is not. A written scope keeps bids comparable and prevents mid-project surprises.'],
@@ -269,54 +272,8 @@ const TampaPage = () => (
                 {considerations.map(([title, text], i) => (
                     <div key={title} className="border-t-2 border-neutral-200 pt-5">
                         <h3 className="font-display flex items-center text-lg font-bold uppercase">
-                            {i === 0 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/758c2e37bc2237c751563f7787ca2fdd.png"
-                                    alt="Floor plan blueprint and ruler icon for defining remodeling scope of work"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
-                            ) : i === 1 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/e5b0357cbc28f90dc5730dc354323c2b.png"
-                                    alt="Calendar planning icon for organizing a remodeling project plan"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
-                            ) : i === 2 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/a7046d208d18da2be3d474f47f623cd0.png"
-                                    alt="Layered construction materials icon for selecting remodeling materials"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
-                            ) : i === 3 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/1c86757c72616d514a3eb8d29a19c030.png"
-                                    alt="Certified document icon for reviewing remodeling contractor credentials"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
-                            ) : i === 4 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/0cf48db532cff9a2d2a036f2c8fc3614.png"
-                                    alt="Communication icon for staying informed during a remodeling project"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
-                            ) : i === 5 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/b7adef17dd1a1c7f4c7c052b894e0606.png"
-                                    alt="Calendar and clock icon for setting realistic remodeling timeline expectations"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
-                            ) : i === 6 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/3ffb26932a9ccdf8b405d4974df72fd6.png"
-                                    alt="Calculator and dollar document icon for planning a remodeling budget"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
-                            ) : i === 7 ? (
-                                <img
-                                    src="https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/0d32730b860c2fa5ac7fb4a7aea94cdf.png"
-                                    alt="Hard hat and checkmark icon for evaluating remodeling workmanship quality"
-                                    className="mr-2 h-10 w-10 object-contain"
-                                />
+                            {considerationIcons[i] ? (
+                                React.createElement(considerationIcons[i], { className: 'mr-2 h-10 w-10 shrink-0 text-[hsl(var(--brand))]', strokeWidth: 1.5, 'aria-hidden': true })
                             ) : (
                                 <span className="mr-2 text-[hsl(var(--brand))]">{String(i + 1).padStart(2, '0')}</span>
                             )}
