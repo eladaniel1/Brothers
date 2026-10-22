@@ -62,7 +62,7 @@ const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false }) =
                 </div>
                 <div className="grid gap-2">
                     <label className={label} htmlFor="qf-phone">Phone</label>
-                    <input id="qf-phone" value={form.phone} onChange={set('phone')} className={field} placeholder="(954) 555-0100" />
+                    <input id="qf-phone" value={form.phone} onChange={set('phone')} className={field} placeholder="(813) 555-0100" />
                 </div>
                 <div className="grid gap-2">
                     <label className={label} htmlFor="qf-city">Project location</label>
