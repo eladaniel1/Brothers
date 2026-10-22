@@ -1,0 +1,591 @@
+// City service pages for Pinellas, Pasco, Sarasota and Manatee counties.
+// Each entry powers /areas-we-serve/<countySlug>/<slug> via CityPage.
+
+const svc = (title, to, text) => ({ title, to, text });
+const K = (text) => svc('Kitchen Remodeling', '/services/kitchen-remodeling', text);
+const B = (text) => svc('Bathroom Remodeling', '/services/bathroom-remodeling', text);
+const A = (text) => svc('Home Additions', '/services/home-additions', text);
+const W = (text) => svc('Whole-Home Remodeling', '/services/general-contracting', text);
+const G = (text) => svc('General Contracting', '/services/general-contracting', text);
+const C = (text) => svc('Concrete Services', '/services/concrete-foundations', text);
+
+export const homeownerInfo = [
+    ['Define the scope in writing', 'A written scope states what is included and what is not. It keeps bids comparable and prevents mid-project surprises.'],
+    ['Compare estimates line by line', 'A line-item proposal with stated allowances is easier to evaluate than a single bottom line. Ask what is fixed price and what is allowance-based.'],
+    ['Select finishes before demolition', 'Cabinetry, stone and glazing carry the longest lead times. Locking selections early is the single best way to protect a schedule.'],
+    ['Confirm who pulls permits', 'Structural, electrical, plumbing and glazing work typically requires permits. Agree in writing on who files them and who is present for inspections.'],
+    ['Ask how the site is protected', 'If you are staying in the house during work, confirm dust containment, floor protection and daily cleanup before the contract is signed.'],
+    ['Set a communication rhythm', 'A weekly schedule, photo updates and a named person who answers the phone keep a renovation predictable.'],
+    ['Understand the change-order policy', 'Ask what happens when something behind a wall changes the work. A written, priced change order before work proceeds is the honest answer.'],
+    ['Plan the timeline around inspections', 'Municipal inspection windows and material lead times shape the calendar more than labor does. Ask for an outline schedule that accounts for both.'],
+];
+
+export const cityProcess = [
+    ['Initial Consultation', 'We walk the house, listen to what you want to change, and talk honestly about budget and sequence.'],
+    ['Project Assessment', 'A superintendent measures, photographs and flags existing conditions — structure, plumbing, electrical and moisture.'],
+    ['Planning & Scope', 'Layouts, finish selections and long-lead items are locked into a written scope before anything is demolished.'],
+    ['Estimate & Proposal', 'A line-item fixed-price proposal with allowances stated plainly, usually within five business days.'],
+    ['Construction', 'A dedicated superintendent runs the site with a live schedule, weekly photo updates and protected work areas.'],
+    ['Project Completion', 'Sign-offs, punch list, warranty documents and a clean handover you can move into.'],
+];
+
+const whyRemodelBase = [
+    ['A kitchen that no longer fits how you cook', 'Closed-off layouts, worn finishes and limited counter space are the most common starting points we see. Opening a kitchen to the living area and adding storage changes how the whole house works.'],
+    ['Bathrooms that need a full rebuild', 'Aging waterproofing, poor ventilation and dated fixtures are functional problems, not just cosmetic ones. A gut renovation fixes all three in one project.'],
+    ['More space without a move', 'A growing household or a work-from-home routine often needs another room. An addition keeps the location, the schools and the equity already built into the house.'],
+    ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
+    ['Interior modernization', 'Replacing worn flooring, upgrading lighting and circuits, and updating trim and finishes bring an older interior current in one coordinated pass.'],
+    ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+];
+
+const faqsFor = (name, countyName, permitJurisdiction) => [
+    [`What remodeling services does Brothers Remodelers provide in ${name}?`, `Brothers Remodelers provides kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete services, and general contracting for homeowners in ${name} and the surrounding ${countyName} area. Every project begins with a free site walkthrough and a written line-item proposal.`],
+    [`How much does home remodeling cost in ${name}, Florida?`, `Remodeling cost depends on the scope, size, materials and condition of the home, so we do not quote numbers before seeing the space. After a walkthrough you receive a line-item fixed-price proposal with allowances stated for owner-selected finishes, which makes bids easy to compare on equal terms.`],
+    ['How long does a remodeling project take?', `Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and ${permitJurisdiction} inspection windows.`],
+    [`Do I need a permit for remodeling in ${name}?`, `Many structural, electrical, plumbing and window or door replacement projects require permits, filed with ${permitJurisdiction}. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.`],
+    ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
+    [`Can Brothers Remodelers remodel multiple areas of my ${name} home?`, 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+    [`How do I request a remodeling estimate in ${name}?`, 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
+];
+
+// ---- Templated builders for additional city pages ----
+const heroIntroFor = (name, countyName) =>
+    `Brothers Remodelers provides residential remodeling and general contracting services for homeowners in ${name}, Florida, and throughout ${countyName} — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.`;
+
+const quickAnswerFor = (name, locationDesc, permitJurisdiction, isCity) =>
+    `Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in ${name}, ${locationDesc}. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. ${name} homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination${isCity ? ` with ${permitJurisdiction}` : ''}.`;
+
+const servicesIntroFor = (name) =>
+    `Six core disciplines, one licensed contractor. Every ${name} project runs under the same standard: a written scope, a live schedule and a superintendent on site.`;
+
+const servicesFor = (permitJurisdiction, kitchenText) => [
+    K(kitchenText),
+    B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+    A('Extra bedrooms, in-law suites and second stories for growing households — engineered, permitted and tied into the existing roof and mechanicals, with wind-rated assemblies where the structure requires them.'),
+    W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+    G(`Permit filings with ${permitJurisdiction}, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off, so you are not coordinating subs yourself.`),
+    C("Footings, slabs, driveways, walkways and lanai concrete with documented mix designs and tested pours — including the drainage details that keep slab work sound through Florida's wet season."),
+];
+
+const areaParasFor = (name, countyName, locationDesc, permitJurisdiction, isCity, coastal) => {
+    const p1 = `${name} is ${locationDesc}. Our ${countyName} service area is built around the communities that surround it.`;
+    let p2 = isCity
+        ? `Because ${name} is an incorporated city, permitting for remodeling projects is handled by ${permitJurisdiction} rather than ${countyName}.`
+        : `Because ${name} sits outside city limits, permitting for remodeling projects is handled by ${permitJurisdiction} rather than an incorporated city.`;
+    p2 += coastal
+        ? ' Coastal and flood-zone properties also carry elevation and wind-rated glazing requirements, and we file correctly the first time and coordinate every inspection along the way.'
+        : ' We file with the correct jurisdiction the first time and coordinate every inspection along the way.';
+    return [p1, p2];
+};
+
+const buildCity = ({ countySlug, countyName, countyRegion, permitJurisdiction, slug, name, locationDesc, isCity, coastal, kitchenText, whyIntro }) => ({
+    countySlug,
+    countyName,
+    countyRegion,
+    permitJurisdiction,
+    slug,
+    name,
+    metaTitle: `${name} Home Remodeling & General Contractor | Brothers Remodelers`,
+    metaDescription: `Brothers Remodelers serves ${name}, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.`,
+    heroIntro: heroIntroFor(name, countyName),
+    quickAnswer: quickAnswerFor(name, locationDesc, permitJurisdiction, isCity),
+    servicesIntro: servicesIntroFor(name),
+    services: servicesFor(permitJurisdiction, kitchenText),
+    whyTitle: `Why ${name} Homeowners Remodel`,
+    whyIntro,
+    whyRemodel: whyRemodelBase,
+    areaTitle: `Serving ${name} and ${countyName}`,
+    areaParas: areaParasFor(name, countyName, locationDesc, permitJurisdiction, isCity, coastal),
+    faqs: faqsFor(name, countyName, permitJurisdiction),
+});
+
+export const allCities = [
+    // ---------------- Pinellas County ----------------
+    {
+        countySlug: 'pinellas',
+        countyName: 'Pinellas County',
+        countyRegion: 'Pinellas County, FL',
+        permitJurisdiction: 'the city of St. Petersburg',
+        slug: 'st-petersburg',
+        name: 'St. Petersburg',
+        metaTitle: 'St. Petersburg Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves St. Petersburg, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in St. Petersburg, Florida, and throughout Pinellas County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in St. Petersburg, the largest city in Pinellas County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. St. Petersburg homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including coastal and flood-zone requirements.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every St. Petersburg project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating kitchens in historic northeast St. Petersburg bungalows to full layout changes in downtown condos, we sequence every trade — demolition, rough-in, millwork, stone — so the busiest room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Second stories, rear additions and primary-suite expansions for homes that no longer fit the household — engineered to Florida wind code and tied into the existing roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with the city of St. Petersburg, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai concrete with documented mix designs and tested pours — including the flood-zone foundation details common on the Pinellas peninsula.'),
+        ],
+        whyTitle: 'Why St. Petersburg Homeowners Remodel',
+        whyIntro: 'St. Petersburg mixes 1920s-era homes in the Old Northeast and Kenwood with mid-century ranches and new downtown construction. Most remodels we see trace back to a handful of practical needs — a house that no longer fits the household that lives in it.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving St. Petersburg and Pinellas County',
+        areaParas: [
+            'St. Petersburg is the largest city in Pinellas County, located on the peninsula between Tampa Bay and the Gulf of Mexico. Our Pinellas County service area is built around St. Petersburg, Clearwater and the beach communities that surround them.',
+            'Because St. Petersburg is an incorporated city, permitting for remodeling projects is handled by the city of St. Petersburg rather than Pinellas County. Coastal and flood-zone properties also carry elevation and wind-rated glazing requirements, and we file correctly the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('St. Petersburg', 'Pinellas County', 'the city of St. Petersburg'),
+    },
+    {
+        countySlug: 'pinellas',
+        countyName: 'Pinellas County',
+        countyRegion: 'Pinellas County, FL',
+        permitJurisdiction: 'the city of Clearwater',
+        slug: 'clearwater',
+        name: 'Clearwater',
+        metaTitle: 'Clearwater Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Clearwater, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Clearwater, Florida, and throughout Pinellas County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Clearwater, the county seat of Pinellas County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Clearwater homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including coastal and flood-zone requirements.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Clearwater project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating kitchens in mid-century Clearwater ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Rear additions, second stories and room expansions for homes that no longer fit the household — engineered to Florida wind code and tied into the existing roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with the city of Clearwater, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai concrete with documented mix designs and tested pours — including the flood-zone foundation details common near Clearwater Beach and the Intracoastal.'),
+        ],
+        whyTitle: 'Why Clearwater Homeowners Remodel',
+        whyIntro: 'Clearwater spans historic harbor-area homes, mid-century ranches inland and newer construction along the beaches. Most remodels we see trace back to a handful of practical needs — a house that no longer fits the household that lives in it.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Clearwater and Pinellas County',
+        areaParas: [
+            'Clearwater is the county seat of Pinellas County, located on the Pinellas peninsula between Tampa Bay and the Gulf of Mexico, west of Tampa. Our Pinellas County service area is built around Clearwater, St. Petersburg and the beach communities.',
+            'Because Clearwater is an incorporated city, permitting for remodeling projects is handled by the city of Clearwater rather than Pinellas County. Coastal and barrier-island properties also carry elevation, flood-zone and wind-rated glazing requirements, and we file correctly the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Clearwater', 'Pinellas County', 'the city of Clearwater'),
+    },
+    {
+        countySlug: 'pinellas',
+        countyName: 'Pinellas County',
+        countyRegion: 'Pinellas County, FL',
+        permitJurisdiction: 'Pinellas County',
+        slug: 'palm-harbor',
+        name: 'Palm Harbor',
+        metaTitle: 'Palm Harbor Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Palm Harbor, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Palm Harbor, Florida, and throughout Pinellas County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Palm Harbor, an unincorporated community in northern Pinellas County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Palm Harbor homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination with Pinellas County.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Palm Harbor project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating original kitchens in Palm Harbor subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Extra bedrooms, in-law suites and second stories for growing households — engineered, permitted and tied into the existing roof and mechanicals, with wind-rated assemblies where the structure requires them.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with Pinellas County, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off, so you are not coordinating subs yourself.'),
+            C('Footings, slabs, driveways, walkways and lanai concrete with documented mix designs and tested pours — including the drainage details that keep slab work sound through Florida’s wet season.'),
+        ],
+        whyTitle: 'Why Palm Harbor Homeowners Remodel',
+        whyIntro: 'Palm Harbor blends older homes near the gulf with subdivision builds from the 1980s and 1990s that are now due for kitchen, bath and system updates. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Palm Harbor and Pinellas County',
+        areaParas: [
+            'Palm Harbor is an unincorporated community in northern Pinellas County, along the Gulf coast between Tarpon Springs and Dunedin. Our Pinellas County service area is built around Clearwater, St. Petersburg and the communities that surround them.',
+            'Because Palm Harbor sits outside city limits, permitting for remodeling projects is handled by Pinellas County rather than an incorporated city. We file with the correct jurisdiction the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Palm Harbor', 'Pinellas County', 'Pinellas County'),
+    },
+
+    // ---------------- Pasco County ----------------
+    {
+        countySlug: 'pasco',
+        countyName: 'Pasco County',
+        countyRegion: 'Pasco County, FL',
+        permitJurisdiction: 'Pasco County',
+        slug: 'wesley-chapel',
+        name: 'Wesley Chapel',
+        metaTitle: 'Wesley Chapel Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Wesley Chapel, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Wesley Chapel, Florida, and throughout Pasco County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Wesley Chapel, one of the fastest-growing communities in Pasco County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Wesley Chapel homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination with Pasco County.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Wesley Chapel project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From upgrading builder-grade kitchens in Wesley Chapel subdivision homes to full layout changes with islands, relocated plumbing and new circuits, we sequence every trade so the room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Extra bedrooms, in-law suites, lanai enclosures and second stories for growing households — engineered, permitted and tied into the existing roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with Pasco County, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off, so you are not coordinating subs yourself.'),
+            C('Footings, slabs, driveways, walkways and lanai concrete with documented mix designs and tested pours — including the drainage details that keep slab work sound through Florida’s wet season.'),
+        ],
+        whyTitle: 'Why Wesley Chapel Homeowners Remodel',
+        whyIntro: 'Wesley Chapel grew rapidly through the 2000s and 2010s with master-planned communities, and much of its housing stock is now at the age where builder-grade finishes give way to custom ones. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Wesley Chapel and Pasco County',
+        areaParas: [
+            'Wesley Chapel is an unincorporated community in central Pasco County, north of Tampa along the I-75 corridor, bordered by Land O’ Lakes and Zephyrhills. Our Pasco County service area covers the fastest-growing communities in the county.',
+            'Because Wesley Chapel sits outside city limits, permitting for remodeling projects is handled by Pasco County. We file with the correct jurisdiction the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Wesley Chapel', 'Pasco County', 'Pasco County'),
+    },
+
+    // ---------------- Sarasota County ----------------
+    {
+        countySlug: 'sarasota',
+        countyName: 'Sarasota County',
+        countyRegion: 'Sarasota County, FL',
+        permitJurisdiction: 'the city of Sarasota',
+        slug: 'sarasota',
+        name: 'Sarasota',
+        metaTitle: 'Sarasota Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Sarasota, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Sarasota, Florida, and throughout Sarasota County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Sarasota, the county seat of Sarasota County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Sarasota homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including coastal and flood-zone requirements.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Sarasota project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating kitchens in historic Sarasota homes west of the Trail to full layout changes in newer construction, we sequence every trade — demolition, rough-in, millwork, stone — so the busiest room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Rear additions, second stories and primary-suite expansions for homes that no longer fit the household — engineered to Florida wind code and tied into the existing roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with the city of Sarasota, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai or pool-deck concrete with documented mix designs and tested pours — including the flood-zone foundation details common near the bay and the keys.'),
+        ],
+        whyTitle: 'Why Sarasota Homeowners Remodel',
+        whyIntro: 'Sarasota spans historic bungalows west of Tamiami Trail, mid-century ranches inland and custom homes near the water. Most remodels we see trace back to a handful of practical needs — a house that no longer fits the household that lives in it.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Sarasota and Sarasota County',
+        areaParas: [
+            'Sarasota is the county seat of Sarasota County, located on the Gulf coast of Florida, south of the Tampa Bay area. Our Sarasota County service area covers Sarasota, Venice, North Port and the barrier-island communities.',
+            'Because Sarasota is an incorporated city, permitting for remodeling projects is handled by the city of Sarasota rather than Sarasota County. Coastal and flood-zone properties also carry elevation and wind-rated glazing requirements, and we file correctly the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Sarasota', 'Sarasota County', 'the city of Sarasota'),
+    },
+    {
+        countySlug: 'sarasota',
+        countyName: 'Sarasota County',
+        countyRegion: 'Sarasota County, FL',
+        permitJurisdiction: 'Sarasota County',
+        slug: 'siesta-key',
+        name: 'Siesta Key',
+        metaTitle: 'Siesta Key Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Siesta Key, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners on Siesta Key, Florida, and throughout Sarasota County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners on Siesta Key, a barrier island in Sarasota County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Siesta Key homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including coastal construction, flood-zone and wind-rated glazing requirements.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Siesta Key project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Salt air and humidity make the assembly under the tile matter as much as the tile itself.'),
+            A('Second stories and elevated additions on barrier-island homes — engineered to coastal wind code, flood-zone elevation and the existing foundation, then tied into the roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with Sarasota County and coastal review, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways and pool-deck concrete with documented mix designs and tested pours — including the elevation and drainage details that keep barrier-island slab work sound.'),
+        ],
+        whyTitle: 'Why Siesta Key Homeowners Remodel',
+        whyIntro: 'Siesta Key housing ranges from original 1950s–1970s beach cottages to newer waterfront construction, much of it within the coastal construction zone. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Siesta Key and Sarasota County',
+        areaParas: [
+            'Siesta Key is a barrier island in Sarasota County, off the coast of Sarasota, between Lido Key to the north and Casey Key to the south. Our Sarasota County service area covers the mainland communities and the barrier islands.',
+            'Because Siesta Key is unincorporated, permitting is handled by Sarasota County, and most substantial work also falls under coastal construction control lines, flood-zone elevation and wind-rated glazing rules. We file correctly the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Siesta Key', 'Sarasota County', 'Sarasota County'),
+    },
+    {
+        countySlug: 'sarasota',
+        countyName: 'Sarasota County',
+        countyRegion: 'Sarasota County, FL',
+        permitJurisdiction: 'the town of Longboat Key',
+        slug: 'longboat-key',
+        name: 'Longboat Key',
+        metaTitle: 'Longboat Key Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Longboat Key, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners on Longboat Key, Florida, and throughout Sarasota County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners on Longboat Key, a barrier island spanning the Sarasota–Manatee county line in Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Longboat Key homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including coastal construction, flood-zone and wind-rated glazing requirements.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Longboat Key project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating kitchens in older condominiums and single-family homes to full rebuilds of waterfront properties, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Salt air and humidity make the assembly under the tile matter as much as the tile itself.'),
+            A('Elevated additions and second stories on barrier-island homes — engineered to coastal wind code, flood-zone elevation and the existing foundation, then tied into the roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with the town of Longboat Key and coastal review, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways and pool-deck concrete with documented mix designs and tested pours — including the elevation and drainage details that keep barrier-island slab work sound.'),
+        ],
+        whyTitle: 'Why Longboat Key Homeowners Remodel',
+        whyIntro: 'Longboat Key housing ranges from original 1960s–1980s condos and homes to new waterfront construction, much of it within the coastal construction zone. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Longboat Key and Sarasota County',
+        areaParas: [
+            'Longboat Key is a barrier island that spans the Sarasota–Manatee county line, north of Lido Key and St. Armands, with the town of Longboat Key governing most of the island. Our Sarasota County service area covers the mainland communities and the barrier islands.',
+            'Because Longboat Key is an incorporated town, permitting is handled by the town of Longboat Key, and most substantial work also falls under coastal construction control lines, flood-zone elevation and wind-rated glazing rules. We file correctly the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Longboat Key', 'Sarasota County', 'the town of Longboat Key'),
+    },
+    {
+        countySlug: 'sarasota',
+        countyName: 'Sarasota County',
+        countyRegion: 'Sarasota County, FL',
+        permitJurisdiction: 'Sarasota County',
+        slug: 'lakewood-ranch',
+        name: 'Lakewood Ranch',
+        metaTitle: 'Lakewood Ranch Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Lakewood Ranch, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Lakewood Ranch, Florida, and throughout Sarasota County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Lakewood Ranch, the master-planned community spanning the Sarasota–Manatee county line in Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Lakewood Ranch homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including community architectural review.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Lakewood Ranch project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From upgrading builder-grade kitchens in Lakewood Ranch village homes to full layout changes with islands, relocated plumbing and new circuits, we sequence every trade so the room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Extra bedrooms, in-law suites, lanai enclosures and outdoor living additions — engineered, permitted and tied into the existing roof and mechanicals, and designed to clear community architectural review.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with Sarasota County, community architectural review submittals, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai or pool-deck concrete with documented mix designs and tested pours — including the drainage details that keep slab work sound through Florida’s wet season.'),
+        ],
+        whyTitle: 'Why Lakewood Ranch Homeowners Remodel',
+        whyIntro: 'Lakewood Ranch grew through the 2000s and 2010s as one of the region’s largest master-planned communities, and its housing stock is now at the age where builder-grade finishes give way to custom ones. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Lakewood Ranch and Sarasota County',
+        areaParas: [
+            'Lakewood Ranch is a master-planned community spanning the Sarasota–Manatee county line, east of Sarasota and Bradenton, organized into villages and governed by community development districts. This page covers the Sarasota County side of the community; see our Lakewood Ranch (Manatee County) page for villages on the Manatee side.',
+            'Because the Sarasota County side of Lakewood Ranch is unincorporated, permitting is handled by Sarasota County, and most exterior changes and additions also pass through community architectural review before a permit is filed. We prepare submittals that clear review the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Lakewood Ranch', 'Sarasota County', 'Sarasota County'),
+    },
+    {
+        countySlug: 'sarasota',
+        countyName: 'Sarasota County',
+        countyRegion: 'Sarasota County, FL',
+        permitJurisdiction: 'the city of Venice',
+        slug: 'venice',
+        name: 'Venice',
+        metaTitle: 'Venice Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Venice, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Venice, Florida, and throughout Sarasota County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Venice, a city in southern Sarasota County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Venice homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including coastal and flood-zone requirements.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Venice project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating kitchens in historic Venice island homes to full layout changes in newer mainland construction, we sequence every trade so the busiest room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Rear additions, lanai enclosures and room expansions for homes that no longer fit the household — engineered to Florida wind code and tied into the existing roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with the city of Venice, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai or pool-deck concrete with documented mix designs and tested pours — including the flood-zone foundation details common near the Gulf and the Intracoastal.'),
+        ],
+        whyTitle: 'Why Venice Homeowners Remodel',
+        whyIntro: 'Venice spans the historic island, mainland subdivisions and active-adult communities, with housing stock ranging from 1920s homes to recent builds. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Venice and Sarasota County',
+        areaParas: [
+            'Venice is a city in southern Sarasota County, on the Gulf coast south of Sarasota, comprising the historic Venice island and the surrounding mainland. Our Sarasota County service area covers Venice, North Port, Sarasota and the barrier-island communities.',
+            'Because Venice is an incorporated city, permitting for remodeling projects is handled by the city of Venice rather than Sarasota County. Coastal and flood-zone properties also carry elevation and wind-rated glazing requirements, and we file correctly the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Venice', 'Sarasota County', 'the city of Venice'),
+    },
+    {
+        countySlug: 'sarasota',
+        countyName: 'Sarasota County',
+        countyRegion: 'Sarasota County, FL',
+        permitJurisdiction: 'the city of North Port',
+        slug: 'north-port',
+        name: 'North Port',
+        metaTitle: 'North Port Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves North Port, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in North Port, Florida, and throughout Sarasota County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in North Port, one of the fastest-growing cities in Sarasota County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. North Port homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination with the city of North Port.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every North Port project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From upgrading builder-grade kitchens in North Port subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Extra bedrooms, in-law suites, lanai enclosures and pool decks for growing households — engineered, permitted and tied into the existing roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with the city of North Port, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai or pool-deck concrete with documented mix designs and tested pours — including the drainage details that keep slab work sound through Florida’s wet season.'),
+        ],
+        whyTitle: 'Why North Port Homeowners Remodel',
+        whyIntro: 'North Port is one of the fastest-growing cities in the region, with housing stock largely built from the 1990s onward and now reaching the age where kitchens, baths and systems need updating. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving North Port and Sarasota County',
+        areaParas: [
+            'North Port is a city in southern Sarasota County, between Port Charlotte and Venice, one of the largest cities by land area in Florida. Our Sarasota County service area covers North Port, Venice, Sarasota and the barrier-island communities.',
+            'Because North Port is an incorporated city, permitting for remodeling projects is handled by the city of North Port rather than Sarasota County. We file with the correct jurisdiction the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('North Port', 'Sarasota County', 'the city of North Port'),
+    },
+
+    // ---------------- Manatee County ----------------
+    {
+        countySlug: 'manatee',
+        countyName: 'Manatee County',
+        countyRegion: 'Manatee County, FL',
+        permitJurisdiction: 'the city of Bradenton',
+        slug: 'bradenton',
+        name: 'Bradenton',
+        metaTitle: 'Bradenton Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Bradenton, FL homeowners with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Bradenton, Florida, and throughout Manatee County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Bradenton, the county seat of Manatee County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Bradenton homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including coastal and flood-zone requirements.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Bradenton project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From updating kitchens in 1950s–1970s Bradenton homes to full layout changes in newer construction, we sequence every trade so the busiest room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Rear additions, second stories and room expansions for homes that no longer fit the household — engineered to Florida wind code and tied into the existing roof and mechanicals.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with the city of Bradenton, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai or pool-deck concrete with documented mix designs and tested pours — including the flood-zone foundation details common near the Manatee River and the Gulf.'),
+        ],
+        whyTitle: 'Why Bradenton Homeowners Remodel',
+        whyIntro: 'Bradenton mixes 1950s-era housing near downtown with mid-century ranches and newer builds inland, much of it now due for kitchen, bath and system updates. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Bradenton and Manatee County',
+        areaParas: [
+            'Bradenton is the county seat of Manatee County, on the Manatee River near its mouth at Tampa Bay, south of St. Petersburg. Our Manatee County service area covers Bradenton, Palmetto, Parrish and the Anna Maria Island communities.',
+            'Because Bradenton is an incorporated city, permitting for remodeling projects is handled by the city of Bradenton rather than Manatee County. Coastal and flood-zone properties also carry elevation and wind-rated glazing requirements, and we file correctly the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Bradenton', 'Manatee County', 'the city of Bradenton'),
+    },
+    {
+        countySlug: 'manatee',
+        countyName: 'Manatee County',
+        countyRegion: 'Manatee County, FL',
+        permitJurisdiction: 'Manatee County',
+        slug: 'lakewood-ranch',
+        name: 'Lakewood Ranch',
+        metaTitle: 'Lakewood Ranch (Manatee County) Home Remodeling & General Contractor | Brothers Remodelers',
+        metaDescription: 'Brothers Remodelers serves Lakewood Ranch, FL homeowners on the Manatee County side with kitchen and bathroom remodeling, home additions, whole-home renovations and concrete work. Request a free quote.',
+        heroIntro: 'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Lakewood Ranch, Florida, and throughout Manatee County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
+        quickAnswer: 'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Lakewood Ranch, the master-planned community spanning the Sarasota–Manatee county line in Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Lakewood Ranch homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including community architectural review.',
+        servicesIntro: 'Six core disciplines, one licensed contractor. Every Lakewood Ranch project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+        services: [
+            K('From upgrading builder-grade kitchens in Lakewood Ranch village homes to full layout changes with islands, relocated plumbing and new circuits, we sequence every trade so the room comes back online on schedule.'),
+            B('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
+            A('Extra bedrooms, in-law suites, lanai enclosures and outdoor living additions — engineered, permitted and tied into the existing roof and mechanicals, and designed to clear community architectural review.'),
+            W('One contract for a full interior renovation: floors, kitchens, baths, lighting and mechanical updates sequenced as a single project instead of a string of separate jobs.'),
+            G('Permit filings with Manatee County, community architectural review submittals, trade procurement, daily supervision and closeout documentation — one accountable contractor from budgeting through final sign-off.'),
+            C('Footings, slabs, driveways, walkways and lanai or pool-deck concrete with documented mix designs and tested pours — including the drainage details that keep slab work sound through Florida’s wet season.'),
+        ],
+        whyTitle: 'Why Lakewood Ranch Homeowners Remodel',
+        whyIntro: 'Lakewood Ranch grew through the 2000s and 2010s as one of the region’s largest master-planned communities, and its housing stock is now at the age where builder-grade finishes give way to custom ones. Most remodels we see trace back to a handful of practical needs.',
+        whyRemodel: whyRemodelBase,
+        areaTitle: 'Serving Lakewood Ranch and Manatee County',
+        areaParas: [
+            'Lakewood Ranch is a master-planned community spanning the Sarasota–Manatee county line, east of Bradenton and Sarasota, organized into villages and governed by community development districts. Lakewood Ranch spans Manatee and Sarasota counties; this page covers the community as a whole, including villages on both the Manatee and Sarasota County sides.',
+            'Because the Manatee County side of Lakewood Ranch is unincorporated, permitting is handled by Manatee County, and most exterior changes and additions also pass through community architectural review before a permit is filed. We prepare submittals that clear review the first time and coordinate every inspection along the way.',
+        ],
+        faqs: faqsFor('Lakewood Ranch', 'Manatee County', 'Manatee County'),
+    },
+
+    // ---------------- Additional Pinellas County cities ----------------
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Oldsmar', slug: 'oldsmar', name: 'Oldsmar', locationDesc: 'a city in northwest Pinellas County, Florida, on the shore of Old Tampa Bay', isCity: true, coastal: true, kitchenText: "From updating kitchens in Oldsmar's established neighborhoods to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: "Oldsmar blends older post-war homes with newer construction along Tampa Bay, and much of its housing stock is now due for kitchen, bath and system updates." }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Safety Harbor', slug: 'safety-harbor', name: 'Safety Harbor', locationDesc: 'a city on the west shore of Old Tampa Bay in northern Pinellas County, Florida', isCity: true, coastal: true, kitchenText: "From updating kitchens in Safety Harbor's historic and mid-century homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Safety Harbor mixes small-town historic charm with mid-century ranches, and many homes are reaching the age where kitchens, baths and systems need updating.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Pinellas Park', slug: 'pinellas-park', name: 'Pinellas Park', locationDesc: 'a city in central Pinellas County, Florida, just north of St. Petersburg', isCity: true, coastal: false, kitchenText: 'From upgrading builder-grade kitchens in Pinellas Park subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'Pinellas Park grew through the mid-20th century with ranch-style homes and commercial corridors, and much of its housing stock is now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'Pinellas County', slug: 'east-lake', name: 'East Lake', locationDesc: 'an unincorporated community in northern Pinellas County, Florida, along the east shore of Lake Tarpon', isCity: false, coastal: false, kitchenText: 'From updating original kitchens in East Lake subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'East Lake developed largely from the 1980s onward with golf-course and waterfront communities, and its housing stock is now reaching the age where builder-grade finishes give way to custom ones.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Largo', slug: 'largo', name: 'Largo', locationDesc: 'a city in central Pinellas County, Florida, between Clearwater and St. Petersburg', isCity: true, coastal: false, kitchenText: 'From updating kitchens in mid-century Largo ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'Largo is one of the larger cities in Pinellas County, with housing stock spanning post-war ranches to 1990s builds now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the town of Kenneth City', slug: 'kenneth-city', name: 'Kenneth City', locationDesc: 'a small incorporated town in central Pinellas County, Florida, surrounded by Largo and Pinellas Park', isCity: true, coastal: false, kitchenText: "From updating kitchens in Kenneth City's established ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Kenneth City is a small, established residential community whose mid-century ranch homes are now widely due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the town of Belleair', slug: 'belleair', name: 'Belleair', locationDesc: 'an incorporated town on the Pinellas peninsula in Florida, between Clearwater and Belleair Bluffs', isCity: true, coastal: false, kitchenText: 'From updating kitchens in established Belleair homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'Belleair is an established residential community with mature trees and mid-century homes, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Seminole', slug: 'seminole', name: 'Seminole', locationDesc: 'a city in central Pinellas County, Florida, west of St. Petersburg', isCity: true, coastal: false, kitchenText: "From updating kitchens in Seminole's established ranch and subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Seminole grew through the mid-20th century with ranch-style homes, and much of its housing stock is now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Dunedin', slug: 'dunedin', name: 'Dunedin', locationDesc: 'a city on the Gulf coast in northern Pinellas County, Florida, between Palm Harbor and Clearwater', isCity: true, coastal: true, kitchenText: "From updating kitchens in Dunedin's historic and mid-century homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Dunedin blends a historic downtown with mid-century waterfront and inland homes, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Gulfport', slug: 'gulfport', name: 'Gulfport', locationDesc: 'a city on the Pinellas peninsula in Florida, on Boca Ciega Bay south of St. Petersburg', isCity: true, coastal: true, kitchenText: "From updating kitchens in Gulfport's historic cottages and mid-century homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Gulfport is a small arts-oriented waterfront community with older housing stock now widely due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Clearwater', slug: 'clearwater-beach', name: 'Clearwater Beach', locationDesc: 'a barrier-island community on Clearwater Beach, in Pinellas County, Florida', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages and condos to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Clearwater Beach housing ranges from original beach cottages to newer waterfront construction, much of it within the coastal construction zone and exposed to salt air.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Indian Rocks Beach', slug: 'indian-rocks-beach', name: 'Indian Rocks Beach', locationDesc: 'a barrier-island city on the Gulf coast of Pinellas County, Florida', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Indian Rocks Beach is a narrow barrier island with older cottages and newer construction, much of it within the coastal construction zone and exposed to salt air.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Madeira Beach', slug: 'madeira-beach', name: 'Madeira Beach', locationDesc: 'a barrier-island city on the Gulf coast of Pinellas County, Florida', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Madeira Beach is a barrier-island community with a mix of older waterfront homes and newer construction, much of it within the coastal construction zone.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Treasure Island', slug: 'treasure-island', name: 'Treasure Island', locationDesc: 'a barrier-island city on the Gulf coast of Pinellas County, Florida', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Treasure Island is a barrier-island community with waterfront homes and condos, much of it within the coastal construction zone and exposed to salt air.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of St. Pete Beach', slug: 'st-pete-beach', name: 'St. Pete Beach', locationDesc: 'a barrier-island city on the Gulf coast of Pinellas County, Florida, south of Treasure Island', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'St. Pete Beach spans Long Key with a mix of older beach cottages, condos and newer waterfront construction, much of it within the coastal construction zone.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of Tarpon Springs', slug: 'tarpon-springs', name: 'Tarpon Springs', locationDesc: 'a city in northern Pinellas County, Florida, on the Anclote River and the Gulf coast', isCity: true, coastal: true, kitchenText: "From updating kitchens in Tarpon Springs' historic and mid-century homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Tarpon Springs blends a historic Greek-sponge-fishing downtown with mid-century and newer inland homes, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'Pinellas County', slug: 'tierra-verde', name: 'Tierra Verde', locationDesc: 'an unincorporated community at the southern tip of the Pinellas peninsula, Florida, near Fort DeSoto', isCity: false, coastal: true, kitchenText: 'From updating kitchens in older waterfront homes to full rebuilds, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Tierra Verde is a waterfront community at the gateway to Fort DeSoto, with newer construction largely within the coastal construction zone and exposed to salt air.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the city of South Pasadena', slug: 'south-pasadena', name: 'South Pasadena', locationDesc: 'a small city on the Pinellas peninsula in Florida, on Boca Ciega Bay between St. Petersburg and Gulfport', isCity: true, coastal: true, kitchenText: "From updating kitchens in South Pasadena's established condos and ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'South Pasadena is a small residential community on Boca Ciega Bay with mid-century homes and condos, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pinellas', countyName: 'Pinellas County', countyRegion: 'Pinellas County, FL', permitJurisdiction: 'the town of Indian Shores', slug: 'indian-shores', name: 'Indian Shores', locationDesc: 'a small barrier-island town on the Gulf coast of Pinellas County, Florida, between Indian Rocks Beach and Treasure Island', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages and condos to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Indian Shores is a narrow barrier-island community with older cottages and condos, much of it within the coastal construction zone and exposed to salt air.' }),
+
+    // ---------------- Additional Pasco County cities ----------------
+    buildCity({ countySlug: 'pasco', countyName: 'Pasco County', countyRegion: 'Pasco County, FL', permitJurisdiction: 'Pasco County', slug: 'land-o-lakes', name: "Land O' Lakes", locationDesc: 'an unincorporated community in central Pasco County, Florida, north of Tampa along the US 41 corridor', isCity: false, coastal: false, kitchenText: "From updating original kitchens in Land O' Lakes homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: "Land O' Lakes has grown rapidly with master-planned communities and lakeside homes, and much of its housing stock is now reaching the age where kitchens, baths and systems need updating." }),
+    buildCity({ countySlug: 'pasco', countyName: 'Pasco County', countyRegion: 'Pasco County, FL', permitJurisdiction: 'Pasco County', slug: 'trinity', name: 'Trinity', locationDesc: 'an unincorporated master-planned community in western Pasco County, Florida', isCity: false, coastal: false, kitchenText: 'From upgrading builder-grade kitchens in Trinity subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'Trinity is a master-planned community built largely from the 1990s onward, and its housing stock is now reaching the age where builder-grade finishes give way to custom ones.' }),
+    buildCity({ countySlug: 'pasco', countyName: 'Pasco County', countyRegion: 'Pasco County, FL', permitJurisdiction: 'Pasco County', slug: 'holiday', name: 'Holiday', locationDesc: 'an unincorporated community on the Gulf coast of Pasco County, Florida, west of New Port Richey', isCity: false, coastal: false, kitchenText: "From updating kitchens in Holiday's established ranch and waterfront homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Holiday is an older Gulf-coast canal community with mid-century homes, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pasco', countyName: 'Pasco County', countyRegion: 'Pasco County, FL', permitJurisdiction: 'the city of Zephyrhills', slug: 'zephyrhills', name: 'Zephyrhills', locationDesc: 'a city in eastern Pasco County, Florida', isCity: true, coastal: false, kitchenText: "From updating kitchens in Zephyrhills' established ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Zephyrhills mixes historic downtown homes with mid-century ranches and active-adult communities, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pasco', countyName: 'Pasco County', countyRegion: 'Pasco County, FL', permitJurisdiction: 'the city of New Port Richey', slug: 'new-port-richey', name: 'New Port Richey', locationDesc: 'a city on the Gulf coast of western Pasco County, Florida', isCity: true, coastal: false, kitchenText: "From updating kitchens in New Port Richey's historic and mid-century homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'New Port Richey blends a historic riverfront downtown with mid-century ranches, and much of its housing stock is now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pasco', countyName: 'Pasco County', countyRegion: 'Pasco County, FL', permitJurisdiction: 'the city of San Antonio', slug: 'san-antonio', name: 'San Antonio', locationDesc: 'a small city in central Pasco County, Florida, north of Dade City', isCity: true, coastal: false, kitchenText: "From updating kitchens in San Antonio's established homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'San Antonio is a small rural-residential community whose older homes are now widely due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'pasco', countyName: 'Pasco County', countyRegion: 'Pasco County, FL', permitJurisdiction: 'the city of Port Richey', slug: 'port-richey', name: 'Port Richey', locationDesc: 'a small city on the Gulf coast of western Pasco County, Florida', isCity: true, coastal: false, kitchenText: "From updating kitchens in Port Richey's waterfront and ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Port Richey is a small Gulf-coast community with mid-century waterfront homes, much of it now due for kitchen, bath and system updates.' }),
+
+    // ---------------- Additional Sarasota County cities ----------------
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'lido-key', name: 'Lido Key', locationDesc: 'a barrier island off the coast of Sarasota, in Sarasota County, Florida', isCity: false, coastal: true, kitchenText: 'From updating kitchens in older waterfront homes to full rebuilds, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Lido Key is a barrier island with waterfront condos and homes, much of it within the coastal construction zone and exposed to salt air.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'fruitville', name: 'Fruitville', locationDesc: 'an unincorporated community east of Sarasota, in Sarasota County, Florida', isCity: false, coastal: false, kitchenText: "From updating kitchens in Fruitville's established ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Fruitville is a growing inland community east of Sarasota with mid-century and newer homes, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'bee-ridge', name: 'Bee Ridge', locationDesc: 'an unincorporated community in central Sarasota County, Florida, east of the city of Sarasota', isCity: false, coastal: false, kitchenText: "From updating kitchens in Bee Ridge's established ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Bee Ridge is an established residential community with mid-century ranches, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'university-park', name: 'University Park', locationDesc: 'an unincorporated community in central Sarasota County, Florida, near the city of Sarasota', isCity: false, coastal: false, kitchenText: 'From upgrading builder-grade kitchens in University Park homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'University Park is a planned residential community with homes now reaching the age where kitchens, baths and systems need updating.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'osprey', name: 'Osprey', locationDesc: 'an unincorporated community on the Gulf coast of Sarasota County, Florida, south of Sarasota', isCity: false, coastal: true, kitchenText: "From updating kitchens in Osprey's waterfront and inland homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Osprey is a coastal community along Little Sarasota Bay with a mix of older homes and newer construction, much of it within the coastal construction zone.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'laurel', name: 'Laurel', locationDesc: 'an unincorporated community on the Gulf coast of Sarasota County, Florida, between Osprey and Nokomis', isCity: false, coastal: true, kitchenText: "From updating kitchens in Laurel's established homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Laurel is a small residential community along the bay, with older homes now widely due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'nokomis', name: 'Nokomis', locationDesc: 'an unincorporated community on the Gulf coast of Sarasota County, Florida, south of Laurel', isCity: false, coastal: true, kitchenText: "From updating kitchens in Nokomis's waterfront and inland homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Nokomis is a coastal community with a mix of older waterfront cottages and inland ranches, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'south-venice', name: 'South Venice', locationDesc: 'an unincorporated community in southern Sarasota County, Florida, south of Venice', isCity: false, coastal: false, kitchenText: "From updating kitchens in South Venice's established homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'South Venice is a residential community south of Venice with mid-century and newer homes, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'warm-mineral-springs', name: 'Warm Mineral Springs', locationDesc: 'an unincorporated community in southern Sarasota County, Florida, near North Port', isCity: false, coastal: false, kitchenText: 'From updating kitchens in Warm Mineral Springs homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'Warm Mineral Springs is a small residential community near North Port, with older homes now widely due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'sarasota', countyName: 'Sarasota County', countyRegion: 'Sarasota County, FL', permitJurisdiction: 'Sarasota County', slug: 'englewood', name: 'Englewood', locationDesc: 'an unincorporated community on the Gulf coast spanning the Sarasota–Charlotte county line in Florida', isCity: false, coastal: true, kitchenText: "From updating kitchens in Englewood's waterfront and inland homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Englewood spans the Sarasota–Charlotte county line on the Gulf coast, with a mix of older waterfront cottages and inland homes, much of it within the coastal construction zone.' }),
+
+    // ---------------- Additional Manatee County cities ----------------
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'Manatee County', slug: 'cortez', name: 'Cortez', locationDesc: 'an unincorporated fishing community on the Gulf coast of Manatee County, Florida, on the mainland west of Bradenton', isCity: false, coastal: true, kitchenText: "From updating kitchens in Cortez's older waterfront cottages to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Cortez is a historic Gulf-coast fishing village with older waterfront homes, much of it within the coastal construction zone and exposed to salt air.' }),
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'the city of Bradenton Beach', slug: 'bradenton-beach', name: 'Bradenton Beach', locationDesc: 'a city on the southern end of Anna Maria Island, in Manatee County, Florida', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Bradenton Beach is a barrier-island community on Anna Maria Island with older cottages and newer construction, much of it within the coastal construction zone and exposed to salt air.' }),
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'the city of Holmes Beach', slug: 'holmes-beach', name: 'Holmes Beach', locationDesc: 'a city on Anna Maria Island, in Manatee County, Florida', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Holmes Beach is a residential barrier-island community on Anna Maria Island, with a mix of older cottages and newer waterfront homes, much of it within the coastal construction zone.' }),
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'the city of Palmetto', slug: 'palmetto', name: 'Palmetto', locationDesc: 'a city in northern Manatee County, Florida, on the north side of the Manatee River', isCity: true, coastal: false, kitchenText: "From updating kitchens in Palmetto's established ranch homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Palmetto mixes older homes near the river with mid-century ranches and newer builds, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'Manatee County', slug: 'ellenton', name: 'Ellenton', locationDesc: 'an unincorporated community in northern Manatee County, Florida, east of Palmetto', isCity: false, coastal: false, kitchenText: "From updating kitchens in Ellenton's established homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Ellenton is a growing residential community in northern Manatee County with mid-century and newer homes, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'the city of Anna Maria', slug: 'anna-maria', name: 'Anna Maria', locationDesc: 'a small city at the northern tip of Anna Maria Island, in Manatee County, Florida', isCity: true, coastal: true, kitchenText: 'From updating kitchens in older beach cottages to full rebuilds of waterfront homes, we sequence every trade so the busiest room comes back online on schedule — with corrosion-resistant fixtures and wind-rated assemblies where the exposure requires them.', whyIntro: 'Anna Maria is a quiet barrier-island community at the north end of Anna Maria Island, with older cottages and newer waterfront homes, much of it within the coastal construction zone.' }),
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'Manatee County', slug: 'myakka-city', name: 'Myakka City', locationDesc: 'an unincorporated rural community in eastern Manatee County, Florida', isCity: false, coastal: false, kitchenText: "From updating kitchens in Myakka City's rural homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.", whyIntro: 'Myakka City is a rural eastern Manatee County community with homes on acreage, much of it now due for kitchen, bath and system updates.' }),
+    buildCity({ countySlug: 'manatee', countyName: 'Manatee County', countyRegion: 'Manatee County, FL', permitJurisdiction: 'Manatee County', slug: 'parrish', name: 'Parrish', locationDesc: 'an unincorporated community in northern Manatee County, Florida, east of Palmetto and Ellenton', isCity: false, coastal: false, kitchenText: 'From upgrading builder-grade kitchens in Parrish subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room comes back online on schedule.', whyIntro: 'Parrish is one of the fastest-growing communities in Manatee County, with housing stock built largely from the 2000s onward and now reaching the age where builder-grade finishes give way to custom ones.' }),
+];
+
+export const getCity = (countySlug, citySlug) =>
+    allCities.find((c) => c.countySlug === countySlug && c.slug === citySlug);
+
+export const citiesByCounty = (countySlug) =>
+    allCities.filter((c) => c.countySlug === countySlug);
+
+// Map a neighborhood name (as listed in site.js `areas`) to its city page.
+export const neighborhoodToCity = {
+    'St. Petersburg': { countySlug: 'pinellas', slug: 'st-petersburg' },
+    Clearwater: { countySlug: 'pinellas', slug: 'clearwater' },
+    'Palm Harbor': { countySlug: 'pinellas', slug: 'palm-harbor' },
+    'Wesley Chapel': { countySlug: 'pasco', slug: 'wesley-chapel' },
+    Sarasota: { countySlug: 'sarasota', slug: 'sarasota' },
+    'Siesta Key': { countySlug: 'sarasota', slug: 'siesta-key' },
+    'Longboat Key': { countySlug: 'sarasota', slug: 'longboat-key' },
+    'Lakewood Ranch': { countySlug: 'manatee', slug: 'lakewood-ranch' },
+    Venice: { countySlug: 'sarasota', slug: 'venice' },
+    'North Port': { countySlug: 'sarasota', slug: 'north-port' },
+    Bradenton: { countySlug: 'manatee', slug: 'bradenton' },
+    // Additional Pinellas
+    Oldsmar: { countySlug: 'pinellas', slug: 'oldsmar' },
+    'Safety Harbor': { countySlug: 'pinellas', slug: 'safety-harbor' },
+    'Pinellas Park': { countySlug: 'pinellas', slug: 'pinellas-park' },
+    'East Lake': { countySlug: 'pinellas', slug: 'east-lake' },
+    Largo: { countySlug: 'pinellas', slug: 'largo' },
+    'Kenneth City': { countySlug: 'pinellas', slug: 'kenneth-city' },
+    Belleair: { countySlug: 'pinellas', slug: 'belleair' },
+    Seminole: { countySlug: 'pinellas', slug: 'seminole' },
+    Dunedin: { countySlug: 'pinellas', slug: 'dunedin' },
+    Gulfport: { countySlug: 'pinellas', slug: 'gulfport' },
+    'Clearwater Beach': { countySlug: 'pinellas', slug: 'clearwater-beach' },
+    'Indian Rocks Beach': { countySlug: 'pinellas', slug: 'indian-rocks-beach' },
+    'Madeira Beach': { countySlug: 'pinellas', slug: 'madeira-beach' },
+    'Treasure Island': { countySlug: 'pinellas', slug: 'treasure-island' },
+    'St. Pete Beach': { countySlug: 'pinellas', slug: 'st-pete-beach' },
+    'Tarpon Springs': { countySlug: 'pinellas', slug: 'tarpon-springs' },
+    'Tierra Verde': { countySlug: 'pinellas', slug: 'tierra-verde' },
+    'South Pasadena': { countySlug: 'pinellas', slug: 'south-pasadena' },
+    'Indian Shores': { countySlug: 'pinellas', slug: 'indian-shores' },
+    // Additional Pasco
+    "Land O' Lakes": { countySlug: 'pasco', slug: 'land-o-lakes' },
+    Trinity: { countySlug: 'pasco', slug: 'trinity' },
+    Holiday: { countySlug: 'pasco', slug: 'holiday' },
+    Zephyrhills: { countySlug: 'pasco', slug: 'zephyrhills' },
+    'New Port Richey': { countySlug: 'pasco', slug: 'new-port-richey' },
+    'San Antonio': { countySlug: 'pasco', slug: 'san-antonio' },
+    'Port Richey': { countySlug: 'pasco', slug: 'port-richey' },
+    // Additional Sarasota
+    'Lido Key': { countySlug: 'sarasota', slug: 'lido-key' },
+    Fruitville: { countySlug: 'sarasota', slug: 'fruitville' },
+    'Bee Ridge': { countySlug: 'sarasota', slug: 'bee-ridge' },
+    'University Park': { countySlug: 'sarasota', slug: 'university-park' },
+    Osprey: { countySlug: 'sarasota', slug: 'osprey' },
+    Laurel: { countySlug: 'sarasota', slug: 'laurel' },
+    Nokomis: { countySlug: 'sarasota', slug: 'nokomis' },
+    'South Venice': { countySlug: 'sarasota', slug: 'south-venice' },
+    'Warm Mineral Springs': { countySlug: 'sarasota', slug: 'warm-mineral-springs' },
+    Englewood: { countySlug: 'sarasota', slug: 'englewood' },
+    // Additional Manatee
+    Cortez: { countySlug: 'manatee', slug: 'cortez' },
+    'Bradenton Beach': { countySlug: 'manatee', slug: 'bradenton-beach' },
+    'Holmes Beach': { countySlug: 'manatee', slug: 'holmes-beach' },
+    Palmetto: { countySlug: 'manatee', slug: 'palmetto' },
+    Ellenton: { countySlug: 'manatee', slug: 'ellenton' },
+    'Anna Maria': { countySlug: 'manatee', slug: 'anna-maria' },
+    'Myakka City': { countySlug: 'manatee', slug: 'myakka-city' },
+    Parrish: { countySlug: 'manatee', slug: 'parrish' },
+};
