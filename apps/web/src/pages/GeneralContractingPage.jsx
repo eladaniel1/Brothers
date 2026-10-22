@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import BrandsSection from '@/components/BrandsSection';
+import { brandSchemaFor } from '@/data/brands';
 import { Link } from 'react-router-dom';
 import { Check, Clock, FileCheck, Layers, Ruler, ShieldCheck, Wrench, Users } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, PageHero, Section } from '@/components/SiteLayout';
@@ -102,6 +104,7 @@ const relatedServices = [
 const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    brand: brandSchemaFor('general-contracting'),
     serviceType: 'General Contracting',
     provider: {
         '@type': 'GeneralContractor',
@@ -335,6 +338,8 @@ const GeneralContractingPage = () => (
                             </div>
                         ))}
                     </div>
+
+                    <BrandsSection slug="general-contracting" title="General contracting" />
 
                     <h3 className="font-display mt-12 text-2xl font-bold uppercase">Related services</h3>
                     <div className="mt-4 flex flex-wrap gap-2">

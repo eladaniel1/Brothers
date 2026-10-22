@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import BrandsSection from '@/components/BrandsSection';
+import { brandSchemaFor } from '@/data/brands';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Check, Clock, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, PageHero, Section } from '@/components/SiteLayout';
@@ -132,6 +134,7 @@ export const ServiceDetailPage = () => {
         },
         areaServed: 'Tampa Bay and Sarasota region, Florida',
         description: service.summary,
+        brand: brandSchemaFor(service.slug),
     };
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
@@ -240,6 +243,8 @@ export const ServiceDetailPage = () => {
                                 </ol>
                             </>
                         )}
+
+                        <BrandsSection slug={service.slug} title={service.title} />
 
                         {service.floridaNotes && service.floridaNotes.length > 0 && (
                             <>

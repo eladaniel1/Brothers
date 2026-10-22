@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import BrandsSection from '@/components/BrandsSection';
+import { brandSchemaFor } from '@/data/brands';
 import { Link } from 'react-router-dom';
 import { Check, Clock, FileCheck, Layers, Ruler, ShieldCheck, Wrench, Home, Hammer } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, PageHero, Section } from '@/components/SiteLayout';
@@ -112,6 +114,7 @@ const relatedServices = [
 const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    brand: brandSchemaFor('home-additions'),
     serviceType: 'Home Additions & Extensions',
     provider: {
         '@type': 'GeneralContractor',
@@ -349,6 +352,8 @@ const HomeAdditionsPage = () => (
                             </div>
                         ))}
                     </div>
+
+                    <BrandsSection slug="home-additions" title="Home addition" />
 
                     <h3 className="font-display mt-12 text-2xl font-bold uppercase">Related services</h3>
                     <div className="mt-4 flex flex-wrap gap-2">
