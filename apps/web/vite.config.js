@@ -409,7 +409,8 @@ export default defineConfig({
 	plugins: [
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), sitePagesPlugin(), pocketbaseAuthPlugin(), sessionJournalPlugin()] : []),
 		react(),
-		addTransformIndexHtml,
+		// The Horizons editor bridge scripts only matter inside the Horizons editor iframe.
+		...(isDev ? [addTransformIndexHtml] : []),
 		domainCheckoutDevPlugin,
 		ecommerceTrackingPlugin(),
 	],

@@ -4,14 +4,15 @@
 // canonical link, JSON-LD scripts) and writes one index.html per route,
 // leaving the React bundle in place so the app hydrates on top.
 //
-// Invoked from package.json `build` script: `node tools/prerender.mjs`.
+// Invoked from the package.json `build` script and apps/web/vercel.json.
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { existsSync, statSync } from 'node:fs';
 import { createServer } from 'vite';
 
 const root = process.cwd();
-const outDir = path.resolve(root, '../../dist/apps/web');
+// PRERENDER_OUT_DIR lets a host build into its own folder (Vercel uses apps/web/dist).
+const outDir = path.resolve(root, process.env.PRERENDER_OUT_DIR || '../../dist/apps/web');
 
 process.env.NODE_ENV = 'production';
 

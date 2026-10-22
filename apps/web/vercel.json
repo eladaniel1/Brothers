@@ -1,5 +1,8 @@
 {
-  "buildCommand": "node tools/generate-llms.js || true && vite build --outDir dist",
+  "buildCommand": "node tools/generate-llms.js || true && vite build --outDir dist && PRERENDER_OUT_DIR=dist node tools/prerender.mjs",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/areas-we-serve/sarasota/lakewood-ranch/", "destination": "/areas-we-serve/manatee/lakewood-ranch/", "permanent": true }
+  ]
 }
