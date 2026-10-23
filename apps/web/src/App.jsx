@@ -15,6 +15,7 @@ import TampaPage from './pages/TampaPage';
 import BrandonPage from './pages/BrandonPage';
 import HillsboroughCityPage from './pages/HillsboroughCityPage';
 import CityPage from './pages/CityPage';
+import LocalServicePage from './pages/LocalServicePage';
 import {
     AboutPage,
     AreaDetailPage,
@@ -62,6 +63,7 @@ export const AppRoutes = () => (
                 <Route path="/services/general-contracting" element={<GeneralContractingPage />} />
                 <Route path="/services/home-additions" element={<HomeAdditionsPage />} />
                 <Route path="/services/:slug" element={<ServiceDetailPage />} />
+                <Route path="/services/:slug/:citySlug" element={<LocalServicePage />} />
                 <Route path="/areas-we-serve" element={<AreasPage />} />
                 <Route path="/areas-we-serve/:slug" element={<AreaDetailPage />} />
                 <Route path="/areas-we-serve/hillsborough/tampa" element={<TampaPage />} />

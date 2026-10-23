@@ -2,6 +2,7 @@ import React from 'react';
 import { lowerTitle } from '@/lib/format';
 import { Helmet } from 'react-helmet';
 import BrandsSection from '@/components/BrandsSection';
+import { LocalCityLinks } from '@/pages/LocalServicePage';
 import { brandSchemaFor } from '@/data/brands';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Check, Clock, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
@@ -246,6 +247,8 @@ export const ServiceDetailPage = () => {
                         )}
 
                         <BrandsSection slug={service.slug} title={service.title} />
+
+                        <LocalCityLinks slug={service.slug} />
 
                         {service.floridaNotes && service.floridaNotes.length > 0 && (
                             <>

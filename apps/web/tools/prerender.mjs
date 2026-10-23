@@ -175,6 +175,8 @@ try {
                 files.push('src/pages/GeneralContractingPage.jsx');
             } else if (route === '/services/home-additions') {
                 files.push('src/pages/HomeAdditionsPage.jsx');
+            } else if (/^\/services\/[^/]+\/[^/]+$/.test(route)) {
+                files.push('src/pages/LocalServicePage.jsx', 'src/data/localTrades.js', 'src/data/localCities.js');
             } else if (route === '/services' || route.startsWith('/services/')) {
                 files.push('src/pages/Pages.jsx', 'src/data/site.js');
             } else if (route === '/areas-we-serve' || /^\/areas-we-serve\/(hillsborough|pinellas|pasco|sarasota|manatee)$/.test(route)) {
@@ -267,6 +269,8 @@ try {
     try {
         const { company, services, areas, faqs } = await vite.ssrLoadModule('/src/data/site.js');
         const { brandsFor } = await vite.ssrLoadModule('/src/data/brands.js');
+        const { localTrades } = await vite.ssrLoadModule('/src/data/localTrades.js');
+        const { localCities } = await vite.ssrLoadModule('/src/data/localCities.js');
         const site = 'https://brothersremodelers.com';
         const brandLine = (slug) => brandsFor(slug).map(([cat, names]) => `${cat}: ${names.join(', ')}`).join('; ');
         const areaNames = areas.map((a) => a.city).join(', ');
@@ -296,6 +300,10 @@ try {
             '## Services',
             '',
             ...services.map((s) => `- [${s.title}](${site}/services/${s.slug}/): ${s.summary}`),
+            '',
+            '## Services by city',
+            '',
+            ...localTrades.map((t) => `- ${t.name}: ${localCities.map((c) => `[${c.name}](${site}/services/${t.slug}/${c.slug}/)`).join(', ')}`),
             '',
             '## Service areas',
             '',

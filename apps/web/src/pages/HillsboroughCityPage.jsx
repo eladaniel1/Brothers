@@ -1,4 +1,5 @@
 import React from 'react';
+import LocalTradeLinks from '@/components/LocalTradeLinks';
 import { Helmet } from 'react-helmet';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Check, Phone } from 'lucide-react';
@@ -312,6 +313,7 @@ const HillsboroughCityPage = () => {
                 </div>
             </Section>
 
+            <LocalTradeLinks areaUrl={`/areas-we-serve/hillsborough/${citySlug}`} />
             <CtaBand heading={`Planning a ${city.name} remodeling project?`} text="Send us your scope and we will come out, measure, and return a line-item proposal within five business days." />
         </SiteLayout>
     );

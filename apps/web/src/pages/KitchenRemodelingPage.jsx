@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import BrandsSection from '@/components/BrandsSection';
+import { LocalCityLinks } from '@/pages/LocalServicePage';
 import { brandSchemaFor } from '@/data/brands';
 import { Link } from 'react-router-dom';
 import { Check, Clock, FileCheck, Layers, Ruler, ShieldCheck, Wrench } from 'lucide-react';
@@ -337,6 +338,8 @@ const KitchenRemodelingPage = () => (
                             </div>
                         ))}
                     </div>
+
+                    <LocalCityLinks slug="kitchen-remodeling" />
 
                     <BrandsSection slug="kitchen-remodeling" title="Kitchen remodeling" />
 

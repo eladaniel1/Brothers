@@ -1,4 +1,5 @@
 import React from 'react';
+import LocalTradeLinks from '@/components/LocalTradeLinks';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Check, Phone } from 'lucide-react';
@@ -384,6 +385,7 @@ const BrandonPage = () => (
             </div>
         </Section>
 
+        <LocalTradeLinks areaUrl="/areas-we-serve/hillsborough/brandon" />
         <CtaBand heading="Planning a Brandon remodeling project?" text="Send us your scope and we will come out, measure, and return a line-item proposal within five business days." />
     </SiteLayout>
 );

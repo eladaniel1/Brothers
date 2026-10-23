@@ -1,4 +1,5 @@
 import React from 'react';
+import LocalTradeLinks from '@/components/LocalTradeLinks';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { BadgeCheck, Calculator, CalendarClock, CalendarDays, Check, DraftingCompass, HardHat, Layers, MessagesSquare, Phone } from 'lucide-react';
@@ -392,6 +393,7 @@ const TampaPage = () => (
             </div>
         </Section>
 
+        <LocalTradeLinks areaUrl="/areas-we-serve/hillsborough/tampa" />
         <CtaBand heading="Planning a Tampa remodeling project?" text="Send us your scope and we will come out, measure, and return a line-item proposal within five business days." />
     </SiteLayout>
 );
