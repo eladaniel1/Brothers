@@ -31,7 +31,7 @@ const LocalServicePage = () => {
     const notes = trade.notes(city);
     const faqs = [
         ...trade.faqs(city),
-        [`Which ${city.name} neighborhoods and ZIP codes do you serve?`, `We serve all of ${city.name}, including ${city.neighborhoods.slice(0, -1).join(', ')} and ${city.neighborhoods[city.neighborhoods.length - 1]}, in ZIP codes ${city.zips.join(', ')}.`],
+        [`Which ${city.name} neighborhoods and ZIP codes do you serve?`, `We serve all of ${city.name}, including ${city.neighborhoods.slice(0, -1).join(', ')} and ${city.neighborhoods[city.neighborhoods.length - 1]}, in ZIP code${city.zips.length > 1 ? 's' : ''} ${city.zips.join(', ')}.`],
     ];
     const nearby = city.nearby.map(getLocalCity).filter(Boolean);
     const otherTrades = localTrades.filter((t) => t.slug !== slug);
@@ -43,7 +43,7 @@ const LocalServicePage = () => {
         ['Typical timeline', trade.timeline],
         ['Main cost drivers', trade.costDrivers],
         ['License', `Florida Certified General Contractor ${company.licenseNumber}`],
-        ['ZIP codes served', city.zips.join(', ')],
+        [city.zips.length > 1 ? 'ZIP codes served' : 'ZIP code served', city.zips.join(', ')],
         ...(['electrical', 'ac-repair'].includes(slug) ? [['Electric utility', city.power]] : []),
         ...(slug === 'plumbing' ? [['Water utility', city.waterUtility]] : []),
     ];
