@@ -2,7 +2,8 @@
 // Ahrefs search volume and cost-per-click across Tampa, Sarasota, St.
 // Petersburg, Clearwater, Bradenton and the surrounding cities (Oct 2026):
 // AC repair, roofing, roof repair, plumbing, kitchen and bathroom remodeling,
-// garage doors, electrical, windows and pools.
+// garage doors, electrical, windows and pools, then AC replacement, solar,
+// epoxy garage floors, fencing and driveways.
 //
 // Each entry builds the city-specific copy for /services/<slug>/<city>/ from
 // the city's real facts (permit office, coastal exposure, housing stock, HOAs),
@@ -256,6 +257,125 @@ export const localTrades = [
             ['Do I need a screen enclosure?', 'Not always, but you need a code-compliant barrier. A screen enclosure is the most common choice in Florida.'],
             ['Can you renovate my existing pool?', 'Yes: resurfacing, new decking, equipment upgrades and enclosure replacement.'],
             ['Which equipment brands do you install?', 'Pentair, Hayward and Jandy equipment, with Pebble Tec finishes.'],
+        ],
+    },
+    {
+        slug: 'hvac',
+        name: 'AC Replacement',
+        phrase: 'AC replacement',
+        timeline: 'Most system replacements take one to two days once equipment is on site.',
+        costDrivers: 'System size from a load calculation, efficiency rating, ductwork condition, air handler location and electrical work.',
+        permit: 'A full system replacement needs a mechanical permit and inspection.',
+        stormTie: 'Systems that sat in floodwater or took a lightning surge often fail months later, and many owners replace them before the next cooling season rather than risk a summer breakdown.',
+        answer: (c) => `Brothers Remodelers replaces central air conditioning and heat pump systems in ${c.name}, ${c.county}, through licensed HVAC contractors under our Florida Certified General Contractor license. We size the new system with a load calculation, check the ductwork, file the mechanical permit with ${c.permitOffice}, and pass the final inspection.`,
+        notes: (c) => [
+            ['Sized by load calculation', `Bigger is not better in ${c.name}'s humidity. An oversized system short-cycles and leaves the air damp, so we size every replacement from a load calculation for your home.`],
+            ['Ductwork matters', `In ${c.housing.split(',')[0]}, original ducts are often leaky or undersized. Sealing or replacing them can matter as much as the new equipment.`],
+            c.coastal
+                ? ['Coastal corrosion', `${c.name} homes near ${c.water} wear out condenser coils faster. Coated coils and corrosion-resistant cabinets are worth pricing.`]
+                : ['Efficiency and refrigerant', 'New systems use newer, lower-impact refrigerants and must meet current federal efficiency minimums for the Southeast. We explain the trade-off between upfront cost and operating cost.'],
+            ['Utility service', `${c.name} homes are served by ${c.power}. Larger equipment may need a dedicated circuit or disconnect, which we include in the price.`],
+        ],
+        faqs: (c) => [
+            [`How long does AC replacement take in ${c.name}?`, 'Most replacements take one to two days once the equipment is on site, plus the mechanical permit inspection.'],
+            [`Do I need a permit to replace my AC in ${c.name}?`, `Yes. A system replacement needs a mechanical permit from ${c.permitOffice}. We file it and schedule the inspection.`],
+            ['How do I know what size AC I need?', 'From a load calculation that accounts for your home’s size, insulation, windows and orientation, not from the size of the old unit.'],
+            ['How long does an AC last in Florida?', 'Florida systems run most of the year, so many last 10 to 15 years with maintenance. Coastal exposure and poor drainage shorten that.'],
+            ['Which AC brands do you install?', 'Carrier, Trane, Lennox, Rheem, Goodman and Daikin, with ecobee and Honeywell Home thermostats.'],
+        ],
+    },
+    {
+        slug: 'solar',
+        name: 'Solar',
+        phrase: 'solar',
+        timeline: 'Installation usually takes one to three days; permitting and utility interconnection add several weeks.',
+        costDrivers: 'System size, panel and inverter choice, battery storage, roof condition and electrical upgrades.',
+        permit: 'Solar needs building and electrical permits plus utility interconnection approval.',
+        stormTie: 'Many homeowners added battery storage after the long 2024 outages, so the house keeps essential circuits running when the grid is down.',
+        answer: (c) => `Brothers Remodelers designs and installs rooftop solar and battery storage in ${c.name}, ${c.county}, coordinated under our Florida Certified General Contractor license with licensed electrical work. We check the roof first, size the system to your usage, file permits with ${c.permitOffice} and handle interconnection with ${c.power}.`,
+        notes: (c) => [
+            ['Roof first', `Panels last 25 years or more, so the roof under them should too. On older ${c.name} roofs we price a re-roof with the solar so the panels do not have to come off later.`],
+            ['Utility interconnection', `${c.name} homes are served by ${c.power}. The utility must approve the interconnection before the system is turned on, and we handle the application.`],
+            ['Wind-rated mounting', 'Racking and attachments must be engineered for Florida wind loads and installed with sealed roof penetrations.'],
+        ],
+        faqs: (c) => [
+            [`Do I need a permit for solar in ${c.name}?`, `Yes: building and electrical permits from ${c.permitOffice}, plus interconnection approval from ${c.power}.`],
+            ['Should I replace my roof before installing solar?', 'If the roof has less than about ten years left, usually yes. Removing and reinstalling panels later adds cost.'],
+            ['Do I need a battery?', 'Not required, but a battery lets you keep essential circuits running during outages. Standard grid-tied systems shut off when the grid is down.'],
+            ['How long does installation take?', 'One to three days on the roof; permits and utility approval take longer.'],
+            ['Which solar brands do you install?', 'REC, Qcells and Panasonic panels, Enphase and SolarEdge inverters, and Tesla Powerwall and Enphase batteries.'],
+        ],
+    },
+    {
+        slug: 'epoxy-flooring',
+        name: 'Epoxy Garage Floors',
+        phrase: 'epoxy garage floor',
+        timeline: 'Most two-car garages are coated in one to two days, plus cure time.',
+        costDrivers: 'Floor area, concrete condition, crack repair, moisture mitigation and the coating system.',
+        permit: 'Floor coatings usually do not need a permit.',
+        stormTie: 'Garages that took on water need the slab cleaned, dried and moisture-tested before any coating goes down.',
+        answer: (c) => `Brothers Remodelers installs epoxy and polyaspartic garage floor coatings in ${c.name}, ${c.county}. We diamond-grind and moisture-test the slab, repair cracks, and apply a flake or solid-color system built to resist hot-tire peeling in Florida heat.`,
+        notes: (c) => [
+            ['Slab moisture', `${c.name} slabs sit on grade and can push moisture up through the concrete, a common cause of peeling. We test before quoting and use a moisture-mitigating primer when needed.`],
+            ['Hot tires and UV', 'Florida heat makes tires hot enough to lift weak coatings, and sun through an open garage door yellows plain epoxy. A UV-stable polyaspartic topcoat handles both.'],
+            c.hoaCommon
+                ? ['Garage as living space', `In ${c.name}'s newer communities many garages double as gyms and workshops. A coated floor is easier to clean and brighter.`]
+                : ['Older slabs', `Older ${c.name} garages often have cracks, oil stains and old paint that must be ground off before coating.`],
+        ],
+        faqs: (c) => [
+            [`How long does an epoxy garage floor take in ${c.name}?`, 'Most two-car garages take one to two days, then the floor cures before vehicles go back in.'],
+            ['Why do some epoxy floors peel?', 'Poor surface prep, moisture coming through the slab or a thin coating. We diamond-grind and moisture-test to prevent all three.'],
+            ['Epoxy or polyaspartic?', 'Many systems use both: an epoxy base for bond and build, and a polyaspartic topcoat for UV and abrasion resistance.'],
+            ['Is a coated floor slippery?', 'A flake finish with the right topcoat has good grip, and slip-resistant additives are available.'],
+            ['Do I need a permit?', 'Floor coatings usually do not need a permit.'],
+        ],
+    },
+    {
+        slug: 'fencing',
+        name: 'Fencing',
+        phrase: 'fence',
+        timeline: 'Most residential fences are installed in one to three days after the permit is approved.',
+        costDrivers: 'Linear footage, material, height, gates and removal of the old fence.',
+        permit: 'Most fences need a permit, and pool fences must meet Florida barrier rules.',
+        stormTie: 'Fences were among the most common storm losses in 2024, and replacements set in concrete with wind-rated panels hold up better next time.',
+        answer: (c) => `Brothers Remodelers installs vinyl, aluminum, wood and composite fences, including pool barrier fencing, in ${c.name}, ${c.county}. We review your survey, file the fence permit with ${c.permitOffice}, set posts in concrete and handle HOA paperwork where needed.`,
+        notes: (c) => [
+            ['Permit and survey', `Fence permits in ${c.name} are filed with ${c.permitOffice}, and the fence must sit inside your property line and setbacks. We work from your survey.`],
+            c.hoaCommon
+                ? ['HOA rules', `Most ${c.name} HOAs set fence height, material and color, and many require approval before installation. We prepare the submission.`]
+                : ['Material choice', 'Vinyl and aluminum hold up best to Florida sun and moisture with little maintenance; wood costs less upfront but needs sealing.'],
+            ['Pool barriers', 'A fence that serves as a pool barrier must meet Florida height, gap and self-closing, self-latching gate rules.'],
+        ],
+        faqs: (c) => [
+            [`Do I need a permit for a fence in ${c.name}?`, `Usually yes. We file with ${c.permitOffice}.`],
+            [`How tall can a fence be in ${c.name}?`, 'Limits depend on local code, front or back yard, and your HOA. We check before you choose.'],
+            ['What is the best fence for a pool?', 'Aluminum is the most common choice because it meets barrier rules and resists rust.'],
+            ['How long does installation take?', 'One to three days once the permit is approved.'],
+            ['Which brands do you install?', 'Bufftech and Lakeland vinyl, Jerith and Ameristar aluminum, and Trex composite fencing.'],
+        ],
+    },
+    {
+        slug: 'driveways',
+        name: 'Driveways & Pavers',
+        phrase: 'driveway and paver',
+        timeline: 'Most residential driveways take a few days to a week, plus curing time for concrete.',
+        costDrivers: 'Area, material (concrete, pavers or asphalt), removal of the old driveway, sub-base and drainage.',
+        permit: 'Driveway replacement usually needs a permit, especially where it meets the street.',
+        stormTie: 'Heavy storm rain exposes poor drainage and washed-out sub-bases, and a rebuilt driveway is the time to fix grading so water runs away from the house.',
+        answer: (c) => `Brothers Remodelers installs and replaces concrete and paver driveways, walkways and pool decks in ${c.name}, ${c.county}. We remove the old surface, build a compacted sub-base, set the drainage, and permit the work with ${c.permitOffice} where the driveway meets the right-of-way.`,
+        notes: (c) => [
+            ['Sub-base and drainage', `${c.name}'s sandy soil and summer downpours undermine driveways built on a thin base. A compacted sub-base and proper slope prevent settling and standing water.`],
+            ['Pavers or concrete', 'Pavers flex with the ground and individual pieces can be replaced; concrete costs less per square foot. We price both.'],
+            c.hoaCommon
+                ? ['HOA approval', `Many ${c.name} communities set paver colors and patterns. We provide samples for approval.`]
+                : ['Right-of-way work', `The apron where the driveway meets the street is often in the public right-of-way and needs a permit from ${c.permitOffice}.`],
+        ],
+        faqs: (c) => [
+            [`Do I need a permit for a new driveway in ${c.name}?`, `Usually, especially for work at the street. We file with ${c.permitOffice}.`],
+            ['Pavers or concrete: which is better?', 'Pavers cost more but look better longer and are easy to repair; concrete costs less upfront. Both work well with a proper sub-base.'],
+            ['How long does a driveway take?', 'A few days to a week, plus curing time before parking on new concrete.'],
+            ['Can you add a paver pool deck or walkway?', 'Yes, matched to the driveway.'],
+            ['Which paver brands do you install?', 'Tremron, Belgard and Pavestone.'],
         ],
     },
 ];
