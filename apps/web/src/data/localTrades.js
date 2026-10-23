@@ -362,7 +362,7 @@ export const localTrades = [
         costDrivers: 'Area, material (concrete, pavers or asphalt), removal of the old driveway, sub-base and drainage.',
         permit: 'Driveway replacement usually needs a permit, especially where it meets the street.',
         stormTie: 'Heavy storm rain exposes poor drainage and washed-out sub-bases, and a rebuilt driveway is the time to fix grading so water runs away from the house.',
-        answer: (c) => `Brothers Remodelers installs and replaces concrete and paver driveways, walkways and pool decks in ${c.name}, ${c.county}. We remove the old surface, build a compacted sub-base, set the drainage, and permit the work with ${c.permitOffice} where the driveway meets the right-of-way.`,
+        answer: (c) => `Brothers Remodelers installs and replaces concrete and paver driveways, walkways and pool decks in ${c.name}, ${c.county}. We remove the old surface, build a compacted sub-base, set the drainage, and pull the permit for any work where the driveway meets the street.`,
         notes: (c) => [
             ['Sub-base and drainage', `${c.name}'s sandy soil and summer downpours undermine driveways built on a thin base. A compacted sub-base and proper slope prevent settling and standing water.`],
             ['Pavers or concrete', 'Pavers flex with the ground and individual pieces can be replaced; concrete costs less per square foot. We price both.'],

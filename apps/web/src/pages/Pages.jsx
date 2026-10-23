@@ -1,5 +1,5 @@
 import React from 'react';
-import { lowerTitle } from '@/lib/format';
+import { lowerTitle, withArticle } from '@/lib/format';
 import { Helmet } from 'react-helmet';
 import BrandsSection from '@/components/BrandsSection';
 import { LocalCityLinks } from '@/pages/LocalServicePage';
@@ -396,7 +396,7 @@ export const ServiceDetailPage = () => {
                     </div>
                 </div>
             </Section>
-            <CtaBand heading={`Get a ${lowerTitle(service.title)} estimate`} />
+            <CtaBand heading={`Get ${withArticle(lowerTitle(service.title))} estimate`} />
             <CitiesWeServe />
         </SiteLayout>
     );

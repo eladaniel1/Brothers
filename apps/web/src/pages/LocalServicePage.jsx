@@ -9,6 +9,7 @@ import { brandSchemaFor } from '@/data/brands';
 import { getLocalCity, localCities } from '@/data/localCities';
 import { getLocalTrade, localTrades } from '@/data/localTrades';
 import { company, services } from '@/data/site';
+import { withArticle } from '@/lib/format';
 
 const SITE = 'https://brothersremodelers.com';
 
@@ -105,7 +106,7 @@ const LocalServicePage = () => {
                 <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
                     <div>
                         <Eyebrow>Short answer</Eyebrow>
-                        <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Who does {trade.phrase} in {city.name}?</h2>
+                        <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Who does {trade.phrase} work in {city.name}?</h2>
                         <p className="mt-5 text-lg leading-relaxed text-neutral-700">{trade.answer(city)}</p>
 
                         <h3 className="font-display mt-12 text-2xl font-bold uppercase">Key facts</h3>
@@ -189,7 +190,7 @@ const LocalServicePage = () => {
                     </aside>
                 </div>
             </Section>
-            <CtaBand heading={`Get a ${trade.phrase} estimate in ${city.name}`} />
+            <CtaBand heading={`Get ${withArticle(trade.phrase)} estimate in ${city.name}`} />
         </SiteLayout>
     );
 };

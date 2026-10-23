@@ -37,3 +37,7 @@ export const lowerTitle = (title = '') =>
 		.split(' ')
 		.map((word) => (/^\(?[A-Z]{2,}s?\)?$/.test(word) ? word : word.toLowerCase()))
 		.join(' ');
+
+// "a" or "an" before a phrase, treating acronyms like AC and HVAC by sound
+// ("an AC repair estimate", "an HVAC estimate").
+export const withArticle = (phrase = '') => `${/^(AC|HVAC|ADU|[aeiou])/i.test(phrase) ? 'an' : 'a'} ${phrase}`;
