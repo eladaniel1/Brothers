@@ -27,11 +27,11 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
     };
 
     return (
-        <div className="mx-auto mt-12 grid min-w-0 w-full max-w-[86rem] items-center gap-10 lg:grid-cols-[minmax(0,780px)_minmax(22rem,1fr)] lg:gap-14">
+        <div className="mt-10 grid min-w-0 w-full items-center gap-10 lg:grid-cols-2 lg:gap-12">
             <div className="min-w-0">
                 <svg
                     viewBox={floridaMapViewBox}
-                    className="mx-auto block h-auto w-full max-w-[780px] overflow-visible"
+                    className="mx-auto block h-auto w-full max-w-[34rem] overflow-visible lg:max-w-none"
                     role="img"
                     aria-label="Map of Florida. Hillsborough, Pinellas, Pasco, Manatee, and Sarasota counties are highlighted."
                 >
@@ -155,7 +155,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                     <span className="bg-[#c8102e] px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-white">CGC1541183</span>
                     <span className="border border-[#e8a818] bg-amber-50 px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-[#0f223d]">5 counties</span>
                 </div>
-                <h3 className="font-display mt-5 text-3xl font-bold uppercase text-[#0f223d]">{area.city}</h3>
+                <h3 className="font-display mt-5 text-2xl font-bold uppercase text-[#0f223d]">{area.city}</h3>
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-neutral-600">{area.blurb}</p>
                 <ul className="mt-5 flex flex-wrap gap-2">
                     {cities.map((city) => (
