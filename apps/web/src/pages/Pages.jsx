@@ -129,7 +129,7 @@ export const ServiceDetailPage = () => {
         provider: {
             '@type': 'GeneralContractor',
             name: company.name,
-            telephone: '+1-954-355-1520',
+            telephone: '+1-855-445-2551',
             url: 'https://brothersremodelers.com/',
             license: company.licenseNumber,
             areaServed: areas.map((a) => ({ '@type': 'AdministrativeArea', name: a.city })),

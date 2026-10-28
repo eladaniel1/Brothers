@@ -114,18 +114,23 @@ const structuredData = {
   '@id': 'https://brothersremodelers.com/#business',
   name: company.name,
   url: 'https://brothersremodelers.com/',
-  telephone: '+1-954-355-1520',
+  telephone: company.telephone,
   email: company.email,
   image: heroImage,
   foundingDate: String(company.founded),
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '2100 West Oakland Park Boulevard, Suite 120',
-    addressLocality: 'Fort Lauderdale',
-    addressRegion: 'FL',
-    postalCode: '33311',
+    streetAddress: company.streetAddress,
+    addressLocality: company.addressLocality,
+    addressRegion: company.addressRegion,
+    postalCode: company.postalCode,
     addressCountry: 'US'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: company.latitude,
+    longitude: company.longitude
   },
   openingHours: 'Mo-Sa 07:00-18:00',
   areaServed: [{
@@ -149,7 +154,7 @@ const structuredData = {
     ratingValue: '4.9',
     reviewCount: '180'
   },
-  identifier: 'Florida Certified General Contractor License #CGC1535875'
+  identifier: 'Florida Certified General Contractor License #CGC1541183'
 };
 const homeFaqs = [
     {
@@ -166,7 +171,7 @@ const homeFaqs = [
     },
     {
         q: 'How do I verify a Florida contractor’s license?',
-        a: <>Use the Florida Department of Business and Professional Regulation’s license search at <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">myfloridalicense.com</a>. Search by the contractor’s name or license number and confirm the license is active and matches the business you are hiring. A Certified General Contractor (CGC) license is issued by the state and is valid statewide. Brothers Remodelers holds license CGC1535875, and we provide certificates of insurance on request.</>
+        a: <>Use the Florida Department of Business and Professional Regulation’s license search at <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">myfloridalicense.com</a>. Search by the contractor’s name or license number and confirm the license is active and matches the business you are hiring. A Certified General Contractor (CGC) license is issued by the state and is valid statewide. Brothers Remodelers holds license CGC1541183, and we provide certificates of insurance on request.</>
     },
     {
         q: 'Do you offer financing?',
@@ -264,7 +269,7 @@ const HomePage = () => <SiteLayout homepageImages>
                     </Reveal>
                     <Reveal delay={0.3}>
                         <ul className="mt-5 grid max-w-3xl grid-cols-2 gap-x-4 gap-y-3 text-xs font-semibold uppercase leading-snug tracking-wide text-white/80 sm:grid-cols-4">
-                            <li>Licensed FL contractor CGC1535875</li>
+                            <li>Licensed FL contractor CGC1541183</li>
                             <li>Fixed line-item pricing</li>
                             <li>Superintendent on site daily</li>
                             <li>[Two-year workmanship warranty]</li>
@@ -291,7 +296,7 @@ const HomePage = () => <SiteLayout homepageImages>
             <div className="mx-auto max-w-[72rem]">
                 <h2 className="font-display text-3xl font-bold leading-tight md:text-4xl">What Brothers Remodelers does</h2>
                 <p className="mt-3 max-w-4xl text-base leading-relaxed text-neutral-600">
-                    Brothers Remodelers is a Florida-licensed <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link> (CGC1535875) that has remodeled homes since [2006]. We handle kitchen and bathroom remodeling, home additions, [whole-home renovations,] general contracting and concrete work for homeowners in <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties</Link>. One team manages design, permits, trades and inspections, and every proposal is priced line by line.
+                    Brothers Remodelers is a Florida-licensed <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link> (CGC1541183) that has remodeled homes since [2006]. We handle kitchen and bathroom remodeling, home additions, [whole-home renovations,] general contracting and concrete work for homeowners in <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties</Link>. One team manages design, permits, trades and inspections, and every proposal is priced line by line.
                 </p>
             </div>
         </section>
@@ -391,7 +396,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         You get a live schedule, weekly photo updates and priced change orders before work happens.
                     </p>
                     <div className="mt-8 divide-y divide-neutral-200 border-y border-neutral-200">
-                        {[[ShieldCheck, 'Licensed, bonded and insured', <>State-certified Florida general contractor, <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">license CGC1535875</a>. Certificates of insurance available on request.</>], [Ruler, 'Fixed line-item pricing', 'Allowances stated in plain language so you can compare bids fairly.'], [HardHat, 'Dedicated site supervision', 'One superintendent owns your job from demolition to punch list.'], [Hammer, 'Two-year workmanship warranty', 'Documented at closeout with all manufacturer warranties.']].map(([Icon, title, text]) => <div key={title} className="flex gap-4 py-4">
+                        {[[ShieldCheck, 'Licensed, bonded and insured', <>State-certified Florida general contractor, <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">license CGC1541183</a>. Certificates of insurance available on request.</>], [Ruler, 'Fixed line-item pricing', 'Allowances stated in plain language so you can compare bids fairly.'], [HardHat, 'Dedicated site supervision', 'One superintendent owns your job from demolition to punch list.'], [Hammer, 'Two-year workmanship warranty', 'Documented at closeout with all manufacturer warranties.']].map(([Icon, title, text]) => <div key={title} className="flex gap-4 py-4">
                                 <Icon className="mt-1 h-5 w-5 shrink-0 text-[hsl(var(--brand))]" strokeWidth={2} />
                                 <div>
                                     <h3 className="font-semibold">{title}</h3>

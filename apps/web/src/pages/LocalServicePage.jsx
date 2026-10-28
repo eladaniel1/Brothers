@@ -6,10 +6,12 @@ import SiteLayout, { CtaBand, Eyebrow, PageHero, Section } from '@/components/Si
 import BrandsSection from '@/components/BrandsSection';
 import GetEstimateCTA from '@/components/GetEstimateCTA';
 import { brandSchemaFor } from '@/data/brands';
+import { getBespokeLocalPage } from '@/data/bespokeLocalPages';
 import { getLocalCity, localCities } from '@/data/localCities';
 import { getLocalTrade, localTrades } from '@/data/localTrades';
 import { company, services } from '@/data/site';
 import { withArticle } from '@/lib/format';
+import BespokeLocalServicePage from '@/pages/BespokeLocalServicePage';
 
 const SITE = 'https://brothersremodelers.com';
 
@@ -20,6 +22,9 @@ const SITE = 'https://brothersremodelers.com';
 // city pages for a trade do not repeat the same blocks.
 const LocalServicePage = () => {
     const { slug, citySlug } = useParams();
+    const bespoke = getBespokeLocalPage(slug, citySlug);
+    if (bespoke) return <BespokeLocalServicePage page={bespoke} />;
+
     const trade = getLocalTrade(slug);
     const city = getLocalCity(citySlug);
     const service = services.find((s) => s.slug === slug);
