@@ -271,6 +271,7 @@ try {
         const { brandsFor } = await vite.ssrLoadModule('/src/data/brands.js');
         const { localTrades } = await vite.ssrLoadModule('/src/data/localTrades.js');
         const { localCities } = await vite.ssrLoadModule('/src/data/localCities.js');
+        const { bespokeLocalPages, bespokePageToLlms } = await vite.ssrLoadModule('/src/data/bespokeLocalPages.js');
         const site = 'https://brothersremodelers.com';
         const brandLine = (slug) => brandsFor(slug).map(([cat, names]) => `${cat}: ${names.join(', ')}`).join('; ');
         const areaNames = areas.map((a) => a.city).join(', ');
@@ -287,6 +288,7 @@ try {
             '',
             `- Phone: ${company.phone}`,
             `- Email: ${company.email}`,
+            `- Address: ${company.address}`,
             `- Hours: ${company.hours}`,
             `- License: Florida CGC ${company.licenseNumber}, licensed and insured`,
             `- Founded: ${company.founded}`,
@@ -308,6 +310,10 @@ try {
             '## Service areas',
             '',
             ...areas.map((a) => `- [${a.city}](${site}/areas-we-serve/${a.slug}/): ${a.blurb}`),
+            '',
+            '## Bespoke local remodeling pages',
+            '',
+            ...bespokeLocalPages.map((page) => `- [${page.title}](${site}${page.path}): ${page.llmsSummary}`),
             '',
             '## Guides',
             '',
@@ -340,6 +346,7 @@ try {
                 ...(brandsFor(s.slug).length ? [`Brands we install: ${brandLine(s.slug)}.`, ''] : []),
                 ...(s.faqs?.length ? s.faqs.flatMap(([q, a]) => [`Q: ${q}`, `A: ${a}`, '']) : []),
             ]),
+            ...bespokeLocalPages.flatMap((page) => [bespokePageToLlms(page, site), '']),
         ].join('\n');
 
         await fs.writeFile(path.join(outDir, 'llms.txt'), llms, 'utf-8');

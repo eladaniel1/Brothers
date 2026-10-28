@@ -3,12 +3,14 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Hammer, HardHat, Ruler, ShieldCheck, Star } from 'lucide-react';
 import SiteLayout, { Eyebrow, Section } from '@/components/SiteLayout';
-import GetEstimateCTA from '@/components/GetEstimateCTA';
 import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Seo from '@/components/Seo';
 import ServiceCardGrid from '@/components/ServiceCardGrid';
-import { areas, company, heroImage, processSteps, projects, services, stats, testimonials } from '@/data/site';
+import FinancingSection from '@/components/FinancingSection';
+import FloridaServiceMap from '@/components/FloridaServiceMap';
+import { MarkerUnderline } from '@/components/MarkerAccents';
+import { company, heroImage, processSteps, projects, services, stats, testimonials } from '@/data/site';
 const ticker = ['Gut Renovations', 'Kitchens & Baths', 'Home Additions', 'Commercial Build-Outs', 'Concrete & Foundations', 'Licensed & Insured'];
 
 const areaCardCommunities = {
@@ -114,18 +116,23 @@ const structuredData = {
   '@id': 'https://brothersremodelers.com/#business',
   name: company.name,
   url: 'https://brothersremodelers.com/',
-  telephone: '+1-954-355-1520',
+  telephone: company.telephone,
   email: company.email,
   image: heroImage,
   foundingDate: String(company.founded),
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '2100 West Oakland Park Boulevard, Suite 120',
-    addressLocality: 'Fort Lauderdale',
-    addressRegion: 'FL',
-    postalCode: '33311',
+    streetAddress: company.streetAddress,
+    addressLocality: company.addressLocality,
+    addressRegion: company.addressRegion,
+    postalCode: company.postalCode,
     addressCountry: 'US'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: company.latitude,
+    longitude: company.longitude
   },
   openingHours: 'Mo-Sa 07:00-18:00',
   areaServed: [{
@@ -149,7 +156,7 @@ const structuredData = {
     ratingValue: '4.9',
     reviewCount: '180'
   },
-  identifier: 'Florida Certified General Contractor License #CGC1535875'
+  identifier: 'Florida Certified General Contractor License #CGC1541183'
 };
 const homeFaqs = [
     {
@@ -166,7 +173,7 @@ const homeFaqs = [
     },
     {
         q: 'How do I verify a Florida contractor’s license?',
-        a: <>Use the Florida Department of Business and Professional Regulation’s license search at <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">myfloridalicense.com</a>. Search by the contractor’s name or license number and confirm the license is active and matches the business you are hiring. A Certified General Contractor (CGC) license is issued by the state and is valid statewide. Brothers Remodelers holds license CGC1535875, and we provide certificates of insurance on request.</>
+        a: <>Use the Florida Department of Business and Professional Regulation’s license search at <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">myfloridalicense.com</a>. Search by the contractor’s name or license number and confirm the license is active and matches the business you are hiring. A Certified General Contractor (CGC) license is issued by the state and is valid statewide. Brothers Remodelers holds license CGC1541183, and we provide certificates of insurance on request.</>
     },
     {
         q: 'Do you offer financing?',
@@ -224,12 +231,12 @@ const HomePage = () => <SiteLayout homepageImages>
         </Helmet>
         <Seo title="Remodeling Contractor Tampa Bay | Brothers Remodelers" description="Looking for a remodeling contractor in Tampa Bay? Brothers Remodelers offers home improvement services to help bring your project to life. Contact us today." image={heroImage} siteName={company.name} />
 
-        <section className="relative isolate min-h-[100dvh] overflow-hidden bg-[hsl(var(--ink))]">
+        <section className="relative isolate overflow-hidden bg-[hsl(var(--ink))]">
             {/* eslint-disable-next-line react/no-unknown-property -- React 18 in this preview warns on fetchPriority; the DOM attribute must be lowercase */}
             <img src={heroImage} alt="Carpenter in a hard hat cutting lumber on a remodeling job site" width={homepageHeroDimensions.width} height={homepageHeroDimensions.height} fetchpriority="high" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--ink))] via-[hsl(var(--ink))]/85 to-transparent" />
-            <div className="relative mx-auto grid max-w-[90rem] items-center gap-12 px-4 pb-16 pt-14 md:pt-20 lg:grid-cols-[1.05fr_0.95fr]">
-                <div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--ink))] via-[hsl(var(--ink))]/88 to-[hsl(var(--ink))]/35" />
+            <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+                <div className="max-w-3xl">
                     <Reveal>
                         <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand))]">
                             <span className="h-3 w-8 bg-[hsl(var(--brand))]" />
@@ -237,7 +244,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         </p>
                     </Reveal>
                     <Reveal delay={0.08}>
-                        <h1 className="font-display mt-6 text-5xl font-bold uppercase leading-[0.95] text-white sm:text-6xl lg:text-7xl">
+                        <h1 className="font-display mt-6 text-4xl font-bold uppercase leading-[0.95] text-white sm:text-5xl lg:text-6xl">
                             <span className="relative inline-block">
                                 <span className="relative z-10">Your Remodeling Contractor in Tampa Bay</span>
                                 <span className="absolute inset-x-0 bottom-1 z-0 h-3 bg-[hsl(var(--brand))]/80" />
@@ -264,7 +271,7 @@ const HomePage = () => <SiteLayout homepageImages>
                     </Reveal>
                     <Reveal delay={0.3}>
                         <ul className="mt-5 grid max-w-3xl grid-cols-2 gap-x-4 gap-y-3 text-xs font-semibold uppercase leading-snug tracking-wide text-white/80 sm:grid-cols-4">
-                            <li>Licensed FL contractor CGC1535875</li>
+                            <li>Licensed FL contractor CGC1541183</li>
                             <li>Fixed line-item pricing</li>
                             <li>Superintendent on site daily</li>
                             <li>[Two-year workmanship warranty]</li>
@@ -281,17 +288,14 @@ const HomePage = () => <SiteLayout homepageImages>
                         </div>
                     </Reveal>
                 </div>
-                <div className="lg:pl-6">
-                    <GetEstimateCTA tone="dark" heading="Get an Estimate" text="Tell us about your project and get a free, no-obligation line-item proposal within five business days." />
-                </div>
             </div>
         </section>
 
-        <section className="border-b border-neutral-200 bg-white px-4 py-12 md:py-14">
-            <div className="mx-auto max-w-[72rem]">
+        <section className="border-b border-neutral-200 bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+            <div className="mx-auto max-w-7xl">
                 <h2 className="font-display text-3xl font-bold leading-tight md:text-4xl">What Brothers Remodelers does</h2>
                 <p className="mt-3 max-w-4xl text-base leading-relaxed text-neutral-600">
-                    Brothers Remodelers is a Florida-licensed <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link> (CGC1535875) that has remodeled homes since [2006]. We handle kitchen and bathroom remodeling, home additions, [whole-home renovations,] general contracting and concrete work for homeowners in <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties</Link>. One team manages design, permits, trades and inspections, and every proposal is priced line by line.
+                    Brothers Remodelers is a Florida-licensed <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link> (CGC1541183) that has remodeled homes since [2006]. We handle kitchen and bathroom remodeling, home additions, [whole-home renovations,] general contracting and concrete work for homeowners in <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties</Link>. One team manages design, permits, trades and inspections, and every proposal is priced line by line.
                 </p>
             </div>
         </section>
@@ -304,11 +308,11 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
         </div>
 
-        <Section width="wide">
+        <Section width="page">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                     <Eyebrow>What we build</Eyebrow>
-                    <h2 className="font-display mt-4 max-w-2xl text-4xl font-bold uppercase leading-tight md:text-5xl">Remodeling services we provide</h2>
+                    <h2 className="font-display mt-4 max-w-2xl text-3xl font-bold uppercase leading-tight md:text-4xl">Remodeling services we provide</h2>
                     <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-600">One licensed contractor runs every trade on your project, from permits and engineering to final inspection.</p>
                 </div>
                 <Link to="/services" className="text-sm font-bold uppercase tracking-widest text-neutral-600 hover:text-[hsl(var(--ink))]">
@@ -318,10 +322,10 @@ const HomePage = () => <SiteLayout homepageImages>
             <ServiceCardGrid items={services} />
         </Section>
 
-        <Section>
-            <div className="mx-auto max-w-[56rem] text-center">
+        <Section width="page">
+            <div className="mx-auto max-w-3xl text-center">
                 <Eyebrow className="justify-center">FLORIDA REMODELING</Eyebrow>
-                <h2 className="font-display mt-4 text-4xl font-bold uppercase leading-tight md:text-5xl">Remodeling in Florida: What Gulf Coast Homeowners Should Know</h2>
+                <h2 className="font-display mt-4 text-3xl font-bold uppercase leading-tight md:text-4xl">Remodeling in Florida: What Gulf Coast Homeowners Should Know</h2>
                 <p className="mt-5 text-base leading-relaxed text-neutral-600 md:text-lg">
                     Remodeling a Gulf Coast home comes with rules and building conditions that most of the country doesn&apos;t deal with. These are the issues that most often affect the scope, cost and permitting of projects in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.
                 </p>
@@ -372,7 +376,7 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
         </Section>
 
-        <Section className="bg-neutral-50">
+        <Section width="page" className="bg-neutral-50">
             <div className="grid items-center gap-10 lg:grid-cols-2">
                 <div className="relative">
                     <img src="/images/founder-hardhat.jpg" alt="Construction professional wearing a yellow hard hat on a job site." width={homepageFounderDimensions.width} height={homepageFounderDimensions.height} loading="lazy" className="w-full object-cover" />
@@ -383,7 +387,7 @@ const HomePage = () => <SiteLayout homepageImages>
                 </div>
                 <div>
                     <Eyebrow>Why owners hire us</Eyebrow>
-                    <h2 className="font-display mt-4 text-4xl font-bold uppercase leading-tight md:text-5xl">
+                    <h2 className="font-display mt-4 text-3xl font-bold uppercase leading-tight md:text-4xl">
                         Why homeowners hire Brothers Remodelers
                     </h2>
                     <p className="mt-5 leading-relaxed text-neutral-600">
@@ -391,7 +395,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         You get a live schedule, weekly photo updates and priced change orders before work happens.
                     </p>
                     <div className="mt-8 divide-y divide-neutral-200 border-y border-neutral-200">
-                        {[[ShieldCheck, 'Licensed, bonded and insured', <>State-certified Florida general contractor, <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">license CGC1535875</a>. Certificates of insurance available on request.</>], [Ruler, 'Fixed line-item pricing', 'Allowances stated in plain language so you can compare bids fairly.'], [HardHat, 'Dedicated site supervision', 'One superintendent owns your job from demolition to punch list.'], [Hammer, 'Two-year workmanship warranty', 'Documented at closeout with all manufacturer warranties.']].map(([Icon, title, text]) => <div key={title} className="flex gap-4 py-4">
+                        {[[ShieldCheck, 'Licensed, bonded and insured', <>State-certified Florida general contractor, <a href="https://www.myfloridalicense.com/wl11.asp" target="_blank" rel="noopener noreferrer" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">license CGC1541183</a>. Certificates of insurance available on request.</>], [Ruler, 'Fixed line-item pricing', 'Allowances stated in plain language so you can compare bids fairly.'], [HardHat, 'Dedicated site supervision', 'One superintendent owns your job from demolition to punch list.'], [Hammer, 'Two-year workmanship warranty', 'Documented at closeout with all manufacturer warranties.']].map(([Icon, title, text]) => <div key={title} className="flex gap-4 py-4">
                                 <Icon className="mt-1 h-5 w-5 shrink-0 text-[hsl(var(--brand))]" strokeWidth={2} />
                                 <div>
                                     <h3 className="font-semibold">{title}</h3>
@@ -406,9 +410,9 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
         </Section>
 
-        <Section width="wide">
+        <Section width="page">
             <Eyebrow>Recent projects</Eyebrow>
-            <h2 className="font-display mt-4 text-4xl font-bold uppercase md:text-5xl">Home remodeling projects</h2>
+            <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Home remodeling projects</h2>
             <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {projects.slice(0, 3).map((p, i) => <Reveal key={p.title} delay={i * 0.06}>
                         <article className="group relative isolate overflow-hidden">
@@ -427,9 +431,9 @@ const HomePage = () => <SiteLayout homepageImages>
             </Link>
         </Section>
 
-        <Section className="bg-[hsl(var(--ink))] text-white">
+        <Section width="page" className="bg-[hsl(var(--ink))] text-white">
             <Eyebrow>How it works</Eyebrow>
-            <h2 className="font-display mt-4 text-4xl font-bold uppercase text-white md:text-5xl"><Link to="/process" className="hover:text-white/85">our remodeling process</Link>: five steps, no surprises</h2>
+            <h2 className="font-display mt-4 text-3xl font-bold uppercase text-white md:text-4xl"><Link to="/process" className="hover:text-white/85">our remodeling process</Link>: five steps, no surprises</h2>
             <ol className="mt-10 grid gap-8 md:grid-cols-5">
                 {processSteps.map(([title, text], i) => <li key={title} className="border-t-2 border-[hsl(var(--brand))] pt-4">
                         <span className="font-display text-4xl font-bold text-[hsl(var(--brand))]">0{i + 1}</span>
@@ -439,11 +443,11 @@ const HomePage = () => <SiteLayout homepageImages>
             </ol>
         </Section>
 
-        <Section>
+        <Section width="page">
             <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
                 <div>
                     <Eyebrow>Client reviews</Eyebrow>
-                    <h2 className="font-display mt-4 text-4xl font-bold uppercase leading-tight">What remodeling clients say</h2>
+                    <h2 className="font-display mt-4 text-3xl font-bold uppercase leading-tight md:text-4xl">What remodeling clients say</h2>
                     <div className="mt-4 flex gap-1 text-[hsl(var(--brand))]">
                         {[0, 1, 2, 3, 4].map(i => <Star key={i} className="h-5 w-5 fill-current" />)}
                     </div>
@@ -458,44 +462,22 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
         </Section>
 
-        <Section className="bg-neutral-50" width="wide">
-            <div className="mx-auto max-w-[56rem] text-center">
+        <FinancingSection />
+
+        <Section className="bg-white" width="page">
+            <div className="text-center">
                 <Eyebrow className="justify-center">Service area</Eyebrow>
-                <h2 className="font-display mt-4 text-4xl font-bold uppercase leading-tight md:text-5xl">
-                    Areas We Serve
+                <h2 className="font-display mt-3 inline-block text-3xl font-bold uppercase leading-tight text-[#0f223d] md:text-4xl">
+                    Areas we serve
+                    <MarkerUnderline src="/images/graffiti-underline-blue-thick-right.png" className="mx-auto mt-1 h-4 max-w-[20rem]" />
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-neutral-600 md:text-lg">
-                    Brothers Remodelers serves homeowners and property owners with{' '}
-                    <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contracting</Link>,{' '}
-                    <Link to="/services/home-additions" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">home additions</Link>,{' '}
-                    <Link to="/services/kitchen-remodeling" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">kitchen remodeling</Link>{' '}
-                    and{' '}
-                    <Link to="/services/bathroom-remodeling" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">bathroom remodeling</Link>{' '}
-                    across the five counties and communities below.
+                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-neutral-600">
+                    Five Gulf Coast counties. Select one on the map to open its cities.
+                    <MarkerUnderline src="/images/graffiti-underline-yellow-thick-right.png" className="mx-auto mt-2 h-3 max-w-[14rem]" />
                 </p>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
-                {areas.map((area, i) => <Reveal key={area.slug} delay={i * 0.05}>
-                        <div className="flex h-full flex-col border border-neutral-200 bg-white p-7 transition-colors hover:border-[hsl(var(--brand))]">
-                            <h3 className="font-display text-2xl font-bold uppercase leading-tight">{area.city}</h3>
-                            <p className="mt-3 text-sm leading-relaxed text-neutral-600">{area.blurb}</p>
-                            <ul className="mt-5 flex flex-wrap gap-2">
-                                {areaCardCommunities[area.slug].map(city => {
-                                    const cityLink = city === 'Lakewood Ranch' ? cityLinks[city][area.slug] : cityLinks[city];
-                                    return <li key={city}>
-                                        <Link to={cityLink} className="block border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-neutral-700 underline decoration-transparent underline-offset-2 transition-colors hover:border-[hsl(var(--brand))] hover:text-[hsl(var(--ink))] hover:decoration-[hsl(var(--brand))]">
-                                            {city}
-                                        </Link>
-                                    </li>;
-                                })}
-                            </ul>
-                            <Link to={`/areas-we-serve/${area.slug}`} className="mt-6 inline-flex items-center gap-2 self-start text-xs font-bold uppercase tracking-widest text-[hsl(var(--ink))] transition-colors hover:text-[hsl(var(--brand))]">
-                                All {area.city} communities <ArrowRight className="h-3.5 w-3.5" />
-                            </Link>
-                        </div>
-                    </Reveal>)}
-            </div>
+            <FloridaServiceMap communities={areaCardCommunities} cityLinks={cityLinks} />
 
             <div className="mt-10 text-center">
                 <Link to="/areas-we-serve" className="inline-flex min-h-[48px] items-center gap-2 border border-neutral-300 px-7 text-sm font-bold uppercase tracking-wide text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))]">
@@ -504,10 +486,10 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
         </Section>
 
-        <Section>
-            <div className="mx-auto max-w-[56rem]">
+        <Section width="page">
+            <div className="mx-auto max-w-3xl">
                 <Eyebrow>FAQ</Eyebrow>
-                <h2 className="font-display mt-4 text-4xl font-bold uppercase leading-tight md:text-5xl">Home Remodeling FAQs for Tampa Bay Homeowners</h2>
+                <h2 className="font-display mt-4 text-3xl font-bold uppercase leading-tight md:text-4xl">Home Remodeling FAQs for Tampa Bay Homeowners</h2>
                 <div className="mt-10 divide-y divide-neutral-200 border-y border-neutral-200">
                     {homeFaqs.map(f => <div key={f.q} className="py-5">
                             <h3 className="font-display text-lg font-bold uppercase">{f.q}</h3>
@@ -520,8 +502,8 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
         </Section>
 
-        <Section className="bg-neutral-50">
-            <div className="mx-auto max-w-[44rem] border-t border-neutral-200 pt-10 text-center">
+        <Section width="page" className="bg-neutral-50">
+            <div className="mx-auto max-w-3xl text-center">
                 <p className="font-display text-3xl font-bold uppercase leading-tight">Planning a Remodeling Project?</p>
                 <p className="mt-3 text-base leading-relaxed text-neutral-600">
                     Tell us where your project is located and what you are planning. Our team can help you determine the

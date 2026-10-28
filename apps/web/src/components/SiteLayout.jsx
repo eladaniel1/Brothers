@@ -6,7 +6,7 @@ import { company, logoUrl, nav, services, areas } from '@/data/site';
 export const Logo = ({ dark = false, homepageImages = false }) => (
     <Link
         to="/"
-        className={`flex items-center gap-2.5 group rounded-sm ${dark ? 'bg-white px-2 py-1.5' : ''}`}
+        className={`flex min-w-0 items-center gap-2.5 group rounded-sm ${dark ? 'bg-white px-2 py-1.5' : ''}`}
         aria-label={`${company.name} home`}
     >
         <img
@@ -14,7 +14,7 @@ export const Logo = ({ dark = false, homepageImages = false }) => (
             alt={`${company.name} logo`}
             width={homepageImages ? 76 : undefined}
             height={homepageImages ? 48 : undefined}
-            className="h-11 w-auto max-w-[200px] object-contain object-left transition-transform duration-200 group-hover:-translate-y-0.5 sm:h-12 sm:max-w-[240px]"
+            className="h-11 w-auto max-w-[42vw] object-contain object-left transition-transform duration-200 group-hover:-translate-y-0.5 sm:h-12 sm:max-w-[240px]"
         />
     </Link>
 );
@@ -34,9 +34,9 @@ const Header = ({ homepageImages = false }) => {
     }, []);
 
     return (
-        <header className="sticky top-0 z-50">
-            <div className="hidden bg-[hsl(var(--ink))] px-4 py-2 text-xs text-white/70 md:block">
-                <div className="mx-auto flex max-w-[90rem] items-center justify-between">
+        <header className="sticky top-0 z-50 w-full min-w-0 max-w-full">
+            <div className="hidden bg-[hsl(var(--ink))] px-4 py-2 text-xs text-white/70 sm:px-6 lg:px-8 md:block">
+                <div className="mx-auto flex max-w-7xl items-center justify-between">
                     <span className="flex items-center gap-2">
                         <ShieldCheck className="h-3.5 w-3.5 text-[hsl(var(--brand))]" strokeWidth={2} />
                         {company.license}
@@ -49,8 +49,8 @@ const Header = ({ homepageImages = false }) => {
                     </span>
                 </div>
             </div>
-            <div className={`border-b bg-white transition-shadow ${scrolled ? 'shadow-[0_10px_30px_-18px_rgba(15,23,42,0.45)]' : ''}`}>
-                <div className="mx-auto flex max-w-[90rem] items-center justify-between gap-6 px-4 py-3">
+            <div className={`w-full min-w-0 max-w-full border-b bg-white transition-shadow ${scrolled ? 'shadow-[0_10px_30px_-18px_rgba(15,23,42,0.45)]' : ''}`}>
+                <div className="mx-auto flex w-full min-w-0 max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
                     <Logo homepageImages={homepageImages} />
                     <nav className="hidden items-center gap-1 lg:flex">
                         {nav.map((item) => (
@@ -80,19 +80,20 @@ const Header = ({ homepageImages = false }) => {
                             </div>
                         ))}
                     </nav>
-                    <div className="flex items-center gap-2">
+                    <div className="flex shrink-0 items-center gap-2">
                         <a
                             href={company.phoneHref}
-                            className="hidden min-h-[44px] items-center gap-2 border border-neutral-300 px-4 text-sm font-semibold text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))] sm:flex"
+                            className="hidden min-h-[44px] items-center gap-2 border border-neutral-300 px-4 text-sm font-semibold text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))] lg:flex"
                         >
                             <Phone className="h-4 w-4" strokeWidth={2.2} />
-                            Call
+                            {company.phone}
                         </a>
                         <Link
                             to="/quote"
-                            className="flex min-h-[44px] items-center bg-[hsl(var(--brand))] px-5 text-sm font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))] transition-transform hover:-translate-y-px active:translate-y-0"
+                            className="flex min-h-[44px] items-center bg-[hsl(var(--brand))] px-3 text-sm font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))] transition-transform hover:-translate-y-px active:translate-y-0 sm:px-5"
                         >
-                            Free Quote
+                            <span className="sm:hidden">Estimate</span>
+                            <span className="hidden sm:inline">Get Estimate</span>
                         </Link>
                         <button
                             type="button"
@@ -130,9 +131,9 @@ const Header = ({ homepageImages = false }) => {
 };
 
 const Footer = ({ homepageImages = false }) => (
-    <footer className="bg-[hsl(var(--ink))] text-white/70">
+    <footer className="w-full min-w-0 max-w-full bg-[hsl(var(--ink))] text-white/70">
         <div className="hatch h-1.5 w-full" />
-        <div className="mx-auto grid max-w-[90rem] gap-10 px-4 py-14 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
             <div>
                 <Logo dark homepageImages={homepageImages} />
                 <p className="mt-4 max-w-xs text-sm leading-relaxed">
@@ -176,8 +177,8 @@ const Footer = ({ homepageImages = false }) => (
                 </ul>
             </div>
         </div>
-        <div className="border-t border-white/10 px-4 py-5 text-xs">
-            <div className="mx-auto flex max-w-[90rem] flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-t border-white/10 px-4 py-5 pb-24 text-xs sm:px-6 md:pb-5 lg:px-8">
+            <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <span>© {new Date().getFullYear()} {company.name}. All rights reserved.</span>
                 <span className="flex gap-4">
                     <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
@@ -191,10 +192,11 @@ const Footer = ({ homepageImages = false }) => (
 );
 
 export const Section = ({ children, className = '', width = 'standard', id }) => {
-    const rail = width === 'narrow' ? 'max-w-[56rem]' : width === 'wide' ? 'max-w-[90rem]' : 'max-w-[72rem]';
+    const rail = width === 'narrow' ? 'max-w-[56rem]' : width === 'page' ? 'max-w-7xl' : width === 'wide' ? 'max-w-[90rem]' : 'max-w-[72rem]';
+    const pad = width === 'page' ? 'px-4 py-16 sm:px-6 lg:px-8 lg:py-24' : 'px-4 py-16 md:py-24';
     return (
-        <section id={id} className={`px-4 py-16 md:py-24 ${className}`}>
-            <div className={`mx-auto ${rail}`}>{children}</div>
+        <section id={id} className={`w-full min-w-0 max-w-full ${pad} ${className}`}>
+            <div className={`mx-auto w-full min-w-0 ${rail}`}>{children}</div>
         </section>
     );
 };
@@ -207,9 +209,9 @@ export const Eyebrow = ({ children, className = '' }) => (
 );
 
 export const PageHero = ({ title, subtitle, image, crumbs = [] }) => (
-    <div className="relative isolate overflow-hidden bg-[hsl(var(--ink))]">
+    <div className="relative isolate w-full min-w-0 max-w-full overflow-hidden bg-[hsl(var(--ink))]">
         {image && <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />}
-        <div className="relative mx-auto max-w-[72rem] px-4 py-16 md:py-24">
+        <div className="relative mx-auto min-w-0 max-w-[72rem] px-4 py-16 md:py-24">
             <nav className="mb-5 flex flex-wrap items-center gap-2 text-xs uppercase tracking-widest text-white/50">
                 <Link to="/" className="hover:text-[hsl(var(--brand))]">Home</Link>
                 {crumbs.map((c) => (
@@ -219,7 +221,7 @@ export const PageHero = ({ title, subtitle, image, crumbs = [] }) => (
                     </span>
                 ))}
             </nav>
-            <h1 className="font-display max-w-3xl text-4xl font-bold uppercase leading-[1.05] text-white sm:text-5xl md:text-6xl">
+            <h1 className="font-display max-w-full break-words text-4xl font-bold uppercase leading-[1.05] text-white sm:max-w-3xl sm:text-5xl md:text-6xl">
                 {title}
             </h1>
             {subtitle && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70">{subtitle}</p>}
@@ -229,8 +231,8 @@ export const PageHero = ({ title, subtitle, image, crumbs = [] }) => (
 );
 
 export const CtaBand = ({ heading = 'Ready to price your project?', text = 'Send us your scope and we will come out, measure, and return a line-item proposal within five business days.' }) => (
-    <section className="bg-[hsl(var(--brand))] px-4 py-14">
-        <div className="mx-auto flex max-w-[72rem] flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+    <section className="w-full min-w-0 max-w-full bg-[hsl(var(--brand))] px-4 py-14">
+        <div className="mx-auto flex min-w-0 max-w-[72rem] flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div>
                 <h2 className="font-display text-3xl font-bold uppercase text-[hsl(var(--brand-foreground))] md:text-4xl">{heading}</h2>
                 <p className="mt-2 max-w-xl text-[hsl(var(--brand-foreground))]/80">{text}</p>
@@ -247,11 +249,30 @@ export const CtaBand = ({ heading = 'Ready to price your project?', text = 'Send
     </section>
 );
 
+const MobileQuoteBar = () => (
+    <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 border-t border-white/10 md:hidden">
+        <a
+            href={company.phoneHref}
+            className="flex min-h-[56px] items-center justify-center gap-2 bg-[hsl(var(--ink))] text-sm font-bold uppercase tracking-wide text-white"
+        >
+            <Phone className="h-4 w-4" strokeWidth={2.2} />
+            Call
+        </a>
+        <Link
+            to="/quote"
+            className="flex min-h-[56px] items-center justify-center gap-2 bg-[hsl(var(--brand))] text-sm font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))]"
+        >
+            Get a Quote
+        </Link>
+    </div>
+);
+
 const SiteLayout = ({ children, homepageImages = false }) => (
-    <div className="flex min-h-screen flex-col bg-white text-[hsl(var(--ink))]">
+    <div className="flex min-h-screen w-full min-w-0 max-w-full flex-col overflow-x-clip bg-white text-[hsl(var(--ink))]">
         <Header homepageImages={homepageImages} />
-        <main className="flex-1">{children}</main>
+        <main className="w-full min-w-0 max-w-full flex-1">{children}</main>
         <Footer homepageImages={homepageImages} />
+        <MobileQuoteBar />
     </div>
 );
 

@@ -4,7 +4,7 @@
 // relatedServices, metaTitle, metaDescription) consumed by ServiceDetailPage.
 //
 // Business-accuracy note: Brothers Remodelers holds Florida Certified General
-// Contractor license CGC1535875. Specialty trades (plumbing, electrical, HVAC,
+// Contractor license CGC1541183. Specialty trades (plumbing, electrical, HVAC,
 // solar) are coordinated through licensed subcontractors under that license.
 // No licenses, warranties, years of experience, reviews, awards, project counts,
 // savings guarantees, financing offers, or office locations beyond what is
