@@ -10,6 +10,7 @@ import Seo from '@/components/Seo';
 import ServiceCardGrid from '@/components/ServiceCardGrid';
 import FinancingSection from '@/components/FinancingSection';
 import FloridaServiceMap from '@/components/FloridaServiceMap';
+import { MarkerUnderline } from '@/components/MarkerAccents';
 import { company, heroImage, processSteps, projects, services, stats, testimonials } from '@/data/site';
 const ticker = ['Gut Renovations', 'Kitchens & Baths', 'Home Additions', 'Commercial Build-Outs', 'Concrete & Foundations', 'Licensed & Insured'];
 
@@ -467,14 +468,16 @@ const HomePage = () => <SiteLayout homepageImages>
 
         <FinancingSection />
 
-        <Section className="bg-white">
-            <div className="mx-auto max-w-6xl text-center">
+        <Section className="bg-white" width="wide">
+            <div className="mx-auto max-w-[86rem] text-center">
                 <Eyebrow className="justify-center">Service area</Eyebrow>
-                <h2 className="font-display mt-3 text-3xl font-bold uppercase leading-tight md:text-4xl">
+                <h2 className="font-display mt-3 inline-block text-4xl font-bold uppercase leading-tight text-[#0f223d] md:text-5xl">
                     Areas we serve
+                    <MarkerUnderline src="/images/graffiti-underline-blue-thick-right.png" className="mx-auto mt-1 h-4 max-w-[20rem]" />
                 </h2>
-                <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-neutral-600">
+                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-neutral-600">
                     Five Gulf Coast counties. Select one on the map to open its cities.
+                    <MarkerUnderline src="/images/graffiti-underline-yellow-thick-right.png" className="mx-auto mt-2 h-3 max-w-[14rem]" />
                 </p>
             </div>
 
