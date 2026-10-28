@@ -467,13 +467,13 @@ const HomePage = () => <SiteLayout homepageImages>
 
         <FinancingSection />
 
-        <Section className="bg-white" width="wide">
-            <div className="mx-auto max-w-[40rem]">
-                <Eyebrow>Service area</Eyebrow>
+        <Section className="bg-white">
+            <div className="mx-auto max-w-6xl text-center">
+                <Eyebrow className="justify-center">Service area</Eyebrow>
                 <h2 className="font-display mt-3 text-3xl font-bold uppercase leading-tight md:text-4xl">
                     Areas we serve
                 </h2>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-600">
+                <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-neutral-600">
                     Five Gulf Coast counties. Select one on the map to open its cities.
                 </p>
             </div>

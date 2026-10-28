@@ -4,12 +4,13 @@ import { ArrowRight } from 'lucide-react';
 import { areas } from '@/data/site';
 import { floridaCounties, floridaMapViewBox } from '@/data/floridaCounties';
 
-const LABEL_NUDGE = {
-    pinellas: [-46, 3],
-    hillsborough: [28, -2],
-    pasco: [8, -16],
-    manatee: [22, 8],
-    sarasota: [14, 18],
+// Callouts sit in open water or east of the cluster so the five names never stack.
+const CALLOUTS = {
+    pinellas: { x: 214, y: 232, anchor: 'end' },
+    pasco: { x: 408, y: 148, anchor: 'start' },
+    hillsborough: { x: 408, y: 186, anchor: 'start' },
+    manatee: { x: 408, y: 252, anchor: 'start' },
+    sarasota: { x: 408, y: 312, anchor: 'start' },
 };
 
 const FloridaServiceMap = ({ communities, cityLinks }) => {
@@ -26,11 +27,11 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
     };
 
     return (
-        <div className="mt-8 grid min-w-0 items-start gap-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-12">
+        <div className="mx-auto mt-10 grid min-w-0 max-w-6xl items-center gap-8 lg:grid-cols-[minmax(0,640px)_minmax(18rem,1fr)] lg:gap-12">
             <div className="min-w-0">
                 <svg
                     viewBox={floridaMapViewBox}
-                    className="mx-auto block h-auto w-full max-w-[22rem]"
+                    className="mx-auto block h-auto w-full max-w-[640px] overflow-visible"
                     role="img"
                     aria-label="Map of Florida. Hillsborough, Pinellas, Pasco, Manatee, and Sarasota counties are highlighted."
                 >
@@ -70,24 +71,36 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                         );
                     })}
                     {floridaCounties.filter((county) => county.slug).map((county) => {
-                        const [dx, dy] = LABEL_NUDGE[county.slug] || [0, 0];
+                        const callout = CALLOUTS[county.slug];
                         const emphasized = county.slug === focus;
+                        const textX = callout.anchor === 'end' ? callout.x : callout.x;
+                        const lineEndX = callout.anchor === 'end' ? callout.x + 6 : callout.x - 6;
                         return (
-                            <text
-                                key={`${county.id}-label`}
-                                x={county.cx + dx}
-                                y={county.cy + dy}
-                                textAnchor="middle"
-                                fontSize={emphasized ? 13 : 11}
-                                fontWeight="700"
-                                fill={emphasized ? '#14324f' : '#3f3f46'}
-                                stroke="#ffffff"
-                                strokeWidth="3.5"
-                                paintOrder="stroke"
-                                style={{ pointerEvents: 'none', fontFamily: 'Inter, sans-serif' }}
-                            >
-                                {county.name}
-                            </text>
+                            <g key={`${county.id}-label`} style={{ pointerEvents: 'none' }}>
+                                <line
+                                    x1={county.cx}
+                                    y1={county.cy}
+                                    x2={lineEndX}
+                                    y2={callout.y - 3}
+                                    stroke={emphasized ? '#14324f' : '#64748b'}
+                                    strokeWidth={emphasized ? 1.3 : 0.9}
+                                />
+                                <circle cx={county.cx} cy={county.cy} r={emphasized ? 3.2 : 2.4} fill={emphasized ? '#14324f' : '#3d6ea8'} stroke="#ffffff" strokeWidth="1" />
+                                <text
+                                    x={textX}
+                                    y={callout.y}
+                                    textAnchor={callout.anchor}
+                                    fontSize={emphasized ? 15 : 13}
+                                    fontWeight="700"
+                                    fill="#14324f"
+                                    stroke="#ffffff"
+                                    strokeWidth="4"
+                                    paintOrder="stroke"
+                                    style={{ fontFamily: 'Inter, sans-serif' }}
+                                >
+                                    {county.name}
+                                </text>
+                            </g>
                         );
                     })}
                 </svg>
