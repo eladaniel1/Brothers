@@ -8,7 +8,9 @@ import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Seo from '@/components/Seo';
 import ServiceCardGrid from '@/components/ServiceCardGrid';
-import { areas, company, heroImage, processSteps, projects, services, stats, testimonials } from '@/data/site';
+import FinancingSection from '@/components/FinancingSection';
+import FloridaServiceMap from '@/components/FloridaServiceMap';
+import { company, heroImage, processSteps, projects, services, stats, testimonials } from '@/data/site';
 const ticker = ['Gut Renovations', 'Kitchens & Baths', 'Home Additions', 'Commercial Build-Outs', 'Concrete & Foundations', 'Licensed & Insured'];
 
 const areaCardCommunities = {
@@ -463,44 +465,20 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
         </Section>
 
-        <Section className="bg-neutral-50" width="wide">
-            <div className="mx-auto max-w-[56rem] text-center">
-                <Eyebrow className="justify-center">Service area</Eyebrow>
-                <h2 className="font-display mt-4 text-4xl font-bold uppercase leading-tight md:text-5xl">
-                    Areas We Serve
+        <FinancingSection />
+
+        <Section className="bg-white" width="wide">
+            <div className="mx-auto max-w-[40rem]">
+                <Eyebrow>Service area</Eyebrow>
+                <h2 className="font-display mt-3 text-3xl font-bold uppercase leading-tight md:text-4xl">
+                    Areas we serve
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-neutral-600 md:text-lg">
-                    Brothers Remodelers serves homeowners and property owners with{' '}
-                    <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contracting</Link>,{' '}
-                    <Link to="/services/home-additions" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">home additions</Link>,{' '}
-                    <Link to="/services/kitchen-remodeling" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">kitchen remodeling</Link>{' '}
-                    and{' '}
-                    <Link to="/services/bathroom-remodeling" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">bathroom remodeling</Link>{' '}
-                    across the five counties and communities below.
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-600">
+                    Five Gulf Coast counties. Select one on the map to open its cities.
                 </p>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
-                {areas.map((area, i) => <Reveal key={area.slug} delay={i * 0.05}>
-                        <div className="flex h-full flex-col border border-neutral-200 bg-white p-7 transition-colors hover:border-[hsl(var(--brand))]">
-                            <h3 className="font-display text-2xl font-bold uppercase leading-tight">{area.city}</h3>
-                            <p className="mt-3 text-sm leading-relaxed text-neutral-600">{area.blurb}</p>
-                            <ul className="mt-5 flex flex-wrap gap-2">
-                                {areaCardCommunities[area.slug].map(city => {
-                                    const cityLink = city === 'Lakewood Ranch' ? cityLinks[city][area.slug] : cityLinks[city];
-                                    return <li key={city}>
-                                        <Link to={cityLink} className="block border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-neutral-700 underline decoration-transparent underline-offset-2 transition-colors hover:border-[hsl(var(--brand))] hover:text-[hsl(var(--ink))] hover:decoration-[hsl(var(--brand))]">
-                                            {city}
-                                        </Link>
-                                    </li>;
-                                })}
-                            </ul>
-                            <Link to={`/areas-we-serve/${area.slug}`} className="mt-6 inline-flex items-center gap-2 self-start text-xs font-bold uppercase tracking-widest text-[hsl(var(--ink))] transition-colors hover:text-[hsl(var(--brand))]">
-                                All {area.city} communities <ArrowRight className="h-3.5 w-3.5" />
-                            </Link>
-                        </div>
-                    </Reveal>)}
-            </div>
+            <FloridaServiceMap communities={areaCardCommunities} cityLinks={cityLinks} />
 
             <div className="mt-10 text-center">
                 <Link to="/areas-we-serve" className="inline-flex min-h-[48px] items-center gap-2 border border-neutral-300 px-7 text-sm font-bold uppercase tracking-wide text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))]">
