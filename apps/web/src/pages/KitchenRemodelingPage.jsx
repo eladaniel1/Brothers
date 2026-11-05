@@ -111,9 +111,9 @@ const serviceSchema = {
     provider: {
         '@type': 'GeneralContractor',
         name: company.name,
-        telephone: '+1-954-355-1520',
+        telephone: '+1-855-445-2551',
         url: 'https://brothersremodelers.com/',
-        license: 'CGC1535875',
+        license: 'CGC1541183',
         areaServed: [
             { '@type': 'AdministrativeArea', name: 'Hillsborough County' },
             { '@type': 'AdministrativeArea', name: 'Pinellas County' },

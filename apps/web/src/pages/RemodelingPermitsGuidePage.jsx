@@ -229,7 +229,7 @@ const RemodelingPermitsGuidePage = () => (
                         <Link to="/process/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">drawings and filings</Link>
                         , and handle the permit application under our Florida{' '}
                         <Link to="/services/general-contracting/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link>
-                        {' '}license, CGC1535875. We also schedule inspections and walk you through the Notice of Commencement. You&apos;ll know which department is involved before your estimate is final.
+                        {' '}license, CGC1541183. We also schedule inspections and walk you through the Notice of Commencement. You&apos;ll know which department is involved before your estimate is final.
                     </p>
                     <p className="mt-4 leading-relaxed text-neutral-600">
                         If your home is in a flood zone, read our guide to the{' '}

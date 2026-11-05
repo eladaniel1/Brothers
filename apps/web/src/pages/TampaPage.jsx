@@ -190,20 +190,20 @@ const TampaPage = () => (
         <Section width="wide" className="border-t border-neutral-200">
             <Eyebrow>What we build</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Home Remodeling Services in Tampa</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-600">
                 One licensed contractor, six core disciplines. Every Tampa project runs under the same standard:
                 a written scope, a live schedule and a superintendent on site.
             </p>
-            <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+            <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                 {tampaServices.map((s) => (
-                    <article key={s.title} className="border-t-2 border-neutral-200 pt-5">
-                        <h3 className="font-display text-xl font-bold uppercase">
+                    <article key={s.title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
+                        <h3 className="font-display text-xl font-bold uppercase leading-tight">
                             <Link to={s.to} className="hover:text-[hsl(var(--brand))]">{s.title}</Link>
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-neutral-600">{s.text}</p>
                         <Link
                             to={s.to}
-                            className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
+                            className="mt-auto inline-flex items-center gap-1.5 pt-3 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
                         >
                             {s.title} details
                         </Link>
@@ -265,13 +265,13 @@ const TampaPage = () => (
         <Section width="wide" className="border-t border-neutral-200">
             <Eyebrow>Before you sign</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">What to Consider Before Starting a Remodeling Project</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-600">
                 A successful remodel is decided before demolition starts. These are the eight things we tell every
                 homeowner to work through — with us or with any contractor.
             </p>
-            <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+            <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                 {considerations.map(([title, text], i) => (
-                    <div key={title} className="border-t-2 border-neutral-200 pt-5">
+                    <div key={title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
                         <h3 className="font-display flex items-center text-lg font-bold uppercase">
                             {considerationIcons[i] ? (
                                 React.createElement(considerationIcons[i], { className: 'mr-2 h-10 w-10 shrink-0 text-[hsl(var(--brand))]', strokeWidth: 1.5, 'aria-hidden': true })
@@ -307,7 +307,7 @@ const TampaPage = () => (
         <Section width="wide">
             <Eyebrow>Recent work</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Remodeling Projects</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-600">
                 A sample of recently completed Brothers Remodelers projects. Tampa-area references are available on
                 request during your estimate.
             </p>
@@ -344,7 +344,7 @@ const TampaPage = () => (
                 ))}
             </div>
             <ul className="mt-10 grid gap-3 text-sm leading-relaxed text-white/80 md:grid-cols-2">
-                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1535875, fully licensed and insured.</li>
+                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1541183, fully licensed and insured.</li>
                 <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />A dedicated superintendent on every site, with weekly photo updates.</li>
                 <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and signed change orders before work proceeds.</li>
                 <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Two-year workmanship warranty plus manufacturer warranties, documented at closeout.</li>
