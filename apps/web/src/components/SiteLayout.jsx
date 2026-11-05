@@ -6,7 +6,7 @@ import { company, logoUrl, nav, services, areas } from '@/data/site';
 export const Logo = ({ dark = false, homepageImages = false }) => (
     <Link
         to="/"
-        className={`flex min-w-0 items-center gap-2.5 group rounded-sm ${dark ? 'bg-white px-2 py-1.5' : ''}`}
+        className={`inline-flex w-fit max-w-full items-center gap-2.5 group rounded-sm ${dark ? 'bg-white px-2 py-1' : ''}`}
         aria-label={`${company.name} home`}
     >
         <img
@@ -14,7 +14,7 @@ export const Logo = ({ dark = false, homepageImages = false }) => (
             alt={`${company.name} logo`}
             width={homepageImages ? 76 : undefined}
             height={homepageImages ? 48 : undefined}
-            className="h-11 w-auto max-w-[42vw] object-contain object-left transition-transform duration-200 group-hover:-translate-y-0.5 sm:h-12 sm:max-w-[240px]"
+            className={`h-11 w-auto object-contain object-left transition-transform duration-200 group-hover:-translate-y-0.5 sm:h-12 ${dark ? 'max-w-[11rem]' : 'max-w-[42vw] sm:max-w-[240px]'}`}
         />
     </Link>
 );
@@ -200,37 +200,44 @@ const Footer = ({ homepageImages = false }) => (
             </div>
             <div className="mt-10">
                 <p className="font-display text-base font-bold uppercase tracking-widest text-white">Services</p>
-                <ul className="mt-4 grid grid-cols-2 items-stretch gap-x-6 gap-y-2 text-base sm:grid-cols-3 lg:grid-cols-4">
+                <ul data-audit="footer-links" className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
                     {services.map((s) => (
-                        <li key={s.slug} className="flex min-w-0">
-                            <Link to={`/services/${s.slug}`} className="flex h-full items-start hover:text-[hsl(var(--brand))]">{s.title}</Link>
+                        <li key={s.slug} className="min-w-0">
+                            <Link to={`/services/${s.slug}`} className="block whitespace-nowrap hover:text-[hsl(var(--brand))]">{s.title}</Link>
                         </li>
                     ))}
                 </ul>
             </div>
             <div className="mt-10">
                 <p className="font-display text-base font-bold uppercase tracking-widest text-white">Areas We Serve</p>
-                <ul className="mt-4 grid grid-cols-2 items-stretch gap-x-6 gap-y-2 text-base sm:grid-cols-3 lg:grid-cols-5">
+                <ul data-audit="footer-links" className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
                     {areas.map((a) => (
-                        <li key={a.slug} className="flex min-w-0">
-                            <Link to={a.path ?? `/areas-we-serve/${a.slug}`} className="flex h-full items-start hover:text-[hsl(var(--brand))]">{a.city} Contractors</Link>
+                        <li key={a.slug} className="min-w-0">
+                            <Link to={a.path ?? `/areas-we-serve/${a.slug}`} className="block whitespace-nowrap hover:text-[hsl(var(--brand))]">{a.city} Contractors</Link>
                         </li>
                     ))}
                 </ul>
-                <ul className="mt-4 grid grid-cols-2 items-stretch gap-x-6 gap-y-2 text-base sm:grid-cols-3">
-                    <li className="flex"><Link to="/careers" className="hover:text-[hsl(var(--brand))]">Careers</Link></li>
-                    <li className="flex"><Link to="/financing" className="hover:text-[hsl(var(--brand))]">Financing</Link></li>
-                    <li className="flex"><Link to="/safety" className="hover:text-[hsl(var(--brand))]">Safety & Insurance</Link></li>
+                <ul data-audit="footer-links" className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
+                    <li><Link to="/careers" className="block whitespace-nowrap hover:text-[hsl(var(--brand))]">Careers</Link></li>
+                    <li><Link to="/financing" className="block whitespace-nowrap hover:text-[hsl(var(--brand))]">Financing</Link></li>
+                    <li><Link to="/safety" className="block whitespace-nowrap hover:text-[hsl(var(--brand))]">Safety & Insurance</Link></li>
                 </ul>
             </div>
-            <div className="mt-10">
+            <div className="mt-10" data-audit="footer-contact">
                 <p className="font-display text-base font-bold uppercase tracking-widest text-white">Contact</p>
                 <ul className="mt-4 space-y-3 text-base">
-                    <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><a href={company.phoneHref} className="hover:text-white">{company.phone}</a></li>
-                    <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><a href={`mailto:${company.email}`} className="break-all hover:text-white">{company.email}</a></li>
-                    <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span>{company.address}</span></li>
-                    <li className="pl-6 text-white/80">Serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.</li>
-                    <li className="flex gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span>{company.hours}</span></li>
+                    {[
+                        [Phone, <a key="phone" href={company.phoneHref} className="hover:text-white">{company.phone}</a>],
+                        [Mail, <a key="mail" href={`mailto:${company.email}`} className="break-all hover:text-white">{company.email}</a>],
+                        [MapPin, <span key="address">{company.address}</span>],
+                        [null, <span key="serving" className="text-white/80">Serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.</span>],
+                        [Clock, <span key="hours">{company.hours}</span>],
+                    ].map(([Icon, text], index) => (
+                        <li key={index} className="grid grid-cols-[1.25rem_minmax(0,1fr)] items-stretch gap-x-2">
+                            <span className="block">{Icon ? <Icon className="h-4 w-4 text-[hsl(var(--brand))]" /> : null}</span>
+                            {text}
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>
@@ -341,7 +348,7 @@ const SiteLayout = ({ children, homepageImages = false }) => {
     return (
         <div className="flex min-h-screen w-full min-w-0 max-w-full flex-col overflow-x-clip bg-white text-[hsl(var(--ink))]">
             <Header homepageImages={homepageImages} />
-            <main className="w-full min-w-0 max-w-full flex-1">{children}</main>
+            <main className="w-full min-w-0 max-w-full flex-1 pb-14 md:pb-0">{children}</main>
             <Footer homepageImages={homepageImages} />
             <MobileQuoteBar />
         </div>

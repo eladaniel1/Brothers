@@ -177,7 +177,7 @@ const homeFaqs = [
     },
     {
         q: 'Do you offer financing?',
-        a: <>Yes. Financing is available for qualifying homeowners through [Sunlight Financial]. Visit our <Link to="/financing" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Financing page</Link> to see how it works and how to apply, or ask about it during your free consultation.</>
+        a: <>Yes. Financing is available for qualifying homeowners through Upgrade and Ygrene. Visit our <Link to="/financing" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Financing page</Link> to see how it works and how to apply, or ask about it during your free consultation.</>
     },
     {
         q: 'Which counties and cities do you serve?',
@@ -244,7 +244,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         </p>
                     </Reveal>
                     <Reveal delay={0.08}>
-                        <h1 className="font-display mt-5 text-pretty text-[2.6rem] font-bold uppercase leading-[0.95] text-white sm:text-6xl lg:text-[4.3rem]">
+                        <h1 className="font-display mt-3 text-pretty text-4xl font-bold uppercase leading-[0.95] text-white sm:mt-5 sm:text-6xl lg:text-[4.3rem]">
                             <span className="relative inline-block">
                                 <span className="relative z-10">Your Remodeling Contractor in Tampa Bay</span>
                                 <span className="absolute inset-x-0 bottom-1 z-0 h-3 bg-[hsl(var(--brand))]/80" />
@@ -252,7 +252,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         </h1>
                     </Reveal>
                     <Reveal delay={0.16}>
-                        <p className="mt-5 text-xl leading-relaxed text-white/75">
+                        <p className="mt-3 text-base leading-snug text-white/75 sm:mt-5 sm:text-xl sm:leading-relaxed">
                             Brothers Remodelers is a residential remodeling and general contracting company serving
                             homeowners across Tampa Bay and Sarasota. From kitchen and bathroom remodels to home
                             additions, whole-home renovations and concrete work, every project runs through one licensed
@@ -260,7 +260,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         </p>
                     </Reveal>
                     <Reveal delay={0.24}>
-                        <div className="mt-6 flex flex-wrap gap-3">
+                        <div className="mt-4 flex flex-wrap gap-3 sm:mt-6">
                             <Link to="/quote" className="flex min-h-[3.25rem] items-center gap-2 bg-[hsl(var(--brand))] px-8 text-base font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))] transition-transform hover:-translate-y-0.5 active:translate-y-0">
                                 Get a free estimate <ArrowRight className="h-5 w-5" />
                             </Link>
@@ -270,20 +270,20 @@ const HomePage = () => <SiteLayout homepageImages>
                         </div>
                     </Reveal>
                     <Reveal delay={0.3}>
-                        <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 text-sm font-semibold uppercase leading-snug tracking-wide text-white/80 sm:grid-cols-4">
-                            <li>Licensed FL contractor CGC1541183</li>
-                            <li>Fixed line-item pricing</li>
-                            <li>Superintendent on site daily</li>
-                            <li>[Two-year workmanship warranty]</li>
+                        <ul data-audit="hero-trust" className="mt-4 grid w-full grid-cols-2 gap-x-4 gap-y-3 font-display text-sm font-semibold uppercase leading-tight tracking-wide text-white/90 sm:mt-6 lg:grid-cols-[max-content_max-content_max-content_max-content] lg:justify-between lg:gap-x-8 lg:text-base">
+                            <li className="lg:whitespace-nowrap">Licensed FL contractor CGC1541183</li>
+                            <li className="lg:whitespace-nowrap">Fixed line-item pricing</li>
+                            <li className="lg:whitespace-nowrap">Superintendent on site daily</li>
+                            <li className="lg:whitespace-nowrap">Two-year workmanship warranty</li>
                         </ul>
                     </Reveal>
                     <Reveal delay={0.32}>
-                        <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/15 pt-6">
-                            {stats.slice(0, 3).map(s => <div key={s.label}>
-                                    <p className="font-display text-4xl font-bold text-[hsl(var(--brand))]">
+                        <div data-audit="hero-stats" className="mt-8 grid w-full grid-cols-3 gap-4 border-t border-white/15 pt-6">
+                            {stats.slice(0, 3).map(s => <div key={s.label} className="min-w-0">
+                                    <p className="font-display text-4xl font-bold text-white sm:text-5xl">
                                         <CountUp value={s.value} suffix={s.suffix} />
                                     </p>
-                                    <p className="mt-1 text-sm uppercase tracking-widest text-pretty text-white/55">{s.label}</p>
+                                    <p className="mt-1 text-sm uppercase tracking-widest text-white/80">{s.label}</p>
                                 </div>)}
                         </div>
                     </Reveal>
@@ -295,7 +295,7 @@ const HomePage = () => <SiteLayout homepageImages>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h2 className="font-display text-pretty text-4xl font-bold leading-tight md:text-[2.6rem]">What Brothers Remodelers does</h2>
                 <p className="mt-4 text-lg leading-relaxed text-neutral-600">
-                    Brothers Remodelers is a Florida-licensed <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link> (CGC1541183) that has remodeled homes since [2006]. We handle kitchen and bathroom remodeling, home additions, [whole-home renovations,] general contracting and concrete work for homeowners in <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties</Link>. One team manages design, permits, trades and inspections, and every proposal is priced line by line.
+                    Brothers Remodelers is a Florida-licensed <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link> (CGC1541183) that has remodeled homes since [2006]. We handle kitchen and bathroom remodeling, home additions, whole-home renovations, general contracting and concrete work for homeowners in <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties</Link>. One team manages design, permits, trades and inspections, and every proposal is priced line by line.
                 </p>
             </div>
         </section>
@@ -470,12 +470,6 @@ const HomePage = () => <SiteLayout homepageImages>
             </div>
 
             <FloridaServiceMap communities={areaCardCommunities} cityLinks={cityLinks} />
-
-            <div className="mt-6">
-                <Link to="/areas-we-serve" className="inline-flex min-h-[3.25rem] items-center gap-2 border border-neutral-300 px-8 text-base font-bold uppercase tracking-wide text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))]">
-                    Explore All Service Areas <ArrowRight className="h-4 w-4" />
-                </Link>
-            </div>
         </Section>
 
         <Section width="page">

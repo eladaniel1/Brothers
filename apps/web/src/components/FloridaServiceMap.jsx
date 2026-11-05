@@ -27,11 +27,14 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
     };
 
     return (
-        <div className="mt-6 grid min-w-0 w-full items-stretch gap-6 lg:grid-cols-2 lg:gap-10">
-            <div className="flex h-full min-w-0 flex-col">
+        <div className="mt-6" data-audit="service-area">
+            <div className="grid min-w-0 w-full items-stretch gap-6 lg:grid-cols-2 lg:gap-10">
+            <div className="flex min-h-0 min-w-0 flex-col">
+                <div className="relative aspect-[6/5] w-full min-h-0 lg:aspect-auto lg:min-h-[12rem] lg:flex-1">
                 <svg
                     viewBox={floridaMapViewBox}
-                    className="block h-auto w-full overflow-visible"
+                    preserveAspectRatio="xMidYMid meet"
+                    className="absolute inset-0 h-full w-full overflow-hidden"
                     role="img"
                     aria-label="Map of Florida. Hillsborough, Pinellas, Pasco, Manatee, and Sarasota counties are highlighted."
                 >
@@ -128,10 +131,11 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                         );
                     })}
                 </svg>
-                <p className="mt-auto pt-3 text-center text-sm text-neutral-500">Click a highlighted county to see its cities.</p>
+                </div>
+                <p className="mt-3 shrink-0 text-center text-sm text-neutral-500">Click a highlighted county to see its cities.</p>
             </div>
 
-            <div className="flex h-full min-w-0 flex-col">
+            <div className="flex min-w-0 flex-col" data-audit="area-panel">
                 <div className="flex flex-wrap gap-2">
                     {areas.map((item) => {
                         const selected = item.slug === focus;
@@ -169,9 +173,15 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                         </li>
                     ))}
                 </ul>
+            </div>
+            </div>
+            <div data-audit="area-ctas" className="mt-4 grid items-center gap-3 lg:grid-cols-2 lg:gap-10">
+                <Link to="/areas-we-serve" className="inline-flex min-h-[3.25rem] w-fit items-center gap-2 border border-neutral-300 px-8 text-base font-bold uppercase tracking-wide text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))]">
+                    Explore All Service Areas <ArrowRight className="h-4 w-4" />
+                </Link>
                 <Link
                     to={`/areas-we-serve/${area.slug}`}
-                    className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold uppercase tracking-widest text-[#0f223d] hover:text-[#c8102e]"
+                    className="inline-flex min-h-[3.25rem] w-fit items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#0f223d] hover:text-[#c8102e]"
                 >
                     All {area.city} communities <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
