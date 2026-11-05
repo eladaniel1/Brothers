@@ -319,54 +319,54 @@ const HomePage = () => <SiteLayout homepageImages>
         </Section>
 
         <Section width="page">
-            <div className="max-w-3xl">
+            <div>
                 <Eyebrow>FLORIDA REMODELING</Eyebrow>
                 <h2 className="font-display mt-3 text-balance text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Remodeling in Florida: What Gulf Coast Homeowners Should Know</h2>
-                <p className="mt-4 text-pretty text-lg leading-relaxed text-neutral-600">
+                <p className="mt-4 text-lg leading-relaxed text-neutral-600">
                     Remodeling a Gulf Coast home comes with rules and building conditions that most of the country doesn&apos;t deal with. These are the issues that most often affect the scope, cost and permitting of projects in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.
                 </p>
             </div>
-            <div className="mt-8 grid items-stretch gap-8 md:grid-cols-2">
-                <div className="flex h-full flex-col">
-                    <h3 className="font-display text-balance text-[1.7rem] font-bold uppercase">Wind Code and Storm Protection</h3>
-                    <p className="mt-3 text-pretty text-base leading-relaxed text-neutral-600">
+            <div className="mt-8 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
+                <div className="flex h-full min-w-0 flex-col">
+                    <h3 className="font-display text-[1.7rem] font-bold uppercase leading-tight">Wind Code and Storm Protection</h3>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-600">
                         Every permitted remodel in Florida is built to the Florida Building Code, which sets wind-load requirements across the state. On an addition, that affects how new walls are anchored to the slab and how the new roof ties into the existing one. When windows or exterior doors are replaced, homes in wind-borne debris regions need impact-rated products or approved storm protection. Whether that applies depends on where the home sits, so we confirm the requirements for your address during pre-construction.
                     </p>
-                    <Link to="/services/home-additions" className="mt-4 inline-flex text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Home additions and extensions</Link>
+                    <Link to="/services/home-additions" className="mt-auto pt-4 text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Home additions and extensions</Link>
                 </div>
-                <div>
-                    <h3 className="font-display text-balance text-[1.7rem] font-bold uppercase">Flood Zones and the FEMA 50% Rule</h3>
-                    <p className="mt-3 text-pretty text-base leading-relaxed text-neutral-600">
+                <div className="flex h-full min-w-0 flex-col">
+                    <h3 className="font-display text-[1.7rem] font-bold uppercase leading-tight">Flood Zones and the FEMA 50% Rule</h3>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-600">
                         If your home is in a FEMA Special Flood Hazard Area, a large remodel can trigger the substantial improvement rule. When the cost of the work reaches 50% or more of the building&apos;s market value (the structure only, not the land), the whole home has to be brought up to current flood requirements, which can mean elevating it. Some local governments add together permits from several years when applying the rule. It comes up most often in coastal Pinellas, Manatee and Sarasota, so check your flood zone before you set a budget.
                     </p>
-                    <Link to="/services/general-contracting" className="mt-4 inline-flex text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Whole-home remodeling and general contracting</Link>
+                    <Link to="/services/general-contracting" className="mt-auto pt-4 text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Whole-home remodeling and general contracting</Link>
                 </div>
-                <div>
-                    <h3 className="font-display text-balance text-[1.7rem] font-bold uppercase">Concrete Block Walls and Slab Foundations</h3>
-                    <p className="mt-3 text-pretty text-base leading-relaxed text-neutral-600">
+                <div className="flex h-full min-w-0 flex-col">
+                    <h3 className="font-display text-[1.7rem] font-bold uppercase leading-tight">Concrete Block Walls and Slab Foundations</h3>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-600">
                         Most Florida homes have concrete block walls on a concrete slab, and that changes how a remodel is planned. Opening up a block wall usually needs an engineered beam or lintel. Moving a kitchen sink or adding a bathroom means cutting and trenching the slab to reroute plumbing, then patching it. We plan those steps before demolition so they appear in the estimate instead of as change orders.
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                        <Link to="/services/kitchen-remodeling" className="inline-flex text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Kitchen remodeling</Link>
-                        <Link to="/services/concrete-foundations" className="inline-flex text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Concrete and foundation work</Link>
+                    <div className="mt-auto flex flex-wrap gap-x-6 gap-y-2 pt-4">
+                        <Link to="/services/kitchen-remodeling" className="text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Kitchen remodeling</Link>
+                        <Link to="/services/concrete-foundations" className="text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Concrete and foundation work</Link>
                     </div>
                 </div>
-                <div>
-                    <h3 className="font-display text-balance text-[1.7rem] font-bold uppercase">Bathrooms Built for Humidity</h3>
-                    <p className="mt-3 text-pretty text-base leading-relaxed text-neutral-600">
+                <div className="flex h-full min-w-0 flex-col">
+                    <h3 className="font-display text-[1.7rem] font-bold uppercase leading-tight">Bathrooms Built for Humidity</h3>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-600">
                         Florida&apos;s humidity is hard on bathrooms. Tile and grout are not waterproof on their own, so a waterproofing membrane goes behind showers and wet walls before any tile is set. Exhaust fans should vent outside the house, not into the attic. In older bathrooms, rot or mold behind the shower walls is common, so we check for it at demolition and price any repair before work continues.
                     </p>
-                    <Link to="/services/bathroom-remodeling" className="mt-4 inline-flex text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Bathroom remodeling</Link>
+                    <Link to="/services/bathroom-remodeling" className="mt-auto pt-4 text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Bathroom remodeling</Link>
                 </div>
-                <div className="md:col-span-2">
-                    <h3 className="font-display text-balance text-[1.7rem] font-bold uppercase">City vs. County Permits</h3>
-                    <p className="mt-3 text-pretty text-base leading-relaxed text-neutral-600">
+                <div className="flex h-full min-w-0 flex-col md:col-span-2">
+                    <h3 className="font-display text-[1.7rem] font-bold uppercase leading-tight">City vs. County Permits</h3>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-600">
                         Which building department reviews your permit depends on whether your home is inside city limits. Homes in cities such as Tampa, St. Petersburg, Clearwater, Sarasota and Bradenton are permitted through that city. Homes in unincorporated areas go through the county. Each department has its own review times and inspection scheduling, which affects your start date. Florida also requires a Notice of Commencement to be recorded for many permitted jobs, and we walk you through that step.
                     </p>
-                    <Link to="/services/general-contracting" className="mt-4 inline-flex text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">How our general contracting works</Link>
+                    <Link to="/services/general-contracting" className="mt-auto pt-4 text-base font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">How our general contracting works</Link>
                 </div>
             </div>
-            <div className="mt-8 max-w-3xl border-t border-neutral-200 pt-6">
+            <div className="mt-8 border-t border-neutral-200 pt-6">
                 <p className="text-pretty text-lg leading-relaxed text-neutral-600">Not sure which of these apply to your home? Send us your address and project scope and we&apos;ll tell you before you get an estimate.</p>
                 <Link to="/quote" className="mt-4 inline-flex min-h-[3.25rem] items-center bg-[hsl(var(--brand))] px-8 text-base font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))] transition-transform hover:-translate-y-px active:translate-y-0">Request a Free Quote</Link>
             </div>

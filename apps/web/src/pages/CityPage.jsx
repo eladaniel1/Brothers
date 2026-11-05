@@ -103,17 +103,17 @@ const CityPage = () => {
             <Section width="wide" className="border-t border-neutral-200">
                 <Eyebrow>What we build</Eyebrow>
                 <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Home Remodeling Services in {city.name}</h2>
-                <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">{city.servicesIntro}</p>
-                <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+                <p className="mt-4 leading-relaxed text-neutral-600">{city.servicesIntro}</p>
+                <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                     {city.services.map((s) => (
-                        <article key={s.title} className="border-t-2 border-neutral-200 pt-5">
-                            <h3 className="font-display text-xl font-bold uppercase">
+                        <article key={s.title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
+                            <h3 className="font-display text-xl font-bold uppercase leading-tight">
                                 <Link to={s.to} className="hover:text-[hsl(var(--brand))]">{s.title}</Link>
                             </h3>
                             <p className="mt-2 text-sm leading-relaxed text-neutral-600">{s.text}</p>
                             <Link
                                 to={s.to}
-                                className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
+                                className="mt-auto inline-flex items-center gap-1.5 pt-3 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
                             >
                                 {s.title} details
                             </Link>
@@ -174,13 +174,13 @@ const CityPage = () => {
             <Section width="wide" className="border-t border-neutral-200">
                 <Eyebrow>Plan the project</Eyebrow>
                 <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">What a {city.name} Homeowner Should Know Before Starting</h2>
-                <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+                <p className="mt-4 leading-relaxed text-neutral-600">
                     A successful remodel is decided before demolition starts. These are the eight things we tell every
                     homeowner to work through — with us or with any contractor.
                 </p>
-                <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+                <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                     {homeownerInfo.map(([title, text], i) => (
-                        <div key={title} className="border-t-2 border-neutral-200 pt-5">
+                        <div key={title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
                             <h3 className="font-display flex items-center text-lg font-bold uppercase">
                                 <span className="mr-3 text-[hsl(var(--brand))]">{String(i + 1).padStart(2, '0')}</span>
                                 {title}
@@ -212,7 +212,7 @@ const CityPage = () => {
             <Section width="wide">
                 <Eyebrow>Recent work</Eyebrow>
                 <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">{city.name} Area Remodeling Projects</h2>
-                <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+                <p className="mt-4 leading-relaxed text-neutral-600">
                     A sample of recently completed Brothers Remodelers projects. References from the {city.countyName}
                     area are available on request during your estimate.
                 </p>
