@@ -54,17 +54,19 @@ const serviceIcons = {
  * @param {Array} items   - service records (slug, title, summary)
  * @param {string} className - optional extra classes for the grid wrapper
  */
-const ServiceCardGrid = ({ items, className = '' }) => (
-    <div className={`mt-8 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4 ${className}`}>
+const ServiceCardGrid = ({ items, className = '', size = 'md' }) => {
+    const large = size === 'lg';
+    return (
+    <div className={`mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 ${className}`}>
         {items.map((s, i) => (
             <Reveal key={s.slug} delay={i * 0.03}>
                 <Link
                     to={`/services/${s.slug}`}
                     title={serviceSummaries[s.slug] || s.summary}
-                    className="group flex h-full items-center gap-3 border border-neutral-200 bg-white px-3 py-3 transition-colors hover:border-[hsl(var(--brand))] sm:px-4"
+                    className={`group flex h-full items-center gap-3 border border-neutral-200 bg-white transition-colors hover:border-[hsl(var(--brand))] ${large ? 'px-4 py-4' : 'px-3 py-3 sm:px-4'}`}
                 >
-                    {React.createElement(serviceIcons[s.slug] || House, { className: 'h-6 w-6 shrink-0 text-[#0B2545]', strokeWidth: 1.5, 'aria-hidden': true })}
-                    <h3 className="font-display flex-1 text-sm font-bold uppercase leading-tight transition-colors group-hover:text-[hsl(var(--brand))] sm:text-base">
+                    {React.createElement(serviceIcons[s.slug] || House, { className: `${large ? 'h-7 w-7' : 'h-6 w-6'} shrink-0 text-[#0B2545]`, strokeWidth: 1.5, 'aria-hidden': true })}
+                    <h3 className={`font-display flex-1 font-bold uppercase leading-tight text-balance transition-colors group-hover:text-[hsl(var(--brand))] ${large ? 'text-base sm:text-lg' : 'text-sm sm:text-base'}`}>
                         {s.title}
                     </h3>
                     <ArrowRight className="hidden h-4 w-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:text-[hsl(var(--brand))] sm:block" aria-hidden="true" />
@@ -72,6 +74,7 @@ const ServiceCardGrid = ({ items, className = '' }) => (
             </Reveal>
         ))}
     </div>
-);
+    );
+};
 
 export default ServiceCardGrid;

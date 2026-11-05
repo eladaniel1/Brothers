@@ -7,8 +7,8 @@ import { floridaCounties, floridaMapViewBox } from '@/data/floridaCounties';
 // Callouts sit in open water or east of the cluster so the five names never stack.
 const CALLOUTS = {
     pinellas: { x: 214, y: 232, anchor: 'end' },
-    pasco: { x: 392, y: 108, anchor: 'start' },
-    hillsborough: { x: 392, y: 142, anchor: 'start' },
+    pasco: { x: 400, y: 96, anchor: 'start' },
+    hillsborough: { x: 400, y: 124, anchor: 'start' },
     manatee: { x: 404, y: 300, anchor: 'start' },
     sarasota: { x: 404, y: 336, anchor: 'start' },
 };
@@ -27,11 +27,11 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
     };
 
     return (
-        <div className="mt-10 grid min-w-0 w-full items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="mt-6 grid min-w-0 w-full items-start gap-6 lg:grid-cols-2 lg:gap-10">
             <div className="min-w-0">
                 <svg
                     viewBox={floridaMapViewBox}
-                    className="mx-auto block h-auto w-full max-w-[34rem] overflow-visible lg:max-w-none"
+                    className="block h-auto w-full overflow-visible"
                     role="img"
                     aria-label="Map of Florida. Hillsborough, Pinellas, Pasco, Manatee, and Sarasota counties are highlighted."
                 >

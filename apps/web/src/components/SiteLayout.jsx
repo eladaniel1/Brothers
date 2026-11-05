@@ -133,17 +133,17 @@ const Header = ({ homepageImages = false }) => {
 const Footer = ({ homepageImages = false }) => (
     <footer className="w-full min-w-0 max-w-full bg-[hsl(var(--ink))] text-white/70">
         <div className="hatch h-1.5 w-full" />
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
             <div>
                 <Logo dark homepageImages={homepageImages} />
-                <p className="mt-4 max-w-xs text-sm leading-relaxed">
+                <p className="mt-4 max-w-xs text-base leading-relaxed text-pretty">
                     {company.tagline}. Family-run general contractors serving homeowners across the Tampa Bay and Sarasota region since {company.founded}.
                 </p>
                 <p className="mt-4 text-xs uppercase tracking-widest text-white/80">{company.license}</p>
             </div>
             <div>
-                <p className="font-display text-sm font-bold uppercase tracking-widest text-white">Services</p>
-                <ul className="mt-4 space-y-2 text-sm">
+                <p className="font-display text-base font-bold uppercase tracking-widest text-white">Services</p>
+                <ul className="mt-4 space-y-2 text-base">
                     {services.map((s) => (
                         <li key={s.slug}>
                             <Link to={`/services/${s.slug}`} className="hover:text-[hsl(var(--brand))]">{s.title}</Link>
@@ -152,23 +152,23 @@ const Footer = ({ homepageImages = false }) => (
                 </ul>
             </div>
             <div>
-                <p className="font-display text-sm font-bold uppercase tracking-widest text-white">Areas We Serve</p>
-                <ul className="mt-4 space-y-2 text-sm">
+                <p className="font-display text-base font-bold uppercase tracking-widest text-white">Areas We Serve</p>
+                <ul className="mt-4 space-y-2 text-base">
                     {areas.map((a) => (
                         <li key={a.slug}>
                             <Link to={a.path ?? `/areas-we-serve/${a.slug}`} className="hover:text-[hsl(var(--brand))]">{a.city} Contractors</Link>
                         </li>
                     ))}
                 </ul>
-                <ul className="mt-4 space-y-2 text-sm">
+                <ul className="mt-4 space-y-2 text-base">
                     <li><Link to="/careers" className="hover:text-[hsl(var(--brand))]">Careers</Link></li>
                     <li><Link to="/financing" className="hover:text-[hsl(var(--brand))]">Financing</Link></li>
                     <li><Link to="/safety" className="hover:text-[hsl(var(--brand))]">Safety & Insurance</Link></li>
                 </ul>
             </div>
             <div>
-                <p className="font-display text-sm font-bold uppercase tracking-widest text-white">Contact</p>
-                <ul className="mt-4 space-y-3 text-sm">
+                <p className="font-display text-base font-bold uppercase tracking-widest text-white">Contact</p>
+                <ul className="mt-4 space-y-3 text-base">
                     <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 text-[hsl(var(--brand))]" /><a href={company.phoneHref} className="hover:text-white">{company.phone}</a></li>
                     <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-[hsl(var(--brand))]" /><a href={`mailto:${company.email}`} className="hover:text-white">{company.email}</a></li>
                     <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-[hsl(var(--brand))]" />{company.address}</li>
@@ -192,8 +192,9 @@ const Footer = ({ homepageImages = false }) => (
 );
 
 export const Section = ({ children, className = '', width = 'standard', id }) => {
-    const rail = width === 'narrow' ? 'max-w-[56rem]' : width === 'page' ? 'max-w-7xl' : width === 'wide' ? 'max-w-[90rem]' : 'max-w-[72rem]';
-    const pad = width === 'page' ? 'px-4 py-16 sm:px-6 lg:px-8 lg:py-24' : 'px-4 py-16 md:py-24';
+    const page = width === 'page';
+    const rail = width === 'narrow' ? 'max-w-[56rem]' : page ? 'max-w-7xl px-4 sm:px-6 lg:px-8' : width === 'wide' ? 'max-w-[90rem]' : 'max-w-[72rem]';
+    const pad = page ? 'py-14 lg:py-16' : 'px-4 py-16 md:py-24';
     return (
         <section id={id} className={`w-full min-w-0 max-w-full ${pad} ${className}`}>
             <div className={`mx-auto w-full min-w-0 ${rail}`}>{children}</div>

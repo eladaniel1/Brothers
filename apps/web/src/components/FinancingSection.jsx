@@ -82,16 +82,16 @@ const FinancingSection = () => {
     ];
 
     return (
-        <section className="w-full min-w-0 max-w-full border-y border-neutral-200 bg-[#f7f4ee] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-            <div className="mx-auto min-w-0 w-full max-w-7xl">
+        <section className="w-full min-w-0 max-w-full border-y border-neutral-200 bg-[#f7f4ee] py-14 lg:py-16">
+            <div className="mx-auto min-w-0 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex min-w-0 flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                     <div className="min-w-0">
                         <Eyebrow>Financing</Eyebrow>
-                        <h2 className="font-display relative mt-3 inline-block text-3xl font-bold uppercase leading-tight text-[#0f223d] md:text-4xl">
+                        <h2 className="font-display relative mt-3 inline-block text-balance text-4xl font-bold uppercase leading-tight text-[#0f223d] md:text-[2.6rem]">
                             Pay over time
                             <MarkerUnderline src="/images/graffiti-underline-red-thick-right.png" className="mt-1 h-4 max-w-[18rem]" />
                         </h2>
-                        <p className="mt-3 max-w-2xl text-base leading-relaxed text-neutral-600">
+                        <p className="mt-4 max-w-3xl text-pretty text-lg leading-relaxed text-neutral-600">
                             Kitchen, bath, and addition projects can be financed through Upgrade and Ygrene. Pick a project amount to see what each plan costs per month.
                         </p>
                     </div>
@@ -119,11 +119,11 @@ const FinancingSection = () => {
                     })}
                 </div>
 
-                <div className="mt-6 grid min-w-0 gap-4 md:grid-cols-3">
+                <div className="mt-6 grid min-w-0 items-stretch gap-4 md:grid-cols-3">
                     {plans.map((plan) => (
                         <article
                             key={plan.key}
-                            className={`relative flex min-w-0 flex-col overflow-hidden border p-6 md:p-7 ${plan.featured ? 'border-[#0f223d] bg-[#0f223d] text-white shadow-[0_18px_40px_-28px_rgba(15,34,61,0.8)]' : `border-neutral-200 ${plan.tint}`}`}
+                            className={`relative flex h-full min-w-0 flex-col overflow-hidden border p-6 ${plan.featured ? 'border-[#0f223d] bg-[#0f223d] text-white shadow-[0_18px_40px_-28px_rgba(15,34,61,0.8)]' : `border-neutral-200 ${plan.tint}`}`}
                         >
                             <span className="absolute inset-x-0 top-0 h-1.5" style={{ background: plan.accent }} />
                             {plan.badge && (
@@ -132,8 +132,8 @@ const FinancingSection = () => {
                                 </span>
                             )}
                             <p className={`text-sm font-bold uppercase tracking-widest ${plan.featured ? 'text-[#e8a818]' : 'text-[#c8102e]'}`}>{plan.kicker}</p>
-                            <h3 className="font-display mt-2 pr-16 text-2xl font-bold uppercase leading-tight">{plan.title}</h3>
-                            <p className={`mt-2 text-base leading-relaxed ${plan.featured ? 'text-white/75' : 'text-neutral-600'}`}>{plan.detail}</p>
+                            <h3 className="font-display mt-2 pr-16 text-balance text-[1.7rem] font-bold uppercase leading-tight">{plan.title}</h3>
+                            <p className={`mt-2 text-pretty text-base leading-relaxed ${plan.featured ? 'text-white/75' : 'text-neutral-600'}`}>{plan.detail}</p>
                             <div className="relative mt-6 inline-flex w-fit items-center justify-center px-7 py-4">
                                 <MarkerCircle className="absolute -inset-2" color={plan.featured ? '#e8a818' : plan.circle} />
                                 <p className="font-display relative text-4xl font-bold leading-none">
@@ -141,7 +141,7 @@ const FinancingSection = () => {
                                     <span className={`ml-1 text-lg font-semibold uppercase tracking-wide ${plan.featured ? 'text-white/60' : 'text-neutral-500'}`}>/ mo</span>
                                 </p>
                             </div>
-                            <p className={`mt-6 flex items-start gap-2 text-sm font-semibold uppercase tracking-wide ${plan.featured ? 'text-white/80' : 'text-neutral-600'}`}>
+                            <p className={`mt-auto flex items-start gap-2 pt-5 text-sm font-semibold uppercase tracking-wide ${plan.featured ? 'text-white/80' : 'text-neutral-600'}`}>
                                 <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: plan.featured ? '#e8a818' : plan.accent }} strokeWidth={3} />
                                 {plan.note}
                             </p>
