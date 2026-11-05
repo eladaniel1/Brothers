@@ -8,7 +8,7 @@ import { floridaCounties, floridaMapViewBox } from '@/data/floridaCounties';
 const CALLOUTS = {
     pinellas: { x: 214, y: 232, anchor: 'end' },
     pasco: { x: 400, y: 96, anchor: 'start' },
-    hillsborough: { x: 400, y: 124, anchor: 'start' },
+    hillsborough: { x: 360, y: 124, anchor: 'start' },
     manatee: { x: 404, y: 300, anchor: 'start' },
     sarasota: { x: 404, y: 336, anchor: 'start' },
 };
@@ -27,8 +27,8 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
     };
 
     return (
-        <div className="mt-6 grid min-w-0 w-full items-start gap-6 lg:grid-cols-2 lg:gap-10">
-            <div className="min-w-0">
+        <div className="mt-6 grid min-w-0 w-full items-stretch gap-6 lg:grid-cols-2 lg:gap-10">
+            <div className="flex h-full min-w-0 flex-col">
                 <svg
                     viewBox={floridaMapViewBox}
                     className="block h-auto w-full overflow-visible"
@@ -128,10 +128,10 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                         );
                     })}
                 </svg>
-                <p className="mt-3 text-center text-sm text-neutral-500">Click a highlighted county to see its cities.</p>
+                <p className="mt-auto pt-3 text-center text-sm text-neutral-500">Click a highlighted county to see its cities.</p>
             </div>
 
-            <div className="min-w-0">
+            <div className="flex h-full min-w-0 flex-col">
                 <div className="flex flex-wrap gap-2">
                     {areas.map((item) => {
                         const selected = item.slug === focus;
@@ -156,7 +156,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                     <span className="border border-[#e8a818] bg-amber-50 px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-[#0f223d]">5 counties</span>
                 </div>
                 <h3 className="font-display mt-5 text-2xl font-bold uppercase text-[#0f223d]">{area.city}</h3>
-                <p className="mt-3 max-w-xl text-base leading-relaxed text-neutral-600">{area.blurb}</p>
+                <p className="mt-3 text-base leading-relaxed text-neutral-600">{area.blurb}</p>
                 <ul className="mt-5 flex flex-wrap gap-2">
                     {cities.map((city) => (
                         <li key={city}>
@@ -171,7 +171,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                 </ul>
                 <Link
                     to={`/areas-we-serve/${area.slug}`}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#0f223d] hover:text-[#c8102e]"
+                    className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold uppercase tracking-widest text-[#0f223d] hover:text-[#c8102e]"
                 >
                     All {area.city} communities <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

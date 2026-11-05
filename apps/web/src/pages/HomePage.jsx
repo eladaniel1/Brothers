@@ -231,12 +231,12 @@ const HomePage = () => <SiteLayout homepageImages>
         </Helmet>
         <Seo title="Remodeling Contractor Tampa Bay | Brothers Remodelers" description="Looking for a remodeling contractor in Tampa Bay? Brothers Remodelers offers home improvement services to help bring your project to life. Contact us today." image={heroImage} siteName={company.name} />
 
-        <section className="relative isolate overflow-hidden bg-[hsl(var(--ink))]">
+        <section className="relative isolate overflow-hidden bg-[hsl(var(--ink))] py-14 lg:py-16">
             {/* eslint-disable-next-line react/no-unknown-property -- React 18 in this preview warns on fetchPriority; the DOM attribute must be lowercase */}
             <img src={heroImage} alt="Carpenter in a hard hat cutting lumber on a remodeling job site" width={homepageHeroDimensions.width} height={homepageHeroDimensions.height} fetchpriority="high" className="absolute inset-0 h-full w-full object-cover opacity-40" />
             <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--ink))] via-[hsl(var(--ink))]/88 to-[hsl(var(--ink))]/35" />
-            <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
-                <div className="max-w-3xl">
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div>
                     <Reveal>
                         <p className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand))]">
                             <span className="h-3.5 w-9 bg-[hsl(var(--brand))]" />
@@ -244,7 +244,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         </p>
                     </Reveal>
                     <Reveal delay={0.08}>
-                        <h1 className="font-display mt-5 text-balance text-[2.6rem] font-bold uppercase leading-[0.95] text-white sm:text-6xl lg:text-[4.3rem]">
+                        <h1 className="font-display mt-5 text-pretty text-[2.6rem] font-bold uppercase leading-[0.95] text-white sm:text-6xl lg:text-[4.3rem]">
                             <span className="relative inline-block">
                                 <span className="relative z-10">Your Remodeling Contractor in Tampa Bay</span>
                                 <span className="absolute inset-x-0 bottom-1 z-0 h-3 bg-[hsl(var(--brand))]/80" />
@@ -252,7 +252,7 @@ const HomePage = () => <SiteLayout homepageImages>
                         </h1>
                     </Reveal>
                     <Reveal delay={0.16}>
-                        <p className="mt-5 max-w-3xl text-pretty text-xl leading-relaxed text-white/75">
+                        <p className="mt-5 text-xl leading-relaxed text-white/75">
                             Brothers Remodelers is a residential remodeling and general contracting company serving
                             homeowners across Tampa Bay and Sarasota. From kitchen and bathroom remodels to home
                             additions, whole-home renovations and concrete work, every project runs through one licensed
@@ -293,14 +293,14 @@ const HomePage = () => <SiteLayout homepageImages>
 
         <section className="border-b border-neutral-200 bg-white py-14 lg:py-16">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h2 className="font-display max-w-3xl text-balance text-4xl font-bold leading-tight md:text-[2.6rem]">What Brothers Remodelers does</h2>
-                <p className="mt-4 max-w-3xl text-pretty text-lg leading-relaxed text-neutral-600">
+                <h2 className="font-display text-pretty text-4xl font-bold leading-tight md:text-[2.6rem]">What Brothers Remodelers does</h2>
+                <p className="mt-4 text-lg leading-relaxed text-neutral-600">
                     Brothers Remodelers is a Florida-licensed <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">general contractor</Link> (CGC1541183) that has remodeled homes since [2006]. We handle kitchen and bathroom remodeling, home additions, [whole-home renovations,] general contracting and concrete work for homeowners in <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties</Link>. One team manages design, permits, trades and inspections, and every proposal is priced line by line.
                 </p>
             </div>
         </section>
 
-        <div className="overflow-hidden border-y border-neutral-200 bg-[hsl(var(--brand))] py-4">
+        <div className="overflow-hidden border-y border-neutral-200 bg-[hsl(var(--brand))] py-14 lg:py-16">
             <div className="marquee-track flex w-max gap-10 whitespace-nowrap">
                 {[...ticker, ...ticker].map((t, i) => <span key={`${t}-${i}`} className="font-display flex items-center gap-10 text-xl font-semibold uppercase tracking-wide text-[hsl(var(--brand-foreground))]">
                         {t} <span className="h-2 w-2 rotate-45 bg-[hsl(var(--brand-foreground))]" />
@@ -310,8 +310,8 @@ const HomePage = () => <SiteLayout homepageImages>
 
         <Section width="page">
             <Eyebrow>What we build</Eyebrow>
-            <h2 className="font-display mt-3 max-w-3xl text-balance text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Remodeling services we provide</h2>
-            <p className="mt-4 max-w-3xl text-pretty text-lg leading-relaxed text-neutral-600">One licensed contractor runs every trade on your project, from permits and engineering to final inspection.</p>
+            <h2 className="font-display mt-3 text-pretty text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Remodeling services we provide</h2>
+            <p className="mt-4 text-lg leading-relaxed text-neutral-600">One licensed contractor runs every trade on your project, from permits and engineering to final inspection.</p>
             <Link to="/services" className="mt-4 inline-flex text-base font-bold uppercase tracking-widest text-neutral-600 hover:text-[hsl(var(--ink))]">
                 All services →
             </Link>
@@ -321,7 +321,7 @@ const HomePage = () => <SiteLayout homepageImages>
         <Section width="page">
             <div>
                 <Eyebrow>FLORIDA REMODELING</Eyebrow>
-                <h2 className="font-display mt-3 text-balance text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Remodeling in Florida: What Gulf Coast Homeowners Should Know</h2>
+                <h2 className="font-display mt-3 text-pretty text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Remodeling in Florida: What Gulf Coast Homeowners Should Know</h2>
                 <p className="mt-4 text-lg leading-relaxed text-neutral-600">
                     Remodeling a Gulf Coast home comes with rules and building conditions that most of the country doesn&apos;t deal with. These are the issues that most often affect the scope, cost and permitting of projects in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.
                 </p>
@@ -373,17 +373,17 @@ const HomePage = () => <SiteLayout homepageImages>
         </Section>
 
         <Section width="page" className="bg-neutral-50">
-            <div className="grid items-start gap-8 lg:grid-cols-2">
-                <div className="relative">
-                    <img src="/images/founder-hardhat.jpg" alt="Construction professional wearing a yellow hard hat on a job site." width={homepageFounderDimensions.width} height={homepageFounderDimensions.height} loading="lazy" className="h-full max-h-[32rem] w-full object-cover" />
+            <div className="grid items-stretch gap-8 lg:grid-cols-2">
+                <div className="relative h-full min-h-[24rem]">
+                    <img src="/images/founder-hardhat.jpg" alt="Construction professional wearing a yellow hard hat on a job site." width={homepageFounderDimensions.width} height={homepageFounderDimensions.height} loading="lazy" className="h-full w-full object-cover" />
                     <div className="absolute bottom-4 right-4 bg-[hsl(var(--brand))] px-5 py-3">
                         <p className="font-display text-4xl font-bold">{company.founded}</p>
                         <p className="text-sm font-bold uppercase tracking-widest">Family-run since day one</p>
                     </div>
                 </div>
-                <div>
+                <div className="flex h-full min-w-0 flex-col">
                     <Eyebrow>Why owners hire us</Eyebrow>
-                    <h2 className="font-display mt-3 text-balance text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">
+                    <h2 className="font-display mt-3 text-pretty text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">
                         Why homeowners hire Brothers Remodelers
                     </h2>
                     <p className="mt-4 text-pretty text-lg leading-relaxed text-neutral-600">
@@ -399,7 +399,7 @@ const HomePage = () => <SiteLayout homepageImages>
                                 </div>
                             </div>)}
                     </div>
-                    <Link to="/about" className="mt-5 inline-flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[hsl(var(--ink))] transition-colors hover:text-[hsl(var(--brand))]">
+                    <Link to="/about" className="mt-auto inline-flex items-center gap-2 pt-5 text-base font-bold uppercase tracking-widest text-[hsl(var(--ink))] transition-colors hover:text-[hsl(var(--brand))]">
                         Learn more about Brothers Remodelers <ArrowRight className="h-4 w-4" />
                     </Link>
                 </div>
@@ -408,7 +408,7 @@ const HomePage = () => <SiteLayout homepageImages>
 
         <Section width="page">
             <Eyebrow>Recent projects</Eyebrow>
-            <h2 className="font-display mt-3 text-balance text-4xl font-bold uppercase md:text-[2.6rem]">Home remodeling projects</h2>
+            <h2 className="font-display mt-3 text-pretty text-4xl font-bold uppercase md:text-[2.6rem]">Home remodeling projects</h2>
             <div className="mt-6 grid items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {projects.slice(0, 3).map((p, i) => <Reveal key={p.title} delay={i * 0.06}>
                         <article className="group relative isolate h-full overflow-hidden">
@@ -416,7 +416,7 @@ const HomePage = () => <SiteLayout homepageImages>
                             <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--ink))] via-[hsl(var(--ink))]/20 to-transparent" />
                             <div className="absolute bottom-0 p-6 text-white">
                                 <p className="text-sm font-bold uppercase tracking-widest text-white">{p.place}</p>
-                                <h3 className="font-display mt-1 text-balance text-2xl font-bold uppercase">{p.title}</h3>
+                                <h3 className="font-display mt-1 text-pretty text-2xl font-bold uppercase">{p.title}</h3>
                                 <p className="mt-1 text-base text-white/70">{p.scope}</p>
                             </div>
                         </article>
@@ -429,23 +429,23 @@ const HomePage = () => <SiteLayout homepageImages>
 
         <Section width="page" className="bg-[hsl(var(--ink))] text-white">
             <Eyebrow>How it works</Eyebrow>
-            <h2 className="font-display mt-3 max-w-3xl text-balance text-4xl font-bold uppercase text-white md:text-[2.6rem]"><Link to="/process" className="hover:text-white/85">our remodeling process</Link>: five steps, no surprises</h2>
+            <h2 className="font-display mt-3 text-pretty text-4xl font-bold uppercase text-white md:text-[2.6rem]"><Link to="/process" className="hover:text-white/85">our remodeling process</Link>: five steps, no surprises</h2>
             <ol className="mt-6 grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-5">
                 {processSteps.map(([title, text], i) => <li key={title} className="flex h-full flex-col border-t-2 border-[hsl(var(--brand))] pt-4">
                         <span className="font-display text-[2.6rem] font-bold text-[hsl(var(--brand))]">0{i + 1}</span>
-                        <h3 className="font-display mt-2 text-balance text-xl font-bold uppercase">{title}</h3>
-                        <p className="mt-2 text-pretty text-base leading-relaxed text-white/65">{text}</p>
+                        <h3 className="font-display mt-2 text-pretty text-xl font-bold uppercase">{title}</h3>
+                        <p className="mt-auto pt-2 text-base leading-relaxed text-white/65">{text}</p>
                     </li>)}
             </ol>
         </Section>
 
         <Section width="page">
             <Eyebrow>Client reviews</Eyebrow>
-            <h2 className="font-display mt-3 max-w-3xl text-balance text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">What remodeling clients say</h2>
+            <h2 className="font-display mt-3 text-pretty text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">What remodeling clients say</h2>
             <div className="mt-3 flex gap-1 text-[hsl(var(--brand))]">
                 {[0, 1, 2, 3, 4].map(i => <Star key={i} className="h-6 w-6 fill-current" />)}
             </div>
-            <p className="mt-2 max-w-3xl text-pretty text-lg text-neutral-600">4.9 average across 180+ verified reviews. <Link to="/reviews" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Read more reviews</Link></p>
+            <p className="mt-2 text-lg text-neutral-600">4.9 average across 180+ verified reviews. <Link to="/reviews" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Read more reviews</Link></p>
             <div className="mt-6 grid items-stretch gap-4 sm:grid-cols-2">
                 {testimonials.map((t, i) => <blockquote key={t.name} className="flex h-full flex-col border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
                         <p className="text-pretty text-lg leading-relaxed text-neutral-700">“{t.quote}”</p>
@@ -459,11 +459,11 @@ const HomePage = () => <SiteLayout homepageImages>
         <Section className="bg-white" width="page">
             <div>
                 <Eyebrow>Service area</Eyebrow>
-                <h2 className="font-display mt-3 inline-block text-balance text-4xl font-bold uppercase leading-tight text-[#0f223d] md:text-[2.6rem]">
+                <h2 className="font-display mt-3 inline-block text-pretty text-4xl font-bold uppercase leading-tight text-[#0f223d] md:text-[2.6rem]">
                     Areas we serve
                     <MarkerUnderline src="/images/graffiti-underline-blue-thick-right.png" className="mt-1 h-4 max-w-[18rem]" />
                 </h2>
-                <p className="mt-4 max-w-3xl text-pretty text-lg leading-relaxed text-neutral-600">
+                <p className="mt-4 text-lg leading-relaxed text-neutral-600">
                     Five Gulf Coast counties. Select one on the map to open its cities.
                     <MarkerUnderline src="/images/graffiti-underline-yellow-thick-right.png" className="mt-2 h-3.5 max-w-[16rem]" />
                 </p>
@@ -479,13 +479,13 @@ const HomePage = () => <SiteLayout homepageImages>
         </Section>
 
         <Section width="page">
-            <div className="max-w-3xl">
+            <div>
                 <Eyebrow>FAQ</Eyebrow>
-                <h2 className="font-display mt-3 text-balance text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Home Remodeling FAQs for Tampa Bay Homeowners</h2>
+                <h2 className="font-display mt-3 text-pretty text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Home Remodeling FAQs for Tampa Bay Homeowners</h2>
                 <div className="mt-6 divide-y divide-neutral-200 border-y border-neutral-200">
                     {homeFaqs.map(f => <div key={f.q} className="py-4">
-                            <h3 className="font-display text-balance text-xl font-bold uppercase">{f.q}</h3>
-                            <p className="mt-2 max-w-3xl text-pretty text-base leading-relaxed text-neutral-600">{f.a}</p>
+                            <h3 className="font-display text-pretty text-xl font-bold uppercase">{f.q}</h3>
+                            <p className="mt-2 text-base leading-relaxed text-neutral-600">{f.a}</p>
                         </div>)}
                 </div>
                 <Link to="/faq" className="mt-5 inline-flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[hsl(var(--ink))] transition-colors hover:text-[hsl(var(--brand))]">
@@ -495,8 +495,8 @@ const HomePage = () => <SiteLayout homepageImages>
         </Section>
 
         <Section width="page" className="bg-neutral-50">
-            <div className="max-w-3xl">
-                <p className="font-display text-balance text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Planning a Remodeling Project?</p>
+            <div>
+                <p className="font-display text-pretty text-4xl font-bold uppercase leading-tight md:text-[2.6rem]">Planning a Remodeling Project?</p>
                 <p className="mt-4 text-pretty text-lg leading-relaxed text-neutral-600">
                     Tell us where your project is located and what you are planning. Our team can help you determine the
                     next steps for your remodeling project.

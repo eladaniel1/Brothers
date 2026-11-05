@@ -84,18 +84,16 @@ const FinancingSection = () => {
     return (
         <section className="w-full min-w-0 max-w-full border-y border-neutral-200 bg-[#f7f4ee] py-14 lg:py-16">
             <div className="mx-auto min-w-0 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex min-w-0 flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-                    <div className="min-w-0">
-                        <Eyebrow>Financing</Eyebrow>
-                        <h2 className="font-display relative mt-3 inline-block text-balance text-4xl font-bold uppercase leading-tight text-[#0f223d] md:text-[2.6rem]">
-                            Pay over time
-                            <MarkerUnderline src="/images/graffiti-underline-red-thick-right.png" className="mt-1 h-4 max-w-[18rem]" />
-                        </h2>
-                        <p className="mt-4 max-w-3xl text-pretty text-lg leading-relaxed text-neutral-600">
-                            Kitchen, bath, and addition projects can be financed through Upgrade and Ygrene. Pick a project amount to see what each plan costs per month.
-                        </p>
-                    </div>
-                    <div className="flex flex-wrap gap-3">
+                <div className="min-w-0">
+                    <Eyebrow>Financing</Eyebrow>
+                    <h2 className="font-display relative mt-3 text-4xl font-bold uppercase leading-tight text-[#0f223d] md:text-[2.6rem]">
+                        Pay over time
+                        <MarkerUnderline src="/images/graffiti-underline-red-thick-right.png" className="mt-1 h-4 max-w-[18rem]" />
+                    </h2>
+                    <p className="mt-4 text-lg leading-relaxed text-neutral-600">
+                        Kitchen, bath, and addition projects can be financed through Upgrade and Ygrene. Pick a project amount to see what each plan costs per month.
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3">
                         <UpgradeMark />
                         <YgreneMark />
                     </div>
@@ -132,7 +130,7 @@ const FinancingSection = () => {
                                 </span>
                             )}
                             <p className={`text-sm font-bold uppercase tracking-widest ${plan.featured ? 'text-[#e8a818]' : 'text-[#c8102e]'}`}>{plan.kicker}</p>
-                            <h3 className="font-display mt-2 pr-16 text-balance text-[1.7rem] font-bold uppercase leading-tight">{plan.title}</h3>
+                            <h3 className="font-display mt-2 pr-16 text-pretty text-[1.7rem] font-bold uppercase leading-tight">{plan.title}</h3>
                             <p className={`mt-2 text-pretty text-base leading-relaxed ${plan.featured ? 'text-white/75' : 'text-neutral-600'}`}>{plan.detail}</p>
                             <div className="relative mt-6 inline-flex w-fit items-center justify-center px-7 py-4">
                                 <MarkerCircle className="absolute -inset-2" color={plan.featured ? '#e8a818' : plan.circle} />
@@ -163,7 +161,7 @@ const FinancingSection = () => {
                         Get pre-qualified in minutes — no impact to credit score
                     </Link>
                 </div>
-                <p className="mt-5 max-w-3xl text-sm leading-relaxed text-neutral-500">
+                <p className="mt-5 text-sm leading-relaxed text-neutral-500">
                     Payments shown for {money(amount)} are estimates before fees. The 10-year figure uses 6.99% APR and the 20-year figure uses 8.99% APR. The 12-month plan is $0 during the same-as-cash period. Offers are from the lender, require credit approval, and can change.
                 </p>
             </div>

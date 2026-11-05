@@ -191,8 +191,8 @@ const BespokeLocalServicePage = ({ page }) => {
                 image={page.image}
                 crumbs={page.crumbs}
             />
-            <section className="w-full min-w-0 max-w-full border-b border-neutral-200 bg-white">
-                <div className="mx-auto grid min-w-0 max-w-[90rem] grid-cols-2 gap-px bg-neutral-200 md:grid-cols-4">
+            <section className="w-full min-w-0 max-w-full border-b border-neutral-200 bg-white py-14 lg:py-16">
+                <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-2 gap-px bg-neutral-200 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
                     {page.stats.map((stat) => (
                         <div key={stat.label} className="min-w-0 bg-white px-4 py-5">
                             <p className="font-display break-words text-2xl font-bold text-[hsl(var(--brand))] sm:text-3xl">
@@ -203,8 +203,8 @@ const BespokeLocalServicePage = ({ page }) => {
                     ))}
                 </div>
             </section>
-            <Section width="wide">
-                <div className="grid min-w-0 max-w-full gap-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+            <Section width="page">
+                <div className="grid min-w-0 max-w-full gap-12">
                     <div className="min-w-0 max-w-full break-words">
                         <dl className="grid gap-3 border border-neutral-200 bg-neutral-50 p-4 sm:grid-cols-2">
                             {page.trust.map((item) => (
@@ -250,9 +250,9 @@ const BespokeLocalServicePage = ({ page }) => {
 
                         <h2 className="font-display mt-12 break-words text-2xl font-bold uppercase md:text-3xl">{page.galleryHeading}</h2>
                         <p className="mt-4 leading-relaxed text-neutral-600">{page.galleryIntro}</p>
-                        <div className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2">
+                        <div className="mt-6 grid min-w-0 items-stretch gap-4 sm:grid-cols-2">
                             {page.gallery.map((shot) => (
-                                <article key={shot.title} className="group relative min-w-0 isolate overflow-hidden">
+                                <article key={shot.title} className="group relative isolate h-full min-w-0 overflow-hidden">
                                     <img src={shot.image} alt="" style={{ objectPosition: shot.imagePosition }} className="h-64 w-full max-w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] sm:h-72" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--ink))] via-[hsl(var(--ink))]/25 to-transparent" />
                                     <div className="absolute inset-x-0 bottom-0 min-w-0 p-5 text-white">
@@ -265,16 +265,16 @@ const BespokeLocalServicePage = ({ page }) => {
                             ))}
                         </div>
 
-                        <div className="mt-12 min-w-0 max-w-full bg-[hsl(var(--ink))] p-5 text-white sm:p-8">
+                        <div className="mt-12 min-w-0 max-w-full bg-[hsl(var(--ink))] px-4 py-8 text-white -mx-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                             <Eyebrow className="text-white/60">On a Tampa job</Eyebrow>
                             <h2 className="font-display mt-4 break-words text-2xl font-bold uppercase text-white md:text-3xl">{page.processHeading}</h2>
                             <p className="mt-3 text-sm leading-relaxed text-white/70">{page.processIntro}</p>
-                            <ol className="mt-8 grid min-w-0 gap-6 sm:grid-cols-2">
+                            <ol className="mt-8 grid min-w-0 items-stretch gap-6 sm:grid-cols-2">
                                 {page.process.map((step, index) => (
-                                    <li key={step.title} className="min-w-0 border-t-2 border-[hsl(var(--brand))] pt-4">
+                                    <li key={step.title} className="flex h-full min-w-0 flex-col border-t-2 border-[hsl(var(--brand))] pt-4">
                                         <span className="font-display text-3xl font-bold text-[hsl(var(--brand))]">0{index + 1}</span>
                                         <h3 className="font-display mt-2 break-words text-lg font-bold uppercase">{step.title}</h3>
-                                        <p className="mt-2 text-sm leading-relaxed text-white/70">{step.text}</p>
+                                        <p className="mt-auto pt-2 text-sm leading-relaxed text-white/70">{step.text}</p>
                                     </li>
                                 ))}
                             </ol>
@@ -282,13 +282,13 @@ const BespokeLocalServicePage = ({ page }) => {
 
                         <h2 className="font-display mt-12 break-words text-2xl font-bold uppercase md:text-3xl">{page.neighborhoodHeading}</h2>
                         <p className="mt-4 leading-relaxed text-neutral-600">{page.neighborhoodIntro}</p>
-                        <div className="mt-6 grid gap-6 md:grid-cols-2">
+                        <div className="mt-6 grid items-stretch gap-6 md:grid-cols-2">
                             {page.neighborhoods.map((card) => (
-                                <article key={card.name} className="border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
+                                <article key={card.name} className="flex h-full min-w-0 flex-col border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
                                     <p className="text-xs font-semibold uppercase tracking-widest text-[hsl(var(--brand))]">{card.eraTag}</p>
                                     <h3 className="font-display mt-2 text-lg font-bold uppercase">{card.name}</h3>
                                     <p className="mt-2 text-sm leading-relaxed text-neutral-700">{card.housingFact}</p>
-                                    <p className="mt-2 text-sm leading-relaxed text-neutral-600">{card.remodelImpact}</p>
+                                    <p className="mt-auto pt-2 text-sm leading-relaxed text-neutral-600">{card.remodelImpact}</p>
                                 </article>
                             ))}
                         </div>
@@ -342,15 +342,15 @@ const BespokeLocalServicePage = ({ page }) => {
 
                         <h2 className="font-display mt-12 break-words text-2xl font-bold uppercase md:text-3xl">{page.reviewsHeading}</h2>
                         <p className="mt-4 leading-relaxed text-neutral-600">{page.reviewsIntro}</p>
-                        <div className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2">
+                        <div className="mt-6 grid min-w-0 items-stretch gap-4 sm:grid-cols-2">
                             {page.reviews.map((review) => (
-                                <blockquote key={review.neighborhood} className="min-w-0 border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
+                                <blockquote key={review.neighborhood} className="flex h-full min-w-0 flex-col border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
                                     <div className="flex flex-wrap items-center justify-between gap-2">
                                         <p className="text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))]">{review.neighborhood}</p>
                                         <Stars count={review.stars} />
                                     </div>
                                     <p className="mt-2 text-xs font-bold uppercase tracking-widest text-neutral-500">{review.project}</p>
-                                    <p className="mt-3 text-sm leading-relaxed text-neutral-700">{review.note}</p>
+                                    <p className="mt-auto pt-3 text-sm leading-relaxed text-neutral-700">{review.note}</p>
                                 </blockquote>
                             ))}
                         </div>
@@ -358,7 +358,7 @@ const BespokeLocalServicePage = ({ page }) => {
                             <Link to="/reviews" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Read the published reviews</Link>
                         </p>
 
-                        <div className="mt-12 grid min-w-0 gap-8 border border-neutral-200 bg-neutral-50 p-4 sm:p-6 lg:grid-cols-2">
+                        <div className="mt-12 grid min-w-0 gap-8 border border-neutral-200 bg-neutral-50 p-4 sm:p-6">
                             <div className="min-w-0">
                                 <Eyebrow>Free quote</Eyebrow>
                                 <h2 className="font-display mt-4 break-words text-2xl font-bold uppercase">{page.quoteHeading}</h2>
@@ -391,7 +391,7 @@ const BespokeLocalServicePage = ({ page }) => {
                         </ul>
                     </div>
 
-                    <aside className="min-w-0 max-w-full space-y-8 lg:sticky lg:top-28 lg:self-start">
+                    <aside className="min-w-0 max-w-full space-y-8">
                         <GetEstimateCTA heading="Get an Estimate" text={page.ctaText} />
                         <div>
                             <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">{page.nearbyHeading}</p>
