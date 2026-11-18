@@ -5,9 +5,16 @@
         "source": "github",
         "repo": "Leonxlnx/taste-skill"
       }
+    },
+    "agricidaniel-claude-seo": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-seo"
+      }
     }
   },
   "enabledPlugins": {
-    "taste-skill@taste-skill": true
+    "taste-skill@taste-skill": true,
+    "claude-seo@agricidaniel-claude-seo": true
   }
 }
