@@ -240,8 +240,8 @@ const Fema50PercentRuleGuidePage = () => (
                     <h2 className="font-display text-2xl font-bold text-[hsl(var(--ink))] md:text-3xl">How Brothers Remodelers handles the 50% rule</h2>
                     <p className="mt-4 leading-relaxed text-neutral-600">During pre-construction we check your flood zone, ask for your Elevation Certificate if you have one, and price the work line by line. You can see where your project falls against the 50% threshold before anything is permitted. If your project is a substantial improvement, we tell you before you commit and set out your options. The rule comes up most often in coastal Pinellas, Manatee and Sarasota counties.</p>
                     <div className="mt-5 flex flex-col gap-2 text-sm">
-                        <Link to="/services/home-additions" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">home additions</Link>
-                        <Link to="/services/general-contracting" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">whole-home remodeling and general contracting</Link>
+                        <Link to="/services/home-additions/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">home additions</Link>
+                        <Link to="/services/general-contracting/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">whole-home remodeling and general contracting</Link>
                     </div>
                 </section>
 
@@ -260,7 +260,7 @@ const Fema50PercentRuleGuidePage = () => (
                 <div className="mt-14 bg-[hsl(var(--brand))] p-8 md:p-10">
                     <h2 className="font-display text-2xl font-bold uppercase text-[hsl(var(--brand-foreground))] md:text-3xl">Find out where your project stands</h2>
                     <p className="mt-3 max-w-xl leading-relaxed text-[hsl(var(--brand-foreground))]/85">Send us your address and what you&apos;re planning. We&apos;ll check your flood zone and tell you whether the 50% rule is likely to affect your remodel.</p>
-                    <Link to="/quote" className="mt-6 inline-flex min-h-[44px] items-center bg-[hsl(var(--ink))] px-6 text-sm font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-px active:translate-y-0">
+                    <Link to="/quote/" className="mt-6 inline-flex min-h-[44px] items-center bg-[hsl(var(--ink))] px-6 text-sm font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-px active:translate-y-0">
                         Request a Free Quote
                     </Link>
                 </div>

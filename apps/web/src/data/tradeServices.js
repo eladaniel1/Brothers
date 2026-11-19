@@ -6,12 +6,12 @@
 // subcontractors under the company's Florida CGC license, as on the HVAC and
 // plumbing pages. No prices or unverified credentials are stated here.
 
-export const tradeServices = [
+const tradeServicesRaw = [
     {
         slug: 'roof-repair',
         title: 'Roof Repair',
         summary: 'Roof leak and storm damage repair for shingle, tile and metal roofs, with written findings and repairs built to Florida Building Code.',
-        image: '/images/service-roof-repair.jpg',
+        image: '/images/service-roof-repair.webp',
         metaTitle: 'Roof Repair in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Licensed Florida contractor for roof leak and storm damage repair in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Shingle, tile and metal roofs. Free inspections and written estimates.',
         intro: 'Most roof leaks in Florida start at a flashing, a lifted shingle, a cracked tile or a failed pipe boot, not in the middle of the roof. Brothers Remodelers finds the actual source, documents it with photos, and repairs it under one Florida Certified General Contractor license, so you know whether you need a repair or a replacement before you spend money on either.',
@@ -60,7 +60,7 @@ export const tradeServices = [
         slug: 'ac-repair',
         title: 'AC Repair',
         summary: 'Air conditioning repair and diagnostics for Florida homes, handled by licensed HVAC technicians, with a written repair-or-replace recommendation.',
-        image: '/images/service-ac-repair.jpg',
+        image: '/images/service-ac-repair.webp',
         metaTitle: 'AC Repair in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Air conditioning repair in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties by licensed HVAC technicians. Diagnostics, refrigerant leaks, compressors, capacitors and drain lines. Written estimates.',
         intro: 'In Florida an air conditioner that stops working is a health problem, not just a comfort one, and humidity starts damaging a house within days. Brothers Remodelers coordinates air conditioning diagnostics and repair through licensed HVAC technicians under one Florida Certified General Contractor license, explains what failed and why, and tells you honestly when a repair makes sense and when the system is due for replacement.',
@@ -109,7 +109,7 @@ export const tradeServices = [
         slug: 'garage-doors',
         title: 'Garage Doors',
         summary: 'Garage door replacement, repair and openers, including wind-rated and impact garage doors sized to your Florida wind zone.',
-        image: '/images/service-garage-doors.jpg',
+        image: '/images/service-garage-doors.webp',
         metaTitle: 'Garage Door Replacement & Repair in Tampa Bay | Brothers Remodelers',
         metaDescription: 'Wind-rated and impact garage door replacement, repair and openers in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Doors sized to Florida wind code. Free estimates.',
         intro: 'A garage door is the largest opening in most Florida homes, and when it fails in a storm the wind pressure inside the house can take the roof with it. Brothers Remodelers replaces and repairs garage doors under one Florida Certified General Contractor license, matching the door’s wind rating to your address and installing the bracing, track and opener so it works every day and holds in a hurricane.',
@@ -158,7 +158,7 @@ export const tradeServices = [
         slug: 'electrical',
         title: 'Electrical',
         summary: 'Panel upgrades, rewiring, lighting, EV chargers and generator hookups by licensed electricians, coordinated with your remodel and permits.',
-        image: '/images/service-electrical.jpg',
+        image: '/images/service-electrical.webp',
         metaTitle: 'Electrical Contractor in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Panel upgrades, rewiring, lighting, EV chargers and generator hookups in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties, by licensed electricians. Permitted and inspected.',
         intro: 'Many Tampa Bay homes were built with panels and wiring sized for a different era, before EV chargers, pool equipment and modern kitchens. Brothers Remodelers coordinates electrical work through licensed electricians under one Florida Certified General Contractor license, so panel upgrades, new circuits and lighting are permitted, inspected and sequenced with the rest of your project.',
@@ -207,7 +207,7 @@ export const tradeServices = [
         slug: 'epoxy-flooring',
         title: 'Epoxy Garage Floors',
         summary: 'Epoxy and polyaspartic garage and patio floor coatings with full diamond-grind prep, moisture testing and slip-resistant flake finishes.',
-        image: '/images/service-epoxy-flooring.jpg',
+        image: '/images/service-epoxy-flooring.webp',
         metaTitle: 'Epoxy Garage Floors in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Epoxy and polyaspartic garage floor coatings in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Diamond-grind prep, moisture testing, flake finishes. Free estimates.',
         intro: 'An epoxy floor is only as good as the concrete prep underneath it, and in Florida that also means dealing with moisture coming up through the slab. Brothers Remodelers grinds, repairs and moisture-tests the concrete before applying epoxy or polyaspartic coatings, so the floor bonds properly and does not peel under hot tires.',
@@ -256,7 +256,7 @@ export const tradeServices = [
         slug: 'painting',
         title: 'Painting',
         summary: 'Interior and exterior painting with full prep, stucco crack repair and Florida-grade exterior coatings that stand up to sun, rain and humidity.',
-        image: '/images/service-painting.jpg',
+        image: '/images/service-painting.webp',
         metaTitle: 'Interior & Exterior Painting in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Interior and exterior house painting in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Pressure washing, stucco crack repair, premium coatings. Free estimates.',
         intro: 'Florida sun fades paint and Florida rain finds every crack, so an exterior paint job is mostly about the prep and the coating. Brothers Remodelers pressure washes, repairs stucco cracks and wood rot, primes where needed and applies coatings made for this climate, inside and out, under one Florida Certified General Contractor license.',
@@ -305,7 +305,7 @@ export const tradeServices = [
         slug: 'fencing',
         title: 'Fencing',
         summary: 'Vinyl, aluminum, wood and composite fence installation, including pool barrier fencing built to Florida code and HOA rules.',
-        image: '/images/service-fencing.jpg',
+        image: '/images/service-fencing.webp',
         metaTitle: 'Fence Installation in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Vinyl, aluminum, wood and composite fence installation in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Pool barrier fencing, permits and HOA approvals. Free estimates.',
         intro: 'A fence in Florida has to handle wind, sun and sandy soil, and a pool fence also has to meet the state’s pool barrier rules. Brothers Remodelers installs vinyl, aluminum, wood and composite fences under one Florida Certified General Contractor license, setting posts in concrete to the right depth, pulling the permit and handling HOA paperwork.',
@@ -354,7 +354,7 @@ export const tradeServices = [
         slug: 'gutters',
         title: 'Gutters',
         summary: 'Seamless aluminum gutters, downspouts and gutter guards sized for Florida downpours, installed with your roof or as a standalone job.',
-        image: '/images/service-gutters.jpg',
+        image: '/images/service-gutters.webp',
         metaTitle: 'Seamless Gutters in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Seamless aluminum gutter installation, downspouts and gutter guards in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Sized for Florida rain. Free estimates.',
         intro: 'Florida summer storms can drop more water in an hour than many places see in a week, and without gutters that water lands at the foundation, splashes the stucco and rots the fascia. Brothers Remodelers installs seamless aluminum gutters and downspouts sized for heavy rain, often together with a roof replacement, under one Florida Certified General Contractor license.',
@@ -400,3 +400,12 @@ export const tradeServices = [
         ],
     },
 ];
+
+const retiredRoofing = new Set(['roofing', 'roof-repair', 'roof-insulation']);
+
+export const tradeServices = tradeServicesRaw
+    .filter((service) => !retiredRoofing.has(service.slug))
+    .map((service) => ({
+        ...service,
+        relatedServices: (service.relatedServices || []).filter((item) => !retiredRoofing.has(item.slug)),
+    }));

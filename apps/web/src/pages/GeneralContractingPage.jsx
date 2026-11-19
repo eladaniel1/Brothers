@@ -17,7 +17,7 @@ const scope = [
     'Pre-construction budgeting and constructability review',
     'Permit filings coordinated with city and county building departments',
     'Trade procurement, buyout and construction scheduling',
-    'Dedicated site superintendent on every project',
+    'A written schedule on every project',
     'Priced change orders before any work changes',
     'Punch list, closeout documentation and warranty handover',
 ];
@@ -41,7 +41,7 @@ const processSteps = [
     {
         icon: Wrench,
         title: 'Construction & supervision',
-        text: 'A dedicated superintendent runs the site daily. Trades are sequenced, the schedule is live, and weekly photo updates keep you informed. Work areas are isolated in occupied homes with dust barriers and floor protection.',
+        text: 'Trades are sequenced, the schedule is live, and weekly photo updates keep you informed. Work areas are isolated in occupied homes with dust barriers and floor protection.',
     },
     {
         icon: Check,
@@ -90,7 +90,7 @@ const faqs = [
     ],
     [
         'What warranty do you offer?',
-        'Two years on our workmanship, plus the manufacturer warranties on installed products like cabinetry, stone, windows and fixtures. Everything is documented in your closeout package at handover, not promised verbally.',
+        'A two-year workmanship warranty, plus the manufacturer warranties on installed products like cabinetry, stone, windows and fixtures. Everything is documented in your closeout package at handover, not promised verbally.',
     ],
 ];
 
@@ -106,20 +106,7 @@ const serviceSchema = {
     '@type': 'Service',
     brand: brandSchemaFor('general-contracting'),
     serviceType: 'General Contracting',
-    provider: {
-        '@type': 'GeneralContractor',
-        name: company.name,
-        telephone: '+1-855-445-2551',
-        url: 'https://brothersremodelers.com/',
-        license: 'CGC1542451',
-        areaServed: [
-            { '@type': 'AdministrativeArea', name: 'Hillsborough County' },
-            { '@type': 'AdministrativeArea', name: 'Pinellas County' },
-            { '@type': 'AdministrativeArea', name: 'Pasco County' },
-            { '@type': 'AdministrativeArea', name: 'Sarasota County' },
-            { '@type': 'AdministrativeArea', name: 'Manatee County' },
-        ],
-    },
+    provider: { '@id': 'https://brothersremodelers.com/#contractor' },
     areaServed: 'Tampa Bay and Sarasota region, Florida',
     description:
         'Single-source general contracting for whole-home renovations, additions and commercial build-outs, including pre-construction budgeting, permits, trade procurement, on-site supervision and closeout, managed by a licensed Florida general contractor.',
@@ -206,7 +193,7 @@ const GeneralContractingPage = () => (
                         <p>
                             Brothers Remodelers acts as that single point of accountability. We run pre-construction
                             budgeting, coordinate designers and engineers, file the permits, procure the trades, and keep
-                            a dedicated superintendent on site so the project lands on the drawings and on the schedule.
+                            a written schedule so the project lands on the drawings.
                             You get a line-item proposal before construction begins and priced change orders before
                             anything changes.
                         </p>
@@ -277,7 +264,7 @@ const GeneralContractingPage = () => (
                         After a walkthrough and scope conversation, we return a written line-item proposal — usually
                         within five business days. Allowances for owner-selected finishes are stated plainly, and
                         payments follow completed milestones. See how owners fund projects on our{' '}
-                        <Link to="/financing" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                        <Link to="/financing/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                             financing page
                         </Link>.
                     </p>
@@ -294,7 +281,7 @@ const GeneralContractingPage = () => (
                         <p>
                             We schedule every required inspection and keep the records in your closeout package,
                             alongside sign-offs and warranty documents. Read more about our{' '}
-                            <Link to="/safety" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                            <Link to="/safety/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                                 licensing, insurance and site safety standards
                             </Link>.
                         </p>
@@ -311,13 +298,13 @@ const GeneralContractingPage = () => (
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Verify the license.</strong> A Florida Certified General Contractor (CGC) number can be confirmed through the state DBPR online license check. Ours is {company.licenseNumber}.</span></li>
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Ask for certificates of insurance.</strong> General liability and workers' compensation should be sent directly to your HOA, lender or landlord — not handed over as a photocopy.</span></li>
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Require a line-item proposal.</strong> Fixed pricing with stated allowances lets you compare bids on equal terms and exposes where money is hidden in a single lump sum.</span></li>
-                            <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Confirm who supervises the site.</strong> A dedicated superintendent on site — not a project manager juggling ten jobs by phone — is what keeps a project on schedule.</span></li>
+                            <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Ask for the schedule in writing.</strong> A written schedule and weekly updates are what keep a project moving.</span></li>
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Get the warranty in writing.</strong> Workmanship coverage and manufacturer warranties should be documented in a closeout package at handover, not promised verbally.</span></li>
                         </ul>
                         <p>
                             See completed renovations and build-outs in our{' '}
-                            <Link to="/projects" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
-                            <Link to="/reviews" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
+                            <Link to="/projects/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
+                            <Link to="/reviews/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
                         </p>
                     </div>
 
@@ -326,7 +313,7 @@ const GeneralContractingPage = () => (
                         {[
                             [ShieldCheck, 'Licensed & insured', `${company.license}. Certificates issued to your HOA or lender on request.`],
                             [Ruler, 'Line-item pricing', 'Fixed pricing with allowances stated plainly, so you can compare bids on equal terms.'],
-                            [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates from a dedicated site superintendent.'],
+                            [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates.'],
                             [Users, 'Single point of contact', 'One licensed contractor owns permits, trades, supervision and closeout end to end.'],
                         ].map(([Icon, title, text]) => (
                             <div key={title} className="flex gap-3 border border-neutral-200 p-4">
@@ -369,23 +356,23 @@ const GeneralContractingPage = () => (
                         <p>
                             Ready to move forward? The fastest path is a free site walkthrough — we measure, confirm
                             scope and return a written line-item proposal within five business days.{' '}
-                            <Link to="/quote" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
-                            <Link to="/contact" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly. If you are still weighing how to fund the work, our{' '}
-                            <Link to="/financing" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link> explains how owners typically phase scope to a budget.
+                            <Link to="/quote/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
+                            <Link to="/contact/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly. If you are still weighing how to fund the work, our{' '}
+                            <Link to="/financing/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link> explains how owners typically phase scope to a budget.
                         </p>
                     </div>
 
                     <h3 className="font-display mt-12 text-2xl font-bold uppercase">Where we work</h3>
                     <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                         We manage general contracting projects across the Tampa Bay and Sarasota region, including{' '}
-                        <Link to="/areas-we-serve/hillsborough/tampa" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
-                        <Link to="/areas-we-serve/pinellas/st-petersburg" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
-                        <Link to="/areas-we-serve/pasco/wesley-chapel" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
-                        <Link to="/areas-we-serve/sarasota/sarasota" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
+                        <Link to="/areas-we-serve/hillsborough/tampa/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
+                        <Link to="/areas-we-serve/pinellas/st-petersburg/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
+                        <Link to="/areas-we-serve/pasco/wesley-chapel/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
+                        <Link to="/areas-we-serve/sarasota/sarasota/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
                         and{' '}
-                        <Link to="/areas-we-serve/manatee/bradenton" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
+                        <Link to="/areas-we-serve/manatee/bradenton/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
                         See the full list on our{' '}
-                        <Link to="/areas-we-serve" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                        <Link to="/areas-we-serve/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                             areas we serve page
                         </Link>.
                     </p>

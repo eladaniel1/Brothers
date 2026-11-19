@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CheckCircle2, Loader2, AlertTriangle } from 'lucide-react';
-import pb from '@/lib/pocketbaseClient';
 import { services, areas } from '@/data/site';
 
 const empty = { name: '', email: '', phone: '', city: '', service: '', budget: '', timeline: '', message: '' };
@@ -30,12 +29,20 @@ const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false, bar
         setStatus('loading');
         setError('');
         try {
-            await pb.collection('quote_requests').create({ ...form, source_page: location.pathname });
+            const response = await fetch('/api/estimate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...form, source_page: location.pathname }),
+            });
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(payload.error || 'We could not send that. Please call us and we will take the details by phone.');
+            }
             setStatus('done');
             setForm({ ...empty, service: defaultService, city: defaultCity });
         } catch (err) {
             setStatus('error');
-            setError(err?.response?.message || 'We could not send that. Please call us and we will take the details by phone.');
+            setError(err?.message || 'We could not send that. Please call us and we will take the details by phone.');
         }
     };
 
@@ -61,14 +68,14 @@ const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false, bar
                 <div><label htmlFor="qf-phone">Phone</label><input id="qf-phone" required value={form.phone} onChange={set('phone')} placeholder="(000) 000-0000" /></div>
                 <div><label htmlFor="qf-email">Email</label><input id="qf-email" type="email" required value={form.email} onChange={set('email')} placeholder="you@email.com" /></div>
                 <div><label htmlFor="qf-city">ZIP code</label><input id="qf-city" value={form.city} onChange={set('city')} placeholder="33613" /></div>
-                <div className="full">
-                    <label>Project type</label>
+                <fieldset className="full">
+                    <legend>Project type</legend>
                     <div className="chips">
                         {projectTypes.map((type) => (
                             <button type="button" key={type} className={form.service === type ? 'on' : undefined} onClick={() => setForm((current) => ({ ...current, service: type }))}>{type}</button>
                         ))}
                     </div>
-                </div>
+                </fieldset>
                 <div>
                     <label htmlFor="qf-timeline">When do you want to start?</label>
                     <select id="qf-timeline" value={form.timeline} onChange={set('timeline')}>

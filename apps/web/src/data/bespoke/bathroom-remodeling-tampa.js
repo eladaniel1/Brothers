@@ -6,11 +6,11 @@ const page = {
     serviceType: 'Bathroom Remodeling',
     path: '/services/bathroom-remodeling/tampa/',
     title: 'Bathroom Remodeling in Tampa, FL',
-    metaTitle: 'Bathroom Remodeling in Tampa, FL (2026 Costs, Accela Permits & FEMA 50%) | Brothers Remodelers',
-    metaDescription: '2026 Tampa bathroom remodel costs: $14,500–$22,500 hall baths, $18,500–$31,000 curbless conversions, $28,000–$46,000 primary guts. City of Tampa Accela permits, HillsGovHub outside the city, FEMA 50% on Davis Islands. CGC1542451.',
+    metaTitle: 'Bathroom Remodeling in Tampa, FL | Brothers',
+    metaDescription: 'Bathroom remodeling in Tampa, FL by Brothers Remodelers, license CGC1542451. City of Tampa permits, with a two-year workmanship warranty.',
     llmsSummary: '2026 Tampa bathroom costs are $14,500–$22,500 for a hall-bath pull-and-replace, $18,500–$31,000 for a curbless tub conversion, $28,000–$46,000 for a primary gut, and $48,000–$78,000+ for a structural suite. Permits inside the city go through Accela Citizen Access; Carrollwood, Town \'n\' Country, Westchase, and Lake Magdalene use HillsGovHub. South Tampa and Davis Islands use the FEMA 50% rule. License CGC1542451.',
     heroSubtitle: 'Hall baths in Seminole Heights bungalows, Hyde Park historic houses, Palma Ceia terrazzo ranches, Davis Islands flood-zone homes, Harbour Island condos, and New Tampa HOA primaries — permitted through City of Tampa Accela and built under FL CGC #CGC1542451.',
-    image: '/images/service-bathroom.jpg',
+    image: '/images/service-bathroom.webp',
     crumbs: [
         { label: 'Services', to: '/services' },
         { label: 'Bathroom Remodeling', to: '/services/bathroom-remodeling' },
@@ -241,7 +241,7 @@ const page = {
     galleryIntro: 'Same tile can look identical in a brochure and fail in a Tampa house. These four scopes are the ones we price most often, matched to the floor, the flood zone, and the board that actually reviews them.',
     gallery: [
         {
-            image: '/images/project-bath.jpg',
+            image: '/images/project-bath.webp',
             imagePosition: 'center',
             neighborhood: 'Palma Ceia',
             title: 'Primary suite on terrazzo',
@@ -249,7 +249,7 @@ const page = {
             tier: 'Primary gut · $28,000–$46,000',
         },
         {
-            image: '/images/bathroom.jpg',
+            image: '/images/bathroom.webp',
             imagePosition: 'center',
             neighborhood: 'Seminole Heights',
             title: 'Bungalow hall bath',
@@ -257,7 +257,7 @@ const page = {
             tier: 'Hall bath · $14,500–$22,500',
         },
         {
-            image: '/images/service-bathroom.jpg',
+            image: '/images/service-bathroom.webp',
             imagePosition: 'center',
             neighborhood: 'Davis Islands',
             title: 'Wet room inside Zone AE',
@@ -265,7 +265,7 @@ const page = {
             tier: 'Bay-side suite · $48,000–$78,000+',
         },
         {
-            image: '/images/project-bath.jpg',
+            image: '/images/project-bath.webp',
             imagePosition: 'top',
             neighborhood: 'Tampa Palms',
             title: 'Master bath off the platform',

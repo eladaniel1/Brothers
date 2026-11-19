@@ -39,7 +39,7 @@ const hWhyRemodelBase = [
     ['More space without a move', 'A growing household or a work-from-home routine often needs another room. An addition keeps the location, the schools and the equity already built into the house.'],
     ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
     ['Interior modernization', 'Replacing worn flooring, upgrading lighting and circuits, and updating trim and finishes bring an older interior current in one coordinated pass.'],
-    ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+    ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule and trades mobilized once — usually faster and cheaper than three separate jobs.'],
 ];
 
 const hFaqsFor = (name, permitJurisdiction) => [
@@ -48,7 +48,7 @@ const hFaqsFor = (name, permitJurisdiction) => [
     ['How long does a remodeling project take?', `Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and ${permitJurisdiction} inspection windows.`],
     [`Do I need a permit for remodeling in ${name}?`, `Many structural, electrical, plumbing and window or door replacement projects require permits, filed with ${permitJurisdiction} for ${name} properties. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.`],
     ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-    [`Can Brothers Remodelers remodel multiple areas of my ${name} home?`, 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+    [`Can Brothers Remodelers remodel multiple areas of my ${name} home?`, 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
     [`How do I request a remodeling estimate in ${name}?`, 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
 ];
 
@@ -56,10 +56,10 @@ const hHeroIntro = (name) =>
     `Brothers Remodelers provides residential remodeling and general contracting services for homeowners in ${name}, Florida, and throughout Hillsborough County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.`;
 
 const hQuickAnswer = (name, locationDesc, permitJurisdiction, isCity) =>
-    `Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in ${name}, ${locationDesc}. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. ${name} homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination${isCity ? ` with ${permitJurisdiction}` : ' with Hillsborough County'}.`;
+    `Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in ${name}, ${locationDesc}. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. ${name} homeowners get written line-item proposals, and full permit coordination${isCity ? ` with ${permitJurisdiction}` : ' with Hillsborough County'}.`;
 
 const hServicesIntro = (name) =>
-    `Six core disciplines, one licensed contractor. Every ${name} project runs under the same standard: a written scope, a live schedule and a superintendent on site.`;
+    `Six core disciplines, one licensed contractor. Every ${name} project runs under the same standard: a written scope and a live schedule.`;
 
 const hServicesFor = (permitJurisdiction, kitchenText) => [
     kitchen(kitchenText),
@@ -108,9 +108,9 @@ export const hillsboroughCities = [
         heroIntro:
             'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Riverview, Florida, and throughout Hillsborough County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
         quickAnswer:
-            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Riverview, one of the fastest-growing communities in Hillsborough County, south of Tampa along the Alafia River. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Riverview homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination with Hillsborough County.',
+            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Riverview, one of the fastest-growing communities in Hillsborough County, south of Tampa along the Alafia River. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Riverview homeowners get written line-item proposals, and full permit coordination with Hillsborough County.',
         servicesIntro:
-            'Six core disciplines, one licensed contractor. Every Riverview project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+            'Six core disciplines, one licensed contractor. Every Riverview project runs under the same standard: a written scope and a live schedule.',
         services: [
             kitchen('From cabinet and counter replacement in 1990s–2000s subdivision homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room in a Riverview house comes back online on schedule.'),
             bathroom('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
@@ -128,7 +128,7 @@ export const hillsboroughCities = [
             ['More space without a move', 'A growing household or a work-from-home routine often needs another room. An addition keeps the schools, the commute and the equity already built into the house.'],
             ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
             ['Interior modernization', 'Replacing worn flooring, upgrading lighting and circuits, and updating trim and finishes bring an older interior current in one coordinated pass.'],
-            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule and trades mobilized once — usually faster and cheaper than three separate jobs.'],
         ],
         areaTitle: 'Serving Riverview and Hillsborough County',
         areaParas: [
@@ -141,7 +141,7 @@ export const hillsboroughCities = [
             ['How long does a remodeling project take?', 'Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and Hillsborough County inspection windows.'],
             ['Do I need a permit for remodeling in Riverview?', 'Many structural, electrical, plumbing and window or door replacement projects require permits, filed with Hillsborough County for Riverview properties. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.'],
             ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-            ['Can Brothers Remodelers remodel multiple areas of my Riverview home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+            ['Can Brothers Remodelers remodel multiple areas of my Riverview home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
             ['How do I request a remodeling estimate in Riverview?', 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
         ],
     },
@@ -154,9 +154,9 @@ export const hillsboroughCities = [
         heroIntro:
             'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Westchase, Florida, and throughout Hillsborough County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
         quickAnswer:
-            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Westchase, a master-planned community in northwest Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Westchase homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including HOA architectural review.',
+            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Westchase, a master-planned community in northwest Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Westchase homeowners get written line-item proposals, and full permit coordination — including HOA architectural review.',
         servicesIntro:
-            'Six core disciplines, one licensed contractor. Every Westchase project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+            'Six core disciplines, one licensed contractor. Every Westchase project runs under the same standard: a written scope and a live schedule.',
         services: [
             kitchen('Many Westchase homes carry original 1990s kitchens — oak cabinetry, closed layouts and laminate counters. We handle everything from cabinet and counter replacement to full layout changes with relocated plumbing and new circuits.'),
             bathroom('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
@@ -174,7 +174,7 @@ export const hillsboroughCities = [
             ['More space without a move', 'A growing household or a work-from-home routine often needs another room. An addition keeps the neighbors, the schools and the equity already built into the house.'],
             ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
             ['Interior modernization', 'Replacing worn flooring, upgrading lighting and circuits, and updating trim and finishes bring a 1990s interior current in one coordinated pass.'],
-            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule and trades mobilized once — usually faster and cheaper than three separate jobs.'],
         ],
         areaTitle: 'Serving Westchase and Hillsborough County',
         areaParas: [
@@ -187,7 +187,7 @@ export const hillsboroughCities = [
             ['How long does a remodeling project take?', 'Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and Hillsborough County inspection windows.'],
             ['Do I need a permit for remodeling in Westchase?', 'Many structural, electrical, plumbing and window or door replacement projects require permits, filed with Hillsborough County for Westchase properties. Exterior changes and additions typically also require HOA architectural approval first. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.'],
             ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-            ['Can Brothers Remodelers remodel multiple areas of my Westchase home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+            ['Can Brothers Remodelers remodel multiple areas of my Westchase home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
             ['How do I request a remodeling estimate in Westchase?', 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
         ],
     },
@@ -200,9 +200,9 @@ export const hillsboroughCities = [
         heroIntro:
             'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Lutz, Florida, and throughout Hillsborough County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
         quickAnswer:
-            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Lutz, an unincorporated community in northwest Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Lutz homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination with Hillsborough County.',
+            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Lutz, an unincorporated community in northwest Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Lutz homeowners get written line-item proposals, and full permit coordination with Hillsborough County.',
         servicesIntro:
-            'Six core disciplines, one licensed contractor. Every Lutz project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+            'Six core disciplines, one licensed contractor. Every Lutz project runs under the same standard: a written scope and a live schedule.',
         services: [
             kitchen('From updating original kitchens in older Lutz homes to full layout changes with relocated plumbing and new circuits, we sequence every trade — demolition, rough-in, millwork, stone — so the busiest room in the house comes back online on schedule.'),
             bathroom('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
@@ -220,7 +220,7 @@ export const hillsboroughCities = [
             ['Room to add on', 'Lutz’s larger lots make additions a practical alternative to moving — an in-law suite, a workshop or a second story keeps the location and the equity already built.'],
             ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
             ['Interior modernization', 'Replacing worn flooring, upgrading lighting and circuits, and updating trim and finishes bring an older interior current in one coordinated pass.'],
-            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule and trades mobilized once — usually faster and cheaper than three separate jobs.'],
         ],
         areaTitle: 'Serving Lutz and Hillsborough County',
         areaParas: [
@@ -233,7 +233,7 @@ export const hillsboroughCities = [
             ['How long does a remodeling project take?', 'Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and county inspection windows.'],
             ['Do I need a permit for remodeling in Lutz?', 'Many structural, electrical, plumbing and window or door replacement projects require permits, filed with Hillsborough County for Lutz properties — or Pasco County for homes that sit across the county line. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.'],
             ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-            ['Can Brothers Remodelers remodel multiple areas of my Lutz home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+            ['Can Brothers Remodelers remodel multiple areas of my Lutz home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
             ['How do I request a remodeling estimate in Lutz?', 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
         ],
     },
@@ -246,9 +246,9 @@ export const hillsboroughCities = [
         heroIntro:
             'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in Odessa, Florida, and throughout Hillsborough County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
         quickAnswer:
-            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Odessa, a rural and equestrian community in northwest Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Odessa homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination with Hillsborough County.',
+            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in Odessa, a rural and equestrian community in northwest Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. Odessa homeowners get written line-item proposals, and full permit coordination with Hillsborough County.',
         servicesIntro:
-            'Six core disciplines, one licensed contractor. Every Odessa project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+            'Six core disciplines, one licensed contractor. Every Odessa project runs under the same standard: a written scope and a live schedule.',
         services: [
             kitchen('From refreshing kitchens in custom homes to full layout changes with relocated plumbing and new circuits, we sequence every trade so the busiest room in the house comes back online on schedule.'),
             bathroom('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
@@ -266,7 +266,7 @@ export const hillsboroughCities = [
             ['Adding guest and family space', 'Acreage makes additions practical: an in-law casita, a guest suite or a barn apartment keeps family close without sharing a kitchen.'],
             ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
             ['Interior modernization', 'Replacing worn flooring, upgrading lighting and circuits, and updating trim and finishes bring an older interior current in one coordinated pass.'],
-            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule and trades mobilized once — usually faster and cheaper than three separate jobs.'],
         ],
         areaTitle: 'Serving Odessa and Hillsborough County',
         areaParas: [
@@ -279,7 +279,7 @@ export const hillsboroughCities = [
             ['How long does a remodeling project take?', 'Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and county inspection windows.'],
             ['Do I need a permit for remodeling in Odessa?', 'Many structural, electrical, plumbing and window or door replacement projects require permits, filed with Hillsborough County for Odessa properties — or Pasco County for homes across the county line. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.'],
             ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-            ['Can Brothers Remodelers remodel multiple areas of my Odessa home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+            ['Can Brothers Remodelers remodel multiple areas of my Odessa home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
             ['How do I request a remodeling estimate in Odessa?', 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
         ],
     },
@@ -292,9 +292,9 @@ export const hillsboroughCities = [
         heroIntro:
             'Brothers Remodelers provides residential remodeling and general contracting services for homeowners in FishHawk (Lithia), Florida, and throughout Hillsborough County — from kitchen and bathroom remodels to home additions, whole-home renovations and concrete work.',
         quickAnswer:
-            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in FishHawk, the master-planned community of FishHawk Ranch and FishHawk Trails in Lithia, southeast Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. FishHawk homeowners get a dedicated superintendent on site, written line-item proposals, and full permit coordination — including HOA and CDD architectural review.',
+            'Brothers Remodelers is a licensed residential remodeling and general contracting company serving homeowners in FishHawk, the master-planned community of FishHawk Ranch and FishHawk Trails in Lithia, southeast Hillsborough County, Florida. Services include kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general contracting. FishHawk homeowners get written line-item proposals, and full permit coordination — including HOA and CDD architectural review.',
         servicesIntro:
-            'Six core disciplines, one licensed contractor. Every FishHawk project runs under the same standard: a written scope, a live schedule and a superintendent on site.',
+            'Six core disciplines, one licensed contractor. Every FishHawk project runs under the same standard: a written scope and a live schedule.',
         services: [
             kitchen('Upgrading builder-grade kitchens in FishHawk Ranch and FishHawk Trails homes — from cabinet and counter replacement to full layout changes with relocated plumbing, an island and new circuits, sequenced so the room comes back online on schedule.'),
             bathroom('Gut renovations that start behind the tile: rebuilt wet walls, waterproofing membranes, curbless showers and ventilation sized to code. Florida humidity makes the assembly under the tile matter as much as the tile itself.'),
@@ -312,7 +312,7 @@ export const hillsboroughCities = [
             ['More space for a growing family', 'FishHawk households grow fast. An extra bedroom, a in-law suite or a second story keeps the schools, the trails and the equity already built into the house.'],
             ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
             ['Work-from-home space', 'A dedicated office or a converted flex room is now a permanent need for many owners, and a remodel is the cleanest way to build one that works.'],
-            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+            ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule and trades mobilized once — usually faster and cheaper than three separate jobs.'],
         ],
         areaTitle: 'Serving FishHawk and Hillsborough County',
         areaParas: [
@@ -325,7 +325,7 @@ export const hillsboroughCities = [
             ['How long does a remodeling project take?', 'Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and Hillsborough County inspection windows.'],
             ['Do I need a permit for remodeling in FishHawk?', 'Many structural, electrical, plumbing and window or door replacement projects require permits, filed with Hillsborough County for FishHawk properties. Exterior changes and additions typically also require community architectural approval first. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.'],
             ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-            ['Can Brothers Remodelers remodel multiple areas of my FishHawk home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+            ['Can Brothers Remodelers remodel multiple areas of my FishHawk home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
             ['How do I request a remodeling estimate in FishHawk?', 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
         ],
     },

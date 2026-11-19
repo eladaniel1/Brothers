@@ -9,16 +9,16 @@ const PhoneIcon = () => (
 );
 
 const nav = [
-    { label: 'Services', to: '/services' },
-    { label: 'Service Areas', to: '/areas-we-serve' },
-    { label: 'Financing', to: '/financing' },
-    { label: 'About', to: '/about' },
-    { label: 'Contact', to: '/contact' },
+    { label: 'Services', to: '/services/' },
+    { label: 'Service Areas', to: '/areas-we-serve/' },
+    { label: 'Financing', to: '/financing/' },
+    { label: 'About', to: '/about/' },
+    { label: 'Contact', to: '/contact/' },
 ];
 
 export const Logo = () => (
-    <Link className="logo" to="/" aria-label="Brothers Home Remodeling home">
-        <img src={logoUrl} alt="Brothers Home Remodeling" />
+    <Link className="logo" to="/" aria-label="Brothers Remodelers home">
+        <img src={logoUrl} alt="Brothers Remodelers" />
     </Link>
 );
 
@@ -36,9 +36,9 @@ export const Section = ({ children, className = '', id }) => {
     );
 };
 
-export const PageHero = ({ title, subtitle, image, crumbs = [] }) => (
+export const PageHero = ({ title, subtitle, image, crumbs = [], imageAlt = '' }) => (
     <section className={`phero ${image ? '' : 'plain'}`}>
-        {image ? <img src={image} alt="" /> : null}
+        {image ? <img src={image} alt={imageAlt || title} fetchPriority="high" width="1440" height="640" /> : null}
         <div className="wrap">
             <div className="crumbs">
                 <Link to="/">Home</Link>
@@ -57,7 +57,7 @@ export const PageHero = ({ title, subtitle, image, crumbs = [] }) => (
 
 export const CtaBand = ({ heading = 'Tell us what you want built.' }) => (
     <section className="cta">
-        <img src="/images/construction-site.jpg" alt="" />
+        <img src="/images/construction-site.webp" alt="" />
         <div className="wrap">
             <div>
                 <Eyebrow>Free estimate</Eyebrow>
@@ -67,7 +67,7 @@ export const CtaBand = ({ heading = 'Tell us what you want built.' }) => (
                 <a className="ph" href={company.phoneHref}>{company.phone}</a>
                 <span className="small">{company.hours} · Tampa office, {company.streetAddress}</span>
                 <div className="btns" style={{ width: '100%' }}>
-                    <Link className="btn btn-primary" to="/contact">Get a Free Estimate</Link>
+                    <Link className="btn btn-primary" to="/contact/">Get a Free Estimate</Link>
                 </div>
             </div>
         </div>
@@ -98,16 +98,16 @@ const Header = () => {
                     </nav>
                     <div className="hdr-cta">
                         <a className="hdr-phone" href={company.phoneHref}><small>Call us</small>{company.phone}</a>
-                        <Link className="btn btn-primary btn-sm" to="/contact">Get Estimate</Link>
+                        <Link className="btn btn-primary btn-sm" to="/contact/">Get Estimate</Link>
                         <button type="button" className="icon-btn burger" aria-label="Menu" onClick={() => setOpen((value) => !value)}>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
                         </button>
                     </div>
                 </div>
                 {open ? (
-                    <nav className="wrap" style={{ display: 'grid', gap: 8, paddingBottom: 16 }}>
+                    <nav className="mnav" aria-label="Mobile">
                         {nav.map((item) => (
-                            <Link key={item.to} to={item.to} style={{ fontWeight: 600, padding: '10px 0', borderBottom: '1px solid var(--line)' }}>{item.label}</Link>
+                            <Link key={item.to} to={item.to.endsWith('/') ? item.to : `${item.to}/`}>{item.label}</Link>
                         ))}
                     </nav>
                 ) : null}
@@ -120,37 +120,37 @@ const Footer = () => (
     <footer className="ftr">
         <div className="wrap ftr-top">
             <div>
-                <Link className="ftr-logo" to="/"><img src={logoUrl} alt="Brothers Home Remodeling" /></Link>
-                <p>Republic Renovations Inc d/b/a Brothers Remodelers.<br />Florida Certified General Contractor <a href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=1C3E502F9E8BF71B16D232BF63A31C8C" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,.35)' }}>{company.licenseNumber}</a>.</p>
+                <Link className="ftr-logo" to="/"><img src={logoUrl} alt="Brothers Remodelers" /></Link>
+                <p>Republic Renovations Inc d/b/a Brothers Remodelers.<br />License <a href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=1C3E502F9E8BF71B16D232BF63A31C8C" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,.35)' }}>{company.licenseNumber}</a> is held by Daniel Alejandro Cardenas Romero d/b/a Brothers Remodelers, qualifier for Republic Renovations Inc.</p>
             </div>
             <div>
                 <h4>Services</h4>
                 <ul>
-                    <li><Link to="/services/kitchen-remodeling">Kitchen Remodeling</Link></li>
-                    <li><Link to="/services/bathroom-remodeling">Bathroom Remodeling</Link></li>
-                    <li><Link to="/services/home-additions">Home Additions</Link></li>
-                    <li><Link to="/services/general-contracting">Whole-Home Remodeling</Link></li>
-                    <li><Link to="/services/concrete-foundations">Concrete</Link></li>
-                    <li><Link to="/services/general-contracting">General Contracting</Link></li>
+                    <li><Link to="/services/kitchen-remodeling/">Kitchen Remodeling</Link></li>
+                    <li><Link to="/services/bathroom-remodeling/">Bathroom Remodeling</Link></li>
+                    <li><Link to="/services/home-additions/">Home Additions</Link></li>
+                    <li><Link to="/services/general-contracting/">Whole-Home Remodeling</Link></li>
+                    <li><Link to="/services/concrete-foundations/">Concrete</Link></li>
+                    <li><Link to="/services/general-contracting/">General Contracting</Link></li>
                 </ul>
             </div>
             <div>
                 <h4>Counties</h4>
                 <ul>
-                    <li><Link to="/areas-we-serve/hillsborough">Hillsborough</Link></li>
-                    <li><Link to="/areas-we-serve/pinellas">Pinellas</Link></li>
-                    <li><Link to="/areas-we-serve/pasco">Pasco</Link></li>
-                    <li><Link to="/areas-we-serve/manatee">Manatee</Link></li>
-                    <li><Link to="/areas-we-serve/sarasota">Sarasota</Link></li>
+                    <li><Link to="/areas-we-serve/hillsborough/">Hillsborough</Link></li>
+                    <li><Link to="/areas-we-serve/pinellas/">Pinellas</Link></li>
+                    <li><Link to="/areas-we-serve/pasco/">Pasco</Link></li>
+                    <li><Link to="/areas-we-serve/manatee/">Manatee</Link></li>
+                    <li><Link to="/areas-we-serve/sarasota/">Sarasota</Link></li>
                 </ul>
             </div>
             <div>
                 <h4>Company</h4>
                 <ul>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/financing">Financing</Link></li>
-                    <li><Link to="/contact">Get an Estimate</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to="/about/">About</Link></li>
+                    <li><Link to="/financing/">Financing</Link></li>
+                    <li><Link to="/contact/">Get an Estimate</Link></li>
+                    <li><Link to="/contact/">Contact</Link></li>
                 </ul>
             </div>
             <div>
@@ -172,7 +172,7 @@ const Footer = () => (
 const MobileBar = () => (
     <div className="mbar">
         <a className="btn btn-line" href={company.phoneHref}><PhoneIcon /> Call</a>
-        <Link className="btn btn-primary" to="/contact">Get a Quote</Link>
+        <Link className="btn btn-primary" to="/contact/">Get a Quote</Link>
     </div>
 );
 

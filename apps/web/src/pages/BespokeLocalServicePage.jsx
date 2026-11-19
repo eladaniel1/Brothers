@@ -38,7 +38,7 @@ const BespokeLocalServicePage = ({ page }) => {
         '@graph': [
             {
                 '@type': ['GeneralContractor', 'HomeAndConstructionBusiness'],
-                '@id': `${SITE}/#organization`,
+                '@id': 'https://brothersremodelers.com/#contractor',
                 name: company.name,
                 url: `${SITE}/`,
                 telephone: company.telephone,
@@ -87,7 +87,7 @@ const BespokeLocalServicePage = ({ page }) => {
                 serviceType: page.serviceType,
                 url,
                 description: page.capsule,
-                provider: { '@id': `${SITE}/#organization` },
+                provider: { '@id': 'https://brothersremodelers.com/#contractor' },
                 areaServed: {
                     '@type': 'City',
                     name: page.schema.cityName,
@@ -347,7 +347,7 @@ const BespokeLocalServicePage = ({ page }) => {
                             ))}
                         </div>
                         <p className="mt-4 text-sm text-neutral-600">
-                            <Link to="/reviews" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Read the published reviews</Link>
+                            <Link to="/reviews/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Read the published reviews</Link>
                         </p>
 
                         <div className="mt-12 grid min-w-0 gap-8 border border-neutral-200 bg-neutral-50 p-4 sm:p-6">

@@ -176,7 +176,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
             </div>
             </div>
             <div data-audit="area-ctas" className="mt-4 grid items-center gap-3 lg:grid-cols-2 lg:gap-10">
-                <Link to="/areas-we-serve" className="inline-flex min-h-[3.25rem] w-fit items-center gap-2 border border-neutral-300 px-8 text-base font-bold uppercase tracking-wide text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))]">
+                <Link to="/areas-we-serve/" className="inline-flex min-h-[3.25rem] w-fit items-center gap-2 border border-neutral-300 px-8 text-base font-bold uppercase tracking-wide text-[hsl(var(--ink))] transition-colors hover:border-[hsl(var(--ink))]">
                     Explore All Service Areas <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link

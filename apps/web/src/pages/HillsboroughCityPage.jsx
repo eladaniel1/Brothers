@@ -27,23 +27,23 @@ const homeownerInfo = [
 
 const process = [
     ['Initial Consultation', 'We walk the house, listen to what you want to change, and talk honestly about budget and sequence.'],
-    ['Project Assessment', 'A superintendent measures, photographs and flags existing conditions — structure, plumbing, electrical and moisture.'],
+    ['Project Assessment', 'We measure, photograph and flag existing conditions — structure, plumbing, electrical and moisture.'],
     ['Planning & Scope', 'Layouts, finish selections and long-lead items are locked into a written scope before anything is demolished.'],
     ['Estimate & Proposal', 'A line-item fixed-price proposal with allowances stated plainly, usually within five business days.'],
-    ['Construction', 'A dedicated superintendent runs the site with a live schedule, weekly photo updates and protected work areas.'],
+    ['Construction', 'The job runs on a live schedule, with weekly photo updates and protected work areas.'],
     ['Project Completion', 'Sign-offs, punch list, warranty documents and a clean handover you can move into.'],
 ];
 
 const cityWork = [
-    { ...projects[1], image: '/images/project-kitchen-sink.jpg' },
-    { ...projects[3], image: '/images/project-bath.jpg' },
-    { ...projects[5], image: '/images/project-kitchen-island.jpg' },
+    { ...projects[1], image: '/images/project-kitchen-sink.webp' },
+    { ...projects[3], image: '/images/project-bath.webp' },
+    { ...projects[5], image: '/images/project-kitchen-island.webp' },
 ];
 
 const HillsboroughCityPage = () => {
     const { citySlug } = useParams();
     const city = getHillsboroughCity(citySlug);
-    if (!city) return <Navigate to="/areas-we-serve/hillsborough" replace />;
+    if (!city) return <Navigate to="/areas-we-serve/hillsborough/" replace />;
 
     const structuredData = [
         {
@@ -100,13 +100,13 @@ const HillsboroughCityPage = () => {
                     <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70">{city.heroIntro}</p>
                     <div className="mt-8 flex flex-wrap gap-3">
                         <Link
-                            to="/quote"
+                            to="/quote/"
                             className="flex min-h-[44px] items-center bg-[hsl(var(--brand))] px-6 text-sm font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))] transition-transform hover:-translate-y-px active:translate-y-0"
                         >
                             Request a Free Quote
                         </Link>
                         <Link
-                            to="/services"
+                            to="/services/"
                             className="flex min-h-[44px] items-center border-2 border-white/40 px-6 text-sm font-bold uppercase tracking-wide text-white hover:border-white"
                         >
                             Explore Our Services
@@ -179,8 +179,8 @@ const HillsboroughCityPage = () => {
                         <p key={p.slice(0, 40)}>{p}</p>
                     ))}
                     <p>
-                        See the full <Link to="/areas-we-serve/hillsborough" className="font-semibold underline hover:text-[hsl(var(--brand))]">Hillsborough County service area page</Link> or
-                        browse all <Link to="/areas-we-serve" className="font-semibold underline hover:text-[hsl(var(--brand))]">areas we serve</Link> across the Tampa Bay and Sarasota region.
+                        See the full <Link to="/areas-we-serve/hillsborough/" className="font-semibold underline hover:text-[hsl(var(--brand))]">Hillsborough County service area page</Link> or
+                        browse all <Link to="/areas-we-serve/" className="font-semibold underline hover:text-[hsl(var(--brand))]">areas we serve</Link> across the Tampa Bay and Sarasota region.
                     </p>
                 </div>
             </Section>
@@ -244,7 +244,7 @@ const HillsboroughCityPage = () => {
                     ))}
                 </div>
                 <Link
-                    to="/projects"
+                    to="/projects/"
                     className="mt-8 inline-flex min-h-[44px] items-center bg-[hsl(var(--ink))] px-5 text-xs font-bold uppercase tracking-widest text-white"
                 >
                     View the full project gallery
@@ -257,14 +257,14 @@ const HillsboroughCityPage = () => {
                 <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Why {city.name} Homeowners Choose Brothers Remodelers</h2>
                 <ul className="mt-10 grid gap-3 text-sm leading-relaxed text-white/80 md:grid-cols-2">
                     <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1542451, fully licensed and insured.</li>
-                    <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />A dedicated superintendent on every site, with weekly photo updates.</li>
+                    <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and permit coordination.</li>
                     <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and signed change orders before work proceeds.</li>
                     <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Two-year workmanship warranty plus manufacturer warranties, documented at closeout.</li>
                 </ul>
                 <p className="mt-8 text-sm text-white/60">
-                    Read <Link to="/reviews" className="font-semibold underline hover:text-[hsl(var(--brand))]">client reviews</Link>, learn
-                    more <Link to="/about" className="font-semibold underline hover:text-[hsl(var(--brand))]">about our company</Link>, or
-                    review our <Link to="/safety" className="font-semibold underline hover:text-[hsl(var(--brand))]">licensing and insurance documentation</Link>.
+                    Read <Link to="/reviews/" className="font-semibold underline hover:text-[hsl(var(--brand))]">client reviews</Link>, learn
+                    more <Link to="/about/" className="font-semibold underline hover:text-[hsl(var(--brand))]">about our company</Link>, or
+                    review our <Link to="/safety/" className="font-semibold underline hover:text-[hsl(var(--brand))]">licensing and insurance documentation</Link>.
                 </p>
             </Section>
 

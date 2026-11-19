@@ -55,7 +55,7 @@ const faqs = [
     },
     {
         q: 'Do you offer financing?',
-        a: 'Yes. Financing is available for qualifying homeowners through Service Finance Company, LLC and Sunlight Financial. Visit our Financing page to see how each program works and how to apply, or ask about it during your free consultation.',
+        a: 'Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary. Ask during your estimate.',
     },
 ];
 
@@ -219,7 +219,7 @@ const RemodelingCostGuidePage = () => (
                         <Link to="/quote/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">line-item proposal</Link>
                         {' '}with allowances stated in plain language, so you can compare bids on equal terms. Change orders are priced in writing before the work happens.{' '}
                         <Link to="/financing/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-4 hover:text-[hsl(var(--brand))]">Financing</Link>
-                        {' '}is available for qualifying homeowners through Service Finance Company, LLC and Sunlight Financial.
+                        {' '}is available through Upgrade and Ygrene, subject to credit approval. Terms vary.
                     </p>
                 </section>
 

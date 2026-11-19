@@ -99,7 +99,7 @@ export const ServicesPage = () => (
 export const ServiceDetailPage = () => {
     const { slug } = useParams();
     const service = services.find((s) => s.slug === slug);
-    if (!service) return <Navigate to="/services" replace />;
+    if (!service) return <Navigate to="/services/" replace />;
 
     const metaTitle = service.metaTitle || `${service.title} in the Tampa Bay & Sarasota Region | Brothers Remodelers`;
     const metaDescription = service.metaDescription || `${service.summary} Licensed and insured ${lowerTitle(service.title)} contractors serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.`;
@@ -127,14 +127,7 @@ export const ServiceDetailPage = () => {
         '@context': 'https://schema.org',
         '@type': 'Service',
         serviceType: service.title,
-        provider: {
-            '@type': 'GeneralContractor',
-            name: company.name,
-            telephone: '+1-855-445-2551',
-            url: 'https://brothersremodelers.com/',
-            license: company.licenseNumber,
-            areaServed: areas.map((a) => ({ '@type': 'AdministrativeArea', name: a.city })),
-        },
+        provider: { '@id': 'https://brothersremodelers.com/#contractor' },
         areaServed: 'Tampa Bay and Sarasota region, Florida',
         description: service.summary,
         brand: brandSchemaFor(service.slug),
@@ -284,7 +277,7 @@ export const ServiceDetailPage = () => {
                                 </dl>
                                 <p className="mt-5 text-sm leading-relaxed text-neutral-600">
                                     After a walkthrough and scope conversation, we return a written line-item proposal — usually within five business days. Allowances for owner-selected finishes are stated plainly, and payments follow completed milestones. See how owners fund projects on our{' '}
-                                    <Link to="/financing" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link>.
+                                    <Link to="/financing/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link>.
                                 </p>
 
                                 <h3 className="font-display mt-12 text-2xl font-bold uppercase">Permits and inspections</h3>
@@ -294,7 +287,7 @@ export const ServiceDetailPage = () => {
                                     </p>
                                     <p>
                                         We schedule every required inspection and keep the records in your closeout package, alongside sign-offs and warranty documents. Read more about our{' '}
-                                        <Link to="/safety" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">licensing, insurance and site safety standards</Link>.
+                                        <Link to="/safety/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">licensing, insurance and site safety standards</Link>.
                                     </p>
                                 </div>
 
@@ -307,13 +300,13 @@ export const ServiceDetailPage = () => {
                                         <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Verify the license.</strong> A Florida Certified General Contractor (CGC) number can be confirmed through the state DBPR online license check. Ours is {company.licenseNumber}.</span></li>
                                         <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Ask for certificates of insurance.</strong> General liability and workers' compensation should be sent directly to your HOA, lender or landlord — not handed over as a photocopy.</span></li>
                                         <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Require a line-item proposal.</strong> Fixed pricing with stated allowances lets you compare bids on equal terms and exposes where money is hidden in a single lump sum.</span></li>
-                                        <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Confirm who supervises the site.</strong> A dedicated superintendent on site — not a project manager juggling ten jobs by phone — is what keeps a project on schedule.</span></li>
+                                        <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Ask for the schedule in writing.</strong> A written schedule and weekly updates are what keep a project moving.</span></li>
                                         <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Get the warranty in writing.</strong> Workmanship coverage and manufacturer warranties should be documented in a closeout package at handover, not promised verbally.</span></li>
                                     </ul>
                                     <p>
                                         See completed work in our{' '}
-                                        <Link to="/projects" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
-                                        <Link to="/reviews" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
+                                        <Link to="/projects/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
+                                        <Link to="/reviews/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
                                     </p>
                                 </div>
 
@@ -322,7 +315,7 @@ export const ServiceDetailPage = () => {
                                     {[
                                         [ShieldCheck, 'Licensed & insured', `${company.license}. Certificates issued to your HOA or lender on request.`],
                                         [enh.whyIcon, enh.whyTitle, enh.whyText],
-                                        [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates from a dedicated site superintendent.'],
+                                        [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates.'],
                                         [Check, 'Two-year warranty', 'Workmanship warranty plus manufacturer warranties, documented at closeout.'],
                                     ].map(([Icon, title, text]) => (
                                         <div key={title} className="flex gap-3 border border-neutral-200 p-4">
@@ -340,7 +333,7 @@ export const ServiceDetailPage = () => {
                         <h3 className="font-display mt-12 text-2xl font-bold uppercase">Cities we serve</h3>
                         <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                             We provide {lowerTitle(service.title)} for homeowners and property owners across the Tampa Bay and Sarasota region. Select a county below to see the communities we serve, or browse the full{' '}
-                            <Link to="/areas-we-serve" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Areas We Serve</Link> page.
+                            <Link to="/areas-we-serve/" className="font-semibold text-[hsl(var(--ink))] underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Areas We Serve</Link> page.
                         </p>
                         <div className="mt-4 flex flex-wrap gap-2">
                             {areas.map((a) => (
@@ -370,8 +363,8 @@ export const ServiceDetailPage = () => {
                         <div className="mt-4 space-y-4 leading-relaxed text-neutral-600">
                             <p>
                                 Ready to move forward? The fastest path is a free site walkthrough — we measure, confirm scope and return a written line-item proposal within five business days.{' '}
-                                <Link to="/quote" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
-                                <Link to="/contact" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly.
+                                <Link to="/quote/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
+                                <Link to="/contact/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly.
                             </p>
                         </div>
 
@@ -380,14 +373,14 @@ export const ServiceDetailPage = () => {
                                 <h3 className="font-display mt-12 text-2xl font-bold uppercase">Where we work</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                                     We provide {lowerTitle(service.title)} across the Tampa Bay and Sarasota region, including{' '}
-                                    <Link to="/areas-we-serve/hillsborough/tampa" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
-                                    <Link to="/areas-we-serve/pinellas/st-petersburg" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
-                                    <Link to="/areas-we-serve/pasco/wesley-chapel" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
-                                    <Link to="/areas-we-serve/sarasota/sarasota" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
+                                    <Link to="/areas-we-serve/hillsborough/tampa/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
+                                    <Link to="/areas-we-serve/pinellas/st-petersburg/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
+                                    <Link to="/areas-we-serve/pasco/wesley-chapel/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
+                                    <Link to="/areas-we-serve/sarasota/sarasota/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
                                     and{' '}
-                                    <Link to="/areas-we-serve/manatee/bradenton" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
+                                    <Link to="/areas-we-serve/manatee/bradenton/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
                                     See the full list on our{' '}
-                                    <Link to="/areas-we-serve" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">areas we serve page</Link>.
+                                    <Link to="/areas-we-serve/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">areas we serve page</Link>.
                                 </p>
                             </>
                         )}
@@ -432,7 +425,7 @@ export const AreasPage = () => (
 export const AreaDetailPage = ({ slugOverride }) => {
     const { slug } = useParams();
     const area = areas.find((a) => a.slug === (slugOverride ?? slug));
-    if (!area) return <Navigate to="/areas-we-serve" replace />;
+    if (!area) return <Navigate to="/areas-we-serve/" replace />;
     return (
         <SiteLayout>
             <Meta title={`${area.city} Home Remodeler | Brothers Remodelers`} description={`Licensed home remodeler in ${area.city}, ${area.region}. Whole-home renovations, kitchens, bathrooms, additions and concrete work with free estimates.`} />
@@ -465,7 +458,7 @@ export const AreaDetailPage = ({ slugOverride }) => {
                         {area.slug === 'hillsborough' && (
                             <p className="mt-4 text-sm leading-relaxed text-neutral-600">
                                 Planning a project in the city itself? See our dedicated{' '}
-                                <Link to="/areas-we-serve/hillsborough/tampa" className="font-semibold underline hover:text-[hsl(var(--brand))]">
+                                <Link to="/areas-we-serve/hillsborough/tampa/" className="font-semibold underline hover:text-[hsl(var(--brand))]">
                                     Tampa home remodeling and general contracting page
                                 </Link>.
                             </p>
@@ -473,7 +466,7 @@ export const AreaDetailPage = ({ slugOverride }) => {
                         {area.slug === 'hillsborough' && (
                             <p className="mt-2 text-sm leading-relaxed text-neutral-600">
                                 Building in the Brandon area? See our dedicated{' '}
-                                <Link to="/areas-we-serve/hillsborough/brandon" className="font-semibold underline hover:text-[hsl(var(--brand))]">
+                                <Link to="/areas-we-serve/hillsborough/brandon/" className="font-semibold underline hover:text-[hsl(var(--brand))]">
                                     Brandon home remodeling and general contracting page
                                 </Link>.
                             </p>
@@ -481,17 +474,17 @@ export const AreaDetailPage = ({ slugOverride }) => {
                         {area.slug === 'hillsborough' && (
                             <p className="mt-2 text-sm leading-relaxed text-neutral-600">
                                 We also maintain dedicated city pages for{' '}
-                                <Link to="/areas-we-serve/hillsborough/riverview" className="font-semibold underline hover:text-[hsl(var(--brand))]">Riverview</Link>,{' '}
-                                <Link to="/areas-we-serve/hillsborough/westchase" className="font-semibold underline hover:text-[hsl(var(--brand))]">Westchase</Link>,{' '}
-                                <Link to="/areas-we-serve/hillsborough/lutz" className="font-semibold underline hover:text-[hsl(var(--brand))]">Lutz</Link>,{' '}
-                                <Link to="/areas-we-serve/hillsborough/odessa" className="font-semibold underline hover:text-[hsl(var(--brand))]">Odessa</Link> and{' '}
-                                <Link to="/areas-we-serve/hillsborough/fishhawk" className="font-semibold underline hover:text-[hsl(var(--brand))]">FishHawk</Link>.
+                                <Link to="/areas-we-serve/hillsborough/riverview/" className="font-semibold underline hover:text-[hsl(var(--brand))]">Riverview</Link>,{' '}
+                                <Link to="/areas-we-serve/hillsborough/westchase/" className="font-semibold underline hover:text-[hsl(var(--brand))]">Westchase</Link>,{' '}
+                                <Link to="/areas-we-serve/hillsborough/lutz/" className="font-semibold underline hover:text-[hsl(var(--brand))]">Lutz</Link>,{' '}
+                                <Link to="/areas-we-serve/hillsborough/odessa/" className="font-semibold underline hover:text-[hsl(var(--brand))]">Odessa</Link> and{' '}
+                                <Link to="/areas-we-serve/hillsborough/fishhawk/" className="font-semibold underline hover:text-[hsl(var(--brand))]">FishHawk</Link>.
                             </p>
                         )}
                         {area.slug === 'sarasota' && (
                             <p className="mt-4 text-sm leading-relaxed text-neutral-600">
                                 Lakewood Ranch spans Manatee and Sarasota counties; see our{' '}
-                                <Link to="/areas-we-serve/manatee/lakewood-ranch" className="font-semibold underline hover:text-[hsl(var(--brand))]">
+                                <Link to="/areas-we-serve/manatee/lakewood-ranch/" className="font-semibold underline hover:text-[hsl(var(--brand))]">
                                     Lakewood Ranch page
                                 </Link>.
                             </p>
@@ -519,19 +512,19 @@ export const AreaDetailPage = ({ slugOverride }) => {
 
 export const AboutPage = () => (
     <SiteLayout>
-        <Meta title="About | Brothers Home Remodeling" description="Brothers Home Remodeling is the trade name of Republic Renovations Inc, a Florida Certified General Contractor (CGC1542451) serving five Gulf Coast counties." />
-        <PageHero title="A licensed remodeling contractor out of Tampa." subtitle="Brothers Home Remodeling is the trade name of Republic Renovations Inc. We remodel homes across five Gulf Coast counties under Florida Certified General Contractor license CGC1542451." image="/images/construction-site.jpg" crumbs={[{ label: 'About' }]} />
+        <Meta title="About | Brothers Remodelers" description="Brothers Remodelers is the name used by Republic Renovations Inc. License CGC1542451 is held by Daniel Alejandro Cardenas Romero, the qualifier." />
+        <PageHero title="A licensed remodeling contractor out of Tampa." subtitle="Brothers Remodelers is the name we use for remodeling across five Gulf Coast counties. License CGC1542451 is held by Daniel Alejandro Cardenas Romero d/b/a Brothers Remodelers, qualifier for Republic Renovations Inc." image="/images/construction-site.webp" crumbs={[{ label: 'About' }]} />
         <section className="sec"><div className="wrap">
             <dl className="lic">
-                <div><dt>Legal name</dt><dd>Republic Renovations Inc</dd></div>
-                <div><dt>Doing business as</dt><dd>Brothers Remodelers</dd></div>
-                <div><dt>FL license</dt><dd>{company.licenseNumber}</dd></div>
-                <div><dt>Status (DBPR)</dt><dd>Current, active</dd></div>
+                <div><dt>Company</dt><dd>Republic Renovations Inc d/b/a Brothers Remodelers</dd></div>
+                <div><dt>License holder</dt><dd>Daniel Alejandro Cardenas Romero d/b/a Brothers Remodelers</dd></div>
+                <div><dt>Role</dt><dd>Qualifier for Republic Renovations Inc</dd></div>
+                <div><dt>FL license</dt><dd>CGC1542451, Certified General Contractor</dd></div>
             </dl>
-            <p className="small mute" style={{ marginTop: 14 }}>Verify on the <a href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=1C3E502F9E8BF71B16D232BF63A31C8C" style={{ color: 'var(--navy)', borderBottom: '1px solid var(--slate-300)' }}>Florida DBPR license search</a>. Status shown as of 11/17/2026.</p>
+            <p className="small mute" style={{ marginTop: 14 }}>Verify the license on the <a href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=1C3E502F9E8BF71B16D232BF63A31C8C" style={{ color: 'var(--navy-900)', borderBottom: '1px solid var(--slate-300)' }}>Florida DBPR license search</a>. The Tampa office address is the business office, not the license address.</p>
         </div></section>
         <section className="sec bg-paper"><div className="wrap about-split">
-            <div className="about-img"><img src="/images/about-plans.jpg" alt="Reviewing plans" /></div>
+            <div className="about-img"><img src="/images/about-plans.webp" alt="Reviewing plans" /></div>
             <div className="prose">
                 <Eyebrow>How we work</Eyebrow>
                 <h2>Plain contracts. Permits done right.</h2>
@@ -573,20 +566,16 @@ export const ProcessPage = () => (
 
 export const ProjectsPage = () => (
     <SiteLayout>
-        <Meta title="Project Gallery | Brothers Home Remodeling" description="Photos from finished Brothers jobs will be published here. The images currently shown are licensed stock photos, not photos of our work." />
-        <PageHero title="Kitchens, baths and full remodels." subtitle="Photos from finished Brothers jobs will go here, sorted by project type." image="/images/kitchen.jpg" crumbs={[{ label: 'Projects' }]} />
-        <section className="sec"><div className="wrap">
-            <div className="note"><b>Placeholder</b><span>These are licensed stock photos. They are not photos of our work, and the old project prices have been removed because they were not verified.</span></div>
-        </div></section>
+        <Meta title="Projects | Brothers Remodelers" description="Project photos from Brothers Remodelers will be published when they can be verified. Request an estimate in the meantime." />
+        <PageHero title="Projects" subtitle="Call or send the estimate form and we will talk through the job." image="/images/kitchen.webp" crumbs={[{ label: 'Projects' }]} />
         <CtaBand />
     </SiteLayout>
 );
 
 export const ReviewsPage = () => (
     <SiteLayout>
-        <Meta title="Reviews | Brothers Home Remodeling" description="Verified Google reviews will be shown here once they are connected. Brothers Remodelers does not post reviews it cannot link to a source." />
-        <PageHero title="Reviews coming soon." subtitle="Verified Google reviews will be shown here once they are connected. We do not post reviews we cannot link to a source." image="/images/kitchen.jpg" crumbs={[{ label: 'Reviews' }]} />
-        <section className="sec"><div className="wrap"><div className="rev"><div><Eyebrow>Customer reviews</Eyebrow><h2>Reviews coming soon.</h2></div><p>Named testimonials and star ratings have been removed until they can be linked to a public source.</p></div></div></section>
+        <Meta title="Reviews | Brothers Remodelers" description="Brothers Remodelers does not publish reviews it cannot link to a public source. Request an estimate instead." />
+        <PageHero title="Reviews" subtitle="Call or send the estimate form and we will talk through the job." image="/images/kitchen.webp" crumbs={[{ label: 'Reviews' }]} />
         <CtaBand />
     </SiteLayout>
 );
@@ -608,31 +597,18 @@ export const SafetyPage = () => (
 
 export const FinancingPage = () => (
     <SiteLayout>
-        <Meta title="Financing | Brothers Home Remodeling" description="Financing through Upgrade and Ygrene. 10 years at 6.99%, 20 years at 8.99%, or 12 months with no payments. Subject to credit approval." />
-        <PageHero title="Remodel now. Pay over time." subtitle="Financing through Upgrade and Ygrene, with plans from 6.99%. Ask about it at your free estimate." image="/images/kitchen.jpg" crumbs={[{ label: 'Financing' }]} />
+        <Meta title="Financing | Brothers Remodelers" description="Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary. Ask at your estimate." />
+        <PageHero title="Remodel now. Pay over time." subtitle="Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary." image="/images/kitchen.webp" crumbs={[{ label: 'Financing' }]} />
         <section className="sec"><div className="wrap fin">
             <div className="fin-copy">
                 <Eyebrow>Pay over time</Eyebrow>
-                <h2>Start now.<br />Pay monthly.</h2>
-                <p className="lead" style={{ marginTop: 22 }}>Financing is available through our lending partners Upgrade and Ygrene. Ask about it at your estimate and we will walk you through the options.</p>
-                <div className="btns"><Link className="btn btn-primary" to="/contact">Get a Free Estimate</Link></div>
+                <h2>Ask about financing.</h2>
+                <p className="lead" style={{ marginTop: 22 }}>Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary. The lender sets the details. Ask at your free estimate.</p>
+                <div className="btns"><Link className="btn btn-primary" to="/contact/">Get a Free Estimate</Link></div>
             </div>
             <div>
-                <div className="rates">
-                    <div className="rate"><div className="big">6.99<sup>%</sup></div><div className="term">10-year term</div><p>Fixed monthly payments spread over ten years.</p></div>
-                    <div className="rate"><div className="big">8.99<sup>%</sup></div><div className="term">20-year term</div><p>Lower monthly payments over a longer term.</p></div>
-                    <div className="rate"><div className="big">12<sup>mo</sup></div><div className="term">No payments</div><p>No payments for the first 12 months.</p></div>
-                </div>
-                <div className="lenders"><span>Through</span><b>Upgrade</b><b>Ygrene</b><span className="fine">Subject to credit approval. Terms, rates and eligibility are set by the lender.</span></div>
+                <div className="lenders"><span>Through</span><b>Upgrade</b><b>Ygrene</b><span className="fine">Subject to credit approval. Terms vary.</span></div>
             </div>
-        </div></section>
-        <section className="sec bg-paper"><div className="wrap">
-            <div className="shead"><div><Eyebrow>Compare plans</Eyebrow><h2>Pick the payment that fits.</h2></div><p className="lead">Subject to credit approval. Terms, rates and eligibility are set by the lender.</p></div>
-            <table className="tbl"><thead><tr><th>Plan</th><th>Rate</th><th>Term</th><th>Good for</th></tr></thead><tbody>
-                <tr><td>10-year plan</td><td>6.99%</td><td>10 years</td><td>Paying it off sooner at the lower rate</td></tr>
-                <tr><td>20-year plan</td><td>8.99%</td><td>20 years</td><td>The lowest monthly payment</td></tr>
-                <tr><td>No payments</td><td>Per lender</td><td>12 months</td><td>Starting now and paying later</td></tr>
-            </tbody></table>
         </div></section>
         <CtaBand heading="Ask about financing at your estimate." />
     </SiteLayout>
@@ -640,11 +616,11 @@ export const FinancingPage = () => (
 
 export const CareersPage = () => (
     <SiteLayout>
-        <Meta title="Remodeling Careers | Brothers Remodelers" description="Join Brothers Remodelers. We hire carpenters, superintendents, laborers and project managers across Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties." />
+        <Meta title="Remodeling Careers | Brothers Remodelers" description="Join Brothers Remodelers. We hire carpenters, laborers and project managers across Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties." />
         <PageHero title="Careers" subtitle="We hire people who take pride in the punch list." image={officeImage} crumbs={[{ label: 'Careers' }]} />
         <Section width="narrow">
             <Prose>
-                <p>We are regularly hiring lead carpenters, site superintendents, skilled laborers and project managers. Pay is competitive and weekly, tools and PPE are provided, and we promote from the field.</p>
+                <p>We are regularly hiring lead carpenters, skilled laborers and project managers. Pay is competitive and weekly, tools and PPE are provided, and we promote from the field.</p>
                 <p>Send your experience and the trades you are strongest in to <a className="font-semibold underline" href={`mailto:${company.email}`}>{company.email}</a>, or use the form below and note the role in the details field.</p>
             </Prose>
             <div className="mt-10"><QuoteForm compact /></div>
@@ -666,7 +642,7 @@ const EstimatePage = ({ title, description }) => (
         <Meta title={title} description={description} />
         <section className="sec bg-paper" style={{ paddingTop: 72 }}>
             <div className="wrap">
-                <div className="crumbs" style={{ color: 'var(--slate)' }}><Link to="/" style={{ color: 'var(--navy)' }}>Home</Link> <span>/</span> Get an Estimate</div>
+                <div className="crumbs on-light"><Link to="/">Home</Link> <span>/</span> Get an Estimate</div>
                 <div className="split contact">
                     <div>
                         <Eyebrow>Free estimate</Eyebrow>
@@ -676,11 +652,11 @@ const EstimatePage = ({ title, description }) => (
                     </div>
                     <aside style={{ paddingTop: 8 }}>
                         <div className="contact-cards">
-                            <div><h4>Call</h4><a className="v" href={company.phoneHref}>{company.phone}</a></div>
-                            <div><h4>Email</h4><a className="v sm" href={`mailto:${company.email}`}>{company.email}</a></div>
-                            <div><h4>Tampa office</h4><div className="v sm">13542 N Florida Ave<br />Tampa, FL 33613</div></div>
-                            <div><h4>Hours</h4><div className="v sm">Mon–Sat, 7:00am–6:00pm</div></div>
-                            <div><h4>License</h4><div className="v sm">Florida Certified General Contractor {company.licenseNumber}</div></div>
+                            <div><p className="k">Call</p><a className="v" href={company.phoneHref}>{company.phone}</a></div>
+                            <div><p className="k">Email</p><a className="v sm" href={`mailto:${company.email}`}>{company.email}</a></div>
+                            <div><p className="k">Tampa office</p><div className="v sm">13542 N Florida Ave<br />Tampa, FL 33613</div></div>
+                            <div><p className="k">Hours</p><div className="v sm">Mon–Sat, 7:00am–6:00pm</div></div>
+                            <div><p className="k">License</p><div className="v sm">CGC1542451, held by Daniel Alejandro Cardenas Romero d/b/a Brothers Remodelers</div></div>
                         </div>
                         <GulfCoastMap inset={false} className="no-inset" />
                     </aside>
@@ -691,11 +667,11 @@ const EstimatePage = ({ title, description }) => (
 );
 
 export const ContactPage = () => (
-    <EstimatePage title="Get an Estimate | Brothers Home Remodeling" description={`Get a remodeling estimate from Brothers Remodelers. Call ${company.phone} or send the form. Office at ${company.address}.`} />
+    <EstimatePage title="Get an Estimate | Brothers Remodelers" description={`Get a remodeling estimate from Brothers Remodelers. Call ${company.phone} or send the form. Office at ${company.address}.`} />
 );
 
 export const QuotePage = () => (
-    <EstimatePage title="Get an Estimate | Brothers Home Remodeling" description="Tell us about the job. We will call you back to set up a site visit, then send a written proposal." />
+    <EstimatePage title="Request a Quote | Brothers Remodelers" description="Tell us about the job. We will call you back to set up a site visit, then send a written proposal." />
 );
 
 export const PrivacyPage = () => (

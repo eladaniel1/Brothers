@@ -61,7 +61,7 @@ const ServiceCardGrid = ({ items, className = '', size = 'md' }) => {
         {items.map((s, i) => (
             <Reveal key={s.slug} delay={i * 0.03} className="h-full">
                 <Link
-                    to={`/services/${s.slug}`}
+                    to={`/services/${s.slug}/`}
                     title={serviceSummaries[s.slug] || s.summary}
                     className={`group flex h-full items-center gap-3 border border-neutral-200 bg-white transition-colors hover:border-[hsl(var(--brand))] ${large ? 'px-4 py-4' : 'px-3 py-3 sm:px-4'}`}
                 >

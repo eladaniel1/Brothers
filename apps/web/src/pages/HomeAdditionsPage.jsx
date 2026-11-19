@@ -100,7 +100,7 @@ const faqs = [
     ],
     [
         'What warranty do you offer on additions?',
-        'Two years on our workmanship, plus the manufacturer warranties on installed products like windows, doors, roofing and mechanical equipment. Everything is documented in your closeout package at handover, not promised verbally.',
+        'A two-year workmanship warranty, plus the manufacturer warranties on installed products like windows, doors, roofing and mechanical equipment. Everything is documented in your closeout package at handover, not promised verbally.',
     ],
 ];
 
@@ -116,20 +116,7 @@ const serviceSchema = {
     '@type': 'Service',
     brand: brandSchemaFor('home-additions'),
     serviceType: 'Home Additions & Extensions',
-    provider: {
-        '@type': 'GeneralContractor',
-        name: company.name,
-        telephone: '+1-855-445-2551',
-        url: 'https://brothersremodelers.com/',
-        license: 'CGC1542451',
-        areaServed: [
-            { '@type': 'AdministrativeArea', name: 'Hillsborough County' },
-            { '@type': 'AdministrativeArea', name: 'Pinellas County' },
-            { '@type': 'AdministrativeArea', name: 'Pasco County' },
-            { '@type': 'AdministrativeArea', name: 'Sarasota County' },
-            { '@type': 'AdministrativeArea', name: 'Manatee County' },
-        ],
-    },
+    provider: { '@id': 'https://brothersremodelers.com/#contractor' },
     areaServed: 'Tampa Bay and Sarasota region, Florida',
     description:
         'Home additions and extensions including engineered foundations, wind-code framing, roof tie-ins, impact-rated glazing and full mechanical rough-in, managed end to end by a licensed Florida general contractor.',
@@ -218,7 +205,7 @@ const HomeAdditionsPage = () => (
                             Brothers Remodelers runs the whole addition under one Florida Certified General Contractor
                             license. We coordinate the architect and engineer, form and frame to the stamped drawings
                             and Florida wind-load requirements, tie the new envelope into the existing roof, and keep a
-                            dedicated superintendent on site so the addition lands on the drawings and on the schedule.
+                            a written schedule so the addition lands on the drawings.
                             You get a line-item proposal before construction begins and priced change orders before
                             anything changes.
                         </p>
@@ -289,7 +276,7 @@ const HomeAdditionsPage = () => (
                         After a walkthrough and feasibility conversation, we return a written line-item proposal —
                         usually within five business days. Allowances for owner-selected finishes are stated plainly, and
                         payments follow completed milestones. See how owners fund projects on our{' '}
-                        <Link to="/financing" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                        <Link to="/financing/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                            financing page
                         </Link>.
                     </p>
@@ -307,7 +294,7 @@ const HomeAdditionsPage = () => (
                         <p>
                             We schedule every required inspection and keep the records in your closeout package,
                             alongside sign-offs and warranty documents. Read more about our{' '}
-                            <Link to="/safety" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                            <Link to="/safety/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                                 licensing, insurance and site safety standards
                             </Link>.
                         </p>
@@ -325,13 +312,13 @@ const HomeAdditionsPage = () => (
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Require stamped engineering.</strong> A structural addition needs engineered foundation and framing drawings. A contractor who skips this is building without a permit path.</span></li>
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Ask for certificates of insurance.</strong> General liability and workers' compensation should be sent directly to your HOA, lender or landlord — not handed over as a photocopy.</span></li>
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Require a line-item proposal.</strong> Fixed pricing with stated allowances lets you compare bids on equal terms and exposes where money is hidden in a single lump sum.</span></li>
-                            <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Confirm who supervises the site.</strong> A dedicated superintendent on site — not a project manager juggling ten jobs by phone — is what keeps an addition on schedule.</span></li>
+                            <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Ask for the schedule in writing.</strong> A written schedule and weekly updates are what keep an addition moving.</span></li>
                             <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" /><span><strong className="text-neutral-800">Get the warranty in writing.</strong> Workmanship coverage and manufacturer warranties should be documented in a closeout package at handover, not promised verbally.</span></li>
                         </ul>
                         <p>
                             See completed additions and full-home renovations in our{' '}
-                            <Link to="/projects" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
-                            <Link to="/reviews" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
+                            <Link to="/projects/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
+                            <Link to="/reviews/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
                         </p>
                     </div>
 
@@ -340,7 +327,7 @@ const HomeAdditionsPage = () => (
                         {[
                             [ShieldCheck, 'Licensed & insured', `${company.license}. Certificates issued to your HOA or lender on request.`],
                             [Hammer, 'Engineered to code', 'Stamped foundation and framing drawings, wind-load framing and impact-rated glazing.'],
-                            [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates from a dedicated site superintendent.'],
+                            [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates.'],
                             [Check, 'Two-year warranty', 'Workmanship warranty plus manufacturer warranties, documented at closeout.'],
                         ].map(([Icon, title, text]) => (
                             <div key={title} className="flex gap-3 border border-neutral-200 p-4">
@@ -384,23 +371,23 @@ const HomeAdditionsPage = () => (
                             Ready to move forward? The fastest path is a free site walkthrough — we measure, confirm
                             setbacks and feasibility, and return a written line-item proposal within five business
                             days.{' '}
-                            <Link to="/quote" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
-                            <Link to="/contact" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly. If you are still weighing how to fund the work, our{' '}
-                            <Link to="/financing" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link> explains how owners typically phase scope to a budget.
+                            <Link to="/quote/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
+                            <Link to="/contact/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly. If you are still weighing how to fund the work, our{' '}
+                            <Link to="/financing/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link> explains how owners typically phase scope to a budget.
                         </p>
                     </div>
 
                     <h3 className="font-display mt-12 text-2xl font-bold uppercase">Where we build additions</h3>
                     <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                         We build home additions across the Tampa Bay and Sarasota region, including{' '}
-                        <Link to="/areas-we-serve/hillsborough/tampa" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
-                        <Link to="/areas-we-serve/pinellas/st-petersburg" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
-                        <Link to="/areas-we-serve/pasco/wesley-chapel" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
-                        <Link to="/areas-we-serve/sarasota/sarasota" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
+                        <Link to="/areas-we-serve/hillsborough/tampa/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
+                        <Link to="/areas-we-serve/pinellas/st-petersburg/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
+                        <Link to="/areas-we-serve/pasco/wesley-chapel/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
+                        <Link to="/areas-we-serve/sarasota/sarasota/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
                         and{' '}
-                        <Link to="/areas-we-serve/manatee/bradenton" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
+                        <Link to="/areas-we-serve/manatee/bradenton/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
                         See the full list on our{' '}
-                        <Link to="/areas-we-serve" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                        <Link to="/areas-we-serve/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                             areas we serve page
                         </Link>.
                     </p>

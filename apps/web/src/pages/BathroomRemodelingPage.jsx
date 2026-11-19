@@ -10,7 +10,7 @@ import GetEstimateCTA from '@/components/GetEstimateCTA';
 import { CitiesWeServe } from '@/pages/Pages';
 import { company } from '@/data/site';
 
-const bathroomImage = '/images/bathroom.jpg';
+const bathroomImage = '/images/bathroom.webp';
 
 const META_TITLE = 'Bathroom Remodeling in Tampa Bay & Sarasota | Brothers Remodelers';
 const META_DESC =
@@ -99,7 +99,7 @@ const faqs = [
     ],
     [
         'What warranty do you offer on bathroom work?',
-        'Two years on our workmanship, plus the manufacturer warranties on installed products like tile, stone, plumbing fixtures and glass enclosures. Everything is documented in your closeout package at handover.',
+        'A two-year workmanship warranty, plus the manufacturer warranties on installed products like tile, stone, plumbing fixtures and glass enclosures. Everything is documented in your closeout package at handover.',
     ],
 ];
 
@@ -115,20 +115,7 @@ const serviceSchema = {
     '@type': 'Service',
     brand: brandSchemaFor('bathroom-remodeling'),
     serviceType: 'Bathroom Remodeling',
-    provider: {
-        '@type': 'GeneralContractor',
-        name: company.name,
-        telephone: '+1-855-445-2551',
-        url: 'https://brothersremodelers.com/',
-        license: 'CGC1542451',
-        areaServed: [
-            { '@type': 'AdministrativeArea', name: 'Hillsborough County' },
-            { '@type': 'AdministrativeArea', name: 'Pinellas County' },
-            { '@type': 'AdministrativeArea', name: 'Pasco County' },
-            { '@type': 'AdministrativeArea', name: 'Sarasota County' },
-            { '@type': 'AdministrativeArea', name: 'Manatee County' },
-        ],
-    },
+    provider: { '@id': 'https://brothersremodelers.com/#contractor' },
     areaServed: 'Tampa Bay and Sarasota region, Florida',
     description:
         'Full bathroom rebuilds including waterproofing, tile and stone setting, plumbing and valve replacement, vanities, shower enclosures and permits, managed end to end by a licensed Florida general contractor.',
@@ -215,7 +202,7 @@ const BathroomRemodelingPage = () => (
                         <p>
                             Brothers Remodelers runs the whole rebuild under one Florida Certified General Contractor
                             license. We build the waterproofing assembly first and inspect it before a single tile is
-                            set, file the permits, and keep a dedicated superintendent on site so the bathroom lands on
+                            set, file the permits, and keep the schedule in writing so the bathroom lands on
                             the drawings and on the schedule. You get a line-item proposal before demolition and priced
                             change orders before anything changes.
                         </p>
@@ -286,7 +273,7 @@ const BathroomRemodelingPage = () => (
                         After a walkthrough and selections conversation, we return a written line-item proposal —
                         usually within five business days. Allowances for owner-selected finishes are stated plainly, and
                         payments follow completed milestones. See how owners fund projects on our{' '}
-                        <Link to="/financing" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                        <Link to="/financing/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                            financing page
                         </Link>.
                     </p>
@@ -303,7 +290,7 @@ const BathroomRemodelingPage = () => (
                         <p>
                             We schedule every required inspection and keep the records in your closeout package, alongside
                             sign-offs and warranty documents. Read more about our{' '}
-                            <Link to="/safety" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                            <Link to="/safety/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                                 licensing, insurance and site safety standards
                             </Link>.
                         </p>
@@ -324,8 +311,8 @@ const BathroomRemodelingPage = () => (
                         </ul>
                         <p>
                             See completed bathrooms and full-home renovations in our{' '}
-                            <Link to="/projects" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
-                            <Link to="/reviews" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
+                            <Link to="/projects/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">project gallery</Link>, or read what other owners say on our{' '}
+                            <Link to="/reviews/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">reviews page</Link>.
                         </p>
                     </div>
 
@@ -334,7 +321,7 @@ const BathroomRemodelingPage = () => (
                         {[
                             [ShieldCheck, 'Licensed & insured', `${company.license}. Certificates issued to your HOA or lender on request.`],
                             [Droplets, 'Waterproofing first', 'Membrane assemblies inspected before tile is set, so showers stay dry for decades.'],
-                            [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates from a dedicated site superintendent.'],
+                            [Clock, 'On-schedule builds', 'A live schedule and weekly photo updates.'],
                             [Check, 'Two-year warranty', 'Workmanship warranty plus manufacturer warranties, documented at closeout.'],
                         ].map(([Icon, title, text]) => (
                             <div key={title} className="flex gap-3 border border-neutral-200 p-4">
@@ -379,23 +366,23 @@ const BathroomRemodelingPage = () => (
                         <p>
                             Ready to move forward? The fastest path is a free site walkthrough — we measure, confirm
                             scope and return a written line-item proposal within five business days.{' '}
-                            <Link to="/quote" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
-                            <Link to="/contact" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly. If you are still weighing how to fund the work, our{' '}
-                            <Link to="/financing" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link> explains how owners typically phase scope to a budget.
+                            <Link to="/quote/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Request a free quote</Link> or{' '}
+                            <Link to="/contact/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">contact our office</Link> directly. If you are still weighing how to fund the work, our{' '}
+                            <Link to="/financing/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">financing page</Link> explains how owners typically phase scope to a budget.
                         </p>
                     </div>
 
                     <h3 className="font-display mt-12 text-2xl font-bold uppercase">Where we build bathrooms</h3>
                     <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                         We remodel bathrooms across the Tampa Bay and Sarasota region, including{' '}
-                        <Link to="/areas-we-serve/hillsborough/tampa" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
-                        <Link to="/areas-we-serve/pinellas/st-petersburg" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
-                        <Link to="/areas-we-serve/pasco/wesley-chapel" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
-                        <Link to="/areas-we-serve/sarasota/sarasota" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
+                        <Link to="/areas-we-serve/hillsborough/tampa/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Tampa</Link>,{' '}
+                        <Link to="/areas-we-serve/pinellas/st-petersburg/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">St. Petersburg</Link>,{' '}
+                        <Link to="/areas-we-serve/pasco/wesley-chapel/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Wesley Chapel</Link>,{' '}
+                        <Link to="/areas-we-serve/sarasota/sarasota/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Sarasota</Link>{' '}
                         and{' '}
-                        <Link to="/areas-we-serve/manatee/bradenton" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
+                        <Link to="/areas-we-serve/manatee/bradenton/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">Bradenton</Link>.{' '}
                         See the full list on our{' '}
-                        <Link to="/areas-we-serve" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
+                        <Link to="/areas-we-serve/" className="font-semibold underline decoration-[hsl(var(--brand))] underline-offset-2 hover:text-[hsl(var(--brand))]">
                             areas we serve page
                         </Link>.
                     </p>

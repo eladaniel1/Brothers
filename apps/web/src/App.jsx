@@ -64,16 +64,16 @@ export const AppRoutes = () => (
                 <Route path="/services/home-additions" element={<HomeAdditionsPage />} />
                 <Route path="/services/:slug" element={<ServiceDetailPage />} />
                 <Route path="/services/:slug/:citySlug" element={<LocalServicePage />} />
-                <Route path="/service-areas" element={<Navigate to="/areas-we-serve" replace />} />
+                <Route path="/service-areas" element={<Navigate to="/areas-we-serve/" replace />} />
                 <Route path="/areas-we-serve" element={<AreasPage />} />
                 <Route path="/areas-we-serve/:slug" element={<AreaDetailPage />} />
                 <Route path="/areas-we-serve/hillsborough/tampa" element={<TampaPage />} />
                 <Route path="/areas-we-serve/hillsborough/brandon" element={<BrandonPage />} />
                 <Route path="/areas-we-serve/hillsborough/:citySlug" element={<HillsboroughCityPage />} />
-                <Route path="/areas-we-serve/sarasota/lakewood-ranch" element={<Navigate to="/areas-we-serve/manatee/lakewood-ranch" replace />} />
+                <Route path="/areas-we-serve/sarasota/lakewood-ranch" element={<Navigate to="/areas-we-serve/manatee/lakewood-ranch/" replace />} />
                 <Route path="/areas-we-serve/:countySlug/:citySlug" element={<CityPage />} />
-                <Route path="/hillsborough" element={<Navigate to="/areas-we-serve/hillsborough" replace />} />
-                <Route path="/hillsborough/" element={<Navigate to="/areas-we-serve/hillsborough" replace />} />
+                <Route path="/hillsborough" element={<Navigate to="/areas-we-serve/hillsborough/" replace />} />
+                <Route path="/hillsborough/" element={<Navigate to="/areas-we-serve/hillsborough/" replace />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/process" element={<ProcessPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
