@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, PageHero, Section } from '@/components/SiteLayout';
 import BrandsSection from '@/components/BrandsSection';
 import CountUp from '@/components/CountUp';
@@ -11,12 +11,6 @@ import { brandSchemaFor } from '@/data/brands';
 import { company } from '@/data/site';
 
 const SITE = 'https://brothersremodelers.com';
-
-const Stars = ({ count = 5 }) => (
-    <div className="flex gap-0.5 text-[hsl(var(--brand))]" aria-hidden="true">
-        {Array.from({ length: count }, (_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-    </div>
-);
 
 const ScrollTable = ({ id, caption, columns, children }) => (
     <div className="mt-6 hidden min-w-0 max-w-full md:block">
@@ -204,8 +198,8 @@ const BespokeLocalServicePage = ({ page }) => {
                 </div>
             </section>
             <Section width="page">
-                <div className="grid min-w-0 max-w-full gap-12">
-                    <div className="min-w-0 max-w-full break-words">
+                <div className="split">
+                    <div className="prose min-w-0">
                         <dl className="grid gap-3 border border-neutral-200 bg-neutral-50 p-4 sm:grid-cols-2">
                             {page.trust.map((item) => (
                                 <div key={item}>
@@ -347,7 +341,6 @@ const BespokeLocalServicePage = ({ page }) => {
                                 <blockquote key={review.neighborhood} className="flex h-full min-w-0 flex-col border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
                                     <div className="flex flex-wrap items-center justify-between gap-2">
                                         <p className="text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))]">{review.neighborhood}</p>
-                                        <Stars count={review.stars} />
                                     </div>
                                     <p className="mt-2 text-xs font-bold uppercase tracking-widest text-neutral-500">{review.project}</p>
                                     <p className="mt-auto pt-3 text-sm leading-relaxed text-neutral-700">{review.note}</p>

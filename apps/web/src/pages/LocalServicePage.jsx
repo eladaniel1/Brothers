@@ -108,8 +108,8 @@ const LocalServicePage = () => {
                 crumbs={[{ label: 'Services', to: '/services' }, { label: service.title, to: `/services/${slug}` }, { label: city.name }]}
             />
             <Section width="wide">
-                <div className="grid min-w-0 max-w-full gap-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-                    <div className="min-w-0 max-w-full break-words">
+                <div className="split">
+                    <div className="prose min-w-0">
                         <Eyebrow>Short answer</Eyebrow>
                         <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Who does {trade.phrase} work in {city.name}?</h2>
                         <p className="mt-5 text-lg leading-relaxed text-neutral-700">{trade.answer(city)}</p>

@@ -42,7 +42,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                     {floridaCounties.map((county) => {
                         const served = Boolean(county.slug);
                         const isFocus = served && county.slug === focus;
-                        const fill = !served ? '#f3f4f6' : isFocus ? '#c8102e' : '#1b365d';
+                        const fill = !served ? '#f3f4f6' : isFocus ? '#111111' : '#1b365d';
                         const stroke = served ? '#0f223d' : '#e7e5e4';
                         return (
                             <path
@@ -77,21 +77,21 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                         <path
                             d="M292,178 C268,198 264,252 290,300 C314,332 352,318 354,258 C356,206 338,168 304,178"
                             fill="none"
-                            stroke="#c8102e"
+                            stroke="#111111"
                             strokeWidth="3.4"
                             strokeLinecap="round"
                         />
                         <path
                             d="M228,142 C258,132 286,146 304,166"
                             fill="none"
-                            stroke="#e8a818"
+                            stroke="#C9B38C"
                             strokeWidth="3.2"
                             strokeLinecap="round"
                         />
                         <path
                             d="M292,158 L304,168 L290,166"
                             fill="none"
-                            stroke="#e8a818"
+                            stroke="#C9B38C"
                             strokeWidth="3.2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -147,7 +147,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                                 onMouseEnter={() => setHover(item.slug)}
                                 onMouseLeave={() => setHover(null)}
                                 aria-pressed={item.slug === active}
-                                className={`min-h-[44px] border px-4 text-sm font-bold uppercase tracking-wide ${selected ? 'border-[#c8102e] bg-[#c8102e] text-white' : 'border-[#1b365d] bg-white text-[#1b365d] hover:border-[#c8102e] hover:text-[#c8102e]'}`}
+                                className={`min-h-[44px] border px-4 text-sm font-bold uppercase tracking-wide ${selected ? 'border-[#111111] bg-[#111111] text-white' : 'border-[#1b365d] bg-white text-[#1b365d] hover:border-[#111111] hover:text-[#111111]'}`}
                             >
                                 {item.city.replace(' County', '')}
                             </button>
@@ -156,8 +156,8 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                 </div>
                 <div className="mt-5 flex flex-wrap gap-2">
                     <span className="bg-[#1b365d] px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-white">{area.neighborhoods.length} cities</span>
-                    <span className="bg-[#c8102e] px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-white">CGC1541183</span>
-                    <span className="border border-[#e8a818] bg-amber-50 px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-[#0f223d]">5 counties</span>
+                    <span className="bg-[#111111] px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-white">CGC1542451</span>
+                    <span className="border border-[#C9B38C] bg-amber-50 px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-[#0f223d]">5 counties</span>
                 </div>
                 <h3 className="font-display mt-5 text-2xl font-bold uppercase text-[#0f223d]">{area.city}</h3>
                 <p className="mt-3 text-base leading-relaxed text-neutral-600">{area.blurb}</p>
@@ -166,7 +166,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                         <li key={city}>
                             <Link
                                 to={cityHref(city)}
-                                className="block border border-neutral-200 bg-white px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-[#1b365d] hover:border-[#c8102e] hover:bg-rose-50 hover:text-[#c8102e]"
+                                className="block border border-neutral-200 bg-white px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-[#1b365d] hover:border-[#111111] hover:bg-rose-50 hover:text-[#111111]"
                             >
                                 {city}
                             </Link>
@@ -181,7 +181,7 @@ const FloridaServiceMap = ({ communities, cityLinks }) => {
                 </Link>
                 <Link
                     to={`/areas-we-serve/${area.slug}`}
-                    className="inline-flex min-h-[3.25rem] w-fit items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#0f223d] hover:text-[#c8102e]"
+                    className="inline-flex min-h-[3.25rem] w-fit items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#0f223d] hover:text-[#111111]"
                 >
                     All {area.city} communities <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

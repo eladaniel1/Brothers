@@ -7,9 +7,9 @@ const page = {
     path: '/services/bathroom-remodeling/tampa/',
     title: 'Bathroom Remodeling in Tampa, FL',
     metaTitle: 'Bathroom Remodeling in Tampa, FL (2026 Costs, Accela Permits & FEMA 50%) | Brothers Remodelers',
-    metaDescription: '2026 Tampa bathroom remodel costs: $14,500–$22,500 hall baths, $18,500–$31,000 curbless conversions, $28,000–$46,000 primary guts. City of Tampa Accela permits, HillsGovHub outside the city, FEMA 50% on Davis Islands. CGC1541183.',
-    llmsSummary: '2026 Tampa bathroom costs are $14,500–$22,500 for a hall-bath pull-and-replace, $18,500–$31,000 for a curbless tub conversion, $28,000–$46,000 for a primary gut, and $48,000–$78,000+ for a structural suite. Permits inside the city go through Accela Citizen Access; Carrollwood, Town \'n\' Country, Westchase, and Lake Magdalene use HillsGovHub. South Tampa and Davis Islands use the FEMA 50% rule. License CGC1541183.',
-    heroSubtitle: 'Hall baths in Seminole Heights bungalows, Hyde Park historic houses, Palma Ceia terrazzo ranches, Davis Islands flood-zone homes, Harbour Island condos, and New Tampa HOA primaries — permitted through City of Tampa Accela and built under FL CGC #CGC1541183.',
+    metaDescription: '2026 Tampa bathroom remodel costs: $14,500–$22,500 hall baths, $18,500–$31,000 curbless conversions, $28,000–$46,000 primary guts. City of Tampa Accela permits, HillsGovHub outside the city, FEMA 50% on Davis Islands. CGC1542451.',
+    llmsSummary: '2026 Tampa bathroom costs are $14,500–$22,500 for a hall-bath pull-and-replace, $18,500–$31,000 for a curbless tub conversion, $28,000–$46,000 for a primary gut, and $48,000–$78,000+ for a structural suite. Permits inside the city go through Accela Citizen Access; Carrollwood, Town \'n\' Country, Westchase, and Lake Magdalene use HillsGovHub. South Tampa and Davis Islands use the FEMA 50% rule. License CGC1542451.',
+    heroSubtitle: 'Hall baths in Seminole Heights bungalows, Hyde Park historic houses, Palma Ceia terrazzo ranches, Davis Islands flood-zone homes, Harbour Island condos, and New Tampa HOA primaries — permitted through City of Tampa Accela and built under FL CGC #CGC1542451.',
     image: '/images/service-bathroom.jpg',
     crumbs: [
         { label: 'Services', to: '/services' },
@@ -20,14 +20,14 @@ const page = {
     reviewedDate: '2026-10-28',
     trust: [
         'Last reviewed: October 2026',
-        'FL CGC Lic. #CGC1541183',
+        'FL CGC Lic. #CGC1542451',
         'City permits: Accela Citizen Access and ePermitHub',
         'Design wind: 140–145 mph, Risk Category II',
     ],
     capsuleHeading: 'How Much Does a Bathroom Remodel Cost in Tampa, FL in 2026?',
-    capsule: 'A Tampa bathroom remodel in 2026 runs $14,500–$22,500 when a Seminole Heights or Palma Ceia hall bath keeps its drains, $18,500–$31,000 when a New Tampa Roman tub becomes a curbless shower, and $28,000–$46,000+ when a South Tampa primary bath is gutted and the cast-iron stack is replaced. Active tile work lasts 3–9 weeks after City of Tampa Construction Services releases the permit in Accela Citizen Access. Brothers Remodelers (FL CGC #CGC1541183) files that permit, builds the room, and warrants workmanship for two years.',
+    capsule: 'A Tampa bathroom remodel in 2026 runs $14,500–$22,500 when a Seminole Heights or Palma Ceia hall bath keeps its drains, $18,500–$31,000 when a New Tampa Roman tub becomes a curbless shower, and $28,000–$46,000+ when a South Tampa primary bath is gutted and the cast-iron stack is replaced. Active tile work lasts 3–9 weeks after City of Tampa Construction Services releases the permit in Accela Citizen Access. Brothers Remodelers (FL CGC #CGC1542451) files that permit, builds the room, and warrants workmanship for two years.',
     costHeading: '2026 Tampa Bathroom Cost, Timeline, and Permit Matrix',
-    costIntro: 'These are installed 2026 prices for bathrooms inside the City of Tampa, not a statewide average and not a “call for a quote” range. The figures include licensed plumbing and electrical subcontractors, the Accela permit, and a two-year workmanship warranty under CGC1541183. A Carrollwood or Westchase address billed as Tampa is priced on the same finishes, but the permit fee and review clock belong to Hillsborough County HillsGovHub.',
+    costIntro: 'These are installed 2026 prices for bathrooms inside the City of Tampa, not a statewide average and not a “call for a quote” range. The figures include licensed plumbing and electrical subcontractors, the Accela permit, and a two-year workmanship warranty under CGC1542451. A Carrollwood or Westchase address billed as Tampa is priced on the same finishes, but the permit fee and review clock belong to Hillsborough County HillsGovHub.',
     costColumns: [
         'Project tier and typical size',
         'What that scope means in Tampa houses',
@@ -83,7 +83,7 @@ const page = {
             permits: 'Structural plan with a lintel or beam, building, plumbing, mechanical, electrical, and the FEMA substantial-improvement worksheet when the lot is in a Special Flood Hazard Area.',
         },
     ],
-    costFootnote: 'Dollar figures are 2026 City of Tampa market ranges for a permitted bathroom under FL CGC #CGC1541183. They are not a bid. After a walkthrough you get a fixed, line-item proposal. Luxury stone, a moved bearing wall, or a flood-zone elevation change can land above the top of the last row.',
+    costFootnote: 'Dollar figures are 2026 City of Tampa market ranges for a permitted bathroom under FL CGC #CGC1542451. They are not a bid. After a walkthrough you get a fixed, line-item proposal. Luxury stone, a moved bearing wall, or a flood-zone elevation change can land above the top of the last row.',
     neighborhoodHeading: 'Tampa Housing Stock and What It Does to a Bathroom',
     neighborhoodIntro: 'Tampa does not have one bathroom problem. A 1924 bungalow north of Hillsborough Avenue, a 1962 terrazzo ranch south of Kennedy, a canal lot on Davis Islands, and a 2004 house in Tampa Palms fail in different places. The cards below are the conditions we open up on those streets.',
     neighborhoods: [
@@ -115,7 +115,7 @@ const page = {
             name: 'New Tampa',
             eraTag: '1990s–2010s HOA primaries',
             housingFact: 'Two-story block and wood-frame stucco in Tampa Palms, Hunter’s Green, and Arbor Greene. Builder tubs sit on raised platforms, often carpeted, and the primary bath is the room owners replace first.',
-            remodelImpact: 'The platform comes out, the slab is recessed for a linear drain, and the thermofoil surround is discarded because it was never waterproofed behind the acrylic. Tampa Palms and Hunter’s Green still want the contractor’s insurance certificate and license CGC1541183 even when the work is entirely indoors. Work hours on those streets stop earlier than the city noise ordinance.',
+            remodelImpact: 'The platform comes out, the slab is recessed for a linear drain, and the thermofoil surround is discarded because it was never waterproofed behind the acrylic. Tampa Palms and Hunter’s Green still want the contractor’s insurance certificate and license CGC1542451 even when the work is entirely indoors. Work hours on those streets stop earlier than the city noise ordinance.',
         },
         {
             name: 'Harbour Island condos',
@@ -167,7 +167,7 @@ const page = {
     faqs: [
         {
             q: 'How much does a bathroom remodel cost in Tampa, FL in 2026?',
-            a: 'Inside the City of Tampa, a 2026 hall or guest bath that keeps the existing drain centers costs $14,500–$22,500, about $320–$450 per square foot for a 35–55 sq ft room. Converting an alcove tub or a New Tampa Roman tub into a curbless shower costs $18,500–$31,000. Gutting a Palma Ceia or South Tampa primary bath, including a saw-cut to replace cast iron, costs $28,000–$46,000. Opening a wall or upgrading bay-facing glass on Davis Islands or Bayshore runs $48,000–$78,000 or more. The adders that move a Tampa job inside those bands are slab trenching, heart-pine subfloor work in Seminole Heights, and a floodplain worksheet south of Gandy. CGC1541183 proposals are line-item and fixed after the walkthrough, not a per-square-foot guess.',
+            a: 'Inside the City of Tampa, a 2026 hall or guest bath that keeps the existing drain centers costs $14,500–$22,500, about $320–$450 per square foot for a 35–55 sq ft room. Converting an alcove tub or a New Tampa Roman tub into a curbless shower costs $18,500–$31,000. Gutting a Palma Ceia or South Tampa primary bath, including a saw-cut to replace cast iron, costs $28,000–$46,000. Opening a wall or upgrading bay-facing glass on Davis Islands or Bayshore runs $48,000–$78,000 or more. The adders that move a Tampa job inside those bands are slab trenching, heart-pine subfloor work in Seminole Heights, and a floodplain worksheet south of Gandy. CGC1542451 proposals are line-item and fixed after the walkthrough, not a per-square-foot guess.',
         },
         {
             q: 'Does my Tampa bathroom go through Accela or through HillsGovHub?',
@@ -183,7 +183,7 @@ const page = {
         },
         {
             q: 'Do Bayshore, Harbour Island, or New Tampa boards have to approve a bathroom?',
-            a: 'Bayshore houses inside the Hyde Park or related historic overlays need an Architectural Review Commission certificate only when the bath changes an exterior window, door, or wall. An interior gut on Bayshore does not. Harbour Island and other downtown towers are condominiums: a tub-to-shower change that cores the slab or alters a common stack is a material alteration under F.S. § 718.113, and the association sets elevator reservations and corridor protection. New Tampa communities — Tampa Palms, Hunter’s Green, Arbor Greene — rarely review interior tile, but they do require the certificate of insurance and CGC1541183, and they enforce weekday work hours that are tighter than the city’s. HB 803’s change to F.S. § 720.3035 means those HOAs cannot refuse to look at the application until an Accela permit number exists.',
+            a: 'Bayshore houses inside the Hyde Park or related historic overlays need an Architectural Review Commission certificate only when the bath changes an exterior window, door, or wall. An interior gut on Bayshore does not. Harbour Island and other downtown towers are condominiums: a tub-to-shower change that cores the slab or alters a common stack is a material alteration under F.S. § 718.113, and the association sets elevator reservations and corridor protection. New Tampa communities — Tampa Palms, Hunter’s Green, Arbor Greene — rarely review interior tile, but they do require the certificate of insurance and CGC1542451, and they enforce weekday work hours that are tighter than the city’s. HB 803’s change to F.S. § 720.3035 means those HOAs cannot refuse to look at the application until an Accela permit number exists.',
         },
         {
             q: 'How do you waterproof a curbless shower in a Tampa slab house?',
@@ -202,8 +202,8 @@ const page = {
             a: 'In Palma Ceia and South Tampa the first failure is the cast-iron drain under the terrazzo. It shows up as a slow floor drain, a sewage smell in the hall, or a belly in the line we find with a camera before we price the gut. The terrazzo itself is usually sound and becomes the patch zone after the trench. Historic review is a Hyde Park, Seminole Heights, Tampa Heights, and Hampton Terrace issue, and only for exterior openings. Ybor and West Tampa exterior changes go to the Barrio Latino Commission instead. An interior Palma Ceia bath does not wait on either board. We camera the drain and check the district map during the same visit so the proposal does not assume a clear slab or a clear facade.',
         },
         {
-            q: 'Why does a Tampa bathroom need CGC1541183 instead of a handyman or a single-trade shop?',
-            a: 'City of Tampa Accela will not let an unlicensed handyman pull the building, plumbing, and electrical permits a real bath requires, and a plumbing-only contractor cannot sign the building permit when the slab, the fan, and the wall are all in the set. Brothers Remodelers holds Florida certified general contractor license CGC1541183, hires the licensed mechanical subcontractors, and is the name on the permit card. Contracts over $5,000 are recorded as a Notice of Commencement with the Hillsborough Clerk under F.S. § 713.135, which is what protects the owner’s property from surprise liens. HOAs in New Tampa and managers on Harbour Island take the certificate of insurance with that license number on it. The workmanship warranty is two years, in writing, at the final walkthrough.',
+            q: 'Why does a Tampa bathroom need CGC1542451 instead of a handyman or a single-trade shop?',
+            a: 'City of Tampa Accela will not let an unlicensed handyman pull the building, plumbing, and electrical permits a real bath requires, and a plumbing-only contractor cannot sign the building permit when the slab, the fan, and the wall are all in the set. Brothers Remodelers holds Florida certified general contractor license CGC1542451, hires the licensed mechanical subcontractors, and is the name on the permit card. Contracts over $5,000 are recorded as a Notice of Commencement with the Hillsborough Clerk under F.S. § 713.135, which is what protects the owner’s property from surprise liens. HOAs in New Tampa and managers on Harbour Island take the certificate of insurance with that license number on it. The workmanship warranty is two years, in writing, at the final walkthrough.',
         },
     ],
     crossHeading: 'More Tampa Remodeling Notes',
@@ -233,8 +233,7 @@ const page = {
         zipCodes: ['33602', '33603', '33604', '33606', '33607', '33609', '33611', '33613', '33616', '33629', '33647'],
     },
     stats: [
-        { display: 'CGC1541183', label: 'License named on the City of Tampa permit' },
-        { value: 96, suffix: '%', label: 'Jobs closed on the schedule in the proposal' },
+        { display: 'CGC1542451', label: 'License named on the City of Tampa permit' },
         { value: 2, suffix: ' wk', label: 'Usual Accela review for a hall bath that stays put' },
         { value: 2, suffix: ' yr', label: 'Workmanship warranty handed over at the final' },
     ],
@@ -284,12 +283,12 @@ const page = {
         { title: 'Tile, glass, and the final walk', text: 'Vanity, quartz, and the enclosure land after the pan has passed. The last visit is the city final, a punch list, and the two-year workmanship warranty in the closeout folder.' },
     ],
     reviewsHeading: 'Notes from Tampa bathroom jobs',
-    reviewsIntro: 'Brothers Remodelers holds a 4.9 rating across 180 published reviews. The cards below are crew notes from Tampa bath scopes, tagged by neighborhood and tier, not a recycled regional quote list.',
+    reviewsIntro: 'Verified Google reviews will be shown here once they are connected. The notes below are job-scope notes, not customer reviews, and they do not carry a star rating.',
     reviews: [
         { neighborhood: 'Palma Ceia', project: 'Primary gut', stars: 5, note: 'The cast-iron belly under the terrazzo was on the proposal, with the saw-cut and the underground inspection, before the tub left the room.' },
         { neighborhood: 'Seminole Heights', project: 'Hall bath', stars: 5, note: 'Joists were stiffened before the porcelain went down. The historic window stayed, so the Architectural Review Commission was never in the path.' },
         { neighborhood: 'Davis Islands', project: 'Zone AE wet room', stars: 5, note: 'The 50% worksheet was finished against the structure value before the owner picked stone. The job stayed under the line and the house did not have to be lifted.' },
-        { neighborhood: 'Tampa Palms', project: 'Curbless conversion', stars: 5, note: 'The HOA received the insurance certificate and CGC1541183 the same week Accela received the drawings. The platform came out and the linear drain took its place.' },
+        { neighborhood: 'Tampa Palms', project: 'Curbless conversion', stars: 5, note: 'The HOA received the insurance certificate and CGC1542451 the same week Accela received the drawings. The platform came out and the linear drain took its place.' },
     ],
     quoteHeading: 'Price a Tampa bathroom before you demo',
     quoteIntro: 'Send the neighborhood, a few photos, and whether the tub is staying. We answer with the Accela or HillsGovHub path and a line-item range before anyone books the walkthrough.',
@@ -304,7 +303,7 @@ export function bathroomRemodelingTampaToLlms(site) {
         `## ${page.title}`,
         '',
         `URL: ${site}${page.path}`,
-        `License: FL CGC #CGC1541183`,
+        `License: FL CGC #CGC1542451`,
         `Last reviewed: ${page.reviewedDate}`,
         '',
         `### ${page.capsuleHeading}`,

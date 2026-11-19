@@ -8,9 +8,10 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { Check, Clock, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, PageHero, Section } from '@/components/SiteLayout';
 import QuoteForm from '@/components/QuoteForm';
+import GulfCoastMap from '@/components/maps/GulfCoastMap';
 import GetEstimateCTA from '@/components/GetEstimateCTA';
 import ServiceCardGrid from '@/components/ServiceCardGrid';
-import { areas, company, concreteImage, faqs, founderImage, heroImage, kitchenImage, officeImage, processSteps, projects, services, stats, testimonials } from '@/data/site';
+import { areas, company, concreteImage, faqs, heroImage, kitchenImage, officeImage, processSteps, services } from '@/data/site';
 import { serviceEnhancements, processStepIcons } from '@/data/serviceEnhancements';
 import { cityPageByNeighborhood } from '@/data/cities';
 import { neighborhoodToCity } from '@/data/allCities';
@@ -405,7 +406,8 @@ export const ServiceDetailPage = () => {
 export const AreasPage = () => (
     <SiteLayout>
         <Meta title="Areas We Serve | Tampa Bay & Sarasota Home Remodelers | Brothers Remodelers" description="Brothers Remodelers serves Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties with licensed general contracting, renovations and concrete work." />
-        <PageHero title="Areas We Serve" subtitle="Local crews and local knowledge in every county we build in." image={officeImage} crumbs={[{ label: 'Areas We Serve' }]} />
+        <PageHero title="Areas We Serve" subtitle="Hillsborough, Pinellas, Pasco, Manatee and Sarasota counties." image={officeImage} crumbs={[{ label: 'Areas We Serve' }]} />
+        <section className="sec"><div className="wrap"><GulfCoastMap /></div></section>
         <Section width="wide">
             <div className="grid gap-8 md:grid-cols-2">
                 {areas.map((a) => (
@@ -517,41 +519,34 @@ export const AreaDetailPage = ({ slugOverride }) => {
 
 export const AboutPage = () => (
     <SiteLayout>
-        <Meta title="About Us | Family-Run Home Remodelers | Brothers Remodelers" description="Founded in 2006, Brothers Remodelers is a family-run home remodeling company delivering renovations, additions and commercial build-outs across the Tampa Bay and Sarasota region." />
-        <PageHero title="About Brothers Remodelers" subtitle="A family-run remodeling company that grew by finishing jobs, not by advertising them." image={founderImage} crumbs={[{ label: 'About' }]} />
-        <Section>
-            <div className="grid gap-10 lg:grid-cols-2">
-                <div>
-                    <Eyebrow>Our story</Eyebrow>
-                    <Prose>
-                        <p className="mt-4">
-                            We started in {company.founded} with one truck and a punch list. Nearly two decades later we run
-                            whole-home renovations, additions and commercial build-outs across the Tampa Bay and Sarasota region with the same rule:
-                            the person who priced the job is still reachable when it is being built.
-                        </p>
-                        <p>
-                            Most of our work comes from repeat owners, architects and property managers. That only happens
-                            when schedules hold, sites stay clean and change orders are honest.
-                        </p>
-                        <p>
-                            Our crews are in-house for carpentry, demolition and supervision, and we hold long-standing
-                            relationships with licensed plumbers, electricians and HVAC partners rather than chasing the
-                            cheapest sub each month.
-                        </p>
-                    </Prose>
-                </div>
-                <img src={kitchenImage} alt="Completed kitchen renovation" className="h-full w-full object-cover" />
+        <Meta title="About | Brothers Home Remodeling" description="Brothers Home Remodeling is the trade name of Republic Renovations Inc, a Florida Certified General Contractor (CGC1542451) serving five Gulf Coast counties." />
+        <PageHero title="A licensed remodeling contractor out of Tampa." subtitle="Brothers Home Remodeling is the trade name of Republic Renovations Inc. We remodel homes across five Gulf Coast counties under Florida Certified General Contractor license CGC1542451." image="/images/construction-site.jpg" crumbs={[{ label: 'About' }]} />
+        <section className="sec"><div className="wrap">
+            <dl className="lic">
+                <div><dt>Legal name</dt><dd>Republic Renovations Inc</dd></div>
+                <div><dt>Doing business as</dt><dd>Brothers Remodelers</dd></div>
+                <div><dt>FL license</dt><dd>{company.licenseNumber}</dd></div>
+                <div><dt>Status (DBPR)</dt><dd>Current, active</dd></div>
+            </dl>
+            <p className="small mute" style={{ marginTop: 14 }}>Verify on the <a href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=1C3E502F9E8BF71B16D232BF63A31C8C" style={{ color: 'var(--navy)', borderBottom: '1px solid var(--slate-300)' }}>Florida DBPR license search</a>. Status shown as of 11/17/2026.</p>
+        </div></section>
+        <section className="sec bg-paper"><div className="wrap about-split">
+            <div className="about-img"><img src="/images/about-plans.jpg" alt="Reviewing plans" /></div>
+            <div className="prose">
+                <Eyebrow>How we work</Eyebrow>
+                <h2>Plain contracts. Permits done right.</h2>
+                <p className="lead">We think remodeling should be predictable. That starts with a clear scope and a price on paper.</p>
+                <ul className="checks">
+                    <li>A site visit before any price is given</li>
+                    <li>A written, line-item proposal</li>
+                    <li>A written contract with a payment schedule</li>
+                    <li>Signed change orders before extra work is done</li>
+                    <li>Permits filed and inspections booked by us</li>
+                    <li>Financing available through Upgrade and Ygrene</li>
+                </ul>
             </div>
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {stats.map((s) => (
-                    <div key={s.label} className="border-t-2 border-[hsl(var(--brand))] pt-4">
-                        <p className="font-display text-4xl font-bold">{s.value}{s.suffix}</p>
-                        <p className="mt-1 text-xs uppercase tracking-widest text-neutral-500">{s.label}</p>
-                    </div>
-                ))}
-            </div>
-        </Section>
-        <CtaBand />
+        </div></section>
+        <CtaBand heading="Talk to us about your project." />
     </SiteLayout>
 );
 
@@ -578,41 +573,20 @@ export const ProcessPage = () => (
 
 export const ProjectsPage = () => (
     <SiteLayout>
-        <Meta title="Project Gallery | Renovations & Build-Outs | Brothers Remodelers" description="Browse completed Brothers Remodelers projects: whole-home renovations, kitchens and baths, office build-outs, additions and foundation work across the Tampa Bay and Sarasota region." />
-        <PageHero title="Project Gallery" subtitle="A sample of recently completed work with scope and delivered value." image={kitchenImage} crumbs={[{ label: 'Projects' }]} />
-        <Section width="wide">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {projects.map((p) => (
-                    <article key={p.title} className="border border-neutral-200">
-                        <img src={p.image} alt={p.title} className="h-64 w-full object-cover" />
-                        <div className="p-5">
-                            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500">{p.place}</p>
-                            <h2 className="font-display mt-1 text-xl font-bold uppercase">{p.title}</h2>
-                            <p className="mt-2 text-sm text-neutral-600">{p.scope}</p>
-                            <p className="mt-3 text-sm font-bold">{p.value}</p>
-                        </div>
-                    </article>
-                ))}
-            </div>
-        </Section>
+        <Meta title="Project Gallery | Brothers Home Remodeling" description="Photos from finished Brothers jobs will be published here. The images currently shown are licensed stock photos, not photos of our work." />
+        <PageHero title="Kitchens, baths and full remodels." subtitle="Photos from finished Brothers jobs will go here, sorted by project type." image="/images/kitchen.jpg" crumbs={[{ label: 'Projects' }]} />
+        <section className="sec"><div className="wrap">
+            <div className="note"><b>Placeholder</b><span>These are licensed stock photos. They are not photos of our work, and the old project prices have been removed because they were not verified.</span></div>
+        </div></section>
         <CtaBand />
     </SiteLayout>
 );
 
 export const ReviewsPage = () => (
     <SiteLayout>
-        <Meta title="Client Reviews | Brothers Remodelers" description="Read reviews from homeowners, landlords and commercial tenants who hired Brothers Remodelers for renovations across the Tampa Bay and Sarasota region." />
-        <PageHero title="Client Reviews" subtitle="4.9 average across 180+ verified reviews from homeowners across the region." image={heroImage} crumbs={[{ label: 'Reviews' }]} />
-        <Section width="narrow">
-            <div className="grid gap-6">
-                {testimonials.map((t) => (
-                    <blockquote key={t.name} className="border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-6">
-                        <p className="leading-relaxed text-neutral-700">“{t.quote}”</p>
-                        <footer className="mt-4 text-xs font-bold uppercase tracking-widest text-neutral-500">{t.name} — {t.role}</footer>
-                    </blockquote>
-                ))}
-            </div>
-        </Section>
+        <Meta title="Reviews | Brothers Home Remodeling" description="Verified Google reviews will be shown here once they are connected. Brothers Remodelers does not post reviews it cannot link to a source." />
+        <PageHero title="Reviews coming soon." subtitle="Verified Google reviews will be shown here once they are connected. We do not post reviews we cannot link to a source." image="/images/kitchen.jpg" crumbs={[{ label: 'Reviews' }]} />
+        <section className="sec"><div className="wrap"><div className="rev"><div><Eyebrow>Customer reviews</Eyebrow><h2>Reviews coming soon.</h2></div><p>Named testimonials and star ratings have been removed until they can be linked to a public source.</p></div></div></section>
         <CtaBand />
     </SiteLayout>
 );
@@ -634,16 +608,33 @@ export const SafetyPage = () => (
 
 export const FinancingPage = () => (
     <SiteLayout>
-        <Meta title="Renovation Financing Options | Brothers Remodelers" description="Understand renovation financing options for remodeling projects, from home equity lines and renovation loans to phased scheduling that fits your budget." />
-        <PageHero title="Financing Your Project" subtitle="Practical ways owners fund renovations, plus how we phase scope to match a budget." image={kitchenImage} crumbs={[{ label: 'Financing' }]} />
-        <Section width="narrow">
-            <Prose>
-                <p>Most of our residential clients fund work through a home equity line, a renovation loan or savings. We provide the line-item scope, schedule of values and payment milestones lenders typically request.</p>
-                <p>If the full scope exceeds the budget today, we phase it: structural, mechanical and waterproofing work first, cosmetic finishes second, so nothing already built has to be reopened later.</p>
-                <p>Payments follow completed milestones. We never ask for the full contract value up front, and deposits follow Florida home improvement contract requirements.</p>
-            </Prose>
-        </Section>
-        <CtaBand />
+        <Meta title="Financing | Brothers Home Remodeling" description="Financing through Upgrade and Ygrene. 10 years at 6.99%, 20 years at 8.99%, or 12 months with no payments. Subject to credit approval." />
+        <PageHero title="Remodel now. Pay over time." subtitle="Financing through Upgrade and Ygrene, with plans from 6.99%. Ask about it at your free estimate." image="/images/kitchen.jpg" crumbs={[{ label: 'Financing' }]} />
+        <section className="sec"><div className="wrap fin">
+            <div className="fin-copy">
+                <Eyebrow>Pay over time</Eyebrow>
+                <h2>Start now.<br />Pay monthly.</h2>
+                <p className="lead" style={{ marginTop: 22 }}>Financing is available through our lending partners Upgrade and Ygrene. Ask about it at your estimate and we will walk you through the options.</p>
+                <div className="btns"><Link className="btn btn-primary" to="/contact">Get a Free Estimate</Link></div>
+            </div>
+            <div>
+                <div className="rates">
+                    <div className="rate"><div className="big">6.99<sup>%</sup></div><div className="term">10-year term</div><p>Fixed monthly payments spread over ten years.</p></div>
+                    <div className="rate"><div className="big">8.99<sup>%</sup></div><div className="term">20-year term</div><p>Lower monthly payments over a longer term.</p></div>
+                    <div className="rate"><div className="big">12<sup>mo</sup></div><div className="term">No payments</div><p>No payments for the first 12 months.</p></div>
+                </div>
+                <div className="lenders"><span>Through</span><b>Upgrade</b><b>Ygrene</b><span className="fine">Subject to credit approval. Terms, rates and eligibility are set by the lender.</span></div>
+            </div>
+        </div></section>
+        <section className="sec bg-paper"><div className="wrap">
+            <div className="shead"><div><Eyebrow>Compare plans</Eyebrow><h2>Pick the payment that fits.</h2></div><p className="lead">Subject to credit approval. Terms, rates and eligibility are set by the lender.</p></div>
+            <table className="tbl"><thead><tr><th>Plan</th><th>Rate</th><th>Term</th><th>Good for</th></tr></thead><tbody>
+                <tr><td>10-year plan</td><td>6.99%</td><td>10 years</td><td>Paying it off sooner at the lower rate</td></tr>
+                <tr><td>20-year plan</td><td>8.99%</td><td>20 years</td><td>The lowest monthly payment</td></tr>
+                <tr><td>No payments</td><td>Per lender</td><td>12 months</td><td>Starting now and paying later</td></tr>
+            </tbody></table>
+        </div></section>
+        <CtaBand heading="Ask about financing at your estimate." />
     </SiteLayout>
 );
 
@@ -670,57 +661,41 @@ export const FaqPage = () => (
     </SiteLayout>
 );
 
-export const ContactPage = () => (
+const EstimatePage = ({ title, description }) => (
     <SiteLayout>
-        <Meta title="Contact Us | Brothers Remodelers" description={`Contact Brothers Remodelers at ${company.phone} or ${company.email}. Office at ${company.address}. Free estimates across Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties.`} />
-        <PageHero title="Contact Us" subtitle="Call, email or send the form. An estimator replies within one business day." image={officeImage} crumbs={[{ label: 'Contact' }]} />
-        <Section width="wide">
-            <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
-                <div>
-                    <Eyebrow>Office</Eyebrow>
-                    <ul className="mt-6 space-y-5">
-                        <li className="flex gap-3"><Phone className="mt-0.5 h-5 w-5 text-[hsl(var(--brand))]" /><a href={company.phoneHref} className="font-semibold">{company.phone}</a></li>
-                        <li className="flex gap-3"><Mail className="mt-0.5 h-5 w-5 text-[hsl(var(--brand))]" /><a href={`mailto:${company.email}`} className="font-semibold">{company.email}</a></li>
-                        <li className="flex gap-3"><MapPin className="mt-0.5 h-5 w-5 text-[hsl(var(--brand))]" />{company.address}</li>
-                    </ul>
-                    <p className="mt-6 text-sm text-neutral-600">{company.hours}</p>
-                    <p className="mt-2 text-sm text-neutral-600">{company.license}</p>
+        <Meta title={title} description={description} />
+        <section className="sec bg-paper" style={{ paddingTop: 72 }}>
+            <div className="wrap">
+                <div className="crumbs" style={{ color: 'var(--slate)' }}><Link to="/" style={{ color: 'var(--navy)' }}>Home</Link> <span>/</span> Get an Estimate</div>
+                <div className="split contact">
+                    <div>
+                        <Eyebrow>Free estimate</Eyebrow>
+                        <h1 className="page-h1">Get an estimate.</h1>
+                        <p className="lead" style={{ marginBottom: 40, maxWidth: 620 }}>Tell us a little about the job. We will call you back to set up a site visit, then send a written proposal.</p>
+                        <QuoteForm bare />
+                    </div>
+                    <aside style={{ paddingTop: 8 }}>
+                        <div className="contact-cards">
+                            <div><h4>Call</h4><a className="v" href={company.phoneHref}>{company.phone}</a></div>
+                            <div><h4>Email</h4><a className="v sm" href={`mailto:${company.email}`}>{company.email}</a></div>
+                            <div><h4>Tampa office</h4><div className="v sm">13542 N Florida Ave<br />Tampa, FL 33613</div></div>
+                            <div><h4>Hours</h4><div className="v sm">Mon–Sat, 7:00am–6:00pm</div></div>
+                            <div><h4>License</h4><div className="v sm">Florida Certified General Contractor {company.licenseNumber}</div></div>
+                        </div>
+                        <GulfCoastMap inset={false} className="no-inset" />
+                    </aside>
                 </div>
-                <QuoteForm />
             </div>
-        </Section>
+        </section>
     </SiteLayout>
 );
 
+export const ContactPage = () => (
+    <EstimatePage title="Get an Estimate | Brothers Home Remodeling" description={`Get a remodeling estimate from Brothers Remodelers. Call ${company.phone} or send the form. Office at ${company.address}.`} />
+);
+
 export const QuotePage = () => (
-    <SiteLayout>
-        <Meta title="Request a Free Construction Quote | Brothers Remodelers" description="Request a free, no-obligation remodeling quote from Brothers Remodelers. Line-item pricing for renovations, additions and build-outs across the Tampa Bay and Sarasota region." />
-        <PageHero title="Request a Free Quote" subtitle="Tell us about the project. We walk the site, then send a line-item proposal within five business days." image={heroImage} crumbs={[{ label: 'Free Quote' }]} />
-        <Section width="wide">
-            <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-                <QuoteForm />
-                <div>
-                    <Eyebrow>What happens next</Eyebrow>
-                    <ol className="mt-6 space-y-5">
-                        {[
-                            ['We call you back', 'Within one business day, to confirm scope and book the walkthrough.'],
-                            ['Site walkthrough', 'A superintendent measures, photographs and flags existing conditions.'],
-                            ['Line-item proposal', 'Fixed pricing with allowances and an outline schedule, in writing.'],
-                            ['Contract & start date', 'Filings and procurement begin as soon as the contract is signed.'],
-                        ].map(([t, d], i) => (
-                            <li key={t} className="flex gap-4 border-b border-neutral-200 pb-4">
-                                <span className="font-display text-3xl font-bold text-[hsl(var(--brand))]">0{i + 1}</span>
-                                <div>
-                                    <h3 className="font-semibold">{t}</h3>
-                                    <p className="text-sm text-neutral-600">{d}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
-            </div>
-        </Section>
-    </SiteLayout>
+    <EstimatePage title="Get an Estimate | Brothers Home Remodeling" description="Tell us about the job. We will call you back to set up a site visit, then send a written proposal." />
 );
 
 export const PrivacyPage = () => (

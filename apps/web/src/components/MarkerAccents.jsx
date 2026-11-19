@@ -8,7 +8,7 @@ export const MarkerUnderline = ({ src, className = '' }) => (
     />
 );
 
-export const MarkerCircle = ({ className = '', color = '#c8102e' }) => (
+export const MarkerCircle = ({ className = '', color = '#111111' }) => (
     <svg viewBox="0 0 240 150" className={`pointer-events-none ${className}`} aria-hidden="true">
         <path
             d="M46 86 C28 52 52 18 118 16 C176 14 214 36 210 72 C206 108 168 132 112 130 C58 128 24 112 42 84"

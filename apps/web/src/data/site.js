@@ -14,13 +14,13 @@ export const company = {
     latitude: 28.0697,
     longitude: -82.4594,
     hours: 'Mon – Sat, 7:00am – 6:00pm',
-    license: 'FL CGC Lic. #CGC1541183 · Fully licensed & insured',
-    licenseNumber: 'CGC1541183',
+    license: 'FL CGC Lic. #CGC1542451 · Fully licensed & insured',
+    licenseNumber: 'CGC1542451',
     founded: 2006,
 };
 
-export const logoUrl =
-    'https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/975588e2c561c9a0ccdfa00f7b57dfc1.jpg';
+export const logoUrl = '/images/brothers-logo.jpg';
+export const legalName = 'Republic Renovations Inc';
 
 export const heroImage = '/images/hero-carpenter.jpg';
 export const kitchenImage = '/images/kitchen.jpg';

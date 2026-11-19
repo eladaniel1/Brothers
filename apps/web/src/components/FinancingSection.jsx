@@ -49,9 +49,9 @@ const FinancingSection = () => {
             payment: 0,
             rate: '0%',
             note: 'Same-as-cash promotional period',
-            accent: '#c8102e',
+            accent: '#111111',
             tint: 'bg-rose-50',
-            circle: '#c8102e',
+            circle: '#111111',
             badge: 'Same-as-cash',
         },
         {
@@ -63,8 +63,8 @@ const FinancingSection = () => {
             rate: '6.99%',
             note: 'Predictable monthly payment',
             featured: true,
-            accent: '#e8a818',
-            circle: '#e8a818',
+            accent: '#C9B38C',
+            circle: '#C9B38C',
             badge: 'Most popular',
         },
         {
@@ -109,7 +109,7 @@ const FinancingSection = () => {
                                 type="button"
                                 onClick={() => setAmount(value)}
                                 aria-pressed={selected}
-                                className={`min-h-[48px] border px-4 text-base font-semibold ${selected ? 'border-[#c8102e] bg-[#c8102e] text-white' : 'border-neutral-300 bg-white text-[#0f223d] hover:border-[#c8102e]'}`}
+                                className={`min-h-[48px] border px-4 text-base font-semibold ${selected ? 'border-[#111111] bg-[#111111] text-white' : 'border-neutral-300 bg-white text-[#0f223d] hover:border-[#111111]'}`}
                             >
                                 {money(value)}
                             </button>
@@ -125,22 +125,22 @@ const FinancingSection = () => {
                         >
                             <span className="absolute inset-x-0 top-0 h-1.5" style={{ background: plan.accent }} />
                             {plan.badge && (
-                                <span className={`absolute right-4 top-4 px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest ${plan.featured ? 'bg-[#e8a818] text-[#0f223d]' : 'bg-[#c8102e] text-white'}`}>
+                                <span className={`absolute right-4 top-4 px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest ${plan.featured ? 'bg-[#C9B38C] text-[#0f223d]' : 'bg-[#111111] text-white'}`}>
                                     {plan.badge}
                                 </span>
                             )}
-                            <p className={`text-sm font-bold uppercase tracking-widest ${plan.featured ? 'text-[#e8a818]' : 'text-[#c8102e]'}`}>{plan.kicker}</p>
+                            <p className={`text-sm font-bold uppercase tracking-widest ${plan.featured ? 'text-[#C9B38C]' : 'text-[#111111]'}`}>{plan.kicker}</p>
                             <h3 className="font-display mt-2 pr-16 text-pretty text-[1.7rem] font-bold uppercase leading-tight">{plan.title}</h3>
                             <p className={`mt-2 text-pretty text-base leading-relaxed ${plan.featured ? 'text-white/75' : 'text-neutral-600'}`}>{plan.detail}</p>
                             <div className="relative mt-6 inline-flex w-fit items-center justify-center px-7 py-4">
-                                <MarkerCircle className="absolute -inset-2" color={plan.featured ? '#e8a818' : plan.circle} />
+                                <MarkerCircle className="absolute -inset-2" color={plan.featured ? '#C9B38C' : plan.circle} />
                                 <p className="font-display relative text-4xl font-bold leading-none">
                                     {money(plan.payment)}
                                     <span className={`ml-1 text-lg font-semibold uppercase tracking-wide ${plan.featured ? 'text-white/60' : 'text-neutral-500'}`}>/ mo</span>
                                 </p>
                             </div>
                             <p className={`mt-auto flex items-start gap-2 pt-5 text-sm font-semibold uppercase tracking-wide ${plan.featured ? 'text-white/80' : 'text-neutral-600'}`}>
-                                <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: plan.featured ? '#e8a818' : plan.accent }} strokeWidth={3} />
+                                <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: plan.featured ? '#C9B38C' : plan.accent }} strokeWidth={3} />
                                 {plan.note}
                             </p>
                         </article>
@@ -150,13 +150,13 @@ const FinancingSection = () => {
                 <div className="mt-7 flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <Link
                         to="/financing"
-                        className="inline-flex min-h-[52px] items-center justify-center gap-2 bg-[#c8102e] px-6 text-base font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-px"
+                        className="inline-flex min-h-[52px] items-center justify-center gap-2 bg-[#111111] px-6 text-base font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-px"
                     >
                         Check financing options <ArrowRight className="h-5 w-5" />
                     </Link>
                     <Link
                         to="/contact"
-                        className="text-base font-semibold text-[#0f223d] underline decoration-[#e8a818] decoration-2 underline-offset-4 hover:text-[#c8102e]"
+                        className="text-base font-semibold text-[#0f223d] underline decoration-[#C9B38C] decoration-2 underline-offset-4 hover:text-[#111111]"
                     >
                         Get pre-qualified in minutes — no impact to credit score
                     </Link>

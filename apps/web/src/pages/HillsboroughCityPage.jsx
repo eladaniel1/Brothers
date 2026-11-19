@@ -5,7 +5,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { Check, Phone } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, Section } from '@/components/SiteLayout';
 import GetEstimateCTA from '@/components/GetEstimateCTA';
-import { company, kitchenImage, projects, stats } from '@/data/site';
+import { company, kitchenImage, projects } from '@/data/site';
 import { getHillsboroughCity } from '@/data/cities';
 
 const crumbs = (name) => [
@@ -228,7 +228,7 @@ const HillsboroughCityPage = () => {
                 <Eyebrow>Recent work</Eyebrow>
                 <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">{city.name} Area Remodeling Projects</h2>
                 <p className="mt-4 leading-relaxed text-neutral-600">
-                    A sample of recently completed Brothers Remodelers projects. References from the Hillsborough County
+                    Stock photos for layout only, not photos of our work. References from the Hillsborough County
                     area are available on request during your estimate.
                 </p>
                 <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -255,16 +255,8 @@ const HillsboroughCityPage = () => {
             <Section width="wide" className="bg-[hsl(var(--ink))] text-white">
                 <Eyebrow className="text-white/60">Why homeowners choose us</Eyebrow>
                 <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Why {city.name} Homeowners Choose Brothers Remodelers</h2>
-                <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {stats.map((s) => (
-                        <div key={s.label} className="border-t-2 border-[hsl(var(--brand))] pt-4">
-                            <p className="font-display text-4xl font-bold">{s.value}{s.suffix}</p>
-                            <p className="mt-1 text-xs uppercase tracking-widest text-white/60">{s.label}</p>
-                        </div>
-                    ))}
-                </div>
                 <ul className="mt-10 grid gap-3 text-sm leading-relaxed text-white/80 md:grid-cols-2">
-                    <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1541183, fully licensed and insured.</li>
+                    <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1542451, fully licensed and insured.</li>
                     <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />A dedicated superintendent on every site, with weekly photo updates.</li>
                     <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and signed change orders before work proceeds.</li>
                     <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Two-year workmanship warranty plus manufacturer warranties, documented at closeout.</li>

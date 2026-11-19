@@ -56,7 +56,7 @@ export const localCities = [
                 name: 'New Tampa (Tampa Palms, Hunter\'s Green & Arbor Greene)',
                 eraTag: '1990s–2010s Master-Planned HOA Communities',
                 housingFact: 'Two-story block and wood-frame stucco homes with builder-grade oak or maple cabinetry, oversized Roman deck tubs, and HOA or CDD covenants.',
-                remodelImpact: 'The usual bath project is a Roman tub torn out for a curbless shower, plus an HOA packet with the certificate of insurance, license #CGC1541183, and a simple plan.',
+                remodelImpact: 'The usual bath project is a Roman tub torn out for a curbless shower, plus an HOA packet with the certificate of insurance, license #CGC1542451, and a simple plan.',
             },
         ],
         neighborhoods: ['South Tampa', 'Seminole Heights', 'Hyde Park', 'Westchase', 'New Tampa', 'Carrollwood'],

@@ -19,21 +19,12 @@ const NotFoundPage = () => (
             <meta name="description" content="The page you were looking for could not be found. Browse our services, areas we serve, or request a free quote." />
             <meta name="robots" content="noindex, nofollow" />
         </Helmet>
-        <section className="relative isolate overflow-hidden bg-[hsl(var(--ink))]">
-            <div className="relative mx-auto flex max-w-[72rem] flex-col items-center px-4 py-24 text-center md:py-32">
-                <p className="font-display text-[7rem] font-bold leading-none text-[hsl(var(--brand))] sm:text-[10rem]">404</p>
-                <h1 className="font-display mt-2 text-3xl font-bold uppercase text-white sm:text-4xl md:text-5xl">
-                    This page wasn&rsquo;t found
-                </h1>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/70">
-                    The page you were looking for may have moved, been renamed, or never existed.
-                    Use one of the links below to get back on track, or call us at{' '}
-                    <a href={company.phoneHref} className="font-semibold text-white underline hover:text-[hsl(var(--brand))]">
-                        {company.phone}
-                    </a>.
-                </p>
+        <section className="phero plain">
+            <div className="wrap">
+                <div className="crumbs"><Link to="/">Home</Link> <span>/</span> 404</div>
+                <h1>This page wasn&rsquo;t found.</h1>
+                <p className="lead">The page you were looking for may have moved. Call {company.phone} or use the links below.</p>
             </div>
-            <div className="hatch h-1.5 w-full" />
         </section>
         <section className="px-4 py-16 md:py-24">
             <div className="mx-auto max-w-[72rem]">
