@@ -132,6 +132,7 @@ try {
             '    RewriteRule ^services/roof-insulation/?$ /services/ [R=301,L]',
             '    RewriteRule ^areas-we-serve/sarasota/university-park/?$ /areas-we-serve/manatee/university-park/ [R=301,L]',
             '    RewriteRule ^areas-we-serve/sarasota/lakewood-ranch/?$ /areas-we-serve/manatee/lakewood-ranch/ [R=301,L]',
+            '    RewriteRule ^services/(ac-repair|plumbing|kitchen-remodeling|bathroom-remodeling|garage-doors|electrical|windows|pools|hvac|solar|epoxy-flooring|fencing|driveways)/(palm-harbor|new-port-richey|venice|temple-terrace|valrico|lutz|apollo-beach|plant-city|tarpon-springs|dunedin|pinellas-park|seminole|ellenton|parrish|palmetto|north-port|land-o-lakes)/?$ /services/$1/ [R=301,L]',
             '# 301 redirect any slashless URL to its trailing-slash canonical form (the',
             '# homepage keeps its single slash). Only real directories (prerendered',
             '# routes) are redirected; unknown slashless URLs fall through to the 404 rule.',
@@ -278,7 +279,7 @@ try {
         const { company, services, areas, faqs } = await vite.ssrLoadModule('/src/data/site.js');
         const { brandsFor } = await vite.ssrLoadModule('/src/data/brands.js');
         const { localTrades } = await vite.ssrLoadModule('/src/data/localTrades.js');
-        const { localCities } = await vite.ssrLoadModule('/src/data/localCities.js');
+        const { tradePageCities } = await vite.ssrLoadModule('/src/data/localCities.js');
         const { bespokeLocalPages, bespokePageToLlms } = await vite.ssrLoadModule('/src/data/bespokeLocalPages.js');
         const site = 'https://brothersremodelers.com';
         const brandLine = (slug) => brandsFor(slug).map(([cat, names]) => `${cat}: ${names.join(', ')}`).join('; ');
@@ -312,7 +313,7 @@ try {
             '',
             '## Services by city',
             '',
-            ...localTrades.map((t) => `- ${t.name}: ${localCities.map((c) => `[${c.name}](${site}/services/${t.slug}/${c.slug}/)`).join(', ')}`),
+            ...localTrades.map((t) => `- ${t.name}: ${tradePageCities.map((c) => `[${c.name}](${site}/services/${t.slug}/${c.slug}/)`).join(', ')}`),
             '',
             '## Service areas',
             '',

@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Eyebrow, Section } from '@/components/SiteLayout';
-import { localCities } from '@/data/localCities';
+import { tradePageCities } from '@/data/localCities';
 import { localTrades } from '@/data/localTrades';
 
 // "Popular services in <city>" links from a city's area page to its
 // trade-by-city pages. Renders nothing for cities without local trade pages.
 const LocalTradeLinks = ({ areaUrl }) => {
-    const city = localCities.find((c) => c.areaUrl === areaUrl);
+    const city = tradePageCities.find((c) => c.areaUrl === areaUrl || c.areaUrl === `${areaUrl}/`);
     if (!city) return null;
     return (
         <Section width="wide" className="border-t border-neutral-200">

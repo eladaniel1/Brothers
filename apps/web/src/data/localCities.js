@@ -6,6 +6,22 @@
 // for that city. permitOffice is who issues residential building permits for an address in
 // that place; coastal means meaningful Gulf, bay or tidal-river exposure.
 
+// Trade-by-city pages are limited to these ten places. Every other city in
+// localCities is still a place we serve, but its /services/{trade}/{city}/ URL
+// 301s to the trade hub.
+export const tradePageCitySlugs = [
+    'tampa',
+    'st-petersburg',
+    'clearwater',
+    'sarasota',
+    'bradenton',
+    'brandon',
+    'riverview',
+    'wesley-chapel',
+    'largo',
+    'lakewood-ranch',
+];
+
 export const localCities = [
     {
         slug: 'tampa',
@@ -563,3 +579,9 @@ export const localCities = [
 ];
 
 export const getLocalCity = (slug) => localCities.find((c) => c.slug === slug);
+
+export const tradePageCities = tradePageCitySlugs
+    .map((slug) => localCities.find((city) => city.slug === slug))
+    .filter(Boolean);
+
+export const isTradePageCity = (slug) => tradePageCitySlugs.includes(slug);

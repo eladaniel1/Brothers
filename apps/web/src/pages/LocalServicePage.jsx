@@ -6,12 +6,10 @@ import SiteLayout, { CtaBand, PageHero, Section } from '@/components/SiteLayout'
 import GetEstimateCTA from '@/components/GetEstimateCTA';
 import { brandSchemaFor } from '@/data/brands';
 import { CONTRACTOR_ID, contractorNode } from '@/data/contractor';
-import { getBespokeLocalPage } from '@/data/bespokeLocalPages';
-import { getLocalCity, localCities } from '@/data/localCities';
+import { LAST_UPDATED, getCityEssay } from '@/data/essays';
+import { getLocalCity, isTradePageCity, tradePageCities } from '@/data/localCities';
 import { getLocalTrade, localTrades } from '@/data/localTrades';
-import { LAST_UPDATED, getLocalPageCopy } from '@/data/localPageCopy';
 import { company, services } from '@/data/site';
-import BespokeLocalServicePage from '@/pages/BespokeLocalServicePage';
 
 const SITE = 'https://brothersremodelers.com';
 
@@ -22,18 +20,26 @@ const SITE = 'https://brothersremodelers.com';
 // city pages for a trade do not repeat the same blocks.
 const LocalServicePage = () => {
     const { slug, citySlug } = useParams();
-    const bespoke = getBespokeLocalPage(slug, citySlug);
-    if (bespoke) return <BespokeLocalServicePage page={bespoke} />;
-
     const trade = getLocalTrade(slug);
     const city = getLocalCity(citySlug);
     const service = services.find((s) => s.slug === slug);
-    if (!trade || !city || !service) return <Navigate to={service ? `/services/${slug}` : '/services'} replace />;
+    if (!trade || !city || !service || !isTradePageCity(city.slug)) {
+        return <Navigate to={trade && service ? `/services/${slug}/` : '/services/'} replace />;
+    }
 
-    const copy = getLocalPageCopy(slug, city);
-    if (!copy) return <Navigate to={`/services/${slug}/`} replace />;
+    const essay = getCityEssay(slug, city.slug);
+    if (!essay) return <Navigate to={`/services/${slug}/`} replace />;
+    const h1 = `${trade.name} in ${city.name}, FL`;
+    const permitLabel = city.permitOffice.replace(/^the /i, '').replace(/\.$/, '');
+    const permitHead = city.permitOffice.split(/,| for /)[0];
+    const permitShort = /City of /i.test(permitHead) && /County/i.test(city.permitOffice)
+        ? 'City or county'
+        : /City of /i.test(permitHead)
+            ? `City of ${city.name}`
+            : city.county.replace(/ County$/, '');
     const url = `${SITE}/services/${slug}/${city.slug}/`;
-    const nearby = city.nearby.map(getLocalCity).filter(Boolean).filter((item) => item.slug !== city.slug);
+    const nearby = tradePageCities.filter((item) => item.slug !== city.slug && (city.nearby || []).includes(item.slug));
+    const nearbyShown = nearby.length ? nearby : tradePageCities.filter((item) => item.slug !== city.slug).slice(0, 4);
     const otherTrades = localTrades.filter((t) => t.slug !== slug);
 
     const graph = {
@@ -44,8 +50,8 @@ const LocalServicePage = () => {
                 '@type': 'WebPage',
                 '@id': `${url}#webpage`,
                 url,
-                name: copy.title,
-                description: copy.description,
+                name: essay.title,
+                description: essay.description,
                 dateModified: '2026-11-19',
                 isPartOf: { '@type': 'WebSite', name: 'Brothers Remodelers', url: `${SITE}/` },
                 about: { '@id': `${url}#service` },
@@ -55,10 +61,10 @@ const LocalServicePage = () => {
             {
                 '@type': 'Service',
                 '@id': `${url}#service`,
-                name: copy.h1,
+                name: h1,
                 serviceType: trade.name,
                 url,
-                description: copy.answer,
+                description: essay.answer,
                 provider: { '@id': CONTRACTOR_ID },
                 areaServed: {
                     '@type': 'City',
@@ -70,7 +76,7 @@ const LocalServicePage = () => {
             {
                 '@type': 'FAQPage',
                 '@id': `${url}#faq`,
-                mainEntity: copy.faqs.map(([q, a]) => ({
+                mainEntity: essay.faqs.map(({ q, a }) => ({
                     '@type': 'Question',
                     name: q,
                     acceptedAnswer: { '@type': 'Answer', text: a },
@@ -88,11 +94,12 @@ const LocalServicePage = () => {
             },
             {
                 '@type': 'HowTo',
-                name: copy.stepsHeading,
-                step: copy.steps.map((text, index) => ({
+                name: `How ${trade.name.toLowerCase()} runs in ${city.name}`,
+                step: essay.steps.map((step, index) => ({
                     '@type': 'HowToStep',
                     position: index + 1,
-                    text,
+                    name: step.title,
+                    text: step.text,
                 })),
             },
         ],
@@ -101,23 +108,23 @@ const LocalServicePage = () => {
     return (
         <SiteLayout>
             <Helmet>
-                <title>{copy.title}</title>
-                <meta name="description" content={copy.description} />
+                <title>{essay.title}</title>
+                <meta name="description" content={essay.description} />
                 <link rel="canonical" href={url} />
-                <meta property="og:title" content={copy.title} />
-                <meta property="og:description" content={copy.description} />
+                <meta property="og:title" content={essay.title} />
+                <meta property="og:description" content={essay.description} />
                 <meta property="og:url" content={url} />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="Brothers Remodelers" />
                 <meta property="og:image" content={`${SITE}${service.image}`} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={copy.title} />
-                <meta name="twitter:description" content={copy.description} />
+                <meta name="twitter:title" content={essay.title} />
+                <meta name="twitter:description" content={essay.description} />
                 <meta name="twitter:image" content={`${SITE}${service.image}`} />
                 <script type="application/ld+json">{JSON.stringify(graph)}</script>
             </Helmet>
             <PageHero
-                title={copy.h1}
+                title={h1}
                 subtitle={`${trade.name} in ${city.name}, ${city.county}. License ${company.licenseNumber}.`}
                 image={service.image}
                 imageAlt={`${trade.name} in ${city.name}, Florida`}
@@ -134,39 +141,42 @@ const LocalServicePage = () => {
                         <dd className="lbl">County</dd>
                     </div>
                     <div>
-                        <dt className="num" style={{ fontSize: copy.permitShort.length > 16 ? 22 : undefined }}>{copy.permitShort}</dt>
-                        <dd className="lbl">{copy.permitLabel}</dd>
+                        <dt className="num" style={{ fontSize: permitShort.length > 16 ? 22 : undefined }}>{permitShort}</dt>
+                        <dd className="lbl">{permitLabel}</dd>
                     </div>
                 </dl>
                 <div className="split city-layout">
                     <div className="prose city-body min-w-0">
                         <p className="small mute">Last updated {LAST_UPDATED}</p>
-                        <h2>{copy.answerHeading}</h2>
-                        <p id="aeo-answer">{copy.answer}</p>
-                        <h2>{copy.includedHeading}</h2>
-                        <p>{copy.included}</p>
+                        <h2>Who handles {trade.name.toLowerCase()} in {city.name}?</h2>
+                        <p id="aeo-answer">{essay.answer}</p>
+                        <h2>What the {trade.name.toLowerCase()} work includes</h2>
+                        {essay.included.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
                         <div className="city-steps">
-                            <h2>{copy.stepsHeading}</h2>
+                            <h2>How the job runs</h2>
                             <ol>
-                                {copy.steps.map((step, index) => (
-                                    <li key={step}>
+                                {essay.steps.map((step, index) => (
+                                    <li key={step.title}>
                                         <span className="n">0{index + 1}</span>
-                                        <h3>{copy.stepTitles[index]}</h3>
-                                        <p>{step}</p>
+                                        <h3>{step.title}</h3>
+                                        <p>{step.text}</p>
                                     </li>
                                 ))}
                             </ol>
                         </div>
-                        <h2>{copy.rulesHeading}</h2>
-                        <p>{copy.rules}</p>
+                        <h2>Permits and the local rules</h2>
+                        {essay.permits.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
+                        {essay.local.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
+                        <h2>What affects the cost</h2>
+                        {essay.cost.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
                         <p>
                             <Link to={`/services/${slug}/`}>{trade.name} service details</Link>
                             {' · '}
                             <Link to={city.areaUrl.endsWith('/') ? city.areaUrl : `${city.areaUrl}/`}>{city.name} service area</Link>
                         </p>
-                        <h2>{copy.faqHeading}</h2>
+                        <h2>Questions homeowners ask</h2>
                         <div>
-                            {copy.faqs.map(([q, a]) => (
+                            {essay.faqs.map(({ q, a }) => (
                                 <div key={q}>
                                     <h3>{q}</h3>
                                     <p>{a}</p>
@@ -179,7 +189,7 @@ const LocalServicePage = () => {
                         <div>
                             <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">Same trade nearby</p>
                             <ul className="mt-3 space-y-2">
-                                {nearby.map((c) => (
+                                {nearbyShown.map((c) => (
                                     <li key={c.slug}>
                                         <Link to={`/services/${slug}/${c.slug}/`}>{trade.name} in {c.name}</Link>
                                     </li>
@@ -213,7 +223,7 @@ export const LocalCityLinks = ({ slug }) => {
         <>
             <h3 className="font-display mt-12 text-2xl font-bold uppercase">{trade.name} by city</h3>
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                {localCities.map((c) => (
+                {tradePageCities.map((c) => (
                     <li key={c.slug}>
                         <Link to={`/services/${slug}/${c.slug}/`} className="group flex items-center justify-between border border-neutral-200 px-4 py-3 text-sm font-semibold hover:border-[hsl(var(--brand))]">
                             {trade.name} in {c.name}

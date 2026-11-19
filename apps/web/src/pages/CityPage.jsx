@@ -161,7 +161,7 @@ const CityPage = () => {
                             We also maintain dedicated city pages for{' '}
                             {siblings.map((sib, i) => (
                                 <React.Fragment key={sib.slug}>
-                                    <Link to={`/areas-we-serve/${countySlug}/${sib.slug}`} className="font-semibold underline hover:text-[hsl(var(--brand))]">{sib.name}</Link>
+                                    <Link to={sib.slug === 'lakewood-ranch' ? '/areas-we-serve/manatee/lakewood-ranch/' : `/areas-we-serve/${countySlug}/${sib.slug}/`} className="font-semibold underline hover:text-[hsl(var(--brand))]">{sib.name}</Link>
                                     {i < siblings.length - 2 ? ', ' : i === siblings.length - 2 ? ' and ' : '.'}
                                 </React.Fragment>
                             ))}

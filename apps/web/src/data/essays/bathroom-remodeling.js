@@ -602,7 +602,7 @@ export const bathroomEssays = {
         description:
             'Bathroom remodeling in Lakewood Ranch by Brothers Remodelers. Manatee or Sarasota County by the address. License CGC1542451.',
         answer:
-            'Lakewood Ranch is unincorporated, so a bathroom permit is Manatee County or Sarasota County, depending on the side of the county line. Brothers Remodelers files that county under CGC1542451. The area is not coastal. Workmanship is warranted for two years. That same county inspects the waterproofing before tile when the permit requires the inspection.',
+            'A Lakewood Ranch bath is filed with whichever county actually contains the house, Manatee or Sarasota. Brothers Remodelers, CGC1542451, makes that lookup before tile is discussed. Neither side is a city, and neither side is on the bay. Workmanship coverage runs two years. The county that takes the file is also the one that can look at the membrane before the tile goes on.',
         included: [
             'Measuring does not wait on the county. We record the shower or tub, the vanity, the toilet, and the fan, and you tell us what changes. Stay or move is marked on each fixture. Waterproofing is outlined on the wet walls. If you have chosen tile, it is named. If you have not, an allowance holds it, and the membrane is still specified.',
             'The fan and the vanity are written so either county can read them. A fan that needs a new duct is a duct. A vanity that stays on its drain is a cabinet and a top. A vanity that moves is plumbing. Mixing those into one vague line is how a review asks for a revision, so the proposal keeps them apart on both sides of the county line.',
@@ -627,13 +627,13 @@ export const bathroomEssays = {
             },
         ],
         permits: [
-            'Lakewood Ranch is split by a county line and incorporated on neither side. Manatee County reviews one side. Sarasota County reviews the other. There is no Lakewood Ranch building department. Brothers Remodelers looks up the address, names the county, and files under CGC1542451. The set is drawn at 13542 N Florida Ave in Tampa.',
+            'The ranch name covers houses in two counties and in no city at all. One address is reviewed in Manatee. The next street can be reviewed in Sarasota. Brothers Remodelers checks the parcel, writes that county on the proposal, and submits under CGC1542451 from the Tampa office at 13542 N Florida Ave.',
             'Both counties are after the same bathroom facts. An opened wall or a moved fixture is filed. A cosmetic refresh that leaves pipes and walls alone generally is not. The waterproofing inspection, when required, is performed by the county that issued the permit, which is why the address is confirmed before we ask anyone to visit.',
             'The area is not coastal, and a bathroom here does not inherit a bay review from the parts of Sarasota County that are on the water. The parcel governs. A Lakewood Ranch bathroom filed through December 30, 2026, in Manatee County or in Sarasota County, is reviewed on the Florida Building Code 8th Edition (2023), effective since December 31, 2023, and the 9th Edition starts December 31, 2026.',
         ],
         local: [
-            'People use one name for Lakewood Ranch. A bathroom still has two possible reviewers, Manatee County or Sarasota County, and no city. The line changes the paperwork and the inspector. It does not change the membrane, the fan, or the two-year workmanship warranty.',
-            'Bring the address to the first conversation if you live near the line. We will not send the permit to a city, and we will not treat the house as coastal. The county lookup is the whole jurisdiction question.',
+            'Homeowners say Lakewood Ranch as if it were one town. For a bathroom, it is two reviewing offices and zero municipal counters. The line changes who stamps the set and who walks the wet wall. The membrane, the fan, and the two-year workmanship warranty do not change with the stamp.',
+            'If the house sits near that line, send the address before the first visit. We will not invent a city application, and we will not add a coastal review the lot does not have. The county named on the deed is the whole permit question.',
         ],
         cost: [
             'Which county reviews the bath can change timing. The building cost changes with the shower or tub, any fixture that moves, the fan duct, and the vanity. Allowances cover tile and the faucet so a refresh and a full wet-area rebuild can be compared before you commit to a material.',
@@ -642,7 +642,7 @@ export const bathroomEssays = {
         faqs: [
             {
                 q: 'Which county permits a Lakewood Ranch bathroom?',
-                a: 'Manatee County or Sarasota County, depending on the side of the line the address is on. Both sides are unincorporated. We look the address up before we file.',
+                a: 'Whichever county the parcel sits in. Some ranch addresses are Manatee. Others are Sarasota. Both are unincorporated. We check before anything is filed.',
             },
             {
                 q: 'Is there a city permit for Lakewood Ranch bathrooms?',
@@ -658,7 +658,7 @@ export const bathroomEssays = {
             },
             {
                 q: 'Do both counties use the same code edition?',
-                a: 'For filings through December 30, 2026, both use the 8th Edition (2023), effective since December 31, 2023. The 9th Edition starts December 31, 2026 on both sides of the line.',
+                a: 'Yes. A bath filed by December 30, 2026 is read on the 8th Edition (2023) in either county. That edition has been in force since December 31, 2023. December 31, 2026 is when the 9th Edition begins, on both sides.',
             },
         ],
     },
