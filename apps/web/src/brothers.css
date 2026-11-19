@@ -61,7 +61,7 @@ h3{font-size:30px;line-height:1;font-weight:700}
 .hdr-phone{font:700 20px/1 var(--display);letter-spacing:.03em;color:var(--navy-900)}
 .hdr-phone small{display:block;font:500 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:5px}
 .burger{display:none}
-.mnav{display:grid;background:#0f223d;color:#F3EEE4;padding:8px 0 16px}
+.mnav{display:grid;background:#0f223d;color:#F3EEE4;padding:8px var(--pad) 16px}
 .mnav a{display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);font-weight:600;color:#F3EEE4}
 .crumbs.on-light,.crumbs.on-light a,.crumbs.on-light span{color:#0f223d}
 fieldset.full{border:0;padding:0;margin:0}
@@ -149,9 +149,12 @@ fieldset.full legend{font-size:12px;font-weight:700;letter-spacing:.08em;text-tr
 .rate .big sup{font-size:.45em;vertical-align:.95em;margin-left:2px}
 .rate .term{font:700 22px/1.1 var(--display);text-transform:uppercase;color:var(--bronze);margin:14px 0 10px;letter-spacing:.02em}
 .rate p{font-size:15px;color:var(--slate)}
-.lenders{display:flex;align-items:center;gap:28px;padding:22px 32px;border:2px solid var(--navy-900);border-top:0;font-size:14px;color:var(--slate)}
-.lenders b{font:800 26px/1 var(--display);color:var(--navy-900);text-transform:uppercase;letter-spacing:.02em}
-.lenders .fine{margin-left:auto;text-align:right}
+.lender-card{height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:22px;padding:36px 32px;background:var(--navy-900);color:#F3EEE4;border-radius:2px;min-height:100%}
+.lender-card .k{margin:0;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sand)}
+.lender-card .lender-names{display:flex;flex-wrap:wrap;gap:12px 28px}
+.lender-card b{font:800 42px/1 var(--display);color:#fff;text-transform:uppercase;letter-spacing:.02em}
+.lender-card p{margin:0;font-size:16px;line-height:1.5;color:#d5dce6}
+.lender-card .fine{margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,.22);font-size:13px;color:#c9d2df}
 
 /* why */
 .why{display:grid;grid-template-columns:5fr 7fr;gap:var(--gap)}
@@ -404,8 +407,8 @@ fieldset.full legend{font-size:12px;font-weight:700;letter-spacing:.08em;text-tr
   .rate .big{font-size:56px;grid-row:span 2}
   .rate .term{margin:0 0 4px;font-size:19px}
   .rate p{font-size:14px}
-  .lenders{flex-wrap:wrap;gap:6px 20px;padding:18px 22px}
-  .lenders .fine{margin-left:0;text-align:left;width:100%}
+  .lender-card{padding:28px 22px;gap:16px}
+  .lender-card b{font-size:32px}
 
   .why{grid-template-columns:1fr}
   .why-img{min-height:240px}
@@ -524,9 +527,13 @@ img[src*="graffiti"]{display:none!important}
 .city-rule{border-left:2px solid var(--sand);background:var(--paper);padding:18px}
 .city-rule .era{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
 .split.city-layout{align-items:stretch}
+.split.city-layout > .city-body{grid-column:1;min-width:0}
+.split.city-layout > .city-aside{grid-column:2;min-width:0}
 .city-aside{align-self:stretch;min-width:0}
 .city-aside .aside-card{position:sticky;top:116px}
 @media (max-width:760px){
+  .split.city-layout > .city-body,
+  .split.city-layout > .city-aside{grid-column:1}
   .city-stats{grid-template-columns:1fr !important}
   .city-stats > div + div{border-left:0;border-top:1px solid var(--line)}
   .city-shots,.city-steps ol{grid-template-columns:1fr}

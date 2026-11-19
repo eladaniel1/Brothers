@@ -44,7 +44,7 @@ const faqs = [
     ['Which areas do you serve?', 'Hillsborough, Pinellas, Pasco, Manatee and Sarasota counties. Our office is at 13542 N Florida Ave, Tampa, FL 33613.'],
     ['Do you pull the permits?', 'Yes. We prepare and file the permit applications with your city or county and schedule the inspections the job needs.'],
     ['Will I get a written contract?', 'Yes. Every job has a written contract with the scope of work, the price and the payment schedule. If something changes, it goes on a signed change order before the work is done.'],
-    ['Can I finance my project?', 'Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary.'],
+    ['Can I finance my project?', 'Financing is available through Upgrade and Ygrene, subject to credit approval.'],
     ['How do I get an estimate?', 'Call (855) 445-2551 or send the estimate form. We set up a visit to see the space, then send you a written proposal.'],
 ];
 
@@ -185,11 +185,16 @@ const HomePage = () => (
             <div className="fin-copy">
                 <Eyebrow>Pay over time</Eyebrow>
                 <h2>Start now.<br />Pay monthly.</h2>
-                <p className="lead" style={{ marginTop: 22 }}>Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary.</p>
+                <p className="lead" style={{ marginTop: 22 }}>Financing is available through Upgrade and Ygrene, subject to credit approval.</p>
                 <div className="btns"><Link className="btn btn-primary" to="/financing/">See Financing Options</Link></div>
             </div>
             <div>
-                <div className="lenders"><span>Through</span><b>Upgrade</b><b>Ygrene</b><span className="fine">Subject to credit approval. Terms vary.</span></div>
+                <div className="lender-card">
+                    <p className="k">Financing partners</p>
+                    <div className="lender-names"><b>Upgrade</b><b>Ygrene</b></div>
+                    <p>Both partners are available when you want to pay over time. The lender sets the details.</p>
+                    <p className="fine">Subject to credit approval.</p>
+                </div>
             </div>
         </div></section>
 

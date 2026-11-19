@@ -124,17 +124,39 @@ const LocalServicePage = () => {
                 crumbs={[{ label: 'Services', to: '/services/' }, { label: service.title, to: `/services/${slug}/` }, { label: city.name }]}
             />
             <Section width="wide">
+                <dl className="city-stats" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', marginBottom: 36 }}>
+                    <div>
+                        <dt className="num">{company.licenseNumber}</dt>
+                        <dd className="lbl">Florida GC license</dd>
+                    </div>
+                    <div>
+                        <dt className="num">{city.county.replace(/ County$/, '')}</dt>
+                        <dd className="lbl">County</dd>
+                    </div>
+                    <div>
+                        <dt className="num" style={{ fontSize: copy.permitShort.length > 16 ? 22 : undefined }}>{copy.permitShort}</dt>
+                        <dd className="lbl">{copy.permitLabel}</dd>
+                    </div>
+                </dl>
                 <div className="split city-layout">
-                    <p className="small mute">Last updated {LAST_UPDATED}</p>
                     <div className="prose city-body min-w-0">
+                        <p className="small mute">Last updated {LAST_UPDATED}</p>
                         <h2>{copy.answerHeading}</h2>
                         <p id="aeo-answer">{copy.answer}</p>
-                        <h2>{copy.stepsHeading}</h2>
-                        <ol>
-                            {copy.steps.map((step) => <li key={step}>{step}</li>)}
-                        </ol>
                         <h2>{copy.includedHeading}</h2>
                         <p>{copy.included}</p>
+                        <div className="city-steps">
+                            <h2>{copy.stepsHeading}</h2>
+                            <ol>
+                                {copy.steps.map((step, index) => (
+                                    <li key={step}>
+                                        <span className="n">0{index + 1}</span>
+                                        <h3>{copy.stepTitles[index]}</h3>
+                                        <p>{step}</p>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
                         <h2>{copy.rulesHeading}</h2>
                         <p>{copy.rules}</p>
                         <p>

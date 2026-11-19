@@ -597,17 +597,22 @@ export const SafetyPage = () => (
 
 export const FinancingPage = () => (
     <SiteLayout>
-        <Meta title="Financing | Brothers Remodelers" description="Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary. Ask at your estimate." />
-        <PageHero title="Remodel now. Pay over time." subtitle="Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary." image="/images/kitchen.webp" crumbs={[{ label: 'Financing' }]} />
+        <Meta title="Financing | Brothers Remodelers" description="Financing is available through Upgrade and Ygrene, subject to credit approval. Ask at your estimate." />
+        <PageHero title="Remodel now. Pay over time." subtitle="Financing is available through Upgrade and Ygrene, subject to credit approval." image="/images/kitchen.webp" crumbs={[{ label: 'Financing' }]} />
         <section className="sec"><div className="wrap fin">
             <div className="fin-copy">
                 <Eyebrow>Pay over time</Eyebrow>
                 <h2>Ask about financing.</h2>
-                <p className="lead" style={{ marginTop: 22 }}>Financing is available through Upgrade and Ygrene, subject to credit approval. Terms vary. The lender sets the details. Ask at your free estimate.</p>
+                <p className="lead" style={{ marginTop: 22 }}>Financing is available through Upgrade and Ygrene, subject to credit approval. The lender sets the details. Ask at your free estimate.</p>
                 <div className="btns"><Link className="btn btn-primary" to="/contact/">Get a Free Estimate</Link></div>
             </div>
             <div>
-                <div className="lenders"><span>Through</span><b>Upgrade</b><b>Ygrene</b><span className="fine">Subject to credit approval. Terms vary.</span></div>
+                <div className="lender-card">
+                    <p className="k">Financing partners</p>
+                    <div className="lender-names"><b>Upgrade</b><b>Ygrene</b></div>
+                    <p>Both partners are available when you want to pay over time. The lender sets the details.</p>
+                    <p className="fine">Subject to credit approval.</p>
+                </div>
             </div>
         </div></section>
         <CtaBand heading="Ask about financing at your estimate." />
