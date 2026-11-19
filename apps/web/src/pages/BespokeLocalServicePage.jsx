@@ -185,20 +185,20 @@ const BespokeLocalServicePage = ({ page }) => {
                 image={page.image}
                 crumbs={page.crumbs}
             />
-            <section className="w-full min-w-0 max-w-full border-b border-neutral-200 bg-white py-14 lg:py-16">
-                <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-2 gap-px bg-neutral-200 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
-                    {page.stats.map((stat) => (
-                        <div key={stat.label} className="min-w-0 bg-white px-4 py-5">
-                            <p className="font-display break-words text-2xl font-bold text-[hsl(var(--brand))] sm:text-3xl">
-                                {stat.display || <CountUp value={stat.value} suffix={stat.suffix} />}
-                            </p>
-                            <p className="mt-1 text-xs font-semibold uppercase leading-snug tracking-wide text-neutral-500">{stat.label}</p>
-                        </div>
-                    ))}
+            <section className="sec" style={{ paddingTop: 0, paddingBottom: 0 }}>
+                <div className="wrap">
+                    <dl className="city-stats" style={{ gridTemplateColumns: `repeat(${page.stats.length}, minmax(0, 1fr))` }}>
+                        {page.stats.map((stat) => (
+                            <div key={stat.label}>
+                                <dt className="num">{stat.display || <CountUp value={stat.value} suffix={stat.suffix} />}</dt>
+                                <dd className="lbl">{stat.label}</dd>
+                            </div>
+                        ))}
+                    </dl>
                 </div>
             </section>
             <Section width="page">
-                <div className="split">
+                <div className="split city-layout">
                     <div className="prose min-w-0">
                         <dl className="grid gap-3 border border-neutral-200 bg-neutral-50 p-4 sm:grid-cols-2">
                             {page.trust.map((item) => (
@@ -220,7 +220,7 @@ const BespokeLocalServicePage = ({ page }) => {
                                 <article key={tier.name} className="min-w-0 max-w-full border border-neutral-200 p-4">
                                     <h3 className="font-display break-words text-lg font-bold uppercase">{tier.name}</h3>
                                     <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-neutral-500">{tier.size}</p>
-                                    <p className="font-display mt-3 text-2xl font-bold text-[hsl(var(--brand))]">{tier.costLabel}</p>
+                                    <p className="font-display mt-3 text-2xl font-bold" style={{ color: 'var(--navy-900)' }}>{tier.costLabel}</p>
                                     <p className="text-sm text-neutral-500">{tier.perSqFt}</p>
                                     <p className="mt-3 text-sm leading-relaxed text-neutral-700">{tier.included}</p>
                                     <p className="mt-3 text-sm leading-relaxed text-neutral-700"><span className="font-semibold text-neutral-900">Timeline. </span>{tier.timeline}</p>
@@ -244,31 +244,30 @@ const BespokeLocalServicePage = ({ page }) => {
 
                         <h2 className="font-display mt-12 break-words text-2xl font-bold uppercase md:text-3xl">{page.galleryHeading}</h2>
                         <p className="mt-4 leading-relaxed text-neutral-600">{page.galleryIntro}</p>
-                        <div className="mt-6 grid min-w-0 items-stretch gap-4 sm:grid-cols-2">
+                        <div className="city-shots">
                             {page.gallery.map((shot) => (
-                                <article key={shot.title} className="group relative isolate h-full min-w-0 overflow-hidden">
-                                    <img src={shot.image} alt="" style={{ objectPosition: shot.imagePosition }} className="h-64 w-full max-w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] sm:h-72" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--ink))] via-[hsl(var(--ink))]/25 to-transparent" />
-                                    <div className="absolute inset-x-0 bottom-0 min-w-0 p-5 text-white">
-                                        <p className="text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))]">{shot.neighborhood}</p>
-                                        <h3 className="font-display mt-1 break-words text-xl font-bold uppercase">{shot.title}</h3>
-                                        <p className="mt-1 text-sm leading-relaxed text-white/80">{shot.scope}</p>
-                                        <p className="mt-2 text-xs font-bold uppercase tracking-widest text-white">{shot.tier}</p>
+                                <article key={shot.title} className="city-shot">
+                                    <img src={shot.image} alt="" style={{ objectPosition: shot.imagePosition }} />
+                                    <div className="city-shot-body">
+                                        <p className="k">{shot.neighborhood}</p>
+                                        <h3>{shot.title}</h3>
+                                        <p>{shot.scope}</p>
+                                        <p className="tier">{shot.tier}</p>
                                     </div>
                                 </article>
                             ))}
                         </div>
 
-                        <div className="mt-12 min-w-0 max-w-full bg-[hsl(var(--ink))] px-4 py-8 text-white -mx-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                            <Eyebrow className="text-white/60">On a Tampa job</Eyebrow>
-                            <h2 className="font-display mt-4 break-words text-2xl font-bold uppercase text-white md:text-3xl">{page.processHeading}</h2>
-                            <p className="mt-3 text-sm leading-relaxed text-white/70">{page.processIntro}</p>
-                            <ol className="mt-8 grid min-w-0 items-stretch gap-6 sm:grid-cols-2">
+                        <div className="city-steps">
+                            <Eyebrow>On a Tampa job</Eyebrow>
+                            <h2>{page.processHeading}</h2>
+                            <p className="lead">{page.processIntro}</p>
+                            <ol>
                                 {page.process.map((step, index) => (
-                                    <li key={step.title} className="flex h-full min-w-0 flex-col border-t-2 border-[hsl(var(--brand))] pt-4">
-                                        <span className="font-display text-3xl font-bold text-[hsl(var(--brand))]">0{index + 1}</span>
-                                        <h3 className="font-display mt-2 break-words text-lg font-bold uppercase">{step.title}</h3>
-                                        <p className="mt-auto pt-2 text-sm leading-relaxed text-white/70">{step.text}</p>
+                                    <li key={step.title}>
+                                        <span className="n">0{index + 1}</span>
+                                        <h3>{step.title}</h3>
+                                        <p>{step.text}</p>
                                     </li>
                                 ))}
                             </ol>
@@ -278,8 +277,8 @@ const BespokeLocalServicePage = ({ page }) => {
                         <p className="mt-4 leading-relaxed text-neutral-600">{page.neighborhoodIntro}</p>
                         <div className="mt-6 grid items-stretch gap-6 md:grid-cols-2">
                             {page.neighborhoods.map((card) => (
-                                <article key={card.name} className="flex h-full min-w-0 flex-col border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
-                                    <p className="text-xs font-semibold uppercase tracking-widest text-[hsl(var(--brand))]">{card.eraTag}</p>
+                                <article key={card.name} className="city-rule flex h-full min-w-0 flex-col">
+                                    <p className="era">{card.eraTag}</p>
                                     <h3 className="font-display mt-2 text-lg font-bold uppercase">{card.name}</h3>
                                     <p className="mt-2 text-sm leading-relaxed text-neutral-700">{card.housingFact}</p>
                                     <p className="mt-auto pt-2 text-sm leading-relaxed text-neutral-600">{card.remodelImpact}</p>
@@ -338,7 +337,7 @@ const BespokeLocalServicePage = ({ page }) => {
                         <p className="mt-4 leading-relaxed text-neutral-600">{page.reviewsIntro}</p>
                         <div className="mt-6 grid min-w-0 items-stretch gap-4 sm:grid-cols-2">
                             {page.reviews.map((review) => (
-                                <blockquote key={review.neighborhood} className="flex h-full min-w-0 flex-col border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
+                                <blockquote key={review.neighborhood} className="city-rule flex h-full min-w-0 flex-col">
                                     <div className="flex flex-wrap items-center justify-between gap-2">
                                         <p className="text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))]">{review.neighborhood}</p>
                                     </div>
@@ -384,7 +383,7 @@ const BespokeLocalServicePage = ({ page }) => {
                         </ul>
                     </div>
 
-                    <aside className="min-w-0 max-w-full space-y-8">
+                    <aside className="city-aside">
                         <GetEstimateCTA heading="Get an Estimate" text={page.ctaText} />
                         <div>
                             <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">{page.nearbyHeading}</p>

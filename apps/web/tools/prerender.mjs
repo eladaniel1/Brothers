@@ -126,6 +126,7 @@ try {
             '    RewriteEngine On',
             '# 301 redirect the Sarasota County Lakewood Ranch page to the Manatee',
             '# County page (the canonical one). Runs before the 404 rule.',
+            '    RewriteRule ^service-areas/?$ /areas-we-serve/ [R=301,L]',
             '    RewriteRule ^areas-we-serve/sarasota/lakewood-ranch/?$ /areas-we-serve/manatee/lakewood-ranch/ [R=301,L]',
             '# 301 redirect any slashless URL to its trailing-slash canonical form (the',
             '# homepage keeps its single slash). Only real directories (prerendered',

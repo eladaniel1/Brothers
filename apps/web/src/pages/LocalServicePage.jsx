@@ -108,7 +108,7 @@ const LocalServicePage = () => {
                 crumbs={[{ label: 'Services', to: '/services' }, { label: service.title, to: `/services/${slug}` }, { label: city.name }]}
             />
             <Section width="wide">
-                <div className="split">
+                <div className="split city-layout">
                     <div className="prose min-w-0">
                         <Eyebrow>Short answer</Eyebrow>
                         <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Who does {trade.phrase} work in {city.name}?</h2>
@@ -133,7 +133,7 @@ const LocalServicePage = () => {
                         <h3 className="font-display mt-12 text-2xl font-bold uppercase">{trade.name} considerations in {city.name}</h3>
                         <div className="mt-6 grid gap-6 md:grid-cols-2">
                             {notes.map(([noteTitle, text]) => (
-                                <div key={noteTitle} className="border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
+                                <div key={noteTitle} className="city-rule">
                                     <h4 className="font-display text-lg font-bold uppercase">{noteTitle}</h4>
                                     <p className="mt-2 text-sm leading-relaxed text-neutral-600">{text}</p>
                                 </div>
@@ -165,7 +165,7 @@ const LocalServicePage = () => {
                         </p>
                     </div>
 
-                    <aside className="min-w-0 max-w-full space-y-8 lg:sticky lg:top-28 lg:self-start">
+                    <aside className="city-aside">
                         <GetEstimateCTA heading="Get an Estimate" text={`Free, no-obligation ${trade.phrase} estimate in ${city.name}. Line-item proposal in writing.`} />
                         <div>
                             <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">{trade.name} nearby</p>

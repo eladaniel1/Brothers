@@ -2,7 +2,9 @@
   "buildCommand": "vite build --outDir dist && PRERENDER_OUT_DIR=dist node tools/prerender.mjs",
   "outputDirectory": "dist",
   "trailingSlash": true,
-  "redirects": [
+    "redirects": [
+    { "source": "/service-areas", "destination": "/areas-we-serve/", "permanent": true },
+    { "source": "/service-areas/", "destination": "/areas-we-serve/", "permanent": true },
     { "source": "/areas-we-serve/sarasota/lakewood-ranch/", "destination": "/areas-we-serve/manatee/lakewood-ranch/", "permanent": true }
   ]
 }

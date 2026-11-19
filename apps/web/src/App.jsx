@@ -64,6 +64,7 @@ export const AppRoutes = () => (
                 <Route path="/services/home-additions" element={<HomeAdditionsPage />} />
                 <Route path="/services/:slug" element={<ServiceDetailPage />} />
                 <Route path="/services/:slug/:citySlug" element={<LocalServicePage />} />
+                <Route path="/service-areas" element={<Navigate to="/areas-we-serve" replace />} />
                 <Route path="/areas-we-serve" element={<AreasPage />} />
                 <Route path="/areas-we-serve/:slug" element={<AreaDetailPage />} />
                 <Route path="/areas-we-serve/hillsborough/tampa" element={<TampaPage />} />
