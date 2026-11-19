@@ -1,0 +1,365 @@
+export const fencingEssays = {
+    tampa: {
+        title: "Tampa Fence Layout, Posts, and Permits",
+        description: "Tampa fence layout from your survey, with posts, panels, and gates. City or county permit. Brothers Remodelers, CGC1542451.",
+        answer: "Brothers Remodelers lays out a Tampa fence from the survey you bring, then sets the posts, hangs the panels, and builds the gates. Most new fences need a permit and must stand on your side of the property line. License CGC1542451. The office is at 13542 N Florida Ave. Workmanship is warranted for two years.",
+        included: [
+            "Bring the survey before anyone picks a panel. We walk the pins that are still in the ground and the corners that have to be measured, then mark the run on your side of the property line. An old fence is a clue, not a boundary. If the boards drifted, the new posts do not follow them.",
+            "The build is posts, panels, and gates. You choose the material. We set the posts, hang the panels, and fit each gate to the way the yard is actually used, including the gate at the drive if that leaf is part of the run. Where the fence is the pool barrier, height, gaps, and a self-closing, self-latching gate come from the Florida Building Code.",
+            "Removal sits in the same proposal when the old posts are coming out. A repair that leaves the posts in place is written as a repair, because that scope and a new fence are not the same filing. Digging waits until the line and the permit are both settled.",
+        ],
+        steps: [
+            { title: "Survey on the table", text: "You bring the survey. We read the pins and draw the run on your side of the line, with every gate located. A neighbor's memory of the hedge is not a corner." },
+            { title: "Scope in writing", text: "The proposal lists posts, panel length, and each gate. A pool-barrier gate is described on its own, including self-closing, self-latching hardware, so it is not priced as a yard latch." },
+            { title: "File before holes", text: "Most new fences need a permit first. Inside the city we file with the City of Tampa Construction Services Center through Accela at aca.tampagov.net and ePermitHub. A county parcel is filed with Hillsborough County." },
+            { title: "Set, hang, walk", text: "Posts are set, panels hang, and gates are adjusted until they latch. You walk the finished line with us. That workmanship is warranted for two years under CGC1542451." },
+        ],
+        permits: [
+            "Inside the City of Tampa, the fence application goes to the Construction Services Center. Accela at aca.tampagov.net and ePermitHub are the two rooms that application moves through. The permit authorizes a fence on your side of the survey line. The survey, not the permit card, places that line.",
+            "A Tampa mailing address still has to be checked. Carrollwood, Town 'n' Country, Westchase, and Lake Magdalene are unincorporated Hillsborough County, and a fence on those parcels is a county permit. We read the parcel before we address the application.",
+            "File through December 30, 2026 and the review uses the Florida Building Code, 8th Edition (2023), the edition that became effective December 31, 2023. December 31, 2026 is the day the 9th Edition becomes effective. If the lot is on the bay and the department asks for flood or wind, both are taken from the address. We do not write a zone or a speed into the scope.",
+        ],
+        local: [
+            "Tampa yards change the fence more than the panel style does. A tight side yard changes the gate swing. A deep rear yard changes the post count. The survey is how those dimensions get into the proposal instead of being discovered after the first hole.",
+            "Along the bay, flood and wind enter the file only when the department requires them, and they come from the address under review. Inland of that, the same company still builds from the survey. The office is at 13542 N Florida Ave, Tampa, under license CGC1542451.",
+        ],
+        cost: [
+            "Length, material, gate count, and old-post removal are what move the price. A pool-barrier gate adds the closing and latching hardware the code requires. The number is written after the survey is measured.",
+            "The proposal is the price. It names the layout, whether the filing is the city or Hillsborough County, and a two-year workmanship warranty. A photo of the front yard leaves the side runs and the gates unmeasured.",
+        ],
+        faqs: [
+            { q: "Which office permits a fence with a Tampa address?", a: "The City of Tampa Construction Services Center, through Accela at aca.tampagov.net and ePermitHub, when the parcel is inside the city. Carrollwood, Town 'n' Country, Westchase, and Lake Magdalene are Hillsborough County permits." },
+            { q: "Can the fence stand on the property line?", a: "The new fence has to sit on your side of the line. We place it from the survey you bring. The permit does not move a pin." },
+            { q: "What changes on a pool-barrier fence?", a: "Height, gaps, and a self-closing, self-latching gate have to meet the Florida Building Code. We follow those rules. We do not invent a Tampa height to stand in for them." },
+            { q: "What should I have at the visit?", a: "The survey. If a pool is part of the barrier question, say so at the walk. Material choices can wait until the line is drawn." },
+            { q: "How long is the fence warranty?", a: "Brothers Remodelers warrants the workmanship for two years. The license on the contract is CGC1542451." },
+        ],
+    },
+    "st-petersburg": {
+        title: "St. Petersburg Fence from Your Survey",
+        description: "St. Petersburg fence posts, panels, and gates laid out from your survey. City permit. Brothers Remodelers, CGC1542451.",
+        answer: "A new fence in St. Petersburg is laid out from your survey, on your side of the property line, then built as posts, panels, and gates. Most new fences need a City of St. Petersburg permit. Brothers Remodelers holds Florida license CGC1542451 and warrants the workmanship for two years.",
+        included: [
+            "St. Petersburg lots often put the useful yard on a narrow side and a short rear. That is a layout problem before it is a materials problem. We start with your survey, mark your side of the property line, and only then talk about panels. Posts that chase an old fence can land on the neighbor's ground.",
+            "Gates deserve their own look. A gate to the alley, a gate at the drive, and a gate into a pool enclosure are three pieces of hardware, not one repeated leaf. If the fence is the pool barrier, the Florida Building Code supplies the height, the gap limits, and the self-closing, self-latching gate. A privacy run along the side yard does not pick up those rules by being on the same street.",
+            "The City of St. Petersburg is the permit authority for a fence inside the city, in Pinellas County. We file a new fence before the auger comes out. Panel replacement on posts that remain is written separately when that is truly the scope, so the contract matches the work.",
+            "You walk the marked line before we dig. That walk is where a gate that looked fine on paper turns out to hit a hose bib or a tree the survey did not need to name. Moving the leaf then is a pencil change. Moving it after the post is set is a different job.",
+        ],
+        steps: [
+            { title: "Walk the pins", text: "Survey in hand, we walk the St. Petersburg line and mark posts and gates on your side of it. Corners that are buried get measured. We do not adopt the neighbor's fence as the plat." },
+            { title: "Name the barrier", text: "If a pool uses this fence as its barrier, the proposal states the code height, gap, and self-closing, self-latching gate rules we will build to. If it does not, the proposal says that too." },
+            { title: "City filing", text: "Most new fences are filed with the City of St. Petersburg before posts are set. Pinellas County is the county the city sits in. The city is the counter for an address inside the limits." },
+            { title: "Build and latch", text: "Posts, then panels, then gates adjusted until each one closes and latches. Workmanship on that installation is warranted for two years by Brothers Remodelers, CGC1542451." },
+        ],
+        permits: [
+            "Plan on a City of St. Petersburg permit for a new fence. The fence still has to stand on your side of the property line, survey in hand. Filing does not start until that line is the line on the drawing.",
+            "This is a coastal city in Pinellas County. When the department requires flood or wind information on the application, both come from the address. We leave zone names and wind speeds off the proposal and let the reviewer pull what the address requires.",
+            "Through December 30, 2026, a St. Petersburg fence application is reviewed on the 8th Edition (2023) of the Florida Building Code. That edition has been effective since December 31, 2023. The 9th Edition becomes effective December 31, 2026, and an application filed before then is not reviewed on it.",
+        ],
+        local: [
+            "Salt air on a Pinellas peninsula lot is a reason to choose the material with your eyes open. It is not a reason to skip the survey or to set posts before the city permit. The coast changes the exposure. The building department still changes the schedule.",
+            "Brothers Remodelers files and builds the fence under CGC1542451. The Tampa office, 13542 N Florida Ave, is where the license holder works from. The St. Petersburg permit is still a city file, reviewed in St. Petersburg, not a Hillsborough County file with a different city's name on the mail.",
+        ],
+        cost: [
+            "A longer run, a heavier material, another gate, or posts that have to be pulled all change the written price. Pool-barrier hardware changes it again. We measure those items off the survey and the walk, then price the job once.",
+            "There is no rate-per-foot card for St. Petersburg. The proposal lists the layout, the city permit, and a two-year workmanship warranty so you can compare a complete fence with a complete fence.",
+        ],
+        faqs: [
+            { q: "Who permits a new fence in St. Petersburg?", a: "The City of St. Petersburg. The city is in Pinellas County. Most new fences need that permit, and we file it before posts are set." },
+            { q: "Will you follow the old fence line?", a: "Only when the survey shows the old fence is already on your side of the line. Otherwise the new posts move to your side. Bring the survey." },
+            { q: "What pool-gate rules do you build to?", a: "Florida Building Code rules for barrier height, gaps, and a self-closing, self-latching gate. We do not substitute a number the city never published in your contract." },
+            { q: "Does the bay change the permit?", a: "The city may require flood and wind information from the address. We supply what that review asks for. We do not guess a zone or a miles-per-hour figure." },
+            { q: "What warranty comes with the fence?", a: "A two-year workmanship warranty from Brothers Remodelers, Florida license CGC1542451." },
+        ],
+    },
+    clearwater: {
+        title: "Clearwater Fence Posts, Panels, Gates",
+        description: "Clearwater fences laid out on your side of the survey line. City of Clearwater permit. CGC1542451. Two-year workmanship warranty.",
+        answer: "Brothers Remodelers builds Clearwater fences from the survey: posts, panels, and the gates the yard needs. The new fence sits on your side of the line, and most new fences need a City of Clearwater permit. Bring the survey. We will not place that line from memory. License CGC1542451. Workmanship carries a two-year warranty.",
+        included: [
+            "The first Clearwater question is whether the posts stay. Boards on sound posts can be a repair. A new line, new posts, or a fence that moves is a new fence, and most new fences need a permit. We say which one you are buying in the proposal so the city filing matches the holes we intend to dig.",
+            "Layout still comes from your survey, on your side of the property line. We count posts, place gates, and note which leaf has to clear a car, a meter, or a pool deck. A pool-barrier fence has to meet Florida Building Code height, gap, and self-closing, self-latching gate rules. Those rules are in the code. They are not a height we assign to Clearwater.",
+            "Clearwater is in Pinellas County and the city issues the permit for an address inside the limits. Coastal review can ask for flood and wind. When it does, both are read from the address. The fence is then posts, panels, and gates, built after that file allows the digging.",
+        ],
+        steps: [
+            { title: "Repair or new line", text: "We look at the posts that are there. The proposal says whether they stay or whether this is a new fence with a City of Clearwater permit. The two scopes are not blended to make the filing easier." },
+            { title: "Survey layout", text: "Your survey sets the line. We mark posts and gates on your side of it, including a pool gate when the fence is the barrier. Buried pins are measured, not assumed." },
+            { title: "Permit, then posts", text: "Most new fences are filed with the City of Clearwater before an auger starts. The application describes the run the survey produced, not a sketch from the sidewalk." },
+            { title: "Hardware and warranty", text: "Panels hang and gates are set to close and latch. On a barrier, that latch is the self-closing, self-latching hardware the Florida Building Code requires. Workmanship is warranted for two years." },
+        ],
+        permits: [
+            "The City of Clearwater reviews a new fence inside the city limits. Pinellas County is the county. It is not the default counter for a house that is actually in the city. We confirm the limits from the parcel before the application is addressed.",
+            "The fence belongs on your side of the property line. Bring the survey to the visit so the drawing and the holes tell the same story. A permit issued on a bad line is a fence you may be asked to move.",
+            "A Clearwater fence permit submitted through December 30, 2026 is reviewed under the Florida Building Code, 8th Edition (2023). That edition took effect December 31, 2023. The 9th Edition takes effect on December 31, 2026. Coastal flood and wind, if the department requires them on this address, are taken from the address itself.",
+        ],
+        local: [
+            "Clearwater runs from inland blocks to lots with a coastal exposure. The inland fence and the waterfront fence use the same survey rule and the same city counter when both parcels are inside the limits. Exposure changes the material conversation. It does not change who permits the posts.",
+            "Brothers Remodelers holds CGC1542451 and keeps an office at 13542 N Florida Ave in Tampa. The Clearwater file is still a City of Clearwater file. Distance from the office is not a reason to skip the permit or to build across the line.",
+        ],
+        cost: [
+            "Price follows the measured run, the material, each gate, and the labor of pulling old posts when they go. Barrier hardware is its own cost because the closer and the latch are part of the code, not a trim upgrade.",
+            "You receive a written figure for that scope, with the city permit and a two-year workmanship warranty identified. We do not quote Clearwater fences by the foot from a street photo.",
+        ],
+        faqs: [
+            { q: "Is a new panel on old posts a new fence?", a: "Not always. If the posts stay and the line does not move, the proposal can be a repair. New posts or a new line are usually a permitted fence. We say which one in writing." },
+            { q: "Who reviews the Clearwater permit?", a: "The City of Clearwater, for an address inside the city. The city is in Pinellas County. Most new fences need that city permit before posts are set." },
+            { q: "Which pool-barrier rules apply?", a: "Florida Building Code height, gap, and self-closing, self-latching gate rules. We build to those. We do not print a city height the code did not give us." },
+            { q: "Do I have to bring a survey?", a: "Yes. The fence has to sit on your side of the property line, and the survey is how that side is found. We will not place posts from memory or from the old boards alone." },
+            { q: "Who warrants the finished fence?", a: "Brothers Remodelers, license CGC1542451, warrants the workmanship for two years." },
+        ],
+    },
+    sarasota: {
+        title: "Sarasota Fence Line and Permit Path",
+        description: "Sarasota fence layout from your survey. City permit inside the limits, Sarasota County outside. CGC1542451.",
+        answer: "Fence work in Sarasota starts with your survey and ends with posts, panels, and gates on your side of the property line. Most new fences need a permit. Inside the city limits that permit is the City of Sarasota. Outside them it is Sarasota County. Brothers Remodelers, CGC1542451, warrants workmanship for two years.",
+        included: [
+            "People say Sarasota for addresses the city does not review. We separate those parcels before a post is ordered. Inside the limits, the City of Sarasota takes the fence permit. Outside them, Sarasota County does. The survey helps the line. The parcel tells us the counter. Both belong at the first visit.",
+            "On your side of that line we lay out posts, panels, and gates. Gate swing is drawn, not guessed, because a leaf that opens into a parked car is a layout error. If the fence barriers a pool, the Florida Building Code controls height, openings, and a self-closing, self-latching gate. A yard fence that does not barrier a pool is specified without those hardware requirements.",
+            "Sarasota is coastal. Flood and wind show up in a fence review when the department requires them for the address, and they are read from that address. The edition of the code does not change because the lot can see the water. The questions on the application can.",
+        ],
+        steps: [
+            { title: "Name the office", text: "We confirm city limits versus Sarasota County from the parcel. The proposal names the office that will see the fence. A mailing city of Sarasota is not that confirmation." },
+            { title: "Draw from the survey", text: "Posts and gates are marked on your side of the property line. You see the run before it is filed. Bring the survey. We do not reconstruct the lot from landscaping." },
+            { title: "File the new fence", text: "Most new fences need a permit, and we file that permit before digging. Pool-barrier notes, when they apply, go in the same application so the gate is reviewed with the run." },
+            { title: "Build on your side", text: "The posts, panels, and gates follow the filed layout. You walk it at the end. Brothers Remodelers warrants the workmanship for two years under CGC1542451." },
+        ],
+        permits: [
+            "Two counters cover this area. The City of Sarasota permits a fence inside the city limits. Sarasota County permits a fence on a parcel outside those limits. We file with the one the parcel belongs to, and we keep the fence on your side of the line either way.",
+            "Most new fences need that permit. A pool-barrier fence also has to satisfy Florida Building Code height, gap, and self-closing, self-latching gate rules. The barrier rules ride with the code. They are not a separate height we invent for the city or the county.",
+            "City or county, a fence application through December 30, 2026 is reviewed on the Florida Building Code, 8th Edition (2023), which has been effective since December 31, 2023. The 9th Edition takes effect December 31, 2026. When the department requires flood or wind, both are taken from the address on a coastal lot.",
+        ],
+        local: [
+            "The practical Sarasota mistake is filing the city for a county parcel, or the reverse, because the postal name matched. We would rather spend the visit on the parcel than spend a week in the wrong queue. The fence itself is still a surveyed line of posts, panels, and gates.",
+            "Coastal exposure is real here, and the department decides whether this address owes flood and wind information. Brothers Remodelers builds under CGC1542451 from the Tampa office at 13542 N Florida Ave. The local file stays with Sarasota's city or with Sarasota County.",
+        ],
+        cost: [
+            "The written price moves with run length, material, gates, old-fence removal, and barrier hardware when a pool is involved. Which office reviews the permit can change the paperwork. It does not become a price per foot.",
+            "You compare proposals on the layout and the warranty, not on a unit rate. Ours includes the permit path we named and a two-year workmanship warranty.",
+        ],
+        faqs: [
+            { q: "Is my Sarasota fence a city permit?", a: "Only when the parcel is inside the City of Sarasota. Otherwise Sarasota County reviews it. We check that before we file. Most new fences need the permit either way." },
+            { q: "Where will the posts sit?", a: "On your side of the property line, taken from your survey. Bring that survey to the visit. Agreement from a neighbor is not a survey." },
+            { q: "How do pool fences differ?", a: "A fence used as a pool barrier must meet Florida Building Code height, gap, and self-closing, self-latching gate rules. We state those rules in the proposal and build to them." },
+            { q: "Which building code edition applies?", a: "Applications through December 30, 2026 are reviewed under the 8th Edition (2023), effective December 31, 2023. The effective date of the 9th Edition is December 31, 2026." },
+            { q: "What warranty is on the contract?", a: "Two years on workmanship, from Brothers Remodelers, license CGC1542451." },
+        ],
+    },
+    bradenton: {
+        title: "Bradenton Fence Survey and Gates",
+        description: "Bradenton fence posts, panels, and gates from your survey. City or Manatee County permit. License CGC1542451.",
+        answer: "In Bradenton, Brothers Remodelers lays the fence out from the survey you own, then sets posts, panels, and gates on your side of the line. Most new fences are permitted. The city reviews addresses inside the limits. Manatee County reviews unincorporated addresses. License CGC1542451. The workmanship warranty is two years.",
+        included: [
+            "Older Bradenton fences often follow a hedge or a mower's path. The new one follows the survey, on your side of the property line. We mark that side, count the posts, and place every gate before we talk about how the panels look. A straight board over the line is still over the line.",
+            "You choose the material. We build posts, panels, and gates. A gate at a drive is drawn so the leaf clears the car. A gate that barriers a pool is specified with a self-closer and a self-latching device, at the height and with the gaps the Florida Building Code requires. We do not publish a Bradenton-only height in place of that code.",
+            "Inside the city limits the permit is the City of Bradenton. An unincorporated address that people still call Bradenton is Manatee County. Most new fences need the permit that matches the parcel. We write the office into the proposal so you can see it before the application goes in.",
+        ],
+        steps: [
+            { title: "Survey over the hedge", text: "Bring the survey. We locate your side of the line even where plantings have hidden the pins. The layout of posts and gates is marked for you to see." },
+            { title: "Write each gate", text: "Every gate is listed. Pool-barrier gates include the self-closing, self-latching hardware and the code's height and gap rules. Yard gates are listed without that hardware when they are not the barrier." },
+            { title: "City or Manatee County", text: "We file most new fences with the City of Bradenton inside the limits and with Manatee County when the parcel is unincorporated. Posts wait on that filing." },
+            { title: "Hang and warrant", text: "Panels and gates go up on the posts we set. You walk the line. Workmanship is warranted for two years. The license is CGC1542451." },
+        ],
+        permits: [
+            "Bradenton splits by the city limits. The City of Bradenton reviews a fence inside those limits. Manatee County reviews a fence on unincorporated ground that still uses the Bradenton name. Either file describes a fence on your side of the survey line.",
+            "Coastal lots can draw a flood or wind question. When the department requires it, the information comes from the address. We do not attach a zone label or a wind speed of our own. The fence scope stays posts, panels, and gates.",
+            "A Bradenton-area fence application in by December 30, 2026 is reviewed under the 8th Edition (2023) of the Florida Building Code, effective December 31, 2023. Review moves to the 9th Edition when that edition becomes effective on December 31, 2026.",
+        ],
+        local: [
+            "The Manatee County coast and the blocks farther from the water do not share one exposure, and they do not always share one building counter. What they share is the survey. We use it in both places, and we say in the proposal which office will see the permit.",
+            "Brothers Remodelers is based at 13542 N Florida Ave, Tampa, and holds CGC1542451. Building in Bradenton does not move the permit to Tampa. The city or Manatee County keeps the file.",
+        ],
+        cost: [
+            "Measured length, the material you select, the gates, and removal of an old fence set the price. Barrier hardware is added only when the fence is the pool barrier. The figure is a proposal, not a price per foot.",
+            "That proposal also names the permit office and the two-year workmanship warranty. You can see whether you are buying a city filing or a Manatee County filing before you sign.",
+        ],
+        faqs: [
+            { q: "City of Bradenton or Manatee County?", a: "City, when the address is inside the city limits. Manatee County, when the address is unincorporated. We confirm the parcel and file most new fences there before any posts are set." },
+            { q: "What is actually built?", a: "Posts, panels, and gates, laid out from your survey on your side of the property line. You choose the material. We set and hang the fence." },
+            { q: "Do you use a local fence-height number?", a: "No. A pool barrier follows Florida Building Code height, gap, and self-closing, self-latching gate rules. An ordinary yard fence is not assigned a height we invented for the city." },
+            { q: "When does the 9th Edition apply?", a: "That next book, the 9th Edition, becomes effective on December 31, 2026. An application through December 30, 2026 is still reviewed on the 8th Edition (2023), effective since December 31, 2023." },
+            { q: "Is workmanship warranted?", a: "Yes. Brothers Remodelers warrants workmanship for two years under Florida license CGC1542451." },
+        ],
+    },
+    brandon: {
+        title: "Brandon Fence Permits, County Only",
+        description: "Brandon fence layout from your survey. Hillsborough County permit, posts, panels, and gates. CGC1542451.",
+        answer: "Brandon is unincorporated, so a new fence is a Hillsborough County permit, not a city one. Most new fences need that permit. Brothers Remodelers still starts from your survey, keeps the fence on your side of the line, and builds the posts, panels, and gates. License CGC1542451. Workmanship is warranted for two years.",
+        included: [
+            "There is no City of Brandon building counter for this work. Brandon is unincorporated Hillsborough County, and the county reviews the fence. We say that at the start so nobody waits on a city application that does not exist. The survey is still required. The county permit does not locate your corners.",
+            "From that survey we lay out posts, panels, and gates on your side of the property line. Side-yard runs in these subdivisions are often long enough that the post count, not the front gate, is the real scope. Each gate is drawn. A pool-barrier gate is called out with Florida Building Code height, gap, and self-closing, self-latching requirements.",
+            "Old posts come out when the proposal says they come out. Leaving them and only changing panels is a different scope, and we will not describe a new line as a repair to hurry the county file. Digging starts after the permit allows it.",
+        ],
+        steps: [
+            { title: "County, not a city", text: "We identify the parcel as unincorporated Hillsborough County and write the Hillsborough County permit into the proposal. There is no Brandon city fence permit to chase." },
+            { title: "Measure your side", text: "Your survey places the line. We mark posts and gates on your side of it and review that mark with you. Landscaping that has grown across a pin is cut back on the drawing, not adopted as the boundary." },
+            { title: "File, then dig", text: "Most new fences need the county permit before holes are opened. Pool-barrier details go in the filing when the fence serves that role. The code's height and gap rules are the ones we cite." },
+            { title: "Close the fence", text: "We set posts, hang panels, and adjust gates. You walk the run. The two-year workmanship warranty from Brothers Remodelers, CGC1542451, covers that installation." },
+        ],
+        permits: [
+            "Hillsborough County is the permit authority for a Brandon fence. The community is unincorporated. A mailing label that mentions a nearby city does not create a city fence review. We file with the county.",
+            "The fence must sit on your side of the property line. Bring the survey. Most new fences need the permit, and a pool barrier must also meet the Florida Building Code on height, gaps, and a self-closing, self-latching gate.",
+            "For an application filed through December 30, 2026, Hillsborough County reviews a Brandon fence under the Florida Building Code, 8th Edition (2023). That edition became effective December 31, 2023. Review under the 9th Edition starts on its effective date, December 31, 2026. Brandon is inland. We do not add a bay flood sheet the department did not require.",
+        ],
+        local: [
+            "Brandon's fence problems are usually length and gates: a long side line, a pool enclosure, a gate at the driveway. They are not a split between a city hall and a county hall. One county counter, one survey, one line on your side of the pins.",
+            "The company office is in Tampa at 13542 N Florida Ave. The Brandon permit is not a City of Tampa permit, and it is not filed through Tampa's Accela or ePermitHub rooms. License CGC1542451 still covers the workmanship, warranted for two years.",
+        ],
+        cost: [
+            "A longer subdivision line, more gates, pool-barrier hardware, and the removal of old posts are the items that change the price. Material is your choice and it is priced as that choice. Nothing on the proposal is a published price per foot.",
+            "The written proposal shows the county permit, the layout, and a two-year workmanship warranty. That is the page to compare. A per-foot guess from a frontage measurement leaves the side yards out.",
+        ],
+        faqs: [
+            { q: "Does Brandon have its own fence permit?", a: "No. Brandon is unincorporated Hillsborough County, so the county reviews a new fence. Most new fences need that permit. We file it before posts are set." },
+            { q: "What should the survey decide?", a: "The property line, and therefore which side is yours. Posts, panels, and gates are laid out on your side. We need the survey at the visit." },
+            { q: "Are pool fences a different code item?", a: "Yes. A pool-barrier fence must meet Florida Building Code height, gap, and self-closing, self-latching gate rules. We specify that hardware instead of a yard latch." },
+            { q: "Will you use Tampa's permit portal?", a: "No. Tampa's Accela site and ePermitHub are for City of Tampa parcels. A Brandon fence goes to Hillsborough County." },
+            { q: "What warranty is included?", a: "Two years of workmanship from Brothers Remodelers, Florida CGC1542451, with the office at 13542 N Florida Ave, Tampa." },
+        ],
+    },
+    riverview: {
+        title: "Riverview Fence Layout and County File",
+        description: "Riverview fences on your side of the survey line. Hillsborough County permit only. Brothers Remodelers, CGC1542451.",
+        answer: "Riverview sits in unincorporated Hillsborough County, south of Brandon, and the county is the only permit counter for a new fence. Most new fences need the permit. Bring the survey. Brothers Remodelers lays the run out from your survey, on your side of the line, then installs posts, panels, and gates. CGC1542451. Two-year workmanship warranty.",
+        included: [
+            "A builder fence already standing in a Riverview yard does not answer the next one. If the posts come out or the line moves, treat it as a new fence. Most new fences need a Hillsborough County permit. We lay the replacement out from your survey, on your side of the property line, even when the old boards look close.",
+            "South of Brandon, the lots are still county lots. There is no Riverview city building department to file with, and there is no reason to send the application north to a city counter because the mail is confusing. The scope is posts, panels, and gates. You pick the material after the line is marked.",
+            "Pool barriers are specified apart from a side-yard privacy run. The barrier has to meet Florida Building Code height, the limits on gaps, and a self-closing, self-latching gate. We cite the code. We do not invent a Riverview height and hope the inspector accepts it.",
+            "You get a marked layout before digging. That is the moment to move a gate that would block a bin, a meter, or the way you walk to the door. Changing it on paper is part of the layout. Changing it after concrete is around a post is a revision.",
+        ],
+        steps: [
+            { title: "South county parcel", text: "We confirm unincorporated Hillsborough County, south of Brandon, and name that county as the permit office. The proposal does not offer a city alternative." },
+            { title: "Survey the replacement", text: "Bring your survey. The new posts are marked on your side of the line, whether or not a builder fence stood nearby. Gates are located with you." },
+            { title: "Permit the new fence", text: "Most new fences are filed with Hillsborough County before holes open. If the fence barriers a pool, the application includes the code's height, gap, and self-closing, self-latching gate requirements." },
+            { title: "Install and walk", text: "Posts are set, panels are hung, gates are latched. You walk the finished run. Workmanship carries a two-year warranty under license CGC1542451." },
+        ],
+        permits: [
+            "Hillsborough County is the only building department for a Riverview fence. The place is unincorporated, south of Brandon. A new fence on your side of the property line is what we file, survey attached to the thinking even when the county's form asks for less.",
+            "Most new fences need the permit. Replacing a builder fence is not a quiet exception when the posts are new. Pool-barrier work adds the Florida Building Code rules for height, gaps, and a self-closing, self-latching gate on top of the ordinary fence permit.",
+            "Submit the Riverview fence through December 30, 2026 and the Florida Building Code edition on the review is the 8th Edition (2023). It became effective December 31, 2023. The 9th Edition does not become effective before December 31, 2026. This is inland county ground. Flood and wind are not added unless the department actually requires them for the address.",
+        ],
+        local: [
+            "Riverview and Brandon share a county and do not share a city. South of Brandon is still Hillsborough County, with the same kind of county fence file and the same need for your survey. The yards differ. The counter does not.",
+            "Brothers Remodelers will build the fence from the Tampa office at 13542 N Florida Ave under CGC1542451. We will not route a Riverview permit through the City of Tampa's Accela or ePermitHub systems. Those belong to parcels inside Tampa.",
+        ],
+        cost: [
+            "The price is the measured run, the material, the gates, and whether the builder fence and its posts are removed. Barrier closers and latches are included when the fence is the pool barrier. The proposal states those pieces. It does not state a price per foot.",
+            "Compare the written scope, the Hillsborough County filing, and the two-year workmanship warranty. A short verbal range cannot see the side-yard length or the gate count.",
+        ],
+        faqs: [
+            { q: "Is Riverview permitted like Brandon?", a: "Both are unincorporated Hillsborough County. Riverview is south of Brandon. A new fence is a county permit. There is no city fence counter for either place." },
+            { q: "The builder fence is already there. Is this still a permit?", a: "When we set new posts or establish a new line, treat it as a new fence. Most new fences need a Hillsborough County permit. The proposal will say if the posts are truly staying." },
+            { q: "How do you place the line?", a: "From your survey, on your side of the property line. Bring the survey. We do not inherit the builder's boards as the boundary." },
+            { q: "What goes into a pool gate here?", a: "A self-closing, self-latching gate, with height and gaps that meet the Florida Building Code. We do not make up a local height number for Riverview." },
+            { q: "Who stands behind the work?", a: "Brothers Remodelers, CGC1542451, with a two-year workmanship warranty. The office is at 13542 N Florida Ave, Tampa." },
+        ],
+    },
+    "wesley-chapel": {
+        title: "Wesley Chapel Fence, Pasco County",
+        description: "Wesley Chapel fence posts, panels, and gates from your survey. Pasco County permit. Two-year workmanship warranty.",
+        answer: "Wesley Chapel is unincorporated Pasco County, so the county reviews a new fence. Brothers Remodelers places it from your survey, on your side of the property line, and builds the posts, panels, and gates. Most new fences need that permit. License CGC1542451. Workmanship is covered for two years.",
+        included: [
+            "Every Wesley Chapel fence we file is a Pasco County fence. The community is unincorporated. There is no city building department hiding behind the subdivision entrance. If you have written community rules about material or placement, bring them with the survey. Those pages are yours to satisfy. They are not the building permit.",
+            "The permit still cares about the line. We lay posts, panels, and gates out on your side of the property line, from the survey, and we review the marks before the county sees an application. A long side line with two gates is a different job from a short rear run with one. The proposal shows which one you have.",
+            "A pool barrier is specified in code language: Florida Building Code height, gap limits, and a self-closing, self-latching gate. Community preferences about color do not replace those rules, and we will not invent a Pasco height to sit between them. Most new fences, barrier or not, need the county permit before posts are set.",
+        ],
+        steps: [
+            { title: "Pasco from the start", text: "The proposal names Pasco County as the review office for this unincorporated address. We do not offer a city filing. Bring any community design rules you want kept alongside the permit." },
+            { title: "Layout on your side", text: "Survey first. Posts and gates are marked on your side of the property line. You look at the gate swings before anything is filed or dug." },
+            { title: "County permit", text: "Most new fences are submitted to Pasco County before the posts go in. Pool-barrier fences include the code's height, gap, and self-closing, self-latching gate requirements in that submission." },
+            { title: "Build the written run", text: "We set the posts, hang the panels, and fit the gates to the filed layout. Workmanship is covered for two years under Brothers Remodelers license CGC1542451." },
+        ],
+        permits: [
+            "Pasco County is the building department for Wesley Chapel. Unincorporated means the county file is the file. A fence permit describes posts, panels, and gates on your side of the survey line. A community approval, if your rules require one, is a separate stack of paper you should have in hand.",
+            "Most new fences need the county permit. We file before digging. A fence that barriers a pool must meet the Florida Building Code on height, gaps, and a self-closing, self-latching gate. Those are code items on top of the permit, not a style choice.",
+            "Pasco County applies the Florida Building Code, 8th Edition (2023), to a Wesley Chapel fence application filed through December 30, 2026. The 8th Edition has been effective since December 31, 2023. The 9th Edition's effective date is December 31, 2026. Wesley Chapel is inland. We do not attach coastal flood figures the review did not ask for.",
+        ],
+        local: [
+            "The useful local fact is jurisdictional. Wesley Chapel is Pasco, not Hillsborough, even when a drive south reaches Tampa quickly. Filing the wrong county wastes the survey work we just did. We name Pasco County in the proposal so the permit address and the physical address match.",
+            "Brothers Remodelers works from 13542 N Florida Ave in Tampa under CGC1542451. That office does not make a Wesley Chapel fence a Tampa permit, and it is not submitted through Tampa's Accela or ePermitHub. The two-year workmanship warranty travels with the contract anyway.",
+        ],
+        cost: [
+            "Run length, material, gate count, old-fence removal, and pool-barrier hardware set the price. A community rule that limits color or style can limit the options. It does not replace the measured quantities. We do not price the fence per foot in advance.",
+            "The proposal shows those quantities, the Pasco County permit, and a two-year workmanship warranty. Bring the survey so the quantities are real before you are asked to sign.",
+        ],
+        faqs: [
+            { q: "Is a Wesley Chapel fence a Pasco County permit?", a: "Yes. Wesley Chapel is unincorporated, and Pasco County is the office that reviews a new fence. We submit that permit before any posts are set." },
+            { q: "Do community rules replace the permit?", a: "No. If you have written rules, bring them and we will build within what they allow. The building permit is still Pasco County's. One does not cancel the other." },
+            { q: "How is the fence located?", a: "Your survey places it, and the posts stay on your side of the property line. Panels and gates follow that mark, which you see before the application goes in." },
+            { q: "What code book is the county using?", a: "Through December 30, 2026, the 8th Edition (2023) of the Florida Building Code, effective since December 31, 2023. On December 31, 2026, the 9th Edition becomes the effective code." },
+            { q: "What warranty is on a Pasco fence?", a: "Brothers Remodelers warrants workmanship for two years. The Florida license is CGC1542451." },
+        ],
+    },
+    largo: {
+        title: "Largo Fence, City or Pinellas County",
+        description: "Largo fence layout from your survey. City of Largo inside the limits, Pinellas County outside. CGC1542451.",
+        answer: "A Largo fence is built from your survey: posts, panels, and gates, on your side of the property line. Inside the city limits the City of Largo permits most new fences. Outside those limits the file is Pinellas County. Brothers Remodelers, license CGC1542451, warrants workmanship for two years.",
+        included: [
+            "Largo mail does not settle the permit. Some of it is the City of Largo. Some of it is Pinellas County outside the limits. We read the parcel first, then lay the fence out from your survey on your side of the property line. Posts, panels, and gates come after that, not before.",
+            "The coastal setting can put flood and wind on the application when the department requires them. Both are taken from the address. They do not change the rule that the fence stays on your side of the line, and they do not change the pool-barrier rules when a pool is present: Florida Building Code height, gaps, and a self-closing, self-latching gate.",
+            "A repair that keeps the existing posts is written as a repair. A new run is filed as a new fence with whichever office owns the parcel. Most new fences need that permit. We do not dig while the office is still the open question.",
+        ],
+        steps: [
+            { title: "City limits first", text: "We determine whether the parcel is inside the City of Largo or in unincorporated Pinellas County. The proposal names that office. The word Largo on an envelope is not the test." },
+            { title: "Mark your side", text: "With your survey we mark posts and gates on your side of the property line. Pool-barrier gates are marked with the self-closing, self-latching hardware the code requires." },
+            { title: "File the right counter", text: "Most new fences are permitted before posts are set, with the city or with Pinellas County as the parcel dictates. The drawing matches the marks you already walked." },
+            { title: "Hang to the drawing", text: "Panels and gates follow the filed layout. You walk the result. Workmanship is warranted for two years by Brothers Remodelers, CGC1542451." },
+        ],
+        permits: [
+            "Inside the city limits, file with the City of Largo. Outside them, file with Pinellas County. Both are real Largo-address outcomes. The fence on either application has to sit on your side of the property line, taken from the survey you bring.",
+            "Most new fences need the permit. Add a pool and the fence, when it is the barrier, also has to meet Florida Building Code height, gap, and self-closing, self-latching gate rules. We put those requirements in the scope instead of a homemade height.",
+            "A Largo fence submitted through December 30, 2026 is reviewed under the Florida Building Code, 8th Edition (2023), effective December 31, 2023. The 9th Edition is effective December 31, 2026, so an earlier application is not reviewed on that later book. Largo is coastal. Flood and wind come from the address when the department requires them.",
+        ],
+        local: [
+            "The local distinction that matters is the municipal boundary. Two fences a short drive apart can be a city file and a county file. We will not smooth that over by picking the counter that answered the phone first. The survey and the parcel decide.",
+            "Pinellas County is the county in both cases. Only one of them is the City of Largo. Brothers Remodelers holds CGC1542451 and works from 13542 N Florida Ave, Tampa. The warranty on the workmanship is two years, whichever Pinellas office reviews the posts.",
+        ],
+        cost: [
+            "Length, material, gates, removal, and barrier hardware drive the written price. The difference between a city filing and a Pinellas County filing is part of the scope you can read. It is not converted into a price per foot.",
+            "The proposal is specific enough to compare: the line, the gates, the office, and a two-year workmanship warranty. Bring the survey so those lines are measured rather than estimated from the curb.",
+        ],
+        faqs: [
+            { q: "How do I know which Largo office applies?", a: "We check the parcel. Inside the city limits it is the City of Largo. Outside the limits it is Pinellas County. A mailing address that says Largo can be either one." },
+            { q: "Does the coast change the fence code?", a: "The code edition is statewide. Flood and wind are added when the department requires them, and they are read from the address. We do not invent a zone or a wind speed." },
+            { q: "Where does the new fence stand?", a: "On your side of the property line, from your survey. Posts, panels, and gates are laid out there. Most new fences need a permit before those posts are set." },
+            { q: "What if the fence barriers a pool?", a: "It must meet Florida Building Code height, gap, and self-closing, self-latching gate rules. Those rules go in the proposal. A city or county nickname for the height does not." },
+            { q: "Who warrants a Largo fence?", a: "Brothers Remodelers, license CGC1542451, for two years of workmanship." },
+        ],
+    },
+    "lakewood-ranch": {
+        title: "Lakewood Ranch Fence by County Line",
+        description: "Lakewood Ranch fences from your survey. Manatee or Sarasota County permit, by the county line. CGC1542451.",
+        answer: "Lakewood Ranch is unincorporated. The county line decides whether Manatee County or Sarasota County permits the fence. Brothers Remodelers lays the fence out from your survey, on your side of the line, as posts, panels, and gates. Most new fences need that permit. License CGC1542451. Two-year workmanship warranty.",
+        included: [
+            "The ranch is not a city, and it is not one county. An address on one side of the line is Manatee County. An address on the other side is Sarasota County. Both are unincorporated. We identify the side before we draw posts, because the application has to name a real department.",
+            "The drawing itself comes from your survey. The fence sits on your side of the property line as posts, panels, and gates. If a written community rule governs material or where a fence may stand inside your own lot, bring it. That rule is not the building permit, and it does not move the property line.",
+            "Pool-barrier fences follow the Florida Building Code: height, gaps, and a self-closing, self-latching gate. Manatee and Sarasota use that code. We do not keep two invented heights, one for each side of the line. Most new fences on either side need a permit, and the posts wait for it.",
+            "You will see the gate layout before it is filed. A corner lot with a long public side is a different gate problem from a rear-yard enclosure. The walk makes that obvious. The proposal records it.",
+        ],
+        steps: [
+            { title: "Pick the county", text: "We place the address on the Manatee side or the Sarasota side of the county line. The proposal names that county. Lakewood Ranch has no city permit of its own." },
+            { title: "Survey layout", text: "Your survey sets the property line. We mark posts, panels, and gates on your side and review the marks with you, including any community rule you brought." },
+            { title: "File, then set posts", text: "Most new fences go to the correct county before digging. A pool barrier is described with the Florida Building Code height, gap, and self-closing, self-latching gate requirements." },
+            { title: "Build and warrant", text: "We build the filed run and walk it with you. Brothers Remodelers warrants the workmanship for two years under license CGC1542451." },
+        ],
+        permits: [
+            "Unincorporated Lakewood Ranch is permitted by Manatee County or by Sarasota County, depending on which side of the county line the parcel sits. There is no municipal fence counter. The fence on the application still has to stand on your side of the survey line.",
+            "Most new fences need that county permit. We file before posts are set. When the fence is a pool barrier, the Florida Building Code adds height, gap, and self-closing, self-latching gate rules. The same code applies on both sides of the line.",
+            "On either side, a fence filed through December 30, 2026 is reviewed under the Florida Building Code, 8th Edition (2023), effective since December 31, 2023. The 9th Edition carries an effective date of December 31, 2026. The ranch is not a coastal filing. We do not add bay flood or wind data unless the county requires it for that address.",
+        ],
+        local: [
+            "People treat Lakewood Ranch as one place, and for a school or a grocery it behaves that way. For a fence permit it is a county line. We will tell you which county has your parcel in the proposal, in plain words, before an application is addressed to the wrong desk.",
+            "Brothers Remodelers is at 13542 N Florida Ave, Tampa, license CGC1542451. Neither fact turns the ranch into a Tampa or a Hillsborough permit. The two-year workmanship warranty is on the contract. The review stays in Manatee County or in Sarasota County.",
+        ],
+        cost: [
+            "The price follows the length of your side of the line, the material, the gates, removal of what is there now, and barrier hardware if a pool is enclosed. Which county reviews the permit is identified. It is not a rate per foot.",
+            "You get that scope in a written proposal with a two-year workmanship warranty. Bring the survey. A community color rule, if you have one, can be attached. It does not measure the run.",
+        ],
+        faqs: [
+            { q: "Which county permits a Lakewood Ranch fence?", a: "Manatee County or Sarasota County, by which side of the county line the address is on. The ranch is unincorporated. There is no city permit." },
+            { q: "Does a community rule replace the county?", a: "No. Bring the written rule if you have one and we will respect it in the layout. The building permit is still the county's, and most new fences need it." },
+            { q: "How do you keep the fence on my property?", a: "We lay it out from your survey, on your side of the property line, as posts, panels, and gates. We do not set those posts from the sidewalk." },
+            { q: "Are pool gates the same in both counties?", a: "The Florida Building Code rules are the same: height, gaps, and a self-closing, self-latching gate. We do not invent a separate height for either county." },
+            { q: "What code edition and warranty apply?", a: "Applications through December 30, 2026 use the 8th Edition (2023), effective December 31, 2023. As of December 31, 2026, the 9th Edition is the effective edition. Workmanship is warranted for two years under CGC1542451." },
+        ],
+    },
+};

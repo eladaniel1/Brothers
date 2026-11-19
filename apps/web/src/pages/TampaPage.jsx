@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { BadgeCheck, Calculator, CalendarClock, CalendarDays, Check, DraftingCompass, HardHat, Layers, MessagesSquare, Phone } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, Section } from '@/components/SiteLayout';
 import GetEstimateCTA from '@/components/GetEstimateCTA';
-import { company, kitchenImage, projects, stats } from '@/data/site';
+import { company, kitchenImage, projects } from '@/data/site';
 
 const crumbs = [
     { label: 'Areas We Serve', to: '/areas-we-serve' },
@@ -32,7 +32,7 @@ const tampaServices = [
     {
         title: 'Whole-Home Remodeling',
         to: '/services/general-contracting',
-        text: 'Single-source management for full-home renovations — one contract, one superintendent, and coordinated trades from pre-construction budgeting through final sign-off.',
+        text: 'Single-source management for full-home renovations — one contract and coordinated trades from pre-construction budgeting through final sign-off.',
     },
     {
         title: 'General Contracting',
@@ -71,17 +71,17 @@ const considerations = [
 
 const process = [
     ['Initial Consultation', 'We walk the space, listen to the goal, and tell you honestly what it costs and what it does not.'],
-    ['Project Assessment', 'A superintendent measures, photographs and flags existing conditions — structure, plumbing, electrical and moisture.'],
+    ['Project Assessment', 'We measure, photograph and flag existing conditions — structure, plumbing, electrical and moisture.'],
     ['Planning & Scope', 'Layouts, finish selections and long-lead items are locked into a written scope before anything is demolished.'],
     ['Estimate & Proposal', 'A line-item fixed-price proposal with allowances stated plainly, usually within five business days.'],
-    ['Construction', 'A dedicated superintendent runs the site with a live schedule, weekly photo updates and protected work areas.'],
+    ['Construction', 'The job runs on a live schedule, with weekly photo updates and protected work areas.'],
     ['Project Completion', 'Sign-offs, punch list, warranty documents and a clean handover you can move into.'],
 ];
 
 const tampaRecentWork = [
-    { ...projects[0], image: '/images/project-kitchen-sink.jpg' },
-    { ...projects[1], image: '/images/project-bath.jpg' },
-    { ...projects[4], image: '/images/project-kitchen-island.jpg' },
+    { ...projects[0], image: '/images/project-kitchen-sink.webp' },
+    { ...projects[1], image: '/images/project-bath.webp' },
+    { ...projects[4], image: '/images/project-kitchen-island.webp' },
 ];
 
 const faqItems = [    ['What remodeling services does Brothers Remodelers provide in Tampa?', 'Brothers Remodelers provides kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete services, and general contracting for homeowners in Tampa and throughout Hillsborough County. Every project starts with a free site walkthrough and a written line-item proposal.'],
@@ -89,7 +89,7 @@ const faqItems = [    ['What remodeling services does Brothers Remodelers provid
     ['How long does a home remodeling project take?', 'Timelines vary by project: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule with inspection windows, and permit timing with the city of Tampa or Hillsborough County is built into it.'],
     ['Do I need a permit for remodeling in Tampa?', 'Most structural, electrical, plumbing and window or door replacement work requires a permit, filed with the city of Tampa or Hillsborough County depending on the property’s jurisdiction. Brothers Remodelers coordinates the applications, plans and inspections, and keeps the permit board current on site.'],
     ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-    ['Can Brothers Remodelers remodel multiple areas of a Tampa home?', 'Yes. Whole-home renovations are a core part of our work. Running kitchen, baths and additions as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+    ['Can Brothers Remodelers remodel multiple areas of a Tampa home?', 'Yes. Whole-home renovations are a core part of our work. Running kitchen, baths and additions as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
     ['What should I consider before hiring a Tampa remodeling contractor?', 'Verify the Florida license and insurance certificates, ask for a written line-item scope rather than a single number, check references from recent projects, and confirm the change-order and warranty policies in writing. How a contractor communicates before the contract is a fair preview of the build.'],
 ];
 
@@ -155,13 +155,13 @@ const TampaPage = () => (
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                     <Link
-                        to="/quote"
+                        to="/quote/"
                         className="flex min-h-[44px] items-center bg-[hsl(var(--brand))] px-6 text-sm font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))] transition-transform hover:-translate-y-px active:translate-y-0"
                     >
                         Request a Free Quote
                     </Link>
                     <Link
-                        to="/services"
+                        to="/services/"
                         className="flex min-h-[44px] items-center border-2 border-white/40 px-6 text-sm font-bold uppercase tracking-wide text-white hover:border-white"
                     >
                         Explore Our Services
@@ -181,8 +181,8 @@ const TampaPage = () => (
                 Brothers Remodelers is a licensed residential remodeling and general contracting company serving
                 homeowners in Tampa, Florida — the county seat of Hillsborough County. Services include kitchen
                 remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and general
-                contracting. Tampa homeowners, from historic bungalows to newer subdivisions, get a dedicated
-                superintendent on site, written line-item proposals, and full permit coordination.
+                contracting. Tampa homeowners, from historic bungalows to newer subdivisions, get written
+                line-item proposals and full permit coordination.
             </p>
         </Section>
 
@@ -190,20 +190,20 @@ const TampaPage = () => (
         <Section width="wide" className="border-t border-neutral-200">
             <Eyebrow>What we build</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Home Remodeling Services in Tampa</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-600">
                 One licensed contractor, six core disciplines. Every Tampa project runs under the same standard:
-                a written scope, a live schedule and a superintendent on site.
+                a written scope and a live schedule.
             </p>
-            <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+            <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                 {tampaServices.map((s) => (
-                    <article key={s.title} className="border-t-2 border-neutral-200 pt-5">
-                        <h3 className="font-display text-xl font-bold uppercase">
+                    <article key={s.title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
+                        <h3 className="font-display text-xl font-bold uppercase leading-tight">
                             <Link to={s.to} className="hover:text-[hsl(var(--brand))]">{s.title}</Link>
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-neutral-600">{s.text}</p>
                         <Link
                             to={s.to}
-                            className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
+                            className="mt-auto inline-flex items-center gap-1.5 pt-3 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
                         >
                             {s.title} details
                         </Link>
@@ -255,8 +255,8 @@ const TampaPage = () => (
                     flood-zone properties get the foundation and glazing details that come with Tampa Bay living.
                 </p>
                 <p>
-                    See the full <Link to="/areas-we-serve/hillsborough" className="font-semibold underline hover:text-[hsl(var(--brand))]">Hillsborough County service area page</Link> or
-                    browse all <Link to="/areas-we-serve" className="font-semibold underline hover:text-[hsl(var(--brand))]">areas we serve</Link> across the Tampa Bay and Sarasota region.
+                    See the full <Link to="/areas-we-serve/hillsborough/" className="font-semibold underline hover:text-[hsl(var(--brand))]">Hillsborough County service area page</Link> or
+                    browse all <Link to="/areas-we-serve/" className="font-semibold underline hover:text-[hsl(var(--brand))]">areas we serve</Link> across the Tampa Bay and Sarasota region.
                 </p>
             </div>
         </Section>
@@ -265,13 +265,13 @@ const TampaPage = () => (
         <Section width="wide" className="border-t border-neutral-200">
             <Eyebrow>Before you sign</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">What to Consider Before Starting a Remodeling Project</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-600">
                 A successful remodel is decided before demolition starts. These are the eight things we tell every
                 homeowner to work through — with us or with any contractor.
             </p>
-            <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+            <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                 {considerations.map(([title, text], i) => (
-                    <div key={title} className="border-t-2 border-neutral-200 pt-5">
+                    <div key={title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
                         <h3 className="font-display flex items-center text-lg font-bold uppercase">
                             {considerationIcons[i] ? (
                                 React.createElement(considerationIcons[i], { className: 'mr-2 h-10 w-10 shrink-0 text-[hsl(var(--brand))]', strokeWidth: 1.5, 'aria-hidden': true })
@@ -307,9 +307,8 @@ const TampaPage = () => (
         <Section width="wide">
             <Eyebrow>Recent work</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Remodeling Projects</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
-                A sample of recently completed Brothers Remodelers projects. Tampa-area references are available on
-                request during your estimate.
+            <p className="mt-4 leading-relaxed text-neutral-600">
+                Stock photos for layout only. These are not photos of Brothers Remodelers jobs, and project prices are not shown.
             </p>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
                 {tampaRecentWork.map((p) => (
@@ -324,7 +323,7 @@ const TampaPage = () => (
                 ))}
             </div>
             <Link
-                to="/projects"
+                to="/projects/"
                 className="mt-8 inline-flex min-h-[44px] items-center bg-[hsl(var(--ink))] px-5 text-xs font-bold uppercase tracking-widest text-white"
             >
                 View the full project gallery
@@ -335,24 +334,16 @@ const TampaPage = () => (
         <Section width="wide" className="bg-[hsl(var(--ink))] text-white">
             <Eyebrow className="text-white/60">Why homeowners choose us</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Why Tampa Homeowners Choose Brothers Remodelers</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {stats.map((s) => (
-                    <div key={s.label} className="border-t-2 border-[hsl(var(--brand))] pt-4">
-                        <p className="font-display text-4xl font-bold">{s.value}{s.suffix}</p>
-                        <p className="mt-1 text-xs uppercase tracking-widest text-white/60">{s.label}</p>
-                    </div>
-                ))}
-            </div>
             <ul className="mt-10 grid gap-3 text-sm leading-relaxed text-white/80 md:grid-cols-2">
-                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1535875, fully licensed and insured.</li>
-                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />A dedicated superintendent on every site, with weekly photo updates.</li>
+                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1542451, fully licensed and insured.</li>
+                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and permit coordination.</li>
                 <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and signed change orders before work proceeds.</li>
                 <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Two-year workmanship warranty plus manufacturer warranties, documented at closeout.</li>
             </ul>
             <p className="mt-8 text-sm text-white/60">
-                Read <Link to="/reviews" className="font-semibold underline hover:text-[hsl(var(--brand))]">client reviews</Link>, learn
-                more <Link to="/about" className="font-semibold underline hover:text-[hsl(var(--brand))]">about our company</Link>, or
-                review our <Link to="/safety" className="font-semibold underline hover:text-[hsl(var(--brand))]">licensing and insurance documentation</Link>.
+                Read <Link to="/reviews/" className="font-semibold underline hover:text-[hsl(var(--brand))]">client reviews</Link>, learn
+                more <Link to="/about/" className="font-semibold underline hover:text-[hsl(var(--brand))]">about our company</Link>, or
+                review our <Link to="/safety/" className="font-semibold underline hover:text-[hsl(var(--brand))]">licensing and insurance documentation</Link>.
             </p>
         </Section>
 

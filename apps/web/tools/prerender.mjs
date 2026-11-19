@@ -126,7 +126,13 @@ try {
             '    RewriteEngine On',
             '# 301 redirect the Sarasota County Lakewood Ranch page to the Manatee',
             '# County page (the canonical one). Runs before the 404 rule.',
+            '    RewriteRule ^service-areas/?$ /areas-we-serve/ [R=301,L]',
+            '    RewriteRule ^services/roofing(/.*)?$ /services/ [R=301,L]',
+            '    RewriteRule ^services/roof-repair(/.*)?$ /services/ [R=301,L]',
+            '    RewriteRule ^services/roof-insulation/?$ /services/ [R=301,L]',
+            '    RewriteRule ^areas-we-serve/sarasota/university-park/?$ /areas-we-serve/manatee/university-park/ [R=301,L]',
             '    RewriteRule ^areas-we-serve/sarasota/lakewood-ranch/?$ /areas-we-serve/manatee/lakewood-ranch/ [R=301,L]',
+            '    RewriteRule ^services/(ac-repair|plumbing|kitchen-remodeling|bathroom-remodeling|garage-doors|electrical|windows|pools|hvac|solar|epoxy-flooring|fencing|driveways)/(palm-harbor|new-port-richey|venice|temple-terrace|valrico|lutz|apollo-beach|plant-city|tarpon-springs|dunedin|pinellas-park|seminole|ellenton|parrish|palmetto|north-port|land-o-lakes)/?$ /services/$1/ [R=301,L]',
             '# 301 redirect any slashless URL to its trailing-slash canonical form (the',
             '# homepage keeps its single slash). Only real directories (prerendered',
             '# routes) are redirected; unknown slashless URLs fall through to the 404 rule.',
@@ -244,6 +250,9 @@ try {
             'User-agent: PerplexityBot',
             'Allow: /',
             '',
+            'User-agent: Google-Extended',
+            'Allow: /',
+            '',
             'User-agent: OAI-SearchBot',
             'Allow: /',
             '',
@@ -270,7 +279,8 @@ try {
         const { company, services, areas, faqs } = await vite.ssrLoadModule('/src/data/site.js');
         const { brandsFor } = await vite.ssrLoadModule('/src/data/brands.js');
         const { localTrades } = await vite.ssrLoadModule('/src/data/localTrades.js');
-        const { localCities } = await vite.ssrLoadModule('/src/data/localCities.js');
+        const { tradePageCities } = await vite.ssrLoadModule('/src/data/localCities.js');
+        const { bespokeLocalPages, bespokePageToLlms } = await vite.ssrLoadModule('/src/data/bespokeLocalPages.js');
         const site = 'https://brothersremodelers.com';
         const brandLine = (slug) => brandsFor(slug).map(([cat, names]) => `${cat}: ${names.join(', ')}`).join('; ');
         const areaNames = areas.map((a) => a.city).join(', ');
@@ -283,13 +293,13 @@ try {
         const header = [
             `# ${company.name}`,
             '',
-            `> ${company.name} is a licensed Florida general contractor (Certified General Contractor license ${company.licenseNumber}) providing home remodeling, roofing, windows and doors, HVAC, plumbing, electrical and outdoor construction for homeowners across the Tampa Bay and Sarasota region of Florida's Gulf Coast: ${areaNames}.`,
+            `> ${company.name} is a licensed Florida remodeling contractor. Certified General Contractor license ${company.licenseNumber} is held by Daniel Alejandro Cardenas Romero d/b/a Brothers Remodelers, qualifier for Republic Renovations Inc d/b/a Brothers Remodelers. The company remodels homes across ${areaNames}.`,
             '',
             `- Phone: ${company.phone}`,
             `- Email: ${company.email}`,
+            `- Address: ${company.address}`,
             `- Hours: ${company.hours}`,
-            `- License: Florida CGC ${company.licenseNumber}, licensed and insured`,
-            `- Founded: ${company.founded}`,
+            `- License: Florida CGC ${company.licenseNumber}, held by Daniel Alejandro Cardenas Romero d/b/a Brothers Remodelers`,
             `- Service area: ${areaNames} (Tampa Bay and Sarasota region, Florida Gulf Coast)`,
             `- Free estimates: ${site}/quote/`,
             '',
@@ -303,11 +313,15 @@ try {
             '',
             '## Services by city',
             '',
-            ...localTrades.map((t) => `- ${t.name}: ${localCities.map((c) => `[${c.name}](${site}/services/${t.slug}/${c.slug}/)`).join(', ')}`),
+            ...localTrades.map((t) => `- ${t.name}: ${tradePageCities.map((c) => `[${c.name}](${site}/services/${t.slug}/${c.slug}/)`).join(', ')}`),
             '',
             '## Service areas',
             '',
             ...areas.map((a) => `- [${a.city}](${site}/areas-we-serve/${a.slug}/): ${a.blurb}`),
+            '',
+            '## Bespoke local remodeling pages',
+            '',
+            ...bespokeLocalPages.map((page) => `- [${page.title}](${site}${page.path}): ${page.llmsSummary}`),
             '',
             '## Guides',
             '',
@@ -340,6 +354,7 @@ try {
                 ...(brandsFor(s.slug).length ? [`Brands we install: ${brandLine(s.slug)}.`, ''] : []),
                 ...(s.faqs?.length ? s.faqs.flatMap(([q, a]) => [`Q: ${q}`, `A: ${a}`, '']) : []),
             ]),
+            ...bespokeLocalPages.flatMap((page) => [bespokePageToLlms(page, site), '']),
         ].join('\n');
 
         await fs.writeFile(path.join(outDir, 'llms.txt'), llms, 'utf-8');
@@ -349,6 +364,68 @@ try {
         console.error(`llms.txt generation failed: ${err?.message || String(err)}`);
         process.exitCode = 1;
     }
+
+    // Every prerendered page gets Open Graph and Twitter tags, even when the
+    // page component did not set them. Existing tags are left alone.
+    const walkHtml = async (dir) => {
+        const entries = await fs.readdir(dir, { withFileTypes: true });
+        for (const entry of entries) {
+            const full = path.join(dir, entry.name);
+            if (entry.isDirectory()) await walkHtml(full);
+            else if (entry.name.endsWith('.html')) {
+                let html = await fs.readFile(full, 'utf8');
+                const clip = (value, max) => {
+                    const clean = value.replace(/\s+/g, ' ').trim();
+                    if (clean.length <= max) return clean;
+                    const cut = clean.slice(0, max);
+                    const sp = cut.lastIndexOf(' ');
+                    return (sp > max * 0.6 ? cut.slice(0, sp) : cut).trim();
+                };
+                let title = (html.match(/<title[^>]*>([^<]*)<\/title>/i) || [, ''])[1].trim();
+                let desc = (html.match(/<meta[^>]*name="description"[^>]*content="([^"]*)"/i) || html.match(/<meta[^>]*content="([^"]*)"[^>]*name="description"/i) || [, ''])[1];
+                const shortTitle = clip(title, 60);
+                const shortDesc = clip(desc, 155);
+                let dirty = false;
+                if (shortTitle !== title) {
+                    html = html.replace(title, shortTitle);
+                    title = shortTitle;
+                    dirty = true;
+                }
+                if (shortDesc && shortDesc !== desc) {
+                    html = html.replaceAll(desc, shortDesc);
+                    desc = shortDesc;
+                    dirty = true;
+                }
+                const canonical = (html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]*)"/i) || [, ''])[1];
+                const bits = [];
+                if (title && !html.includes('property="og:title"')) bits.push(`<meta property="og:title" content="${title}">`);
+                if (desc && !html.includes('property="og:description"')) bits.push(`<meta property="og:description" content="${desc}">`);
+                if (canonical && !html.includes('property="og:url"')) bits.push(`<meta property="og:url" content="${canonical}">`);
+                if (!html.includes('property="og:type"')) bits.push('<meta property="og:type" content="website">');
+                if (!html.includes('property="og:site_name"')) bits.push('<meta property="og:site_name" content="Brothers Remodelers">');
+                if (title && !html.includes('name="twitter:title"')) bits.push(`<meta name="twitter:title" content="${title}">`);
+                if (desc && !html.includes('name="twitter:description"')) bits.push(`<meta name="twitter:description" content="${desc}">`);
+                if (!html.includes('name="twitter:card"')) bits.push('<meta name="twitter:card" content="summary_large_image">');
+                if (bits.length) {
+                    html = html.replace('</head>', `${bits.join('')}</head>`);
+                    dirty = true;
+                }
+                html = html.replace(/<img\b([^>]*?)>/g, (full, attrs) => {
+                    if (/\bloading=/.test(attrs) || /hero-img|class="logo"|ftr-logo|fetchpriority="high"|fetchPriority/.test(attrs)) return full;
+                    dirty = true;
+                    return `<img${attrs} loading="lazy" decoding="async">`;
+                });
+                const slashed = html.replace(/href="(\/[^"#?]*)"/g, (full, href) => {
+                    if (href === '/' || href.endsWith('/') || href.startsWith('/assets') || href.startsWith('/images') || href.startsWith('/fonts') || /\.[a-z0-9]+$/i.test(href)) return full;
+                    dirty = true;
+                    return `href="${href}/"`;
+                });
+                html = slashed;
+                if (dirty) await fs.writeFile(full, html);
+            }
+        }
+    };
+    await walkHtml(outDir);
 } finally {
     await vite.close();
 }

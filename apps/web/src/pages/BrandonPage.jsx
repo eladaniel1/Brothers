@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Check, Phone } from 'lucide-react';
 import SiteLayout, { CtaBand, Eyebrow, Section } from '@/components/SiteLayout';
 import GetEstimateCTA from '@/components/GetEstimateCTA';
-import { company, kitchenImage, projects, stats } from '@/data/site';
+import { company, kitchenImage, projects } from '@/data/site';
 
 const crumbs = [
     { label: 'Areas We Serve', to: '/areas-we-serve' },
@@ -52,7 +52,7 @@ const remodelReasons = [
     ['More space without a move', 'A growing household or a work-from-home routine often needs another room. An addition keeps the commute, the schools and the equity already built into the house.'],
     ['A layout that fights the household', 'Removing a wall, widening a passage or reworking a hallway can make an existing floor plan feel like a different house — without adding a single square foot.'],
     ['Interior modernization', 'Replacing worn flooring, upgrading lighting and circuits, and updating trim and finishes bring an older interior current in one coordinated pass.'],
-    ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule, one superintendent and trades mobilized once — usually faster and cheaper than three separate jobs.'],
+    ['Several projects at once', 'Combining a kitchen, baths and new floors into one renovation means one schedule and trades mobilized once — usually faster and cheaper than three separate jobs.'],
 ];
 
 const homeownerInfo = [
@@ -68,17 +68,17 @@ const homeownerInfo = [
 
 const process = [
     ['Initial Consultation', 'We walk the house, listen to what you want to change, and talk honestly about budget and sequence.'],
-    ['Project Assessment', 'A superintendent measures, photographs and flags existing conditions — structure, plumbing, electrical and moisture.'],
+    ['Project Assessment', 'We measure, photograph and flag existing conditions — structure, plumbing, electrical and moisture.'],
     ['Planning & Scope', 'Layouts, finish selections and long-lead items are locked into a written scope before anything is demolished.'],
     ['Estimate & Proposal', 'A line-item fixed-price proposal with allowances stated plainly, usually within five business days.'],
-    ['Construction', 'A dedicated superintendent runs the site with a live schedule, weekly photo updates and protected work areas.'],
+    ['Construction', 'The job runs on a live schedule, with weekly photo updates and protected work areas.'],
     ['Project Completion', 'Sign-offs, punch list, warranty documents and a clean handover you can move into.'],
 ];
 
 const brandonWork = [
-    { ...projects[1], image: '/images/project-kitchen-sink.jpg' },
-    { ...projects[3], image: '/images/project-bath.jpg' },
-    { ...projects[5], image: '/images/project-kitchen-island.jpg' },
+    { ...projects[1], image: '/images/project-kitchen-sink.webp' },
+    { ...projects[3], image: '/images/project-bath.webp' },
+    { ...projects[5], image: '/images/project-kitchen-island.webp' },
 ];
 
 const faqItems = [
@@ -87,7 +87,7 @@ const faqItems = [
     ['How long does a remodeling project take?', 'Duration varies with the scope: a single bathroom typically runs a few weeks, while a whole-home renovation runs several months once permits are approved. Your proposal includes an outline schedule that accounts for material lead times and municipal inspection windows.'],
     ['Do I need a permit for remodeling in Brandon?', 'Many structural, electrical, plumbing and window or door replacement projects require permits, filed with Hillsborough County or the city of Tampa depending on the property’s jurisdiction. Brothers Remodelers coordinates applications, plans and inspections, and keeps the permit board current on site.'],
     ['Does Brothers Remodelers handle the entire remodeling project?', 'Yes. As a Florida certified general contractor, we act as the single point of accountability — permits, trade procurement, daily supervision, inspections and closeout documentation. You are not left coordinating plumbers, electricians and carpenters yourself.'],
-    ['Can Brothers Remodelers remodel multiple areas of my home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule, one superintendent and trades sequenced once instead of mobilized separately.'],
+    ['Can Brothers Remodelers remodel multiple areas of my home?', 'Yes. Whole-home renovations are a core part of our work. Running a kitchen, baths and flooring as one coordinated project means one schedule and trades sequenced once instead of mobilized separately.'],
     ['How do I request a remodeling estimate in Brandon?', 'Call us or submit the quote form on this page. We schedule a free site walkthrough, then send a written line-item proposal with an outline schedule, usually within five business days.'],
 ];
 
@@ -153,13 +153,13 @@ const BrandonPage = () => (
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                     <Link
-                        to="/quote"
+                        to="/quote/"
                         className="flex min-h-[44px] items-center bg-[hsl(var(--brand))] px-6 text-sm font-bold uppercase tracking-wide text-[hsl(var(--brand-foreground))] transition-transform hover:-translate-y-px active:translate-y-0"
                     >
                         Request a Free Quote
                     </Link>
                     <Link
-                        to="/services"
+                        to="/services/"
                         className="flex min-h-[44px] items-center border-2 border-white/40 px-6 text-sm font-bold uppercase tracking-wide text-white hover:border-white"
                     >
                         Explore Our Services
@@ -179,8 +179,8 @@ const BrandonPage = () => (
                 Brothers Remodelers is a licensed residential remodeling and general contracting company serving
                 homeowners in Brandon, an unincorporated community in Hillsborough County, Florida. Services include
                 kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete work, and
-                general contracting. Brandon homeowners get a dedicated superintendent on site, written line-item
-                proposals, and full permit coordination.
+                general contracting. Brandon homeowners get written line-item
+                proposals and full permit coordination.
             </p>
         </Section>
 
@@ -188,20 +188,20 @@ const BrandonPage = () => (
         <Section width="wide" className="border-t border-neutral-200">
             <Eyebrow>What we build</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Home Remodeling Services in Brandon</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-600">
                 Six core disciplines, one licensed contractor. Every Brandon project runs under the same standard:
-                a written scope, a live schedule and a superintendent on site.
+                a written scope and a live schedule.
             </p>
-            <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+            <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                 {brandonServices.map((s) => (
-                    <article key={s.title} className="border-t-2 border-neutral-200 pt-5">
-                        <h3 className="font-display text-xl font-bold uppercase">
+                    <article key={s.title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
+                        <h3 className="font-display text-xl font-bold uppercase leading-tight">
                             <Link to={s.to} className="hover:text-[hsl(var(--brand))]">{s.title}</Link>
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-neutral-600">{s.text}</p>
                         <Link
                             to={s.to}
-                            className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
+                            className="mt-auto inline-flex items-center gap-1.5 pt-3 text-xs font-bold uppercase tracking-widest text-[hsl(var(--brand))] hover:underline"
                         >
                             {s.title} details
                         </Link>
@@ -251,8 +251,8 @@ const BrandonPage = () => (
                     jurisdiction the first time and coordinate every inspection along the way.
                 </p>
                 <p>
-                    See the full <Link to="/areas-we-serve/hillsborough" className="font-semibold underline hover:text-[hsl(var(--brand))]">Hillsborough County service area page</Link> or
-                    browse all <Link to="/areas-we-serve" className="font-semibold underline hover:text-[hsl(var(--brand))]">areas we serve</Link> across the Tampa Bay and Sarasota region.
+                    See the full <Link to="/areas-we-serve/hillsborough/" className="font-semibold underline hover:text-[hsl(var(--brand))]">Hillsborough County service area page</Link> or
+                    browse all <Link to="/areas-we-serve/" className="font-semibold underline hover:text-[hsl(var(--brand))]">areas we serve</Link> across the Tampa Bay and Sarasota region.
                 </p>
             </div>
         </Section>
@@ -261,13 +261,13 @@ const BrandonPage = () => (
         <Section width="wide" className="border-t border-neutral-200">
             <Eyebrow>Plan the project</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">What a Brandon Homeowner Should Know Before Starting</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-600">
                 A successful remodel is decided before demolition starts. These are the eight things we tell every
                 homeowner to work through — with us or with any contractor.
             </p>
-            <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+            <div className="mt-10 grid w-full items-stretch gap-x-10 gap-y-8 md:grid-cols-2">
                 {homeownerInfo.map(([title, text], i) => (
-                    <div key={title} className="border-t-2 border-neutral-200 pt-5">
+                    <div key={title} className="flex h-full min-w-0 flex-col border-t-2 border-neutral-200 pt-5">
                         <h3 className="font-display flex items-center text-lg font-bold uppercase">
                             <span className="mr-3 text-[hsl(var(--brand))]">{String(i + 1).padStart(2, '0')}</span>
                             {title}
@@ -299,8 +299,8 @@ const BrandonPage = () => (
         <Section width="wide">
             <Eyebrow>Recent work</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Brandon Remodeling Projects</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-neutral-600">
-                A sample of recently completed Brothers Remodelers projects. References from the Hillsborough County
+            <p className="mt-4 leading-relaxed text-neutral-600">
+                Stock photos for layout only, not photos of our work. References from the Hillsborough County
                 area are available on request during your estimate.
             </p>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -316,7 +316,7 @@ const BrandonPage = () => (
                 ))}
             </div>
             <Link
-                to="/projects"
+                to="/projects/"
                 className="mt-8 inline-flex min-h-[44px] items-center bg-[hsl(var(--ink))] px-5 text-xs font-bold uppercase tracking-widest text-white"
             >
                 View the full project gallery
@@ -327,24 +327,16 @@ const BrandonPage = () => (
         <Section width="wide" className="bg-[hsl(var(--ink))] text-white">
             <Eyebrow className="text-white/60">Why homeowners choose us</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Why Brandon Homeowners Choose Brothers Remodelers</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {stats.map((s) => (
-                    <div key={s.label} className="border-t-2 border-[hsl(var(--brand))] pt-4">
-                        <p className="font-display text-4xl font-bold">{s.value}{s.suffix}</p>
-                        <p className="mt-1 text-xs uppercase tracking-widest text-white/60">{s.label}</p>
-                    </div>
-                ))}
-            </div>
             <ul className="mt-10 grid gap-3 text-sm leading-relaxed text-white/80 md:grid-cols-2">
-                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1535875, fully licensed and insured.</li>
-                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />A dedicated superintendent on every site, with weekly photo updates.</li>
+                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Florida certified general contractor — license #CGC1542451, fully licensed and insured.</li>
+                <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and permit coordination.</li>
                 <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Written line-item proposals and signed change orders before work proceeds.</li>
                 <li className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand))]" />Two-year workmanship warranty plus manufacturer warranties, documented at closeout.</li>
             </ul>
             <p className="mt-8 text-sm text-white/60">
-                Read <Link to="/reviews" className="font-semibold underline hover:text-[hsl(var(--brand))]">client reviews</Link>, learn
-                more <Link to="/about" className="font-semibold underline hover:text-[hsl(var(--brand))]">about our company</Link>, or
-                review our <Link to="/safety" className="font-semibold underline hover:text-[hsl(var(--brand))]">licensing and insurance documentation</Link>.
+                Read <Link to="/reviews/" className="font-semibold underline hover:text-[hsl(var(--brand))]">client reviews</Link>, learn
+                more <Link to="/about/" className="font-semibold underline hover:text-[hsl(var(--brand))]">about our company</Link>, or
+                review our <Link to="/safety/" className="font-semibold underline hover:text-[hsl(var(--brand))]">licensing and insurance documentation</Link>.
             </p>
         </Section>
 

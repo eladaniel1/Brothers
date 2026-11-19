@@ -4,18 +4,18 @@
 // relatedServices, metaTitle, metaDescription) consumed by ServiceDetailPage.
 //
 // Business-accuracy note: Brothers Remodelers holds Florida Certified General
-// Contractor license CGC1535875. Specialty trades (plumbing, electrical, HVAC,
+// Contractor license CGC1542451. Specialty trades (plumbing, electrical, HVAC,
 // solar) are coordinated through licensed subcontractors under that license.
 // No licenses, warranties, years of experience, reviews, awards, project counts,
 // savings guarantees, financing offers, or office locations beyond what is
 // already verified on the site are stated here.
 
-export const additionalServices = [
+const additionalServicesRaw = [
     {
         slug: 'roofing',
         title: 'Roofing',
         summary: 'Roof replacement and repair for Florida homes, with wind-rated shingles, metal and tile systems installed to Florida Building Code.',
-        image: '/images/service-roofing.jpg',
+        image: '/images/service-roofing.webp',
         metaTitle: 'Roofing in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Licensed Florida roofing replacement and repair serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Wind-rated shingles, metal and tile roofs installed to Florida Building Code. Free estimates.',
         intro: 'A roof in Florida has to survive sun, salt air and hurricane-force wind, then keep doing it for decades. Brothers Remodelers replaces and repairs residential roofs under one Florida Certified General Contractor license, coordinating the tear-off, deck inspection, underlayment and finish roofing so the system performs as a whole — not just the top layer you can see.',
@@ -64,7 +64,7 @@ export const additionalServices = [
         slug: 'windows',
         title: 'Windows',
         summary: 'Impact-rated and energy-efficient window replacement for Florida homes, installed to wind-code and Florida energy requirements.',
-        image: '/images/service-windows.jpg',
+        image: '/images/service-windows.webp',
         metaTitle: 'Window Replacement in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Licensed Florida window replacement contractor serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Impact-rated and energy-efficient windows installed to wind code. Free estimates.',
         intro: 'In Florida, a window is a storm barrier, an energy feature and a security layer all at once. Brothers Remodelers replaces residential windows under one Florida Certified General Contractor license, sizing openings correctly, flashing them to keep water out of the wall cavity, and matching the glazing to your wind zone so the installation passes inspection and performs in a storm.',
@@ -113,7 +113,7 @@ export const additionalServices = [
         slug: 'doors',
         title: 'Doors',
         summary: 'Exterior and interior door replacement, including impact-rated entry doors, French doors and patio doors installed to Florida wind code.',
-        image: '/images/service-doors.jpg',
+        image: '/images/service-doors.webp',
         metaTitle: 'Door Replacement in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Licensed Florida door replacement contractor serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Impact-rated entry, French and patio doors installed to wind code. Free estimates.',
         intro: 'An exterior door in Florida is a structural and weather barrier first and a style choice second. Brothers Remodelers replaces entry, patio and interior doors under one Florida Certified General Contractor license, sizing the opening, flashing the frame, and matching the door and hardware to your wind zone so it seals, locks and passes inspection.',
@@ -162,7 +162,7 @@ export const additionalServices = [
         slug: 'hvac',
         title: 'HVAC',
         summary: 'Air conditioning and HVAC system replacement and ductwork, coordinated with licensed mechanical subcontractors to Florida energy code.',
-        image: '/images/service-hvac.jpg',
+        image: '/images/service-hvac.webp',
         metaTitle: 'HVAC & Air Conditioning in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'HVAC and air conditioning replacement serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Coordinated with licensed mechanical subcontractors to Florida energy code. Free estimates.',
         intro: 'A Florida HVAC system runs hard for most of the year, and humidity control matters as much as temperature. Brothers Remodelers coordinates air conditioning and ductwork replacement under one Florida Certified General Contractor license, bringing in licensed mechanical subcontractors for the equipment, sizing the system to a proper load calculation, and tying the work into your remodel so mechanical, electrical and permitting land in the right sequence.',
@@ -211,7 +211,7 @@ export const additionalServices = [
         slug: 'plumbing',
         title: 'Plumbing',
         summary: 'Plumbing reroutes, repipes and fixture installation coordinated with licensed plumbing subcontractors, including slab trenching and wet-wall work.',
-        image: '/images/service-plumbing.jpg',
+        image: '/images/service-plumbing.webp',
         metaTitle: 'Plumbing in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Plumbing reroutes, repipes and fixture installation serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Coordinated with licensed plumbing subcontractors. Free estimates.',
         intro: 'Most Florida homes sit on a concrete slab, which means moving a sink or adding a bathroom means cutting and trenching the slab to reroute plumbing. Brothers Remodelers coordinates plumbing work under one Florida Certified General Contractor license, bringing in licensed plumbing subcontractors for the rough and finish work, and sequencing the slab patch, framing and finishes so the plumbing lands in the estimate instead of as a change order.',
@@ -259,10 +259,10 @@ export const additionalServices = [
     {
         slug: 'solar',
         title: 'Solar',
-        summary: 'Residential solar panel installation coordinated with licensed subcontractors, including roof structural review and electrical interconnection.',
-        image: '/images/service-solar.jpg',
+        summary: 'Residential solar installation coordinated with licensed subcontractors, including electrical interconnection.',
+        image: '/images/service-solar.webp',
         metaTitle: 'Solar Panel Installation in Tampa Bay & Sarasota | Brothers Remodelers',
-        metaDescription: 'Residential solar panel installation serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Coordinated with licensed subcontractors, roof structural review and electrical interconnection. Free estimates.',
+        metaDescription: 'Residential solar installation in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Coordinated with licensed subcontractors. Free estimates.',
         intro: 'Florida sun makes solar practical, but a solar array is only as reliable as the roof it sits on and the electrical interconnection behind it. Brothers Remodelers coordinates residential solar installation under one Florida Certified General Contractor license, reviewing the roof structure, sequencing any needed roof or electrical work, and bringing in licensed subcontractors so the system is permitted, safe and tied in correctly.',
         scope: [
             'Roof condition and structural review',
@@ -309,7 +309,7 @@ export const additionalServices = [
         slug: 'roof-insulation',
         title: 'Roof Insulation',
         summary: 'Attic and roof insulation upgrades, radiant barriers and ventilation improvements that meet Florida energy code and reduce cooling load.',
-        image: '/images/service-roof-insulation.jpg',
+        image: '/images/service-roof-insulation.webp',
         metaTitle: 'Roof Insulation in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Attic and roof insulation, radiant barriers and ventilation upgrades serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Installed to Florida energy code. Free estimates.',
         intro: 'In Florida, the attic is where heat builds up and where cooling dollars leak out. Brothers Remodelers upgrades attic and roof insulation under one Florida Certified General Contractor license, adding insulation to the code R-value, installing radiant barriers, and improving attic ventilation so the home stays cooler and the HVAC runs less.',
@@ -358,7 +358,7 @@ export const additionalServices = [
         slug: 'pools',
         title: 'Pools',
         summary: 'Swimming pool construction and pool deck work coordinated under one permit set, built to Florida Building Code with required safety barriers.',
-        image: '/images/service-pools.jpg',
+        image: '/images/service-pools.webp',
         metaTitle: 'Pool Construction in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Swimming pool construction and pool deck work serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Built to Florida Building Code with required safety barriers. Free estimates.',
         intro: 'A backyard pool is one of the largest investments a Florida homeowner can make, and it has to be engineered, permitted and built to code from the ground up. Brothers Remodelers coordinates pool construction and pool deck work under one Florida Certified General Contractor license, managing excavation, shell, plumbing, electrical and the surrounding deck so the project moves in one sequence under one permit set.',
@@ -407,7 +407,7 @@ export const additionalServices = [
         slug: 'pergolas',
         title: 'Pergolas',
         summary: 'Custom pergolas and outdoor shade structures, engineered and anchored to Florida wind code and built from weather-resistant materials.',
-        image: '/images/service-outdoor-living.jpg',
+        image: '/images/service-outdoor-living.webp',
         metaTitle: 'Pergolas in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Custom pergolas and outdoor shade structures serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Engineered and anchored to Florida wind code. Free estimates.',
         intro: 'A pergola extends a Florida home into the yard, creating shade and outdoor living space. Brothers Remodelers builds custom pergolas and shade structures under one Florida Certified General Contractor license, anchoring posts to a proper footing, sizing the structure to wind code, and using materials that hold up to sun, rain and salt air.',
@@ -456,7 +456,7 @@ export const additionalServices = [
         slug: 'driveways',
         title: 'Driveways',
         summary: 'Concrete, paver and asphalt driveway installation and replacement with proper sub-base, reinforcement and drainage to local code.',
-        image: '/images/service-driveways.jpg',
+        image: '/images/service-driveways.webp',
         metaTitle: 'Driveways in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Concrete, paver and asphalt driveway installation and replacement serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Proper sub-base, reinforcement and drainage. Free estimates.',
         intro: 'A Florida driveway takes sun, rain and vehicle weight every day, and it fails at the sub-base, not the surface. Brothers Remodelers installs and replaces driveways under one Florida Certified General Contractor license, preparing the sub-base, setting reinforcement and drainage, and finishing the surface so it sheds water and holds up to Florida conditions.',
@@ -505,7 +505,7 @@ export const additionalServices = [
         slug: 'accessory-dwelling-units',
         title: 'Accessory Dwelling Units (ADUs)',
         summary: 'Detached accessory dwelling units built to Florida Building Code, from foundation and framing to mechanical, plumbing and electrical rough-in.',
-        image: '/images/service-adu.jpg',
+        image: '/images/service-adu.webp',
         metaTitle: 'ADU Builders in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Accessory dwelling unit (ADU) construction serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Built to Florida Building Code from foundation to closeout. Free estimates.',
         intro: 'An accessory dwelling unit adds independent living space to a property \u2014 for family, rental income or a home office \u2014 and it is a full structure from the ground up. Brothers Remodelers builds detached ADUs under one Florida Certified General Contractor license, managing zoning, engineering, foundation, framing, mechanical, plumbing and electrical so the unit is permitted, inspected and move-in ready.',
@@ -554,7 +554,7 @@ export const additionalServices = [
         slug: 'flooring',
         title: 'Flooring',
         summary: 'Flooring installation and replacement \u2014 tile, luxury vinyl, laminate and hardwood \u2014 with moisture protection suited to Florida slab homes.',
-        image: '/images/service-flooring.jpg',
+        image: '/images/service-flooring.webp',
         metaTitle: 'Flooring Installation in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Flooring installation and replacement serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Tile, luxury vinyl, laminate and hardwood with moisture protection for Florida slab homes. Free estimates.',
         intro: 'Florida homes are built on concrete slabs in a humid climate, and that changes how flooring is installed. Brothers Remodelers installs and replaces flooring under one Florida Certified General Contractor license, preparing the subfloor, applying moisture protection, and setting tile, plank and sheet goods so the floor stays flat and dry for years.',
@@ -603,7 +603,7 @@ export const additionalServices = [
         slug: 'stucco',
         title: 'Stucco',
         summary: 'Stucco installation, repair and resurfacing for Florida homes, with proper moisture barrier, weep screeds and detailing for a humid climate.',
-        image: '/images/service-stucco.jpg',
+        image: '/images/service-stucco.webp',
         metaTitle: 'Stucco Repair & Installation in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Stucco installation, repair and resurfacing serving Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Proper moisture barrier, weep screeds and detailing for Florida humidity. Free estimates.',
         intro: 'Stucco is the most common exterior finish on Florida homes, and it fails when water gets behind it and cannot drain out. Brothers Remodelers installs, repairs and resurfaces stucco under one Florida Certified General Contractor license, installing the moisture barrier, weep screeds and flashing that let the wall breathe and drain, so the finish stays sound in a humid climate.',
@@ -652,7 +652,7 @@ export const additionalServices = [
         slug: 'drywall',
         title: 'Drywall',
         summary: 'Drywall installation, repair and finishing, including moisture- and mold-resistant board for Florida bathrooms, garages and flood-prone rooms.',
-        image: '/images/service-drywall.jpg',
+        image: '/images/service-drywall.webp',
         metaTitle: 'Drywall Installation & Repair in Tampa Bay & Sarasota | Brothers Remodelers',
         metaDescription: 'Licensed Florida contractor for drywall installation, repair and finishing in Hillsborough, Pinellas, Pasco, Sarasota and Manatee counties. Moisture-resistant board, smooth finishes, free estimates.',
         intro: 'Drywall is the surface every finish in the house sits on, and in Florida it also has to stand up to humidity, leaks and storm water. Brothers Remodelers hangs, tapes and finishes drywall under one Florida Certified General Contractor license, choosing the right board for each room, finding and fixing the cause of any water damage first, and leaving walls and ceilings ready for paint.',
@@ -698,3 +698,12 @@ export const additionalServices = [
         ],
     },
 ];
+
+const retiredRoofing = new Set(['roofing', 'roof-repair', 'roof-insulation']);
+
+export const additionalServices = additionalServicesRaw
+    .filter((service) => !retiredRoofing.has(service.slug))
+    .map((service) => ({
+        ...service,
+        relatedServices: (service.relatedServices || []).filter((item) => !retiredRoofing.has(item.slug)),
+    }));

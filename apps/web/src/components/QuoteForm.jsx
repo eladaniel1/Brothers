@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CheckCircle2, Loader2, AlertTriangle } from 'lucide-react';
-import pb from '@/lib/pocketbaseClient';
 import { services, areas } from '@/data/site';
 
 const empty = { name: '', email: '', phone: '', city: '', service: '', budget: '', timeline: '', message: '' };
@@ -9,9 +8,17 @@ const empty = { name: '', email: '', phone: '', city: '', service: '', budget: '
 const field = 'min-h-[44px] w-full border border-neutral-300 bg-white px-3 py-2 text-sm outline-none transition-colors focus:border-[hsl(var(--brand))]';
 const label = 'text-xs font-bold uppercase tracking-widest text-neutral-600';
 
-const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false }) => {
+const projectTypes = ['Kitchen', 'Bathroom', 'Addition', 'Whole home', 'Concrete', 'Other'];
+
+const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false, bare = false }) => {
     const location = useLocation();
-    const [form, setForm] = useState({ ...empty, service: defaultService, city: defaultCity });
+    const [form, setForm] = useState({
+        ...empty,
+        service: defaultService,
+        city: defaultCity,
+        timeline: bare ? 'Within 3 months' : '',
+        budget: bare ? 'Not sure yet' : '',
+    });
     const [status, setStatus] = useState('idle');
     const [error, setError] = useState('');
 
@@ -22,12 +29,20 @@ const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false }) =
         setStatus('loading');
         setError('');
         try {
-            await pb.collection('quote_requests').create({ ...form, source_page: location.pathname });
+            const response = await fetch('/api/estimate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...form, source_page: location.pathname }),
+            });
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(payload.error || 'We could not send that. Please call us and we will take the details by phone.');
+            }
             setStatus('done');
             setForm({ ...empty, service: defaultService, city: defaultCity });
         } catch (err) {
             setStatus('error');
-            setError(err?.response?.message || 'We could not send that. Please call us and we will take the details by phone.');
+            setError(err?.message || 'We could not send that. Please call us and we will take the details by phone.');
         }
     };
 
@@ -46,10 +61,49 @@ const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false }) =
         );
     }
 
+    if (bare) {
+        return (
+            <form className="form" onSubmit={submit}>
+                <div><label htmlFor="qf-name">Full name</label><input id="qf-name" required value={form.name} onChange={set('name')} placeholder="First and last name" /></div>
+                <div><label htmlFor="qf-phone">Phone</label><input id="qf-phone" required value={form.phone} onChange={set('phone')} placeholder="(000) 000-0000" /></div>
+                <div><label htmlFor="qf-email">Email</label><input id="qf-email" type="email" required value={form.email} onChange={set('email')} placeholder="you@email.com" /></div>
+                <div><label htmlFor="qf-city">ZIP code</label><input id="qf-city" value={form.city} onChange={set('city')} placeholder="33613" /></div>
+                <fieldset className="full">
+                    <legend>Project type</legend>
+                    <div className="chips">
+                        {projectTypes.map((type) => (
+                            <button type="button" key={type} className={form.service === type ? 'on' : undefined} onClick={() => setForm((current) => ({ ...current, service: type }))}>{type}</button>
+                        ))}
+                    </div>
+                </fieldset>
+                <div>
+                    <label htmlFor="qf-timeline">When do you want to start?</label>
+                    <select id="qf-timeline" value={form.timeline} onChange={set('timeline')}>
+                        <option>Within 3 months</option>
+                        <option>3 to 6 months</option>
+                        <option>Just planning</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="qf-budget">Interested in financing?</label>
+                    <select id="qf-budget" value={form.budget} onChange={set('budget')}>
+                        <option>Not sure yet</option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div className="full"><label htmlFor="qf-message">About the project</label><textarea id="qf-message" value={form.message} onChange={set('message')} placeholder="What do you want done?" /></div>
+                {status === 'error' ? <p className="full fine">{error}</p> : null}
+                <div className="full"><button className="btn btn-primary" type="submit" disabled={status === 'loading'}>{status === 'loading' ? 'Sending…' : 'Request My Estimate'}</button></div>
+                <p className="full fine">By sending this form you agree to be contacted about your project by phone, text or email.</p>
+            </form>
+        );
+    }
+
     return (
-        <form onSubmit={submit} className="border border-neutral-200 bg-white p-6 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.5)] md:p-8">
+        <form onSubmit={submit} className="border border-neutral-200 bg-white p-6 md:p-8">
             <p className="font-display text-2xl font-bold uppercase">Request your free quote</p>
-            <p className="mt-1 text-sm text-neutral-600">No obligation. Licensed, insured, and local.</p>
+            <p className="mt-1 text-sm text-neutral-600">No obligation. Licensed and local.</p>
 
             <div className={`mt-6 grid gap-4 ${compact ? '' : 'sm:grid-cols-2'}`}>
                 <div className="grid gap-2">
@@ -107,7 +161,7 @@ const QuoteForm = ({ defaultService = '', defaultCity = '', compact = false }) =
             </div>
 
             {status === 'error' && (
-                <p className="mt-4 flex items-start gap-2 border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                <p className="mt-4 flex items-start gap-2 border border-neutral-300 bg-neutral-50 p-3 text-sm text-neutral-800">
                     <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" /> {error}
                 </p>
             )}

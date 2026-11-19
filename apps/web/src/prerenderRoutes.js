@@ -4,7 +4,7 @@
 import { services, areas } from '@/data/site';
 import { hillsboroughCities } from '@/data/cities';
 import { allCities } from '@/data/allCities';
-import { localCities } from '@/data/localCities';
+import { tradePageCities } from '@/data/localCities';
 import { localTrades } from '@/data/localTrades';
 
 export function getRoutes() {
@@ -36,7 +36,7 @@ export function getRoutes() {
 
     // Trade-by-city pages, e.g. /services/ac-repair/st-petersburg.
     for (const t of localTrades) {
-        for (const c of localCities) {
+        for (const c of tradePageCities) {
             routes.push(`/services/${t.slug}/${c.slug}`);
         }
     }

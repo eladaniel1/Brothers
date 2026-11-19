@@ -2,25 +2,31 @@ export const company = {
     name: 'Brothers Remodelers',
     short: 'Brothers Remodelers',
     tagline: 'Home remodeling built on craft, schedule and trust',
-    phone: '(954) 355-1520',
-    phoneHref: 'tel:+19543551520',
+    phone: '(855) 445-2551',
+    phoneHref: 'tel:+18554452551',
+    telephone: '+1-855-445-2551',
     email: 'estimates@brothersremodelers.com',
-    address: '2100 West Oakland Park Boulevard, Suite 120, Fort Lauderdale, FL 33311',
+    address: '13542 N Florida Ave, Tampa, FL 33613',
+    streetAddress: '13542 N Florida Ave',
+    addressLocality: 'Tampa',
+    addressRegion: 'FL',
+    postalCode: '33613',
+    latitude: 28.0697,
+    longitude: -82.4594,
     hours: 'Mon – Sat, 7:00am – 6:00pm',
-    license: 'FL CGC Lic. #CGC1535875 · Fully licensed & insured',
-    licenseNumber: 'CGC1535875',
-    founded: 2006,
+    license: 'FL CGC Lic. #CGC1542451 · Fully licensed & insured',
+    licenseNumber: 'CGC1542451',
 };
 
-export const logoUrl =
-    'https://horizons-cdn.hostinger.com/b998a1e9-1695-434b-b566-d83745f5f0ba/975588e2c561c9a0ccdfa00f7b57dfc1.jpg';
+export const logoUrl = '/images/brothers-logo.webp';
+export const legalName = 'Republic Renovations Inc';
 
-export const heroImage = '/images/hero-carpenter.jpg';
-export const kitchenImage = '/images/kitchen.jpg';
-export const founderImage = '/images/about-plans.jpg';
-export const concreteImage = '/images/construction-site.jpg';
-export const brownstoneImage = '/images/whole-home.jpg';
-export const officeImage = '/images/office.jpg';
+export const heroImage = '/images/hero-carpenter.webp';
+export const kitchenImage = '/images/kitchen.webp';
+export const founderImage = '/images/about-plans.webp';
+export const concreteImage = '/images/construction-site.webp';
+export const brownstoneImage = '/images/whole-home.webp';
+export const officeImage = '/images/office.webp';
 
 import { additionalServices } from './additionalServices';
 import { tradeServices } from './tradeServices';
@@ -30,13 +36,13 @@ const coreServices = [
         slug: 'general-contracting',
         title: 'General Contracting',
         summary: 'Single-source management of design, permits, trades and closeout for full-home remodels and renovations.',
-        image: '/images/service-general-contracting.jpg',
+        image: '/images/service-general-contracting.webp',
         intro: 'We act as the single point of accountability from pre-construction budgeting through final sign-off, coordinating designers, engineers, and every trade on your remodel.',
         scope: [
             'Pre-construction budgeting and constructability review',
             'Permit filings coordinated with local building departments',
             'Trade procurement, buyout and scheduling',
-            'Daily supervision with a dedicated site superintendent',
+            'Scheduling of trades and inspections',
             'Punch list, closeout documentation and warranty',
         ],
         faqs: [
@@ -48,7 +54,7 @@ const coreServices = [
         slug: 'kitchen-remodeling',
         title: 'Kitchen Remodeling',
         summary: 'Full kitchen rebuilds with relocated plumbing, custom millwork and stone fabrication managed end to end.',
-        image: '/images/service-kitchen.jpg',
+        image: '/images/service-kitchen.webp',
         intro: 'Kitchens carry the most trades per square foot of any room. We sequence demolition, rough plumbing, electrical loads, cabinetry and stone so the room lands exactly on the drawings.',
         scope: [
             'Layout studies and appliance clearance verification',
@@ -66,7 +72,7 @@ const coreServices = [
         slug: 'bathroom-remodeling',
         title: 'Bathroom Remodeling',
         summary: 'Waterproofed, code-compliant bathrooms with tile setting, niches and rebuilt wet walls.',
-        image: '/images/service-bathroom.jpg',
+        image: '/images/service-bathroom.webp',
         intro: 'Every bathroom we build starts with the waterproofing assembly. Membranes, sloped shower pans and pressure-tested valves are inspected before a single tile is set.',
         scope: [
             'Full demolition to studs and blocking',
@@ -84,7 +90,7 @@ const coreServices = [
         slug: 'home-additions',
         title: 'Home Additions & Extensions',
         summary: 'Rear additions, second-story builds and room expansions from foundation to roof tie-in.',
-        image: '/images/service-additions.jpg',
+        image: '/images/service-additions.webp',
         intro: 'Additions are structural work first and finishes second. We form and frame to the engineer’s drawings and Florida wind-load requirements, then blend the new envelope into the existing house.',
         scope: [
             'Footings, foundation walls and slab work',
@@ -102,7 +108,7 @@ const coreServices = [
         slug: 'commercial-construction',
         title: 'Commercial Build-Outs',
         summary: 'Office, retail and light commercial interiors delivered on landlord schedules and after-hours windows.',
-        image: '/images/service-commercial.jpg',
+        image: '/images/service-commercial.webp',
         intro: 'Commercial tenants are paying rent from day one. We plan build-outs around landlord rules, long-lead equipment and inspection sequencing so you open on the date you advertised.',
         scope: [
             'Tenant improvement and white-box build-outs',
@@ -120,7 +126,7 @@ const coreServices = [
         slug: 'concrete-foundations',
         title: 'Concrete & Foundations',
         summary: 'Footings, slabs, driveways and structural repair with tested mixes and documented pours.',
-        image: '/images/service-concrete.jpg',
+        image: '/images/service-concrete.webp',
         intro: 'Concrete is unforgiving, so we document it: mix designs, slump and cylinder tests, rebar inspection photos and cure logs for every structural pour.',
         scope: [
             'Footings, foundation walls and grade beams',
@@ -146,7 +152,7 @@ export const areas = [
         blurb: 'Residential remodeling and general contracting services throughout Hillsborough County, Florida. We help homeowners with kitchen remodeling, bathroom remodeling, home additions, whole-home remodeling, concrete services, and general contracting projects.',
         image: kitchenImage,
         neighborhoods: ['Tampa', 'Brandon', 'Riverview', 'Westchase', 'Lutz', 'Odessa', 'FishHawk / Lithia', 'Mango', 'Lake Magdalene', 'Temple Terrace', 'Carrollwood / Northdale', "Town 'n' Country", 'Seffner', 'Gibsonton', 'Citrus Park', 'Valrico / Bloomingdale', 'Thonotosassa', 'Apollo Beach', 'Keystone', 'Dover', 'Ruskin', 'Plant City', 'Sun City Center', 'Wimauma', 'Balm'],
-        notes: 'From Tampa’s historic bungalows in Seminole Heights to the growing subdivisions of Riverview, Westchase and FishHawk, Hillsborough County housing ranges from 1920s block construction to brand-new builds. As a Hillsborough County remodeling contractor, we coordinate city of Tampa and unincorporated-county permitting, wind-rated glazing and the flood-zone foundation details that come with Tampa Bay living. Tampa home remodeling clients get the same superintendent-on-site standard we run across every county we serve.',
+        notes: 'From Tampa’s historic bungalows in Seminole Heights to the growing subdivisions of Riverview, Westchase and FishHawk, Hillsborough County housing ranges from 1920s block construction to brand-new builds. As a Hillsborough County remodeling contractor, we coordinate city of Tampa and unincorporated-county permitting, wind-rated glazing and the flood-zone foundation details that come with Tampa Bay living. Tampa home remodeling clients get the same written scope we use in every county we serve.',
     },
     {
         slug: 'pinellas',
@@ -206,7 +212,7 @@ export const processSteps = [
     ['Consultation', 'We walk the space, listen to the goal, and tell you honestly what it costs and what it does not.'],
     ['Estimate & scope', 'A line-item proposal with allowances stated plainly, so you can compare bids on equal terms.'],
     ['Pre-construction', 'Drawings, engineering, filings and long-lead procurement handled before demolition starts.'],
-    ['Build', 'A dedicated superintendent, a live schedule, weekly photo updates and protected work areas.'],
+    ['Build', 'A live schedule, weekly photo updates and protected work areas.'],
     ['Inspection & closeout', 'Sign-offs, punch list, warranty documents and a clean handover you can move into.'],
 ];
 
@@ -214,7 +220,7 @@ export const faqs = [
     ['Are you licensed and insured?', 'Yes. We hold a Florida Certified General Contractor license and carry general liability, workers’ compensation and disability coverage. Certificates are issued to your HOA, lender or landlord on request.'],
     ['How do you price work?', 'Line-item fixed price after a scope walkthrough, with allowances stated for owner-selected finishes. Cost-plus is available for open-ended scopes.'],
     ['What does a free estimate include?', 'A site visit, a scope conversation and a written line-item proposal with an outline schedule, usually within five business days.'],
-    ['Do you offer a warranty?', 'Two years on our workmanship, plus manufacturer warranties on installed products, documented at closeout.'],
+    ['Do you offer a warranty?', 'A two-year workmanship warranty, plus manufacturer warranties on installed products, documented at closeout.'],
     ['How do you handle change orders?', 'Nothing changes without a written, priced change order signed before the work proceeds.'],
     ['Do you work with architects and engineers?', 'Constantly, and we can introduce you to design partners if you do not have drawings yet.'],
     ['How do you protect occupied spaces?', 'Temporary partitions, negative air where required, floor protection, and daily cleanup with debris removed on schedule.'],

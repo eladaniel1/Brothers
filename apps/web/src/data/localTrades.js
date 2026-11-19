@@ -11,7 +11,7 @@
 
 const coastalExposure = (c) => (c.coastal ? `${c.name} homes near ${c.water}` : '');
 
-export const localTrades = [
+const localTradesAll = [
     {
         slug: 'ac-repair',
         name: 'AC Repair',
@@ -379,5 +379,9 @@ export const localTrades = [
         ],
     },
 ];
+
+const retiredTrades = new Set(['roofing', 'roof-repair']);
+
+export const localTrades = localTradesAll.filter((trade) => !retiredTrades.has(trade.slug));
 
 export const getLocalTrade = (slug) => localTrades.find((t) => t.slug === slug);

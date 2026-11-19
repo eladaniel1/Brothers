@@ -2,20 +2,45 @@
   TEMPLATE STYLES: These styles are used as a base template.
   AI is allowed to modify these styles as needed.
 */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('/fonts/fonts.css');
+@import './brothers.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   font-family: "Inter", sans-serif;
-  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .font-display {
   font-family: "Barlow Condensed", "Inter", sans-serif;
   letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: pretty !important;
 }
 
 .hatch {
@@ -65,7 +90,7 @@ body {
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
     --radius: 0.25rem;
-    --brand: 214 72% 28%;
+    --brand: 215 61% 15%;
     --brand-foreground: 0 0% 100%;
     --ink: 220 45% 14%;
     --sidebar-background: 0 0% 98%;

@@ -2,14 +2,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import SiteLayout, { CtaBand, Eyebrow, PageHero, Section } from '@/components/SiteLayout';
-import BrandsSection from '@/components/BrandsSection';
+import SiteLayout, { CtaBand, PageHero, Section } from '@/components/SiteLayout';
 import GetEstimateCTA from '@/components/GetEstimateCTA';
 import { brandSchemaFor } from '@/data/brands';
-import { getLocalCity, localCities } from '@/data/localCities';
+import { CONTRACTOR_ID, contractorNode } from '@/data/contractor';
+import { LAST_UPDATED, getCityEssay } from '@/data/essays';
+import { getLocalCity, isTradePageCity, tradePageCities } from '@/data/localCities';
 import { getLocalTrade, localTrades } from '@/data/localTrades';
 import { company, services } from '@/data/site';
-import { withArticle } from '@/lib/format';
 
 const SITE = 'https://brothersremodelers.com';
 
@@ -23,166 +23,185 @@ const LocalServicePage = () => {
     const trade = getLocalTrade(slug);
     const city = getLocalCity(citySlug);
     const service = services.find((s) => s.slug === slug);
-    if (!trade || !city || !service) return <Navigate to={service ? `/services/${slug}` : '/services'} replace />;
+    if (!trade || !city || !service || !isTradePageCity(city.slug)) {
+        return <Navigate to={trade && service ? `/services/${slug}/` : '/services/'} replace />;
+    }
 
-    const title = `${trade.name} in ${city.name}, FL`;
+    const essay = getCityEssay(slug, city.slug);
+    if (!essay) return <Navigate to={`/services/${slug}/`} replace />;
+    const h1 = `${trade.name} in ${city.name}, FL`;
+    const permitLabel = city.permitOffice.replace(/^the /i, '').replace(/\.$/, '');
+    const permitHead = city.permitOffice.split(/,| for /)[0];
+    const permitShort = /City of /i.test(permitHead) && /County/i.test(city.permitOffice)
+        ? 'City or county'
+        : /City of /i.test(permitHead)
+            ? `City of ${city.name}`
+            : city.county.replace(/ County$/, '');
     const url = `${SITE}/services/${slug}/${city.slug}/`;
-    const metaTitle = `${title} | Brothers Remodelers`;
-    const metaDescription = `${trade.name} in ${city.name}, ${city.county}, by a licensed Florida general contractor. Permits with ${city.permitOffice.split(',')[0]}, written estimates and Florida-code installation.`;
-    const notes = trade.notes(city);
-    const faqs = [
-        ...trade.faqs(city),
-        [`Which ${city.name} neighborhoods and ZIP codes do you serve?`, `We serve all of ${city.name}, including ${city.neighborhoods.slice(0, -1).join(', ')} and ${city.neighborhoods[city.neighborhoods.length - 1]}, in ZIP code${city.zips.length > 1 ? 's' : ''} ${city.zips.join(', ')}.`],
-    ];
-    const nearby = city.nearby.map(getLocalCity).filter(Boolean);
+    const nearby = tradePageCities.filter((item) => item.slug !== city.slug && (city.nearby || []).includes(item.slug));
+    const nearbyShown = nearby.length ? nearby : tradePageCities.filter((item) => item.slug !== city.slug).slice(0, 4);
     const otherTrades = localTrades.filter((t) => t.slug !== slug);
 
-    const facts = [
-        ['Service area', `${city.name}, ${city.county}, Florida`],
-        ['Permits filed with', city.permitOffice.charAt(0).toUpperCase() + city.permitOffice.slice(1)],
-        ['Permit required', trade.permit],
-        ['Typical timeline', trade.timeline],
-        ['Main cost drivers', trade.costDrivers],
-        ['License', `Florida Certified General Contractor ${company.licenseNumber}`],
-        [city.zips.length > 1 ? 'ZIP codes served' : 'ZIP code served', city.zips.join(', ')],
-        ...(['electrical', 'ac-repair'].includes(slug) ? [['Electric utility', city.power]] : []),
-        ...(slug === 'plumbing' ? [['Water utility', city.waterUtility]] : []),
-    ];
-
-    const serviceSchema = {
+    const graph = {
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: title,
-        serviceType: service.title,
-        url,
-        description: trade.answer(city),
-        areaServed: {
-            '@type': 'City',
-            name: city.name,
-            containedInPlace: { '@type': 'AdministrativeArea', name: `${city.county}, Florida` },
-        },
-        provider: {
-            '@type': 'GeneralContractor',
-            '@id': `${SITE}/#business`,
-            name: company.name,
-            url: `${SITE}/`,
-            telephone: company.phoneHref.replace('tel:', ''),
-        },
-        brand: brandSchemaFor(slug),
-    };
-    const faqSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
-    };
-    const breadcrumbSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
-            { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services/` },
-            { '@type': 'ListItem', position: 3, name: service.title, item: `${SITE}/services/${slug}/` },
-            { '@type': 'ListItem', position: 4, name: city.name, item: url },
+        '@graph': [
+            contractorNode,
+            {
+                '@type': 'WebPage',
+                '@id': `${url}#webpage`,
+                url,
+                name: essay.title,
+                description: essay.description,
+                dateModified: '2026-11-19',
+                isPartOf: { '@type': 'WebSite', name: 'Brothers Remodelers', url: `${SITE}/` },
+                about: { '@id': `${url}#service` },
+                publisher: { '@id': CONTRACTOR_ID },
+                breadcrumb: { '@id': `${url}#breadcrumb` },
+            },
+            {
+                '@type': 'Service',
+                '@id': `${url}#service`,
+                name: h1,
+                serviceType: trade.name,
+                url,
+                description: essay.answer,
+                provider: { '@id': CONTRACTOR_ID },
+                areaServed: {
+                    '@type': 'City',
+                    name: city.name,
+                    containedInPlace: { '@type': 'AdministrativeArea', name: `${city.county}, Florida` },
+                },
+                brand: brandSchemaFor(slug),
+            },
+            {
+                '@type': 'FAQPage',
+                '@id': `${url}#faq`,
+                mainEntity: essay.faqs.map(({ q, a }) => ({
+                    '@type': 'Question',
+                    name: q,
+                    acceptedAnswer: { '@type': 'Answer', text: a },
+                })),
+            },
+            {
+                '@type': 'BreadcrumbList',
+                '@id': `${url}#breadcrumb`,
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+                    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE}/services/` },
+                    { '@type': 'ListItem', position: 3, name: service.title, item: `${SITE}/services/${slug}/` },
+                    { '@type': 'ListItem', position: 4, name: city.name, item: url },
+                ],
+            },
+            {
+                '@type': 'HowTo',
+                name: `How ${trade.name.toLowerCase()} runs in ${city.name}`,
+                step: essay.steps.map((step, index) => ({
+                    '@type': 'HowToStep',
+                    position: index + 1,
+                    name: step.title,
+                    text: step.text,
+                })),
+            },
         ],
     };
 
     return (
         <SiteLayout>
             <Helmet>
-                <title>{metaTitle}</title>
-                <meta name="description" content={metaDescription} />
+                <title>{essay.title}</title>
+                <meta name="description" content={essay.description} />
                 <link rel="canonical" href={url} />
-                <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
-                <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-                <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+                <meta property="og:title" content={essay.title} />
+                <meta property="og:description" content={essay.description} />
+                <meta property="og:url" content={url} />
+                <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="Brothers Remodelers" />
+                <meta property="og:image" content={`${SITE}${service.image}`} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={essay.title} />
+                <meta name="twitter:description" content={essay.description} />
+                <meta name="twitter:image" content={`${SITE}${service.image}`} />
+                <script type="application/ld+json">{JSON.stringify(graph)}</script>
             </Helmet>
             <PageHero
-                title={title}
-                subtitle={`Licensed ${trade.phrase} service for ${city.name} homeowners, permitted and built to Florida code.`}
+                title={h1}
+                subtitle={`${trade.name} in ${city.name}, ${city.county}. License ${company.licenseNumber}.`}
                 image={service.image}
-                crumbs={[{ label: 'Services', to: '/services' }, { label: service.title, to: `/services/${slug}` }, { label: city.name }]}
+                imageAlt={`${trade.name} in ${city.name}, Florida`}
+                crumbs={[{ label: 'Services', to: '/services/' }, { label: service.title, to: `/services/${slug}/` }, { label: city.name }]}
             />
             <Section width="wide">
-                <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+                <dl className="city-stats" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', marginBottom: 36 }}>
                     <div>
-                        <Eyebrow>Short answer</Eyebrow>
-                        <h2 className="font-display mt-4 text-3xl font-bold uppercase md:text-4xl">Who does {trade.phrase} work in {city.name}?</h2>
-                        <p className="mt-5 text-lg leading-relaxed text-neutral-700">{trade.answer(city)}</p>
-
-                        <h3 className="font-display mt-12 text-2xl font-bold uppercase">Key facts</h3>
-                        <dl className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200">
-                            {facts.map(([term, value]) => (
-                                <div key={term} className="grid gap-1 py-3 sm:grid-cols-[11rem_1fr] sm:gap-6">
-                                    <dt className="text-sm font-semibold text-neutral-500">{term}</dt>
-                                    <dd className="text-sm leading-relaxed text-neutral-800">{value}</dd>
-                                </div>
-                            ))}
-                        </dl>
-
-                        <h3 className="font-display mt-12 text-2xl font-bold uppercase">{trade.name} in {city.name}: local context</h3>
-                        <div className="mt-4 space-y-4 leading-relaxed text-neutral-600">
-                            <p>{city.context} Homes here include {city.housing}.</p>
-                            <p>{city.storms} {trade.stormTie}</p>
-                        </div>
-
-                        <h3 className="font-display mt-12 text-2xl font-bold uppercase">{trade.name} considerations in {city.name}</h3>
-                        <div className="mt-6 grid gap-6 md:grid-cols-2">
-                            {notes.map(([noteTitle, text]) => (
-                                <div key={noteTitle} className="border-l-2 border-[hsl(var(--brand))] bg-neutral-50 p-5">
-                                    <h4 className="font-display text-lg font-bold uppercase">{noteTitle}</h4>
-                                    <p className="mt-2 text-sm leading-relaxed text-neutral-600">{text}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <p className="mt-8 text-sm leading-relaxed text-neutral-600">
-                            For the full scope of work, options and our step-by-step process, see our main{' '}
-                            <Link to={`/services/${slug}`} className="font-semibold text-[hsl(var(--brand))] underline-offset-2 hover:underline">{service.title} page</Link>.
-                        </p>
-
-                        <BrandsSection slug={slug} title={service.title} />
-
-                        <h3 className="font-display mt-12 text-2xl font-bold uppercase">{trade.name} questions from {city.name} homeowners</h3>
-                        <div className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200">
-                            {faqs.map(([q, a]) => (
-                                <div key={q} className="py-5">
-                                    <h4 className="font-display text-lg font-bold uppercase">{q}</h4>
-                                    <p className="mt-2 text-sm leading-relaxed text-neutral-600">{a}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <h3 className="font-display mt-12 text-2xl font-bold uppercase">Neighborhoods we serve in {city.name}</h3>
-                        <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                            {city.neighborhoods.join(', ')} and the rest of {city.name}. See our{' '}
-                            <Link to={city.areaUrl} className="font-semibold text-[hsl(var(--brand))] underline-offset-2 hover:underline">{city.name} service area page</Link>{' '}
-                            for every service we offer there.
-                        </p>
+                        <dt className="num">{company.licenseNumber}</dt>
+                        <dd className="lbl">Florida GC license</dd>
                     </div>
-
-                    <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
-                        <GetEstimateCTA heading="Get an Estimate" text={`Free, no-obligation ${trade.phrase} estimate in ${city.name}. Line-item proposal in writing.`} />
+                    <div>
+                        <dt className="num">{city.county.replace(/ County$/, '')}</dt>
+                        <dd className="lbl">County</dd>
+                    </div>
+                    <div>
+                        <dt className="num" style={{ fontSize: permitShort.length > 16 ? 22 : undefined }}>{permitShort}</dt>
+                        <dd className="lbl">{permitLabel}</dd>
+                    </div>
+                </dl>
+                <div className="split city-layout">
+                    <div className="prose city-body min-w-0">
+                        <p className="small mute">Last updated {LAST_UPDATED}</p>
+                        <h2>Who handles {trade.name.toLowerCase()} in {city.name}?</h2>
+                        <p id="aeo-answer">{essay.answer}</p>
+                        <h2>What the {trade.name.toLowerCase()} work includes</h2>
+                        {essay.included.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
+                        <div className="city-steps">
+                            <h2>How the job runs</h2>
+                            <ol>
+                                {essay.steps.map((step, index) => (
+                                    <li key={step.title}>
+                                        <span className="n">0{index + 1}</span>
+                                        <h3>{step.title}</h3>
+                                        <p>{step.text}</p>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                        <h2>Permits and the local rules</h2>
+                        {essay.permits.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
+                        {essay.local.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
+                        <h2>What affects the cost</h2>
+                        {essay.cost.map((paragraph) => <p key={paragraph.slice(0, 40)}>{paragraph}</p>)}
+                        <p>
+                            <Link to={`/services/${slug}/`}>{trade.name} service details</Link>
+                            {' · '}
+                            <Link to={city.areaUrl.endsWith('/') ? city.areaUrl : `${city.areaUrl}/`}>{city.name} service area</Link>
+                        </p>
+                        <h2>Questions homeowners ask</h2>
                         <div>
-                            <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">{trade.name} nearby</p>
+                            {essay.faqs.map(({ q, a }) => (
+                                <div key={q}>
+                                    <h3>{q}</h3>
+                                    <p>{a}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <aside className="city-aside">
+                        <GetEstimateCTA heading="Get an Estimate" text={`Two-year workmanship warranty. Written price for ${trade.name} in ${city.name}.`} />
+                        <div>
+                            <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">Same trade nearby</p>
                             <ul className="mt-3 space-y-2">
-                                {nearby.map((c) => (
+                                {nearbyShown.map((c) => (
                                     <li key={c.slug}>
-                                        <Link to={`/services/${slug}/${c.slug}`} className="group flex items-center justify-between border border-neutral-200 px-4 py-3 text-sm font-semibold hover:border-[hsl(var(--brand))]">
-                                            {trade.name} in {c.name}
-                                            <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-[hsl(var(--brand))]" />
-                                        </Link>
+                                        <Link to={`/services/${slug}/${c.slug}/`}>{trade.name} in {c.name}</Link>
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         <div>
-                            <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">Other services in {city.name}</p>
-                            <ul className="mt-3 flex flex-wrap gap-2">
+                            <p className="font-display text-sm font-bold uppercase tracking-widest text-neutral-500">Other trades in {city.name}</p>
+                            <ul className="mt-3 space-y-2">
                                 {otherTrades.map((t) => (
                                     <li key={t.slug}>
-                                        <Link to={`/services/${t.slug}/${city.slug}`} className="block border border-neutral-300 px-3 py-1.5 text-xs font-bold uppercase tracking-wide hover:border-[hsl(var(--brand))] hover:text-[hsl(var(--brand))]">
-                                            {t.name}
-                                        </Link>
+                                        <Link to={`/services/${t.slug}/${city.slug}/`}>{t.name} in {city.name}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -190,7 +209,7 @@ const LocalServicePage = () => {
                     </aside>
                 </div>
             </Section>
-            <CtaBand heading={`Get ${withArticle(trade.phrase)} estimate in ${city.name}`} />
+            <CtaBand heading={`Get an estimate in ${city.name}`} />
         </SiteLayout>
     );
 };
@@ -204,9 +223,9 @@ export const LocalCityLinks = ({ slug }) => {
         <>
             <h3 className="font-display mt-12 text-2xl font-bold uppercase">{trade.name} by city</h3>
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                {localCities.map((c) => (
+                {tradePageCities.map((c) => (
                     <li key={c.slug}>
-                        <Link to={`/services/${slug}/${c.slug}`} className="group flex items-center justify-between border border-neutral-200 px-4 py-3 text-sm font-semibold hover:border-[hsl(var(--brand))]">
+                        <Link to={`/services/${slug}/${c.slug}/`} className="group flex items-center justify-between border border-neutral-200 px-4 py-3 text-sm font-semibold hover:border-[hsl(var(--brand))]">
                             {trade.name} in {c.name}
                             <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-[hsl(var(--brand))]" />
                         </Link>

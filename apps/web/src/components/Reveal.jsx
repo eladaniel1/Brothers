@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-const Reveal = ({ children, delay = 0, y = 24, className = '', as = 'div', once = true, ...rest }) => {
+const Reveal = ({ children, delay = 0, y = 0, className = '', as = 'div', once = true, ...rest }) => {
     const reduceMotion = useReducedMotion();
     const MotionTag = motion[as] || motion.div;
     // `delay` is in seconds (framer-motion's unit), but callers often pass the

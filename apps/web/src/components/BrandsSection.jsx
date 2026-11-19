@@ -16,9 +16,9 @@ const BrandsSection = ({ slug, title }) => {
             </p>
             <dl className="mt-6 divide-y divide-neutral-200 border-y border-neutral-200">
                 {groups.map(([category, names]) => (
-                    <div key={category} className="grid gap-2 py-4 sm:grid-cols-[12rem_1fr] sm:gap-6">
+                    <div key={category} className="py-4">
                         <dt className="font-display text-sm font-bold uppercase tracking-wide text-neutral-500">{category}</dt>
-                        <dd className="flex flex-wrap gap-2">
+                        <dd className="mt-2 flex flex-wrap gap-2">
                             {names.map((name) => (
                                 <span key={name} className="border border-neutral-300 px-3 py-1 text-sm font-semibold text-[hsl(var(--ink))]">
                                     {name}
